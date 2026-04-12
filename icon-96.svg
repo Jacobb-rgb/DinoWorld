@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 96 96" width="96" height="96">
+  <rect width="96" height="96" rx="12" fill="#080808"/>
+  <rect width="96" height="96" rx="12" fill="url(#bg)"/>
+  <defs>
+    <radialGradient id="bg" cx="30%" cy="30%">
+      <stop offset="0%" stop-color="#1a2a0a"/>
+      <stop offset="100%" stop-color="#080808"/>
+    </radialGradient>
+  </defs>
+  <text x="48" y="69" font-size="55" text-anchor="middle" dominant-baseline="middle">🦖</text>
+  <text x="48" y="88" font-size="9" text-anchor="middle" fill="#6efb3e" font-family="Arial,sans-serif" font-weight="bold" letter-spacing="1">DINOWORLD</text>
+</svg>
