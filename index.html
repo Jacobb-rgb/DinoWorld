@@ -10,7 +10,7 @@
   gtag('js', new Date());
   gtag('config', 'G-R85DB63CNJ');
 </script>
-<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover, maximum-scale=5, user-scalable=yes">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
 <title>DinoWorld – Dinosaur Facts, Profiles, Quizzes & Top 10 Lists</title>
 <meta charset="UTF-8">
 <!-- Google Analytics -->
@@ -21,7 +21,7 @@
   gtag('js', new Date());
   gtag('config', 'G-R85DB63CNJ');
 </script>
-<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover, maximum-scale=5, user-scalable=yes">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
 <meta name="description" content="Explore 22 dinosaur profiles, 38+ articles, quizzes, fossil maps and Top 10 lists. Learn about T-Rex, Velociraptor, Spinosaurus and more. Free educational dinosaur resource.">
 <meta name="keywords" content="dinosaurs, T-Rex, Velociraptor, Triceratops, dinosaur facts, Jurassic period, Cretaceous, dinosaur extinction, biggest dinosaur, fastest dinosaur">
 <meta name="author" content="DinoWorld">
@@ -163,15 +163,27 @@
     position: sticky;
     top: 0;
     z-index: 100;
-    background: rgba(8,8,8,1);
+    background: #080808;
     border-bottom: 1px solid var(--border);
     padding: 0 28px;
-    padding-top: env(safe-area-inset-top, 0px);
     display: flex;
     align-items: center;
-    gap: 24px;
-    height: calc(62px + env(safe-area-inset-top, 0px));
+    gap: 16px;
+    height: 62px;
     box-shadow: 0 1px 0 var(--border), 0 4px 24px rgba(0,0,0,0.3);
+  }
+  /* iPhone notch / Dynamic Island fix for standalone PWA */
+  @supports (padding-top: env(safe-area-inset-top)) {
+    nav {
+      padding-top: env(safe-area-inset-top);
+      height: calc(62px + env(safe-area-inset-top));
+    }
+    body {
+      padding-bottom: env(safe-area-inset-bottom);
+    }
+    .mobile-menu {
+      padding-top: env(safe-area-inset-top);
+    }
   }
 
   .nav-logo {
@@ -1233,15 +1245,15 @@
   .lang-globe-btn {
     display: flex;
     align-items: center;
-    gap: 6px;
-    background: var(--bg3);
-    border: 1px solid var(--border);
+    gap: 5px;
+    background: rgba(110,251,62,0.08);
+    border: 1px solid rgba(110,251,62,0.3);
     border-radius: 10px;
-    color: var(--text);
-    padding: 7px 12px;
+    color: var(--accent);
+    padding: 6px 11px;
     font-family: 'Poppins', sans-serif;
-    font-size: 0.82rem;
-    font-weight: 600;
+    font-size: 0.8rem;
+    font-weight: 700;
     cursor: pointer;
     transition: all 0.2s;
     flex-shrink: 0;
@@ -1249,7 +1261,9 @@
     touch-action: manipulation;
     position: relative;
     z-index: 200;
+    margin-left: auto;
   }
+  .lang-globe-btn:hover { background: rgba(110,251,62,0.15); border-color: var(--accent); }
   .lang-globe-btn:hover { border-color: var(--accent); color: var(--accent); }
   .lang-globe-icon { font-size: 1.1rem; }
   .lang-current { font-size: 0.78rem; }
@@ -2565,6 +2579,11 @@
     <input type="search" id="searchInput" placeholder="Search dinosaurs..." onkeydown="handleSearch(event)" oninput="handleSearchInput(this.value)" aria-label="Search dinosaurs" autocomplete="off"/>
     <div class="search-dropdown" id="searchDropdown"></div>
   </div>
+    <button class="lang-globe-btn" id="langGlobeBtn" onclick="toggleLangDropdown()" aria-label="Change language" title="Change Language">
+    <span class="lang-globe-icon">🌍</span>
+    <span class="lang-current" id="langCurrentLabel">EN</span>
+    <span class="lang-arrow">▼</span>
+  </button>
   <button class="hamburger" id="hamburger" onclick="toggleMobileMenu()" aria-label="Open menu" aria-expanded="false" aria-controls="mobileMenu">
       <span></span>
       <span></span>
