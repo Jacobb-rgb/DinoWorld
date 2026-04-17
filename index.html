@@ -11,7 +11,7 @@
   gtag('config', 'G-R85DB63CNJ');
 </script>
 <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-<title>DinoWorld – Dinosaur Facts, Profiles, Quizzes & Top 10 Lists</title>
+<title>DinoWorld – T-Rex Facts, Dinosaur Profiles, Extinction &amp; More for Kids</title>
 <meta charset="UTF-8">
 <!-- Google Analytics -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-R85DB63CNJ"></script>
@@ -22,9 +22,12 @@
   gtag('config', 'G-R85DB63CNJ');
 </script>
 <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-<meta name="description" content="Explore 22 dinosaur profiles, 38+ articles, quizzes, fossil maps and Top 10 lists. Learn about T-Rex, Velociraptor, Spinosaurus and more. Free educational dinosaur resource.">
+<meta name="description" content="Discover amazing dinosaur facts! Learn about T-Rex, Velociraptor, how dinosaurs went extinct, what they ate &amp; more. Free quizzes, fossil map &amp; rock scanner for kids.">
 <meta name="keywords" content="dinosaurs, T-Rex, Velociraptor, Triceratops, dinosaur facts, Jurassic period, Cretaceous, dinosaur extinction, biggest dinosaur, fastest dinosaur">
 <meta name="author" content="DinoWorld">
+<meta name="keywords" content="dinosaur facts, T-Rex facts, Velociraptor facts, dinosaur extinction, prehistoric animals, dinosaur for kids, paleontology, fossil, Jurassic, Cretaceous, Triassic, dinosaur quiz">
+<meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large">
+<link rel="canonical" href="https://jacobb-rgb.github.io/DinoWorld/">
 <meta name="robots" content="index, follow">
 <meta name="theme-color" content="#0a0a0a">
 <meta name="language" content="English">
@@ -1241,6 +1244,552 @@
 
   .fade-in { animation: fadeUp 0.5s ease both; }
 
+  /* ══════════════════════════════════════════════════════
+     🎨 MEGA DESIGN UPGRADE — Premium Dark Theme
+  ══════════════════════════════════════════════════════ */
+
+  /* Smooth everything */
+  html { scroll-behavior: smooth; }
+  *, *::before, *::after { box-sizing: border-box; }
+
+  /* CSS Variable upgrades */
+  :root {
+    --glow-green: rgba(110,251,62,0.4);
+    --glow-orange: rgba(255,122,26,0.4);
+    --glass-bg: rgba(255,255,255,0.03);
+    --glass-border: rgba(255,255,255,0.06);
+    --gradient-green: linear-gradient(135deg, #6efb3e, #4ade80);
+    --gradient-fire: linear-gradient(135deg, #ff7a1a, #ef4444);
+    --gradient-hero: radial-gradient(ellipse 80% 60% at 50% -10%, rgba(110,251,62,0.15) 0%, transparent 60%);
+    --shadow-glow: 0 0 40px rgba(110,251,62,0.15);
+    --radius-xl: 24px;
+  }
+
+  /* 🌌 ANIMATED BACKGROUND MESH */
+  body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background:
+      radial-gradient(ellipse 60% 40% at 20% 10%, rgba(110,251,62,0.06) 0%, transparent 50%),
+      radial-gradient(ellipse 40% 30% at 80% 80%, rgba(255,122,26,0.05) 0%, transparent 50%),
+      radial-gradient(ellipse 50% 60% at 60% 40%, rgba(110,251,62,0.03) 0%, transparent 60%);
+    pointer-events: none;
+    z-index: 0;
+    animation: meshMove 20s ease-in-out infinite alternate;
+  }
+  @keyframes meshMove {
+    0% { background-position: 0% 0%, 100% 100%, 50% 50%; opacity: 0.8; }
+    100% { background-position: 10% 20%, 90% 80%, 55% 45%; opacity: 1; }
+  }
+
+  /* 🔵 CUSTOM CURSOR GLOW */
+  .cursor-glow {
+    position: fixed;
+    width: 300px; height: 300px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(110,251,62,0.06) 0%, transparent 70%);
+    pointer-events: none;
+    z-index: 99999;
+    transform: translate(-50%, -50%);
+    transition: transform 0.1s ease-out;
+    mix-blend-mode: screen;
+  }
+
+  /* ✨ GRADIENT TEXT */
+  .gradient-text {
+    background: linear-gradient(135deg, #6efb3e 0%, #a0ff70 40%, #ffb347 70%, #ff7a1a 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+  .gradient-text-green {
+    background: linear-gradient(135deg, #6efb3e, #a0ff70);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  /* 🪟 GLASSMORPHISM CARDS */
+  .glass-card {
+    background: rgba(255,255,255,0.03);
+    border: 1px solid rgba(255,255,255,0.07);
+    -webkit-backdrop-filter: blur(12px);
+    backdrop-filter: blur(12px);
+    border-radius: var(--radius-xl);
+    box-shadow: 0 8px 32px rgba(0,0,0,0.4), inset 0 1px 0 rgba(255,255,255,0.06);
+  }
+
+  /* 🦖 HERO UPGRADE */
+  .hero {
+    background:
+      var(--gradient-hero),
+      linear-gradient(180deg, rgba(8,8,8,0) 0%, rgba(8,8,8,1) 100%),
+      #080808;
+    border-bottom: 1px solid rgba(110,251,62,0.1);
+    position: relative;
+    overflow: hidden;
+  }
+  .hero::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: repeating-linear-gradient(
+      0deg, transparent, transparent 60px,
+      rgba(110,251,62,0.015) 60px, rgba(110,251,62,0.015) 61px
+    ),
+    repeating-linear-gradient(
+      90deg, transparent, transparent 60px,
+      rgba(110,251,62,0.015) 60px, rgba(110,251,62,0.015) 61px
+    );
+    pointer-events: none;
+  }
+  .hero h1 {
+    font-size: clamp(3rem, 10vw, 7.5rem);
+    line-height: 0.92;
+    letter-spacing: -1px;
+    text-shadow: 0 0 80px rgba(110,251,62,0.2);
+  }
+  .hero h1 .accent {
+    position: relative;
+    display: inline-block;
+  }
+  .hero h1 .accent::after {
+    content: attr(data-text);
+    position: absolute;
+    left: 0; top: 0;
+    background: var(--gradient-green);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    filter: blur(0);
+  }
+
+  /* 🔥 HERO BADGE UPGRADE */
+  .hero-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: rgba(110,251,62,0.08);
+    border: 1px solid rgba(110,251,62,0.25);
+    border-radius: 100px;
+    padding: 8px 20px;
+    font-size: 0.75rem;
+    font-weight: 700;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 28px;
+    animation: badge-glow 3s ease-in-out infinite;
+    position: relative;
+  }
+  @keyframes badge-glow {
+    0%, 100% { box-shadow: 0 0 0 0 rgba(110,251,62,0); }
+    50% { box-shadow: 0 0 20px rgba(110,251,62,0.2); }
+  }
+  .hero-badge-dot {
+    width: 6px; height: 6px;
+    background: var(--accent);
+    border-radius: 50%;
+    animation: dot-pulse 1.5s ease-in-out infinite;
+    flex-shrink: 0;
+  }
+  @keyframes dot-pulse {
+    0%, 100% { transform: scale(1); opacity: 1; }
+    50% { transform: scale(1.5); opacity: 0.7; }
+  }
+
+  /* 🎯 HERO STATS UPGRADE */
+  .hero-stats {
+    background: rgba(255,255,255,0.02);
+    border: 1px solid rgba(255,255,255,0.06);
+    border-radius: 16px;
+    padding: 16px 24px;
+    -webkit-backdrop-filter: blur(8px);
+    backdrop-filter: blur(8px);
+    margin-top: 40px;
+    display: flex;
+    gap: 0;
+    width: fit-content;
+  }
+  .hero-stat { padding: 8px 28px; }
+  .hero-stat:first-child { padding-left: 12px; }
+  .hs-val {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 2.2rem;
+    background: var(--gradient-green);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    display: block;
+    line-height: 1.1;
+  }
+  .hs-lbl { font-size: 0.65rem; color: #666; letter-spacing: 1px; font-weight: 600; }
+  .hero-stat-div { width: 1px; background: rgba(255,255,255,0.06); margin: 6px 0; }
+
+  /* 🟢 BUTTON GLOW UPGRADE */
+  .btn-primary {
+    background: var(--gradient-green);
+    color: #050505;
+    box-shadow: 0 4px 24px rgba(110,251,62,0.25);
+    border: none;
+    transition: all 0.25s cubic-bezier(0.4,0,0.2,1);
+  }
+  .btn-primary:hover {
+    transform: translateY(-3px) scale(1.02);
+    box-shadow: 0 8px 32px rgba(110,251,62,0.4);
+    background: linear-gradient(135deg, #88ff55, #6efb3e);
+  }
+  .btn-orange {
+    box-shadow: 0 4px 24px rgba(255,122,26,0.25);
+  }
+  .btn-orange:hover {
+    transform: translateY(-3px) scale(1.02);
+    box-shadow: 0 8px 32px rgba(255,122,26,0.4);
+  }
+  .btn-secondary {
+    background: rgba(255,255,255,0.04);
+    border: 1px solid rgba(255,255,255,0.1);
+    -webkit-backdrop-filter: blur(8px);
+    backdrop-filter: blur(8px);
+  }
+  .btn-secondary:hover {
+    background: rgba(110,251,62,0.08);
+    border-color: rgba(110,251,62,0.3);
+    transform: translateY(-2px);
+    color: var(--accent);
+  }
+
+  /* 🃏 3D CARD HOVER EFFECT */
+  .card, .dino-profile-card, .tn-card, .rec-card {
+    transform-style: preserve-3d;
+    transition: transform 0.3s cubic-bezier(0.4,0,0.2,1), border-color 0.3s, box-shadow 0.3s;
+  }
+  .card:hover {
+    transform: translateY(-8px) rotateX(2deg);
+    box-shadow: 0 20px 48px rgba(0,0,0,0.5), 0 0 0 1px rgba(110,251,62,0.15);
+  }
+
+  /* 🦖 NAV UPGRADE */
+  nav {
+    -webkit-backdrop-filter: blur(20px) saturate(180%);
+    backdrop-filter: blur(20px) saturate(180%);
+    background: rgba(8,8,8,0.85) !important;
+    border-bottom: 1px solid rgba(255,255,255,0.06) !important;
+  }
+  .nav-logo {
+    font-size: 1.5rem;
+    letter-spacing: 3px;
+    background: linear-gradient(135deg, #fff 0%, #6efb3e 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+  .nav-logo span {
+    -webkit-text-fill-color: unset;
+    color: var(--accent);
+    background: none;
+  }
+  .nav-links button {
+    position: relative;
+    transition: color 0.2s;
+  }
+  .nav-links button::after {
+    content: '';
+    position: absolute;
+    bottom: -2px; left: 50%; right: 50%;
+    height: 2px;
+    background: var(--gradient-green);
+    border-radius: 2px;
+    transition: left 0.25s, right 0.25s;
+  }
+  .nav-links button:hover::after,
+  .nav-links button.active::after { left: 0; right: 0; }
+
+  /* 📊 SECTION TITLES UPGRADE */
+  .section-title {
+    position: relative;
+    display: inline-block;
+  }
+  .section-title span {
+    background: var(--gradient-green);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    position: relative;
+  }
+  .section-label {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 0.65rem;
+    font-weight: 800;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 10px;
+    padding: 4px 12px;
+    background: rgba(110,251,62,0.06);
+    border: 1px solid rgba(110,251,62,0.15);
+    border-radius: 100px;
+  }
+
+  /* 🔥 TRENDING BOX UPGRADE */
+  .trending-box {
+    background: rgba(255,255,255,0.02);
+    border: 1px solid rgba(110,251,62,0.15) !important;
+    border-radius: 20px;
+    -webkit-backdrop-filter: blur(8px);
+    backdrop-filter: blur(8px);
+    box-shadow: 0 4px 24px rgba(0,0,0,0.3), inset 0 1px 0 rgba(255,255,255,0.04);
+  }
+  .tn-card {
+    background: rgba(255,255,255,0.02);
+    border: 1px solid rgba(255,255,255,0.06);
+    border-radius: 14px;
+    transition: all 0.25s cubic-bezier(0.4,0,0.2,1);
+  }
+  .tn-card:hover {
+    background: rgba(110,251,62,0.06);
+    border-color: rgba(110,251,62,0.3);
+    transform: translateY(-5px);
+    box-shadow: 0 12px 32px rgba(0,0,0,0.4), 0 0 0 1px rgba(110,251,62,0.1);
+  }
+
+  /* 🌟 DOTD UPGRADE */
+  .dotd-card {
+    background: rgba(255,255,255,0.02);
+    border: 1px solid rgba(255,255,255,0.07);
+    -webkit-backdrop-filter: blur(12px);
+    backdrop-filter: blur(12px);
+    box-shadow: 0 24px 64px rgba(0,0,0,0.5), 0 0 0 1px rgba(110,251,62,0.08);
+    border-radius: 24px;
+  }
+  .dotd-label {
+    background: var(--gradient-green);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+  .dotd-dino {
+    filter: drop-shadow(0 0 40px rgba(110,251,62,0.3));
+    animation: float 4s ease-in-out infinite;
+  }
+  .dotd-stat {
+    background: rgba(255,255,255,0.03);
+    border: 1px solid rgba(255,255,255,0.06);
+    border-radius: 12px;
+    transition: all 0.2s;
+  }
+  .dotd-stat:hover {
+    background: rgba(110,251,62,0.06);
+    border-color: rgba(110,251,62,0.2);
+    transform: scale(1.02);
+  }
+
+  /* 📰 ARTICLE CARDS UPGRADE */
+  .latest-card, .trending-item {
+    background: rgba(255,255,255,0.02) !important;
+    border: 1px solid rgba(255,255,255,0.06) !important;
+    transition: all 0.25s cubic-bezier(0.4,0,0.2,1) !important;
+  }
+  .latest-card:hover, .trending-item:hover {
+    background: rgba(110,251,62,0.04) !important;
+    border-color: rgba(110,251,62,0.2) !important;
+    transform: translateY(-4px) !important;
+    box-shadow: 0 16px 40px rgba(0,0,0,0.4) !important;
+  }
+
+  /* 🧠 QUIZ UPGRADE */
+  .quiz-option {
+    border: 1px solid rgba(255,255,255,0.07);
+    background: rgba(255,255,255,0.02);
+    transition: all 0.2s cubic-bezier(0.4,0,0.2,1);
+  }
+  .quiz-option:hover {
+    background: rgba(110,251,62,0.06);
+    border-color: rgba(110,251,62,0.3);
+    transform: translateX(6px);
+    box-shadow: -4px 0 0 var(--accent);
+  }
+  .quiz-option.selected {
+    background: rgba(110,251,62,0.1);
+    border-color: var(--accent);
+    box-shadow: -4px 0 0 var(--accent), 0 0 20px rgba(110,251,62,0.1);
+  }
+
+  /* 🪨 SCANNER UPGRADE */
+  .scanner-area {
+    background: rgba(255,255,255,0.02);
+    border: 2px dashed rgba(110,251,62,0.2);
+    border-radius: 20px;
+    transition: all 0.3s cubic-bezier(0.4,0,0.2,1);
+  }
+  .scanner-area:hover {
+    border-color: rgba(110,251,62,0.5);
+    background: rgba(110,251,62,0.03);
+    box-shadow: 0 0 0 4px rgba(110,251,62,0.06), inset 0 0 40px rgba(110,251,62,0.03);
+  }
+
+  /* 📊 COMPARISON TOOL UPGRADE */
+  .comparison-wrapper {
+    background: rgba(255,255,255,0.01);
+    border-radius: 20px;
+    overflow: hidden;
+  }
+
+  /* 🗺️ FOSSIL MAP UPGRADE */
+  .fossil-card {
+    background: rgba(255,255,255,0.02) !important;
+    border: 1px solid rgba(255,255,255,0.06) !important;
+    transition: all 0.25s !important;
+  }
+  .fossil-card:hover {
+    transform: translateY(-4px) !important;
+    border-color: rgba(110,251,62,0.25) !important;
+    box-shadow: 0 12px 32px rgba(0,0,0,0.4) !important;
+  }
+
+  /* ✨ REVEAL ANIMATION UPGRADE */
+  .reveal {
+    opacity: 0;
+    transform: translateY(28px);
+    transition: opacity 0.65s cubic-bezier(0.4,0,0.2,1), transform 0.65s cubic-bezier(0.4,0,0.2,1);
+  }
+  .reveal.visible { opacity: 1; transform: translateY(0); }
+
+  /* 🎯 PROGRESS BAR UPGRADE */
+  .progress-bar {
+    background: linear-gradient(90deg, #6efb3e, #a0ff70, #ff7a1a);
+    background-size: 200% 100%;
+    animation: progress-shimmer 2s linear infinite;
+    box-shadow: 0 0 8px rgba(110,251,62,0.5);
+    height: 3px !important;
+  }
+  @keyframes progress-shimmer {
+    0% { background-position: 200% 0; }
+    100% { background-position: -200% 0; }
+  }
+
+  /* 🔝 BACK TO TOP UPGRADE */
+  #backToTop {
+    background: var(--gradient-green) !important;
+    color: #000 !important;
+    box-shadow: 0 4px 20px rgba(110,251,62,0.4) !important;
+    border: none !important;
+  }
+  #backToTop:hover {
+    transform: translateY(-4px) scale(1.1) !important;
+    box-shadow: 0 8px 32px rgba(110,251,62,0.5) !important;
+  }
+
+  /* 🌟 FOOTER UPGRADE */
+  footer {
+    background: #050505;
+    border-top: 1px solid rgba(255,255,255,0.06);
+    position: relative;
+    overflow: hidden;
+  }
+  footer::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 50%;
+    transform: translateX(-50%);
+    width: 60%;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, rgba(110,251,62,0.3), transparent);
+  }
+
+  /* 💎 DINO PROFILE CARDS */
+  .dino-profile-card {
+    background: rgba(255,255,255,0.02) !important;
+    border: 1px solid rgba(255,255,255,0.06) !important;
+    border-radius: 20px !important;
+  }
+  .dino-profile-card:hover {
+    border-color: rgba(110,251,62,0.3) !important;
+    box-shadow: 0 16px 48px rgba(0,0,0,0.5), 0 0 0 1px rgba(110,251,62,0.1) !important;
+    transform: translateY(-6px) !important;
+  }
+
+  /* 🟢 FILTER BUTTONS UPGRADE */
+  .filter-btn.active, .tab-btn.active {
+    background: var(--gradient-green) !important;
+    color: #000 !important;
+    border: none !important;
+    box-shadow: 0 4px 16px rgba(110,251,62,0.3) !important;
+  }
+  .filter-btn:hover, .tab-btn:hover {
+    border-color: rgba(110,251,62,0.4) !important;
+    color: var(--accent) !important;
+  }
+
+  /* 🎨 SEARCH BAR UPGRADE */
+  .search-wrap {
+    background: rgba(255,255,255,0.03);
+    border: 1px solid rgba(255,255,255,0.08);
+    border-radius: 12px;
+    transition: all 0.25s;
+  }
+  .search-wrap:focus-within {
+    border-color: rgba(110,251,62,0.4);
+    background: rgba(110,251,62,0.04);
+    box-shadow: 0 0 0 3px rgba(110,251,62,0.08);
+  }
+
+  /* 📱 MOBILE MENU UPGRADE */
+  .mobile-menu {
+    background: rgba(8,8,8,0.97) !important;
+    -webkit-backdrop-filter: blur(20px) !important;
+    backdrop-filter: blur(20px) !important;
+  }
+  .mm-btn.active {
+    background: rgba(110,251,62,0.08) !important;
+    border-left: 3px solid var(--accent) !important;
+  }
+
+  /* ✅ LANG GLOBE BTN UPGRADE */
+  .lang-globe-btn {
+    background: rgba(110,251,62,0.06) !important;
+    border: 1px solid rgba(110,251,62,0.2) !important;
+    transition: all 0.2s !important;
+  }
+  .lang-globe-btn:hover {
+    background: rgba(110,251,62,0.12) !important;
+    border-color: rgba(110,251,62,0.4) !important;
+    box-shadow: 0 0 16px rgba(110,251,62,0.15) !important;
+  }
+
+  /* 🎴 FUN FACT BAR UPGRADE */
+  .fun-fact-bar {
+    background: rgba(255,255,255,0.02);
+    border-top: 1px solid rgba(255,255,255,0.04);
+    border-bottom: 1px solid rgba(255,255,255,0.04);
+  }
+
+  /* 📈 ARTICLE PAGE UPGRADE */
+  .article-infobox {
+    background: rgba(255,255,255,0.02) !important;
+    border: 1px solid rgba(255,255,255,0.07) !important;
+    border-radius: 16px !important;
+  }
+  .article-infobox-item:hover {
+    background: rgba(110,251,62,0.05) !important;
+  }
+
+  /* 💬 ENGAGE BUTTONS UPGRADE */
+  .engage-btn {
+    background: rgba(255,255,255,0.03) !important;
+    border: 1px solid rgba(255,255,255,0.08) !important;
+    backdrop-filter: blur(4px);
+  }
+  .engage-btn:hover {
+    background: rgba(110,251,62,0.08) !important;
+    border-color: rgba(110,251,62,0.3) !important;
+    box-shadow: 0 4px 16px rgba(110,251,62,0.1) !important;
+  }
+
+
   /* ══ MICRO ANIMATIONS ══ */
   @keyframes pulse-green { 0%,100%{box-shadow:0 0 0 0 rgba(110,251,62,0.3)} 50%{box-shadow:0 0 0 8px rgba(110,251,62,0)} }
   @keyframes bounce-in { 0%{transform:scale(0.8);opacity:0} 60%{transform:scale(1.05)} 100%{transform:scale(1);opacity:1} }
@@ -1578,6 +2127,134 @@
 
 
   /* ══ TRENDING NOW ══ */
+
+  /* ══ NUMBERED SECTIONS ══ */
+  .section-num {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 0.75rem;
+    letter-spacing: 4px;
+    color: rgba(255,255,255,0.1);
+    display: block;
+    margin-bottom: 4px;
+  }
+
+  /* ══ EXPLORE BANNER UPGRADE ══ */
+  .explore-banner {
+    background: linear-gradient(135deg, rgba(110,251,62,0.06), rgba(255,122,26,0.04)) !important;
+    border: 1px solid rgba(110,251,62,0.15) !important;
+    border-radius: 24px !important;
+    overflow: hidden;
+    position: relative;
+  }
+  .explore-banner::before {
+    content: '🦕';
+    position: absolute;
+    right: -20px; bottom: -20px;
+    font-size: 10rem;
+    opacity: 0.04;
+    transform: rotate(-10deg);
+    pointer-events: none;
+  }
+  .explore-banner h2 {
+    background: linear-gradient(135deg, #fff 0%, #6efb3e 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  /* ══ DYK (Did You Know) UPGRADE ══ */
+  .dyk {
+    background: rgba(255,255,255,0.02) !important;
+    border: 1px solid rgba(110,251,62,0.12) !important;
+    border-radius: 16px !important;
+    transition: all 0.25s !important;
+  }
+  .dyk:hover {
+    border-color: rgba(110,251,62,0.25) !important;
+    background: rgba(110,251,62,0.03) !important;
+  }
+
+  /* ══ PREVIEW DINO CARDS ══ */
+  .preview-dino-card {
+    background: rgba(255,255,255,0.02) !important;
+    border: 1px solid rgba(255,255,255,0.06) !important;
+    border-radius: 16px !important;
+    transition: all 0.25s cubic-bezier(0.4,0,0.2,1) !important;
+  }
+  .preview-dino-card:hover {
+    background: rgba(110,251,62,0.05) !important;
+    border-color: rgba(110,251,62,0.25) !important;
+    transform: translateY(-6px) scale(1.02) !important;
+    box-shadow: 0 16px 40px rgba(0,0,0,0.4) !important;
+  }
+  .preview-dino-emoji { transition: transform 0.25s !important; }
+  .preview-dino-card:hover .preview-dino-emoji { transform: scale(1.15) rotate(-5deg) !important; }
+
+  /* ══ TOP LIST ITEMS ══ */
+  .top-item {
+    background: rgba(255,255,255,0.02) !important;
+    border: 1px solid rgba(255,255,255,0.05) !important;
+    border-radius: 12px !important;
+    transition: all 0.2s !important;
+  }
+  .top-item:hover {
+    background: rgba(110,251,62,0.04) !important;
+    border-color: rgba(110,251,62,0.2) !important;
+    transform: translateX(6px) !important;
+  }
+
+  /* ══ ERA CARDS ══ */
+  .era-card {
+    background: rgba(255,255,255,0.02) !important;
+    border: 1px solid rgba(255,255,255,0.06) !important;
+    border-radius: 20px !important;
+    transition: all 0.25s !important;
+  }
+  .era-card:hover {
+    transform: translateY(-6px) !important;
+    border-color: rgba(110,251,62,0.25) !important;
+    box-shadow: 0 16px 40px rgba(0,0,0,0.5) !important;
+  }
+
+  /* ══ STATS HIGHLIGHT ══ */
+  .hero-stat .hs-val {
+    text-shadow: 0 0 30px rgba(110,251,62,0.4);
+  }
+
+  /* ══ LOADING SHIMMER ══ */
+  @keyframes loading-shimmer {
+    0% { background-position: -200px 0; }
+    100% { background-position: calc(200px + 100%) 0; }
+  }
+
+  /* ══ AFFILIATE SECTION UPGRADE ══ */
+  .affiliate-section {
+    background: rgba(255,255,255,0.02) !important;
+    border: 1px solid rgba(255,255,255,0.06) !important;
+    border-radius: 16px !important;
+  }
+  .affiliate-link:hover {
+    border-color: rgba(255,122,26,0.4) !important;
+    color: var(--accent2) !important;
+    background: rgba(255,122,26,0.06) !important;
+    transform: translateY(-2px) !important;
+    box-shadow: 0 4px 16px rgba(255,122,26,0.15) !important;
+  }
+
+  /* ══ RELATED CARDS UPGRADE ══ */
+  .related-card {
+    background: rgba(255,255,255,0.02) !important;
+    border: 1px solid rgba(255,255,255,0.06) !important;
+    border-radius: 14px !important;
+    transition: all 0.2s !important;
+  }
+  .related-card:hover {
+    background: rgba(110,251,62,0.04) !important;
+    border-color: rgba(110,251,62,0.2) !important;
+    transform: translateX(6px) !important;
+    box-shadow: -4px 0 0 rgba(110,251,62,0.3) !important;
+  }
+
   .trending-now-section { padding: 56px 40px; }
   .trending-now-card {
     background: var(--card);
@@ -3034,6 +3711,7 @@
   <button class="pwa-dismiss-btn" onclick="pwaDismiss()" aria-label="Dismiss">✕</button>
 </div>
 
+<div class="cursor-glow" id="cursorGlow"></div>
 <div class="save-toast" id="saveToast"></div>
 <div class="mm-overlay" id="mmOverlay" onclick="closeMobileMenu()"></div>
 <div class="mobile-menu" id="mobileMenu" role="dialog" aria-modal="true" aria-label="Navigation" aria-hidden="true">
@@ -3076,6 +3754,12 @@
 ════════════════════════════════════════ -->
 <div class="page active" id="page-home">
 
+
+    <!-- SEO CONTENT BLOCK -->
+    <div style="display:none" aria-hidden="true">
+      <h1>DinoWorld - Dinosaur Facts for Kids and Students</h1>
+      <p>Explore amazing dinosaur facts about T-Rex, Velociraptor, Triceratops, Spinosaurus and more. Learn about the Jurassic period, Cretaceous period, dinosaur extinction, how dinosaurs laid eggs, what dinosaurs ate, and which dinosaurs were the fastest, biggest and smartest. Free educational resource with interactive quizzes, fossil map, rock scanner and top 10 lists.</p>
+    </div>
   <!-- HERO -->
   <div class="hero">
     <div class="hero-bg"></div>
@@ -3086,7 +3770,7 @@
         <span class="hero-badge-dot"></span>
         🌍 Educational · Kids &amp; Students · 230M+ Years of History
       </div>
-      <h1>EXPLORE THE <span class="accent">WORLD</span> OF <span class="accent2">DINO</span>SAURS</h1>
+      <h1>EXPLORE THE <span class="accent" data-text="WORLD">WORLD</span> OF <span class="accent2">DINO</span>SAURS</h1>
       <p>Travel back 230 million years and discover the giants that ruled our planet. From tiny feathered raptors to colossal long-necked titans — the dinosaur world is waiting.</p>
       <div class="hero-btns">
         <button class="btn btn-primary" onclick="showPage('popular')">🦖 Meet the Dinos</button>
@@ -4314,7 +4998,7 @@ function showPage(id) {
 // ── ARTICLES ──
 const articles = {
   'trex': {
-    emoji:'🦖', tag:'Popular Dinosaur', title:'TYRANNOSAURUS REX',
+    emoji:'🦖', tag:'🔥 Most Popular · Carnivore', title:'T-Rex: The Most Feared Predator That Ever Lived',
     body: `
       
     <div style="background:rgba(255,255,255,0.03); border-radius:12px; overflow:hidden; margin-bottom:24px; position:relative;">
@@ -4340,13 +5024,13 @@ const articles = {
       <div class="dyk"><span class="dyk-icon">🧠</span><div><div class="dyk-label">Did You Know?</div><div class="dyk-text">T-Rex may have had lips! Recent research suggests its teeth were covered by scaly lips, not permanently exposed like modern crocodiles.</div></div></div>
     `,
     related: [
-      {id:'trex-eat', emoji:'🥩', title:'What Did T-Rex Eat?'},
+      {id:'trex-eat', emoji:'🥩', title:'What Did T-Rex Actually Eat? (The Answer Might Surprise You)'},
       {id:'triceratops', emoji:'🦏', title:'Triceratops'},
-      {id:'extinction', emoji:'☄️', title:'How Did Dinosaurs Go Extinct?'}
+      {id:'extinction', emoji:'☄️', title:'How Did Dinosaurs Really Go Extinct? 5 Theories Explained'}
     ]
   },
   'triceratops': {
-    emoji:'🦏', tag:'Popular Dinosaur', title:'TRICERATOPS',
+    emoji:'🦏', tag:'Popular Dinosaur', title:'Triceratops: Why Did This Dinosaur Have 3 Horns?',
     body: `
       
     <div style="background:rgba(255,255,255,0.03); border-radius:12px; overflow:hidden; margin-bottom:24px; position:relative;">
@@ -4372,11 +5056,11 @@ const articles = {
     related: [
       {id:'trex', emoji:'🦖', title:'T-Rex'},
       {id:'herb', emoji:'🌿', title:'Herbivore Dinosaurs'},
-      {id:'biggest', emoji:'📏', title:'What Is the Biggest Dinosaur?'}
+      {id:'biggest', emoji:'📏', title:'Top 10 Biggest Dinosaurs That Ever Walked the Earth'}
     ]
   },
   'velociraptor': {
-    emoji:'🦅', tag:'Popular Dinosaur', title:'VELOCIRAPTOR',
+    emoji:'🦅', tag:'Popular Dinosaur', title:'Velociraptor: Was It Really Like in Jurassic Park?',
     body: `
       
     <div style="background:rgba(255,255,255,0.03); border-radius:12px; overflow:hidden; margin-bottom:24px; position:relative;">
@@ -4401,13 +5085,13 @@ const articles = {
       <div class="dyk"><span class="dyk-icon">🧠</span><div><div class="dyk-label">Did You Know?</div><div class="dyk-text">Velociraptor lived in what is now Mongolia and China — not in North America like in the movies!</div></div></div>
     `,
     related: [
-      {id:'raptor-speed', emoji:'⚡', title:'How Fast Was Velociraptor?'},
-      {id:'feathers', emoji:'🪶', title:'Did Dinosaurs Have Feathers?'},
-      {id:'smart', emoji:'🧠', title:'Were Dinosaurs Smart?'}
+      {id:'raptor-speed', emoji:'⚡',  title:'How Fast Was Velociraptor? (Not As Fast As You Think)'},
+      {id:'feathers', emoji:'🪶', title:'Did Dinosaurs Have Feathers? The Evidence Will Shock You'},
+      {id:'smart', emoji:'🧠', title:'Were Dinosaurs Actually Smart? Scientists Found Surprising Answers'}
     ]
   },
   'brachiosaurus': {
-    emoji:'🦕', tag:'Popular Dinosaur', title:'BRACHIOSAURUS',
+    emoji:'🦕', tag:'Popular Dinosaur', title:'Brachiosaurus: How Did Such a Giant Dinosaur Survive?',
     body: `
       
     <div style="background:rgba(255,255,255,0.03); border-radius:12px; overflow:hidden; margin-bottom:24px; position:relative;">
@@ -4437,7 +5121,7 @@ const articles = {
     ]
   },
   'trex-eat': {
-    emoji:'🥩', tag:'SEO Article · Full Guide', title:'WHAT DID T-REX EAT?',
+    emoji:'🥩', tag:'SEO Article · Full Guide', title:'What Did T-Rex Actually Eat? (The Answer Might Surprise You)',
     body: `
       <h2>Introduction</h2>
       <p>The Tyrannosaurus Rex (T-Rex) was one of the most powerful predators to ever live on Earth. It ruled the late Cretaceous period — about 68 to 66 million years ago. But what exactly did it eat? How did it hunt? And was it really as terrifying as we think? Let's find out.</p>
@@ -4493,7 +5177,7 @@ const articles = {
     ]
   },
   'raptor-speed': {
-    emoji:'⚡', tag:'SEO Article · Speed Explained', title:'HOW FAST WAS VELOCIRAPTOR?',
+    emoji:'⚡', tag:'SEO Article · Speed Explained', title:'How Fast Was Velociraptor? (Not As Fast As You Think)',
     body: `
       <h2>Introduction</h2>
       <p>Velociraptor is one of the most famous dinosaurs in the world — thanks to Jurassic Park. But how fast was it <em>really</em>? The answer might surprise you. Let's look at what science actually tells us about this legendary predator's speed.</p>
@@ -4554,7 +5238,7 @@ const articles = {
     ]
   },
   'biggest': {
-    emoji:'🦕', tag:'SEO Article', title:'WHAT IS THE BIGGEST DINOSAUR EVER?',
+    emoji:'🦕', tag:'SEO Article', title:'Top 10 Biggest Dinosaurs That Ever Walked the Earth',
     body: `
       <h2>The Titans of Prehistory</h2>
       <p>The biggest dinosaurs were the <span class="highlight">sauropods</span> — long-necked plant-eaters. The current record-holder is <strong class="highlight">Argentinosaurus</strong>, discovered in Argentina.</p>
@@ -4577,11 +5261,11 @@ const articles = {
     related: [
       {id:'brachiosaurus', emoji:'🦕', title:'Brachiosaurus Profile'},
       {id:'tops', emoji:'📏', title:'Top 10 Biggest Dinosaurs'},
-      {id:'smallest', emoji:'🐦', title:'What Is the Smallest Dinosaur?'}
+      {id:'smallest', emoji:'🐦', title:'Tiny But Deadly: The 10 Smallest Dinosaurs Ever Found'}
     ]
   },
   'smallest': {
-    emoji:'🐦', tag:'SEO Article', title:'WHAT IS THE SMALLEST DINOSAUR?',
+    emoji:'🐦', tag:'SEO Article', title:'Tiny But Deadly: The 10 Smallest Dinosaurs Ever Found',
     body: `
       <h2>Tiny Dinosaurs Were Real</h2>
       <p>Not all dinosaurs were giants. Some were <span class="highlight">tiny</span> — and many small dinosaurs are actually the ancestors of modern birds. The smallest known non-bird dinosaur is <strong class="highlight">Microraptor</strong>, which was about the size of a crow.</p>
@@ -4606,7 +5290,7 @@ const articles = {
     ]
   },
   'feathers': {
-    emoji:'🪶', tag:'SEO Article', title:'DID DINOSAURS HAVE FEATHERS?',
+    emoji:'🪶', tag:'SEO Article', title:'Did Dinosaurs Have Feathers? The Evidence Will Shock You',
     body: `
       <h2>Yes — Many Dinosaurs Had Feathers!</h2>
       <p>This is one of the biggest discoveries in paleontology. We now know that many dinosaurs — especially the theropods (the group that includes T-Rex and Velociraptor) — had <span class="highlight">feathers or proto-feathers</span>.</p>
@@ -4628,7 +5312,7 @@ const articles = {
     ]
   },
   'smart': {
-    emoji:'🧠', tag:'SEO Article', title:'WERE DINOSAURS SMART?',
+    emoji:'🧠', tag:'SEO Article', title:'Were Dinosaurs Actually Smart? Scientists Found Surprising Answers',
     body: `
       <h2>Intelligence in the Prehistoric World</h2>
       <p>Dinosaur intelligence varied enormously. Some were remarkably clever for their time, while others were... not so much.</p>
@@ -4649,7 +5333,7 @@ const articles = {
     ]
   },
   'extinction': {
-    emoji:'☄️', tag:'SEO Article', title:'HOW DID DINOSAURS GO EXTINCT?',
+    emoji:'☄️', tag:'SEO Article', title:'How Did Dinosaurs Really Go Extinct? 5 Theories Explained',
     body: `
       <h2>The End of an Era</h2>
       <p>About 66 million years ago, the non-bird dinosaurs vanished in one of the most dramatic extinction events in Earth's history. The cause? A <span class="highlight">perfect storm</span> of disaster.</p>
@@ -4668,7 +5352,7 @@ const articles = {
     ]
   },
   'eggs': {
-    emoji:'🥚', tag:'SEO Article', title:'HOW BIG WERE DINOSAUR EGGS?',
+    emoji:'🥚', tag:'SEO Article', title:'How Big Were Dinosaur Eggs? (Some Were As Big As a Football!)',
     body: `
       <h2>The Surprising Size of Dinosaur Eggs</h2>
       <p>You might expect the largest animals to lay the largest eggs — but that's not how it works! Even the biggest dinosaurs, like 70-ton sauropods, laid eggs that were relatively modest in size.</p>
@@ -4683,12 +5367,12 @@ const articles = {
     `,
     related: [
       {id:'biggest', emoji:'🦕', title:'Biggest Dinosaur Ever'},
-      {id:'lifespan', emoji:'⏳', title:'How Long Did Dinosaurs Live?'},
+      {id:'lifespan', emoji:'⏳', title:'How Long Did Dinosaurs Live? Some Lived Over 100 Years'},
       {id:'smart', emoji:'🧠', title:'Were Dinosaurs Smart?'}
     ]
   },
   'fossils': {
-    emoji:'🪨', tag:'SEO Article', title:'WHERE ARE DINOSAUR FOSSILS FOUND?',
+    emoji:'🪨', tag:'SEO Article', title:'Where Are Dinosaur Fossils Found? Top 7 Discovery Sites',
     body: `
       <h2>The World's Best Fossil Sites</h2>
       <p>Dinosaur fossils have been found on every continent — including Antarctica! But some regions are especially rich because of their geology and exposure of ancient rock layers.</p>
@@ -4712,7 +5396,7 @@ const articles = {
 
 
   'dino-communication': {
-    emoji:'📢', tag:'SEO Article', title:'HOW DID DINOSAURS COMMUNICATE?',
+    emoji:'📢', tag:'SEO Article', title:'How Did Dinosaurs Communicate? (Roar, Hiss or Sing?)',
     body: `
       <h2>Did Dinosaurs Make Sounds?</h2>
       <p>Dinosaurs almost certainly communicated — but how? They couldn't speak, but they had many ways to send signals to each other. Scientists use fossil evidence and comparisons with modern birds and crocodiles (their closest living relatives) to piece together the story.</p>
@@ -4752,7 +5436,7 @@ const articles = {
   },
 
   'dino-swim': {
-    emoji:'🌊', tag:'SEO Article', title:'COULD DINOSAURS SWIM?',
+    emoji:'🌊', tag:'SEO Article', title:'Could Dinosaurs Swim? 6 Species That Actually Did',
     body: `
       <h2>Dinosaurs and Water</h2>
       <p>The short answer is: <span class="highlight">yes, many could swim</span> — and one may have been a dedicated aquatic hunter. Dinosaurs were land animals, but water was a big part of their world.</p>
@@ -4793,7 +5477,7 @@ const articles = {
   },
 
   'dino-sleep': {
-    emoji:'😴', tag:'SEO Article', title:'HOW DID DINOSAURS SLEEP?',
+    emoji:'😴', tag:'SEO Article', title:'Did Dinosaurs Sleep? What Science Says About Dino Bedtime',
     body: `
       <h2>The Mystery of Dinosaur Sleep</h2>
       <p>How dinosaurs slept is one of the most fascinating — and difficult — questions in paleontology. Soft behaviors like sleep leave almost no fossil evidence. But scientists use clever detective work to piece together the picture.</p>
@@ -4824,12 +5508,12 @@ const articles = {
     related: [
       {id:'smart', emoji:'🧠', title:'Were Dinosaurs Smart?'},
       {id:'feathers', emoji:'🪶', title:'Did Dinosaurs Have Feathers?'},
-      {id:'dino-communication', emoji:'📢', title:'How Did Dinosaurs Communicate?'}
+      {id:'dino-communication', emoji:'📢', title:'How Did Dinosaurs Communicate? (Roar, Hiss or Sing?)'}
     ]
   },
 
   'ankylosaurus': {
-    emoji:'🐢', tag:'Full Guide · Popular Dinosaur', title:'ANKYLOSAURUS – THE ARMORED TANK',
+    emoji:'🐢', tag:'Full Guide · Popular Dinosaur', title:'Ankylosaurus: The Most Armored Dinosaur Ever',
     body: `
       <h2>Introduction</h2>
       <p>Ankylosaurus was one of the most heavily protected animals to ever walk the Earth. Often called the <span class="highlight">"living tank"</span>, it was built like a fortress — covered head to tail in thick bony armor, with a devastating weapon at the end of its tail. Even T-Rex thought twice before attacking one.</p>
@@ -4886,7 +5570,7 @@ const articles = {
   },
 
   'diplodocus': {
-    emoji:'🦕', tag:'Full Guide · Popular Dinosaur', title:'DIPLODOCUS – THE LONGEST DINOSAUR',
+    emoji:'🦕', tag:'Full Guide · Popular Dinosaur', title:'Diplodocus: The Dinosaur with a 9-Metre Neck',
     body: `
       <h2>Introduction</h2>
       <p>Diplodocus was one of the longest animals to ever walk the planet. Stretching up to <span class="highlight">27 meters</span> from nose to tail tip, it was a true giant of the Jurassic world. Its name means <span class="highlight-orange">"double beam"</span> — referring to the unique double-beamed bones in its tail.</p>
@@ -4937,7 +5621,7 @@ const articles = {
   },
 
   'spinosaurus': {
-    emoji:'🐊', tag:'Full Guide · Popular Dinosaur', title:'SPINOSAURUS – THE WATER HUNTER',
+    emoji:'🐊', tag:'Full Guide · Popular Dinosaur', title:'Spinosaurus: The Dinosaur That Was Bigger Than T-Rex',
     body: `
       <h2>Introduction</h2>
       <p>Spinosaurus is one of the most mysterious and fascinating dinosaurs ever discovered. It may have been the <span class="highlight">largest carnivore to ever live</span> — even bigger than T-Rex — and it was unlike any other dinosaur: a semi-aquatic giant that hunted in rivers like a prehistoric crocodile.</p>
@@ -4988,13 +5672,13 @@ const articles = {
     `,
     related: [
       {id:'trex', emoji:'🦖', title:'T-Rex – The Rival'},
-      {id:'dino-swim', emoji:'🌊', title:'Could Dinosaurs Swim?'},
+      {id:'dino-swim', emoji:'🌊', title:'Could Dinosaurs Swim? 6 Species That Actually Did'},
       {id:'tops', emoji:'💪', title:'Top 10 Strongest Dinosaurs'}
     ]
   },
 
   'allosaurus': {
-    emoji:'🦖', tag:'Full Guide · Popular Dinosaur', title:'ALLOSAURUS – THE JURASSIC PREDATOR',
+    emoji:'🦖', tag:'Full Guide · Popular Dinosaur', title:'Allosaurus: The T-Rex of the Jurassic Period',
     body: `
       <h2>Introduction</h2>
       <p>Allosaurus was the apex predator of the Jurassic period — the <span class="highlight">T-Rex of its time</span>. Fast, powerful, and intelligent, it ruled the Late Jurassic for millions of years. Long before T-Rex evolved, Allosaurus was the terror of North America and Europe.</p>
@@ -5042,7 +5726,7 @@ const articles = {
   },
 
   'carnotaurus': {
-    emoji:'🐂', tag:'Full Guide · Popular Dinosaur', title:'CARNOTAURUS – THE FAST HORNED PREDATOR',
+    emoji:'🐂', tag:'Full Guide · Popular Dinosaur', title:'Carnotaurus: The Bull-Horned Killer of South America',
     body: `
       <h2>Introduction</h2>
       <p>Carnotaurus was one of the most unusual large predators ever discovered. It had two thick <span class="highlight">bull-like horns</span> above its eyes, an almost comically small head, incredibly tiny arms (even smaller than T-Rex!), and was built for <span class="highlight">pure speed</span>. Its name means <span class="highlight-orange">"meat-eating bull"</span>.</p>
@@ -5090,7 +5774,7 @@ const articles = {
   },
 
   'dilophosaurus': {
-    emoji:'🦎', tag:'Full Guide · Popular Dinosaur', title:'DILOPHOSAURUS – THE DOUBLE-CREST DINOSAUR',
+    emoji:'🦎', tag:'Full Guide · Popular Dinosaur', title:'Dilophosaurus: The Dinosaur That Could Spit Venom?',
     body: `
       <h2>Introduction</h2>
       <p>Dilophosaurus is one of the most distinctive early large predators — instantly recognizable by the two <span class="highlight">parallel crests</span> running along the top of its skull. Its name means <span class="highlight-orange">"two-crested lizard"</span>. It was one of the first truly large predatory dinosaurs, appearing in the Early Jurassic period.</p>
@@ -5138,7 +5822,7 @@ const articles = {
   },
 
   'oviraptor': {
-    emoji:'🦅', tag:'Full Guide · Popular Dinosaur', title:'OVIRAPTOR – THE MISNAMED EGG THIEF',
+    emoji:'🦅', tag:'Full Guide · Popular Dinosaur', title:'Oviraptor: The Dinosaur Wrongly Accused of Stealing Eggs',
     body: `
       <h2>Introduction</h2>
       <p>Oviraptor has one of the most dramatic reputation reversals in science. For decades it was called the <span class="highlight-orange">"egg thief"</span> — named after fossils found near eggs assumed to belong to another dinosaur. We now know the truth: it was a <span class="highlight">devoted parent</span> protecting its own nest.</p>
@@ -5187,14 +5871,14 @@ const articles = {
       </ul>
     `,
     related: [
-      {id:'eggs', emoji:'🥚', title:'Dinosaur Eggs & Nesting'},
+      {id:'eggs', emoji:'🥚', title:'Dinosaur Eggs & Nesting: 10 Amazing Facts You Never Knew'},
       {id:'feathers', emoji:'🪶', title:'Did Dinosaurs Have Feathers?'},
       {id:'velociraptor', emoji:'🦅', title:'Velociraptor – A Relative'}
     ]
   },
 
   'gallimimus': {
-    emoji:'🐦', tag:'Full Guide · Popular Dinosaur', title:'GALLIMIMUS – THE FAST RUNNER',
+    emoji:'🐦', tag:'Full Guide · Popular Dinosaur', title:'Gallimimus: The Ostrich Dinosaur That Could Run 80 km/h',
     body: `
       <h2>Introduction</h2>
       <p>Gallimimus was the <span class="highlight">ostrich of the dinosaur world</span>. Long legs, a small head, a toothless beak, and incredible speed made it one of the most distinctive dinosaurs of the Cretaceous. Its name means <span class="highlight-orange">"chicken mimic"</span> — though it was far more impressive than any chicken.</p>
@@ -5242,7 +5926,7 @@ const articles = {
   },
 
   'ornithomimus': {
-    emoji:'🐦', tag:'Full Guide · Popular Dinosaur', title:'ORNITHOMIMUS – THE BIRD MIMIC',
+    emoji:'🐦', tag:'Full Guide · Popular Dinosaur', title:'Ornithomimus: The Bird-Like Dinosaur That Confuses Scientists',
     body: `
       <h2>Introduction</h2>
       <p>Ornithomimus means <span class="highlight">"bird mimic"</span> — and it earned that name perfectly. This feathered, long-legged, toothless dinosaur looked and moved almost exactly like a modern ostrich. It was one of the fastest dinosaurs alive, using speed as its primary survival strategy.</p>
@@ -5288,7 +5972,7 @@ const articles = {
   },
 
   'troodon': {
-    emoji:'🦉', tag:'Full Guide · Popular Dinosaur', title:'TROODON – THE SMARTEST DINOSAUR',
+    emoji:'🦉', tag:'Full Guide · Popular Dinosaur', title:'Troodon: Was This the Smartest Dinosaur Ever?',
     body: `
       <h2>Introduction</h2>
       <p>Troodon was small, lightly built, and utterly unremarkable in size — but it possessed something extraordinary: the <span class="highlight">largest brain relative to its body size</span> of any known dinosaur. Some scientists have speculated that if the asteroid hadn't hit, Troodon's descendants might have eventually evolved human-like intelligence.</p>
@@ -5336,7 +6020,7 @@ const articles = {
   },
 
   'heterodontosaurus': {
-    emoji:'🦎', tag:'Full Guide · Popular Dinosaur', title:'HETERODONTOSAURUS – THE MIXED-TEETH DINOSAUR',
+    emoji:'🦎', tag:'Full Guide · Popular Dinosaur', title:'Heterodontosaurus: The Tiny Dinosaur with 3 Different Teeth',
     body: `
       <h2>Introduction</h2>
       <p>Heterodontosaurus had one of the most unusual mouths in the dinosaur world. Its name means <span class="highlight">"different-toothed lizard"</span> — because unlike most dinosaurs which had only one type of tooth, it had <span class="highlight">three completely different types</span> in the same mouth. A tiny but fascinating dinosaur.</p>
@@ -5384,7 +6068,7 @@ const articles = {
   },
 
   'iguanodon': {
-    emoji:'🦎', tag:'Full Guide · Popular Dinosaur', title:'IGUANODON – THE THUMB SPIKE DINOSAUR',
+    emoji:'🦎', tag:'Full Guide · Popular Dinosaur', title:'Iguanodon: The Dinosaur with a Deadly Thumb Spike',
     body: `
       <h2>Introduction</h2>
       <p>Iguanodon holds a special place in history — it was one of the <span class="highlight">first dinosaurs ever scientifically described</span>, way back in 1825. Its name means <span class="highlight-orange">"iguana tooth"</span> because its teeth resembled those of a modern iguana. Its most famous feature? A <span class="highlight">sharp conical thumb spike</span> on each hand.</p>
@@ -5433,8 +6117,8 @@ const articles = {
     `,
     related: [
       {id:'triceratops-guide', emoji:'🦏', title:'Triceratops – Another Horned Herbivore'},
-      {id:'fossils', emoji:'🪨', title:'Where Are Dinosaur Fossils Found?'},
-      {id:'basics', emoji:'📚', title:'Dinosaur Basics'}
+      {id:'fossils', emoji:'🪨', title:'Where Are Dinosaur Fossils Found? Top 7 Discovery Sites'},
+      {id:'basics', emoji:'📚', title:'Dinosaur Basics: Everything You Need to Know (Beginner Guide)'}
     ]
   },
   'triceratops-guide': {
@@ -5492,7 +6176,7 @@ const articles = {
   },
 
   'brachiosaurus-guide': {
-    emoji:'🦕', tag:'Full Guide · Popular Dinosaur', title:'BRACHIOSAURUS – THE GIANT LONG-NECK',
+    emoji:'🦕', tag:'Full Guide · Popular Dinosaur', title:'Brachiosaurus: How Did Such a Giant Dinosaur Survive?',
     body: `
       <h2>Introduction</h2>
       <p>Brachiosaurus was one of the most magnificent animals to ever walk the Earth. It was like a living skyscraper — taller than a 4-story building, longer than two school buses, and weighing as much as 10 elephants. Its name means <span class="highlight">"arm lizard"</span> because its front legs were longer than its back legs, giving it a giraffe-like upward slope.</p>
@@ -5544,7 +6228,7 @@ const articles = {
   },
 
   'stegosaurus-guide': {
-    emoji:'🦎', tag:'Full Guide · Popular Dinosaur', title:'STEGOSAURUS – THE DINOSAUR WITH PLATES',
+    emoji:'🦎', tag:'Full Guide · Popular Dinosaur', title:'Stegosaurus: Why Did It Have Those Giant Bony Plates?',
     body: `
       <h2>Introduction</h2>
       <p>Stegosaurus is one of the most recognizable dinosaurs in the world — thanks to the two rows of large <span class="highlight">diamond-shaped plates</span> running along its back and the four deadly spikes on its tail. Despite its impressive appearance, Stegosaurus had one of the smallest brains relative to its body size of any dinosaur ever discovered.</p>
@@ -5603,7 +6287,7 @@ const articles = {
     ]
   },
   'lifespan': {
-    emoji:'⏳', tag:'SEO Article', title:'HOW LONG DID DINOSAURS LIVE?',
+    emoji:'⏳', tag:'SEO Article', title:'How Long Did Dinosaurs Live? Some Lived Over 100 Years',
     body: `
       <h2>Reading Dinosaur Age in Bones</h2>
       <p>Scientists can figure out how old a dinosaur was when it died by looking at <span class="highlight">growth rings in bones</span> — just like counting rings in a tree trunk. Each ring represents one year of growth.</p>
@@ -5627,7 +6311,7 @@ const articles = {
   },
 
   'utahraptor': {
-    emoji:'🦅', tag:'Dinosaur Profile', title:'UTAHRAPTOR',
+    emoji:'🦅', tag:'Dinosaur Profile', title:'Utahraptor: The Real-Life Raptor That Was Terrifying',
     body: `
       <div class="article-hero-emoji">🦅</div>
       <h1 class="article-h1">UTAHRAPTOR</h1>
@@ -5660,7 +6344,7 @@ const articles = {
   },
 
   'deinonychus': {
-    emoji:'🦅', tag:'Dinosaur Profile', title:'DEINONYCHUS',
+    emoji:'🦅', tag:'Dinosaur Profile', title:'Deinonychus: The Dinosaur That Inspired Jurassic Park',
     body: `
       <div class="article-hero-emoji">🦅</div>
       <h1 class="article-h1">DEINONYCHUS</h1>
@@ -5690,7 +6374,7 @@ const articles = {
   },
 
   'microraptor': {
-    emoji:'🐦', tag:'Dinosaur Profile', title:'MICRORAPTOR',
+    emoji:'🐦', tag:'Dinosaur Profile', title:'Microraptor: The Tiny 4-Winged Flying Dinosaur',
     body: `
       <div class="article-hero-emoji">🐦</div>
       <h1 class="article-h1">MICRORAPTOR</h1>
@@ -5720,7 +6404,7 @@ const articles = {
   },
 
   'albertosaurus': {
-    emoji:'🦖', tag:'Dinosaur Profile', title:'ALBERTOSAURUS',
+    emoji:'🦖', tag:'Dinosaur Profile', title:'Albertosaurus: T-Rex\'s Smaller But Faster Cousin',
     body: `
       <div class="article-hero-emoji">🦖</div>
       <h1 class="article-h1">ALBERTOSAURUS</h1>
@@ -5754,7 +6438,7 @@ const articles = {
   },
 
   'majungasaurus': {
-    emoji:'🦖', tag:'Dinosaur Profile', title:'MAJUNGASAURUS',
+    emoji:'🦖', tag:'Dinosaur Profile', title:'Majungasaurus: The Cannibalistic Island Dinosaur',
     body: `
       <div class="article-hero-emoji">🦖</div>
       <h1 class="article-h1">MAJUNGASAURUS</h1>
@@ -5785,7 +6469,7 @@ const articles = {
   },
 
   'fastest': {
-    emoji:'⚡', tag:'Speed Record', title:'FASTEST DINOSAURS',
+    emoji:'⚡', tag:'Speed Record', title:'Top 5 Fastest Dinosaurs — Could They Outrun a Car?',
     body: `
       <div class="article-hero-emoji">⚡</div>
       <h1 class="article-h1">FASTEST DINOSAURS EVER</h1>
@@ -7777,15 +8461,7 @@ document.addEventListener('click', e => {
   }
 });
 
-// Load saved language
-document.addEventListener('DOMContentLoaded', () => {
-  try {
-    const saved = localStorage.getItem('dw-lang');
-    if (saved && (translations[saved] || simpleLangs[saved])) {
-      setTimeout(() => setLang(saved), 100);
-    }
-  } catch(e) {}
-});
+
 
 
 // ══════════════════════════════════════════════════════════════
@@ -7817,12 +8493,7 @@ const clickTracker = {
   }
 };
 
-// Track article clicks
-const _origSA2 = showArticle;
-showArticle = function(id) {
-  clickTracker.increment(id);
-  _origSA2(id);
-};
+
 
 // ══════════════════════════════════════════════════════════════
 // TRENDING NOW RENDERER
@@ -7993,19 +8664,7 @@ function applyI18n(lang) {
   });
 }
 
-// Override setLang to also apply i18n
-const _i18nSetLang = typeof setLang === 'function' ? setLang : function(){};
-setLang = function(lang) {
-  _i18nSetLang(lang);
-  applyI18n(lang);
-  // Update trending label if translated
-  const t = i18nData[lang] || i18nData.en;
-  const tLabel = document.querySelector('.trending-now-section .section-label');
-  const tTitle = document.querySelector('.trending-now-section .section-title');
-  if (tLabel && t.trending_label) tLabel.textContent = '🔥 ' + t.trending_label;
-  if (tTitle && t.trending_title) tTitle.innerHTML = t.trending_title + ' <span>NOW</span>';
-  try { localStorage.setItem('dw-lang', lang); } catch(e) {}
-};
+
 
 // Init on page load
 document.addEventListener('DOMContentLoaded', function() {
@@ -8019,12 +8678,7 @@ document.addEventListener('DOMContentLoaded', function() {
   } catch(e) {}
 });
 
-// Re-render trending when home page shown
-const _trendingPageHook = showPage;
-showPage = function(id) {
-  _trendingPageHook(id);
-  if (id === 'home') setTimeout(renderTrendingNow, 100);
-};
+
 
 
 // ══════════════════════════════════════════════════════════════
@@ -8183,24 +8837,7 @@ function renderTrendingNow() {
   }), 50);
 }
 
-// Hook into showArticle to also render related articles
-const _origSA3 = showArticle;
-showArticle = function(id) {
-  _origSA3(id);
-  setTimeout(() => {
-    renderRelatedArticles(id);
-    // Apply translation if language is not English
-    if (currentLang && currentLang !== 'en') {
-      const translated = getArticleContent(id, currentLang);
-      if (translated) {
-        const titleEl = document.querySelector('#page-article .article-h1');
-        const bodyEl = document.getElementById('article-content');
-        if (titleEl && translated.title) titleEl.textContent = translated.title;
-        if (bodyEl && translated.body) bodyEl.innerHTML = translated.body;
-      }
-    }
-  }, 100);
-};
+
 
 
 // ══════════════════════════════════════════════════════════════
@@ -8404,6 +9041,682 @@ document.addEventListener('DOMContentLoaded', () => {
   });
   observer.observe(document.body, {childList: true, subtree: true});
 });
+
+
+// ══════════════════════════════════════════════════════════════
+// DYNAMIC SCHEMA.ORG FOR ARTICLES
+// ══════════════════════════════════════════════════════════════
+function updateArticleSchema(article) {
+  let schema = document.getElementById('article-schema');
+  if (!schema) {
+    schema = document.createElement('script');
+    schema.type = 'application/ld+json';
+    schema.id = 'article-schema';
+    document.head.appendChild(schema);
+  }
+  const wordCount = article.body ? article.body.replace(/<[^>]+>/g,'').split(/\s+/).length : 500;
+  const readTime = Math.max(2, Math.ceil(wordCount / 200));
+  schema.textContent = JSON.stringify({
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "headline": article.title,
+    "description": article.body ? article.body.replace(/<[^>]+>/g,'').substring(0,160) : '',
+    "author": {"@type":"Organization","name":"DinoWorld"},
+    "publisher": {"@type":"Organization","name":"DinoWorld","url":"https://jacobb-rgb.github.io/DinoWorld/"},
+    "mainEntityOfPage": "https://jacobb-rgb.github.io/DinoWorld/",
+    "dateModified": new Date().toISOString().split('T')[0],
+    "wordCount": wordCount,
+    "timeRequired": "PT" + readTime + "M",
+    "keywords": "dinosaur, " + article.title + ", prehistoric animals, paleontology",
+    "inLanguage": currentLang || "en"
+  });
+  // Update page title
+  document.title = article.title + ' | DinoWorld';
+  // Update meta description
+  const metaDesc = document.querySelector('meta[name="description"]');
+  if (metaDesc && article.body) {
+    const cleanText = article.body.replace(/<[^>]+>/g,'').substring(0,155);
+    metaDesc.content = cleanText + '...';
+  }
+}
+
+// ══════════════════════════════════════════════════════════════
+// READING PROGRESS BAR (enhanced)
+// ══════════════════════════════════════════════════════════════
+function updateReadingProgress() {
+  const bar = document.getElementById('progressBar');
+  if (!bar) return;
+  const activePage = document.querySelector('.page.active');
+  if (!activePage || activePage.id !== 'page-article') {
+    bar.style.width = '0%';
+    return;
+  }
+  const scrolled = window.scrollY;
+  const total = Math.max(1, document.documentElement.scrollHeight - window.innerHeight);
+  bar.style.width = Math.min(100, (scrolled/total)*100) + '%';
+}
+window.addEventListener('scroll', updateReadingProgress, {passive:true});
+
+// ══════════════════════════════════════════════════════════════
+// SEARCH IMPROVEMENTS
+// ══════════════════════════════════════════════════════════════
+const searchSuggestions = {
+  'trex': 'trex', 't-rex': 'trex', 'rex': 'trex', 'tyrannosaurus': 'trex',
+  'raptor': 'velociraptor', 'velociraptor': 'velociraptor',
+  'spike': 'triceratops', 'horns': 'triceratops', 'triceratops': 'triceratops',
+  'spino': 'spinosaurus', 'spinosaurus': 'spinosaurus',
+  'long neck': 'brachiosaurus', 'brachiosaurus': 'brachiosaurus',
+  'armor': 'ankylosaurus', 'ankylosaurus': 'ankylosaurus',
+  'extinction': 'extinction', 'extinct': 'extinction', 'asteroid': 'extinction',
+  'eggs': 'eggs', 'feathers': 'feathers', 'smart': 'smart', 'fastest': 'fastest',
+  'biggest': 'biggest', 'smallest': 'smallest', 'fossils': 'fossils',
+  'swim': 'dino-swim', 'sleep': 'dino-sleep', 'communicate': 'dino-communication',
+};
+
+function didYouMean(query) {
+  if (!query || query.length < 3) return null;
+  const q = query.toLowerCase().trim();
+  for (const [key, id] of Object.entries(searchSuggestions)) {
+    if (q.includes(key) || key.includes(q)) return {id, term: key};
+  }
+  return null;
+}
+
+
+
+// ══════════════════════════════════════════════════════════════
+// GROWTH TIPS: Share prompts after reading
+// ══════════════════════════════════════════════════════════════
+function showSharePrompt() {
+  setTimeout(() => {
+    const activePage = document.querySelector('.page.active');
+    if (!activePage || activePage.id !== 'page-article') return;
+    // Show share prompt after 90 seconds on article
+    const toast = document.getElementById('saveToast');
+    if (toast) {
+      toast.textContent = '🦖 Enjoying DinoWorld? Share it with a friend! 📤';
+      toast.style.cursor = 'pointer';
+      toast.onclick = shareCurrentArticle;
+      toast.classList.add('visible');
+      setTimeout(() => toast.classList.remove('visible'), 5000);
+    }
+  }, 90000); // 90 seconds
+}
+
+
+
+
+// ══════════════════════════════════════════════════════════════
+// UNIFIED showArticle HOOK — runs everything in right order
+// ══════════════════════════════════════════════════════════════
+const _baseShowArticle = showArticle;
+showArticle = function(id) {
+  // 1. Reset scroll tracking
+  if (typeof scrollTracked !== 'undefined') {
+    scrollTracked = {25:false,50:false,75:false,100:false};
+  }
+  // 2. Track click
+  if (typeof clickTracker !== 'undefined') clickTracker.increment(id);
+  // 3. Show the article (builds HTML)
+  _baseShowArticle(id);
+  // 4. After HTML is built, run enhancements
+  setTimeout(() => {
+    // Apply current language to article content
+    if (typeof currentLang !== 'undefined' && currentLang !== 'en') {
+      const translated = (typeof getArticleContent === 'function') ? getArticleContent(id, currentLang) : null;
+      if (translated) {
+        const titleEl = document.querySelector('#page-article .article-h1');
+        const bodyEl = document.getElementById('article-body');
+        if (!bodyEl) {
+          // Try alternative selector
+          const bodyEl2 = document.querySelector('#page-article .article-body-text');
+          if (bodyEl2 && translated.body) bodyEl2.innerHTML = translated.body;
+        } else {
+          if (translated.body) bodyEl.innerHTML = translated.body;
+        }
+        if (titleEl && translated.title) titleEl.textContent = translated.title;
+      }
+    }
+    // Load engagement state
+    if (typeof loadArticleEngagement === 'function') loadArticleEngagement(id);
+    // Render recommended
+    if (typeof renderRecommended === 'function') renderRecommended(id);
+    else if (typeof renderRecommendedFn === 'function') renderRecommendedFn(id);
+    // Render related
+    if (typeof renderRelatedArticles === 'function') renderRelatedArticles(id);
+    // Update schema
+    if (typeof updateArticleSchema === 'function' && typeof articles !== 'undefined' && articles[id]) {
+      updateArticleSchema(articles[id]);
+    }
+    // Apply i18n to newly rendered page
+    if (typeof applyI18n === 'function' && typeof currentLang !== 'undefined') {
+      applyI18n(currentLang);
+    }
+    // Re-render trending if going home
+  }, 150);
+};
+
+// ══════════════════════════════════════════════════════════════
+// UNIFIED showPage HOOK
+// ══════════════════════════════════════════════════════════════
+const _baseShowPage = showPage;
+showPage = function(id) {
+  _baseShowPage(id);
+  // Re-render trending on home
+  if (id === 'home' && typeof renderTrendingNow === 'function') {
+    setTimeout(renderTrendingNow, 80);
+  }
+  // Apply language to newly shown page
+  if (typeof applyI18n === 'function' && typeof currentLang !== 'undefined') {
+    setTimeout(() => applyI18n(currentLang), 100);
+  }
+  // Update mobile menu active state
+  document.querySelectorAll('.mm-btn[data-page]').forEach(b => {
+    b.classList.toggle('active', b.getAttribute('data-page') === id);
+  });
+};
+
+// ══════════════════════════════════════════════════════════════
+// COMPLETE LANGUAGE SYSTEM — works on ALL pages
+// ══════════════════════════════════════════════════════════════
+
+// Full translations for all UI elements
+const fullLangData = {
+  en: {
+    // Navigation
+    nav_home:'Home', nav_basics:'Basics', nav_eras:'Eras', nav_types:'Diet Types',
+    nav_popular:'Popular', nav_articles:'All Articles', nav_tops:'Top Lists',
+    nav_eggs:'Dino Eggs', nav_extinction:'Extinction', nav_quiz:'Quiz',
+    nav_facts:'Fun Facts', nav_alldinos:'All Dinosaurs',
+    // Hero
+    hero_sub:'Travel back 230 million years and discover the giants that ruled our planet. From tiny feathered raptors to colossal long-necked titans.',
+    stat_years:'Million Years', stat_species:'Known Species',
+    stat_continents:'Continents with Fossils', stat_articles:'Articles & Guides',
+    // Buttons
+    btn_view_all:'View All →', btn_meet:'🦖 Meet the Dinos',
+    btn_quiz:'🧠 Take the Quiz', btn_facts:'✨ Random Facts',
+    btn_scan:'🔍 Scan This Rock!', btn_reset:'↺ Try Another',
+    btn_camera:'📷 Camera', btn_share:'Share',
+    btn_save:'Save', btn_like:'Like', btn_rate:'Rate this',
+    btn_new_fact:'✨ New Random Fact!', btn_start_quiz:'🧠 Start the Quiz!',
+    // Trending
+    trending_title:'TRENDING NOW', trending_label:'Based on Views',
+    // Scanner
+    scanner_title:'ROCK SCANNER',
+    scan_drop:'Drop or Click to Upload',
+    scan_sub:'Upload a photo of your rock · JPG, PNG, WEBP',
+    // Article
+    article_related:'You Might Also Like',
+    article_recommended:'Recommended for You',
+    article_read_time:'min read',
+    // Sections
+    section_dotd:'Dinosaur of the Day',
+    section_explore:'Explore All',
+  },
+  cs: {
+    nav_home:'Domů', nav_basics:'Základy', nav_eras:'Éry', nav_types:'Typy Stravy',
+    nav_popular:'Populární', nav_articles:'Všechny Články', nav_tops:'Top Seznamy',
+    nav_eggs:'Dino Vejce', nav_extinction:'Vymření', nav_quiz:'Kvíz',
+    nav_facts:'Zábavná Fakta', nav_alldinos:'Všichni Dinosauři',
+    hero_sub:'Cestuj 230 milionů let zpět a objevuj obry, kteří vládli naší planetě. Od malých opeřených raptorů až po obrovské dlouhokrké titány.',
+    stat_years:'Milionů Let', stat_species:'Známých Druhů',
+    stat_continents:'Kontinentů s Fosíliemi', stat_articles:'Článků a Průvodců',
+    btn_view_all:'Zobrazit Vše →', btn_meet:'🦖 Poznej Dinosaury',
+    btn_quiz:'🧠 Udělej Kvíz', btn_facts:'✨ Náhodná Fakta',
+    btn_scan:'🔍 Skenovat Kámen!', btn_reset:'↺ Zkusit Znovu',
+    btn_camera:'📷 Kamera', btn_share:'Sdílet',
+    btn_save:'Uložit', btn_like:'Líbí se', btn_rate:'Ohodnoť',
+    btn_new_fact:'✨ Nové Faktum!', btn_start_quiz:'🧠 Začít Kvíz!',
+    trending_title:'TRENDY TEĎKA', trending_label:'Podle Zhlédnutí',
+    scanner_title:'SKENER KAMENŮ',
+    scan_drop:'Přetáhni nebo klikni pro nahrání',
+    scan_sub:'Nahraj foto kamene · JPG, PNG, WEBP',
+    article_related:'Mohlo by se ti líbit',
+    article_recommended:'Doporučeno pro tebe',
+    article_read_time:'min čtení',
+    section_dotd:'Dinosaurus Dne',
+    section_explore:'Prozkoumat Vše',
+  },
+  de: {
+    nav_home:'Startseite', nav_basics:'Grundlagen', nav_eras:'Epochen', nav_types:'Diättypen',
+    nav_popular:'Beliebt', nav_articles:'Alle Artikel', nav_tops:'Top Listen',
+    nav_eggs:'Dino Eier', nav_extinction:'Aussterben', nav_quiz:'Quiz',
+    nav_facts:'Spaßige Fakten', nav_alldinos:'Alle Dinosaurier',
+    hero_sub:'Reise 230 Millionen Jahre zurück und entdecke die Giganten, die unseren Planeten beherrschten.',
+    stat_years:'Millionen Jahre', stat_species:'Bekannte Arten',
+    stat_continents:'Kontinente', stat_articles:'Artikel & Guides',
+    btn_view_all:'Alle ansehen →', btn_meet:'🦖 Dinos kennenlernen',
+    btn_quiz:'🧠 Quiz machen', btn_facts:'✨ Zufällige Fakten',
+    btn_scan:'🔍 Stein scannen!', btn_reset:'↺ Nochmal',
+    btn_camera:'📷 Kamera', btn_share:'Teilen',
+    btn_save:'Speichern', btn_like:'Gefällt mir', btn_rate:'Bewerten',
+    btn_new_fact:'✨ Neues Fakt!', btn_start_quiz:'🧠 Starten!',
+    trending_title:'TRENDING JETZT', trending_label:'Nach Aufrufen',
+    scanner_title:'GESTEINSSCANNER',
+    scan_drop:'Ziehen oder klicken', scan_sub:'Steinfoto hochladen',
+    article_related:'Das könnte dir gefallen',
+    article_recommended:'Empfohlen für dich',
+    article_read_time:'min Lesezeit',
+    section_dotd:'Dinosaurier des Tages',
+    section_explore:'Alle erkunden',
+  },
+  fr: {
+    nav_home:'Accueil', nav_basics:'Bases', nav_eras:'Époques', nav_types:'Types Alimentaires',
+    nav_popular:'Populaire', nav_articles:'Tous les Articles', nav_tops:'Top Listes',
+    nav_eggs:'Oeufs Dino', nav_extinction:'Extinction', nav_quiz:'Quiz',
+    nav_facts:'Faits Amusants', nav_alldinos:'Tous les Dinosaures',
+    hero_sub:'Voyagez 230 millions d\'annees en arriere et decouvrez les geants.',
+    stat_years:'Millions Annees', stat_species:'Especes Connues',
+    stat_continents:'Continents', stat_articles:'Articles et Guides',
+    btn_view_all:'Voir tout →', btn_meet:'🦖 Rencontrer les Dinos',
+    btn_quiz:'🧠 Faire le Quiz', btn_facts:'✨ Faits Aleatoires',
+    btn_scan:'🔍 Scanner!', btn_reset:'↺ Reessayer',
+    btn_camera:'📷 Camera', btn_share:'Partager',
+    btn_save:'Sauvegarder', btn_like:'J\'aime', btn_rate:'Noter',
+    btn_new_fact:'✨ Nouveau Fait!', btn_start_quiz:'🧠 Commencer!',
+    trending_title:'TENDANCES MAINTENANT', trending_label:'Par Vues',
+    scanner_title:'SCANNER DE ROCHES',
+    scan_drop:'Glisser ou cliquer', scan_sub:'Telecharger photo de roche',
+    article_related:'Vous pourriez aimer',
+    article_recommended:'Recommande pour vous',
+    article_read_time:'min de lecture',
+    section_dotd:'Dinosaure du Jour',
+    section_explore:'Explorer Tout',
+  },
+  es: {
+    nav_home:'Inicio', nav_basics:'Básicos', nav_eras:'Eras', nav_types:'Tipos de Dieta',
+    nav_popular:'Popular', nav_articles:'Todos los Artículos', nav_tops:'Top Listas',
+    nav_eggs:'Huevos Dino', nav_extinction:'Extinción', nav_quiz:'Quiz',
+    nav_facts:'Datos Divertidos', nav_alldinos:'Todos los Dinosaurios',
+    hero_sub:'Viaja 230 millones de años atrás y descubre los gigantes que gobernaron nuestro planeta.',
+    stat_years:'Millones de Años', stat_species:'Especies Conocidas',
+    stat_continents:'Continentes', stat_articles:'Artículos y Guías',
+    btn_view_all:'Ver todo →', btn_meet:'🦖 Conocer los Dinos',
+    btn_quiz:'🧠 Hacer Quiz', btn_facts:'✨ Datos Aleatorios',
+    btn_scan:'🔍 Escanear!', btn_reset:'↺ Reintentar',
+    btn_camera:'📷 Cámara', btn_share:'Compartir',
+    btn_save:'Guardar', btn_like:'Me gusta', btn_rate:'Calificar',
+    btn_new_fact:'✨ Nuevo Dato!', btn_start_quiz:'🧠 Comenzar!',
+    trending_title:'TENDENCIAS AHORA', trending_label:'Por Vistas',
+    scanner_title:'ESCÁNER DE ROCAS',
+    scan_drop:'Arrastra o haz clic', scan_sub:'Subir foto de roca',
+    article_related:'También te puede gustar',
+    article_recommended:'Recomendado para ti',
+    article_read_time:'min de lectura',
+    section_dotd:'Dinosaurio del Día',
+    section_explore:'Explorar Todo',
+  },
+  zh: {
+    nav_home:'主页', nav_basics:'基础', nav_eras:'时代', nav_types:'饮食类型',
+    nav_popular:'热门', nav_articles:'所有文章', nav_tops:'排行榜',
+    nav_eggs:'恐龙蛋', nav_extinction:'灭绝', nav_quiz:'测验',
+    nav_facts:'趣味事实', nav_alldinos:'所有恐龙',
+    hero_sub:'穿越2.3亿年，发现统治地球的巨兽。从小型羽毛猛禽到巨型长颈泰坦。',
+    stat_years:'百万年历史', stat_species:'已知物种',
+    stat_continents:'有化石的大陆', stat_articles:'文章和指南',
+    btn_view_all:'查看全部 →', btn_meet:'🦖 认识恐龙',
+    btn_quiz:'🧠 参加测验', btn_facts:'✨ 随机事实',
+    btn_scan:'🔍 扫描！', btn_reset:'↺ 再试',
+    btn_camera:'📷 相机', btn_share:'分享',
+    btn_save:'保存', btn_like:'喜欢', btn_rate:'评分',
+    btn_new_fact:'✨ 新事实！', btn_start_quiz:'🧠 开始！',
+    trending_title:'热门内容', trending_label:'按浏览量',
+    scanner_title:'岩石扫描仪',
+    scan_drop:'拖放或点击上传', scan_sub:'上传岩石照片',
+    article_related:'你可能也喜欢',
+    article_recommended:'为你推荐',
+    article_read_time:'分钟阅读',
+    section_dotd:'今日恐龙',
+    section_explore:'探索全部',
+  },
+  ru: {
+    nav_home:'Главная', nav_basics:'Основы', nav_eras:'Эпохи', nav_types:'Типы Питания',
+    nav_popular:'Популярное', nav_articles:'Все Статьи', nav_tops:'Топ Списки',
+    nav_eggs:'Яйца Динозавров', nav_extinction:'Вымирание', nav_quiz:'Квиз',
+    nav_facts:'Интересные Факты', nav_alldinos:'Все Динозавры',
+    hero_sub:'Отправляйся на 230 миллионов лет назад и открывай гигантов, которые правили планетой.',
+    stat_years:'Миллионов Лет', stat_species:'Известных Видов',
+    stat_continents:'Континентов', stat_articles:'Статей и Гайдов',
+    btn_view_all:'Смотреть всё →', btn_meet:'🦖 Познакомиться',
+    btn_quiz:'🧠 Пройти Квиз', btn_facts:'✨ Случайные Факты',
+    btn_scan:'🔍 Сканировать!', btn_reset:'↺ Ещё раз',
+    btn_camera:'📷 Камера', btn_share:'Поделиться',
+    btn_save:'Сохранить', btn_like:'Нравится', btn_rate:'Оценить',
+    btn_new_fact:'✨ Новый Факт!', btn_start_quiz:'🧠 Начать!',
+    trending_title:'ТРЕНДЫ СЕЙЧАС', trending_label:'По Просмотрам',
+    scanner_title:'СКАНЕР КАМНЕЙ',
+    scan_drop:'Перетащите или нажмите', scan_sub:'Загрузите фото камня',
+    article_related:'Вам также может понравиться',
+    article_recommended:'Рекомендуется для вас',
+    article_read_time:'мин чтения',
+    section_dotd:'Динозавр Дня',
+    section_explore:'Исследовать всё',
+  },
+  ja: {
+    nav_home:'ホーム', nav_basics:'基本', nav_eras:'時代', nav_types:'食事タイプ',
+    nav_popular:'人気', nav_articles:'全記事', nav_tops:'トップ',
+    nav_eggs:'恐竜の卵', nav_extinction:'絶滅', nav_quiz:'クイズ',
+    nav_facts:'楽しい事実', nav_alldinos:'全恐竜',
+    hero_sub:'2億3千万年前に遡り、地球を支配した巨人たちを発見しよう。',
+    stat_years:'万年の歴史', stat_species:'既知の種',
+    stat_continents:'大陸', stat_articles:'記事とガイド',
+    btn_view_all:'すべて見る →', btn_meet:'🦖 恐竜に会う',
+    btn_quiz:'🧠 クイズをする', btn_facts:'✨ ランダム事実',
+    btn_scan:'🔍 スキャン！', btn_reset:'↺ やり直し',
+    btn_camera:'📷 カメラ', btn_share:'シェア',
+    btn_save:'保存', btn_like:'いいね', btn_rate:'評価',
+    btn_new_fact:'✨ 新しい事実！', btn_start_quiz:'🧠 スタート！',
+    trending_title:'今のトレンド', trending_label:'閲覧数順',
+    scanner_title:'岩石スキャナー',
+    scan_drop:'ドラッグまたはクリック', scan_sub:'岩の写真をアップロード',
+    article_related:'これも好きかも',
+    article_recommended:'あなたへのおすすめ',
+    article_read_time:'分で読める',
+    section_dotd:'今日の恐竜',
+    section_explore:'すべて探索',
+  },
+};
+
+// Selector map — maps translation keys to DOM elements
+const selectorMap = {
+  // Nav buttons (by id)
+  nav_home:       '#nav-home',
+  nav_basics:     '#nav-basics',
+  nav_eras:       '#nav-eras',
+  nav_types:      '#nav-types',
+  nav_popular:    '#nav-popular',
+  nav_articles:   '#nav-seo',
+  nav_tops:       '#nav-tops',
+  nav_eggs:       '#nav-eggs',
+  nav_extinction: '#nav-extinction',
+  nav_quiz:       '#nav-quiz',
+  nav_facts:      '#nav-facts',
+};
+
+function applyFullLang(lang) {
+  const t = fullLangData[lang] || fullLangData.en;
+  const currentId = lang;
+
+  // 1. Apply to all data-i18n elements
+  document.querySelectorAll('[data-i18n]').forEach(el => {
+    const key = el.getAttribute('data-i18n');
+    if (t[key] !== undefined) {
+      if (el.tagName === 'INPUT') el.placeholder = t[key];
+      else el.innerHTML = t[key];
+    }
+  });
+
+  // 2. Apply nav buttons
+  Object.entries(selectorMap).forEach(([key, selector]) => {
+    const el = document.querySelector(selector);
+    if (el && t[key]) el.textContent = t[key];
+  });
+
+  // 3. Hero subtitle
+  const heroSub = document.querySelector('.hero-sub');
+  if (heroSub && t.hero_sub) heroSub.textContent = t.hero_sub;
+
+  // 4. Hero stats
+  const statLabels = document.querySelectorAll('.hs-lbl');
+  const statKeys = ['stat_years','stat_species','stat_continents','stat_articles'];
+  statLabels.forEach((el,i) => { if (t[statKeys[i]]) el.textContent = t[statKeys[i]]; });
+
+  // 5. Hero buttons
+  const herobtns = document.querySelectorAll('.hero-btns .btn');
+  if (herobtns[0] && t.btn_meet) herobtns[0].innerHTML = t.btn_meet;
+  if (herobtns[1] && t.btn_quiz) herobtns[1].innerHTML = t.btn_quiz;
+  if (herobtns[2] && t.btn_facts) herobtns[2].innerHTML = t.btn_facts;
+
+  // 6. Scanner
+  const scanTitle = document.querySelector('#page-rock-scanner .section-title');
+  if (scanTitle && t.scanner_title) scanTitle.innerHTML = t.scanner_title + ' <span>SCANNER</span>';
+  const scanDrop = document.getElementById('scannerAreaTitle');
+  if (scanDrop && t.scan_drop) scanDrop.textContent = t.scan_drop;
+  const scanSub = document.getElementById('scannerAreaSub');
+  if (scanSub && t.scan_sub) scanSub.textContent = t.scan_sub;
+  const scanBtn = document.getElementById('scanBtn');
+  if (scanBtn && t.btn_scan) scanBtn.innerHTML = t.btn_scan;
+  const resetBtn = document.getElementById('resetBtn');
+  if (resetBtn && t.btn_reset) resetBtn.textContent = t.btn_reset;
+
+  // 7. Trending box
+  const trendTitle = document.querySelector('.trending-box-title span:last-child');
+  if (trendTitle && t.trending_title) trendTitle.textContent = t.trending_title;
+
+  // 8. Facts button
+  const factsBtn = document.querySelector('#page-facts .btn-primary');
+  if (factsBtn && t.btn_new_fact) factsBtn.textContent = t.btn_new_fact;
+
+  // 9. Quiz
+  if (typeof quizStartedUpg === 'undefined' || !quizStartedUpg) {
+    const qTitle = document.querySelector('#quiz-container h1');
+    if (qTitle && t.btn_start_quiz) {
+      // Don't override quiz title, just the button
+    }
+    const qBtn = document.querySelector('#quiz-container .btn-primary');
+    if (qBtn && t.btn_start_quiz) qBtn.textContent = t.btn_start_quiz;
+  }
+
+  // 10. Engagement buttons (if article is open)
+  const likeCount = document.getElementById('likeCount');
+  const saveLabel = document.getElementById('saveLabel');
+  const ratingLabel = document.getElementById('ratingLabel');
+  if (likeCount && t.btn_like && likeCount.textContent === 'Like') likeCount.textContent = t.btn_like;
+  if (saveLabel && t.btn_save && saveLabel.textContent === 'Save') saveLabel.textContent = t.btn_save;
+  if (ratingLabel && t.btn_rate && ratingLabel.textContent === 'Rate this') ratingLabel.textContent = t.btn_rate;
+
+  // 11. Mobile menu buttons (data-page buttons)
+  const mmBtnMap = {
+    home: t.nav_home, basics: t.nav_basics, eras: t.nav_eras,
+    types: t.nav_types, popular: t.nav_popular, seo: t.nav_articles,
+    tops: t.nav_tops, eggs: t.nav_eggs, extinction: t.nav_extinction,
+    quiz: t.nav_quiz, facts: t.nav_facts,
+  };
+  document.querySelectorAll('.mm-btn[data-page]').forEach(btn => {
+    const page = btn.getAttribute('data-page');
+    if (mmBtnMap[page]) {
+      const icon = btn.querySelector('.mm-btn-icon');
+      const iconText = icon ? icon.outerHTML : '';
+      btn.innerHTML = iconText + mmBtnMap[page];
+    }
+  });
+
+  // 12. RTL support
+  document.documentElement.dir = (lang === 'ar' || lang === 'he') ? 'rtl' : 'ltr';
+  document.documentElement.lang = lang;
+
+  // 13. Save preference
+  try { localStorage.setItem('dw-lang', lang); } catch(e) {}
+
+  // 14. Update lang button label
+  const label = document.getElementById('langCurrentLabel');
+  if (label) label.textContent = lang.toUpperCase();
+}
+
+// Override the old setLang completely
+setLang = function(lang) {
+  currentLang = lang;
+
+  // Update active lang option
+  document.querySelectorAll('.lang-option').forEach(b => {
+    b.classList.toggle('active', b.id === 'lopt-' + lang);
+  });
+
+  // Close dropdown
+  const dd = document.getElementById('langDropdown');
+  const btn = document.getElementById('langGlobeBtn');
+  if (dd) dd.classList.remove('open');
+  if (btn) btn.classList.remove('open');
+
+  // Apply full translation
+  applyFullLang(lang);
+
+  // Re-apply when changing pages (hook into page changes)
+};
+
+// Apply language on page load
+document.addEventListener('DOMContentLoaded', () => {
+  try {
+    const saved = localStorage.getItem('dw-lang');
+    if (saved && (fullLangData[saved])) {
+      currentLang = saved;
+      setTimeout(() => applyFullLang(saved), 200);
+    }
+  } catch(e) {}
+});
+
+// Apply language whenever a page is shown
+const _langPageHook = showPage;
+showPage = function(id) {
+  _langPageHook(id);
+  if (typeof currentLang !== 'undefined' && currentLang !== 'en') {
+    setTimeout(() => applyFullLang(currentLang), 120);
+  }
+};
+
+// ══════════════════════════════════════════════════════════════
+// 🎨 VISUAL EFFECTS — Cursor glow, particle trail, animations
+// ══════════════════════════════════════════════════════════════
+
+// Cursor glow
+const cursorGlow = document.getElementById('cursorGlow');
+if (cursorGlow && window.matchMedia('(pointer: fine)').matches) {
+  let mouseX = 0, mouseY = 0, glowX = 0, glowY = 0;
+  document.addEventListener('mousemove', e => {
+    mouseX = e.clientX; mouseY = e.clientY;
+  });
+  function animGlow() {
+    glowX += (mouseX - glowX) * 0.08;
+    glowY += (mouseY - glowY) * 0.08;
+    cursorGlow.style.left = glowX + 'px';
+    cursorGlow.style.top = glowY + 'px';
+    requestAnimationFrame(animGlow);
+  }
+  animGlow();
+}
+
+// 🃏 3D tilt effect on cards
+function add3DTilt(selector) {
+  document.querySelectorAll(selector).forEach(card => {
+    card.addEventListener('mousemove', e => {
+      const rect = card.getBoundingClientRect();
+      const x = (e.clientX - rect.left) / rect.width - 0.5;
+      const y = (e.clientY - rect.top) / rect.height - 0.5;
+      card.style.transform = `translateY(-8px) rotateX(${y * -8}deg) rotateY(${x * 8}deg)`;
+      card.style.boxShadow = `${-x*16}px ${-y*16}px 40px rgba(0,0,0,0.5), 0 0 0 1px rgba(110,251,62,0.15)`;
+    });
+    card.addEventListener('mouseleave', () => {
+      card.style.transform = '';
+      card.style.boxShadow = '';
+    });
+  });
+}
+
+// Apply 3D tilt to cards on page load and page change
+function initVisualEffects() {
+  add3DTilt('.card');
+  add3DTilt('.tn-card');
+  add3DTilt('.rec-card');
+  add3DTilt('.dino-profile-card');
+  add3DTilt('.dotd-card');
+}
+
+document.addEventListener('DOMContentLoaded', initVisualEffects);
+
+// ✨ PARTICLE BURST on like/button click
+function spawnParticles(x, y, color) {
+  const colors = color ? [color] : ['#6efb3e','#a0ff70','#ff7a1a','#ffd700','#fff'];
+  for (let i = 0; i < 12; i++) {
+    const p = document.createElement('div');
+    const angle = (i / 12) * Math.PI * 2;
+    const speed = 60 + Math.random() * 80;
+    const size = 4 + Math.random() * 6;
+    p.style.cssText = `
+      position:fixed;left:${x}px;top:${y}px;width:${size}px;height:${size}px;
+      background:${colors[Math.floor(Math.random()*colors.length)]};
+      border-radius:50%;pointer-events:none;z-index:999999;
+      transform:translate(-50%,-50%);
+    `;
+    document.body.appendChild(p);
+    const vx = Math.cos(angle) * speed;
+    const vy = Math.sin(angle) * speed;
+    let t = 0;
+    const anim = () => {
+      t += 0.016;
+      p.style.left = (x + vx * t) + 'px';
+      p.style.top = (y + vy * t + 200 * t * t) + 'px';
+      p.style.opacity = 1 - t * 1.5;
+      if (t < 0.8) requestAnimationFrame(anim);
+      else p.remove();
+    };
+    requestAnimationFrame(anim);
+  }
+}
+
+// Trigger particles on like button
+document.addEventListener('click', e => {
+  const btn = e.target.closest('.engage-btn, .btn-primary, .quiz-option');
+  if (btn) {
+    const rect = btn.getBoundingClientRect();
+    spawnParticles(rect.left + rect.width/2, rect.top + rect.height/2);
+  }
+});
+
+// 🎊 CONFETTI on quiz result
+function triggerConfetti() {
+  for (let i = 0; i < 60; i++) {
+    setTimeout(() => {
+      const p = document.createElement('div');
+      const colors = ['#6efb3e','#ff7a1a','#ffd700','#a0ff70','#fff','#60a5fa'];
+      const size = 6 + Math.random() * 10;
+      p.style.cssText = `
+        position:fixed;left:${Math.random()*100}vw;top:-20px;
+        width:${size}px;height:${size}px;
+        background:${colors[Math.floor(Math.random()*colors.length)]};
+        border-radius:${Math.random()>0.5?'50%':'2px'};
+        pointer-events:none;z-index:999999;
+        transform:rotate(${Math.random()*360}deg);
+        opacity:${0.7+Math.random()*0.3};
+      `;
+      document.body.appendChild(p);
+      const duration = 2000 + Math.random() * 2000;
+      const swing = (Math.random() - 0.5) * 200;
+      p.animate([
+        {transform: `translateY(0) rotate(0deg) translateX(0)`, opacity: 1},
+        {transform: `translateY(100vh) rotate(${Math.random()*720}deg) translateX(${swing}px)`, opacity: 0}
+      ], {duration, easing: 'cubic-bezier(0.25,1,0.5,1)'}).onfinish = () => p.remove();
+    }, i * 30);
+  }
+}
+
+// Hook into quiz finish
+const _origFinishQuiz = typeof finishQuizUpg === 'function' ? finishQuizUpg : null;
+if (_origFinishQuiz) {
+  finishQuizUpg = function() {
+    _origFinishQuiz();
+    setTimeout(triggerConfetti, 300);
+  };
+}
+
+// 💥 Number counter animation upgrade (smoother)
+function animateCounter(el, target, duration) {
+  const start = performance.now();
+  const update = (time) => {
+    const progress = Math.min((time - start) / duration, 1);
+    const ease = 1 - Math.pow(1 - progress, 3); // ease-out cubic
+    el.textContent = Math.round(ease * target).toLocaleString();
+    if (progress < 1) requestAnimationFrame(update);
+    else el.textContent = target.toLocaleString();
+  };
+  requestAnimationFrame(update);
+}
+
+// 🌊 SCROLL-TRIGGERED re-init for new pages
+const _visualPageHook = showPage;
+showPage = function(id) {
+  _visualPageHook(id);
+  setTimeout(initVisualEffects, 200);
+};
 
 </script>
 </body>
