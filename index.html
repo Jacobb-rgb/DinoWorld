@@ -106,7 +106,8 @@
 
   *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
-  html { scroll-behavior: smooth; }
+  html { scroll-behavior: smooth; overflow-x: hidden; }
+  body { overflow-x: hidden; max-width: 100vw; }
 
   body {
     background: var(--bg);
@@ -1244,12 +1245,500 @@
 
   .fade-in { animation: fadeUp 0.5s ease both; }
 
+  /* ════════ BATTLE GAME ════════ */
+  .battle-arena {
+    background: linear-gradient(135deg, rgba(239,68,68,0.06), rgba(110,251,62,0.06));
+    border: 1px solid rgba(255,255,255,0.08);
+    border-radius: 24px;
+    padding: 32px;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+    margin-bottom: 24px;
+  }
+  .battle-arena::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: repeating-linear-gradient(45deg,transparent,transparent 20px,rgba(255,255,255,0.01) 20px,rgba(255,255,255,0.01) 21px);
+    pointer-events: none;
+  }
+  .battle-fighters {
+    display: grid;
+    grid-template-columns: 1fr auto 1fr;
+    gap: 20px;
+    align-items: center;
+    margin: 24px 0;
+  }
+  .battle-fighter {
+    background: rgba(255,255,255,0.03);
+    border: 1px solid rgba(255,255,255,0.08);
+    border-radius: 20px;
+    padding: 24px 16px;
+    cursor: pointer;
+    transition: all 0.25s;
+    position: relative;
+  }
+  .battle-fighter:hover { transform: scale(1.03); }
+  .battle-fighter.selected-1 { border-color: rgba(110,251,62,0.5); background: rgba(110,251,62,0.06); box-shadow: 0 0 24px rgba(110,251,62,0.15); }
+  .battle-fighter.selected-2 { border-color: rgba(239,68,68,0.5); background: rgba(239,68,68,0.06); box-shadow: 0 0 24px rgba(239,68,68,0.15); }
+  .battle-fighter-emoji { font-size: 4rem; display: block; margin-bottom: 8px; transition: transform 0.25s; }
+  .battle-fighter:hover .battle-fighter-emoji { transform: scale(1.15); }
+  .battle-fighter-name { font-family: 'Bebas Neue', sans-serif; font-size: 1.1rem; letter-spacing: 2px; }
+  .battle-fighter-stats { font-size: 0.7rem; color: var(--muted); margin-top: 6px; }
+  .battle-vs {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 3rem;
+    color: var(--accent2);
+    letter-spacing: 4px;
+    text-shadow: 0 0 30px rgba(255,122,26,0.4);
+    animation: pulse-vs 1.5s ease-in-out infinite;
+  }
+  @keyframes pulse-vs { 0%,100%{transform:scale(1)} 50%{transform:scale(1.1)} }
+  .battle-select-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(80px,1fr));
+    gap: 8px;
+    max-height: 320px;
+    overflow-y: auto;
+    padding: 4px;
+  }
+  .battle-pick-card {
+    background: rgba(255,255,255,0.02);
+    border: 1px solid rgba(255,255,255,0.06);
+    border-radius: 12px;
+    padding: 12px 8px;
+    text-align: center;
+    cursor: pointer;
+    transition: all 0.2s;
+  }
+  .battle-pick-card:hover { border-color: rgba(110,251,62,0.3); background: rgba(110,251,62,0.04); transform: scale(1.04); }
+  .battle-pick-card.picked-1 { border-color: var(--accent); background: rgba(110,251,62,0.08); }
+  .battle-pick-card.picked-2 { border-color: #ef4444; background: rgba(239,68,68,0.08); }
+  .bpc-emoji { font-size: 2rem; display: block; margin-bottom: 4px; }
+  .bpc-name { font-size: 0.68rem; font-weight: 700; color: var(--text); }
+  .battle-result {
+    display: none;
+    background: rgba(255,255,255,0.02);
+    border: 1px solid rgba(255,255,255,0.08);
+    border-radius: 20px;
+    padding: 28px;
+    text-align: center;
+    animation: fadeUp 0.5s ease both;
+  }
+  .battle-result.visible { display: block; }
+  .battle-winner-emoji { font-size: 5rem; display: block; margin-bottom: 12px; }
+  .battle-winner-title { font-family: 'Bebas Neue', sans-serif; font-size: 2.5rem; letter-spacing: 3px; color: var(--accent); margin-bottom: 8px; }
+  .battle-stat-bars { display: grid; gap: 10px; text-align: left; margin: 20px 0; }
+  .battle-stat-row { display: grid; grid-template-columns: 1fr auto 1fr; gap: 10px; align-items: center; font-size: 0.78rem; }
+  .bsr-bar { height: 8px; background: var(--bg3); border-radius: 8px; overflow: hidden; }
+  .bsr-fill { height: 100%; border-radius: 8px; transition: width 0.8s cubic-bezier(0.4,0,0.2,1); }
+  .bsr-fill.green { background: var(--accent); }
+  .bsr-fill.red { background: #ef4444; float: right; }
+  .bsr-label { font-size: 0.65rem; color: var(--muted); text-align: center; font-weight: 700; letter-spacing: 1px; }
+
+  /* ════════ SIZE COMPARATOR ════════ */
+  .size-scene {
+    background: linear-gradient(180deg, rgba(110,251,62,0.03) 0%, rgba(0,0,0,0) 100%);
+    border: 1px solid rgba(255,255,255,0.06);
+    border-radius: 20px;
+    padding: 40px 24px 20px;
+    position: relative;
+    overflow: hidden;
+    min-height: 320px;
+    display: flex;
+    align-items: flex-end;
+    justify-content: center;
+    gap: 40px;
+  }
+  .size-ground {
+    position: absolute;
+    bottom: 0; left: 0; right: 0;
+    height: 40px;
+    background: linear-gradient(180deg, transparent, rgba(110,251,62,0.08));
+    border-top: 1px solid rgba(110,251,62,0.15);
+  }
+  .size-figure {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 4px;
+    transition: all 0.6s cubic-bezier(0.4,0,0.2,1);
+    position: relative;
+    z-index: 2;
+  }
+  .size-figure-body {
+    font-size: 4rem;
+    line-height: 1;
+    transition: font-size 0.6s cubic-bezier(0.4,0,0.2,1);
+    filter: drop-shadow(0 0 20px rgba(110,251,62,0.3));
+  }
+  .size-figure-label {
+    font-size: 0.72rem;
+    font-weight: 700;
+    color: var(--muted);
+    letter-spacing: 1px;
+    white-space: nowrap;
+  }
+  .size-figure-height {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 1.1rem;
+    color: var(--accent);
+    letter-spacing: 2px;
+  }
+  .size-meter-line {
+    position: absolute;
+    right: 16px;
+    bottom: 40px;
+    display: flex;
+    flex-direction: column-reverse;
+    gap: 0;
+  }
+  .size-input-wrap {
+    background: rgba(255,255,255,0.03);
+    border: 1px solid rgba(255,255,255,0.08);
+    border-radius: 16px;
+    padding: 20px 24px;
+    margin-bottom: 20px;
+    display: flex;
+    gap: 16px;
+    align-items: center;
+    flex-wrap: wrap;
+  }
+  .size-slider {
+    flex: 1;
+    min-width: 200px;
+    -webkit-appearance: none;
+    appearance: none;
+    height: 6px;
+    background: var(--bg3);
+    border-radius: 6px;
+    outline: none;
+  }
+  .size-slider::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    width: 20px; height: 20px;
+    border-radius: 50%;
+    background: var(--gradient-green);
+    cursor: pointer;
+    box-shadow: 0 0 12px rgba(110,251,62,0.4);
+  }
+  .size-dino-select {
+    background: rgba(255,255,255,0.03);
+    border: 1px solid rgba(255,255,255,0.1);
+    border-radius: 10px;
+    color: var(--text);
+    padding: 8px 14px;
+    font-family: 'Poppins', sans-serif;
+    font-size: 0.85rem;
+    cursor: pointer;
+  }
+  .size-fun-fact {
+    background: rgba(110,251,62,0.05);
+    border: 1px solid rgba(110,251,62,0.15);
+    border-radius: 12px;
+    padding: 14px 18px;
+    font-size: 0.85rem;
+    color: var(--text-secondary);
+    margin-top: 16px;
+  }
+
+  /* ════════ DNA BUILDER ════════ */
+  .dna-builder-wrap {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 24px;
+    align-items: start;
+  }
+  .dna-trait-group {
+    background: rgba(255,255,255,0.02);
+    border: 1px solid rgba(255,255,255,0.07);
+    border-radius: 16px;
+    padding: 20px;
+    margin-bottom: 14px;
+  }
+  .dna-trait-label {
+    font-size: 0.65rem;
+    font-weight: 800;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 12px;
+    display: block;
+  }
+  .dna-options { display: flex; gap: 8px; flex-wrap: wrap; }
+  .dna-opt {
+    background: rgba(255,255,255,0.03);
+    border: 1px solid rgba(255,255,255,0.07);
+    border-radius: 10px;
+    padding: 8px 14px;
+    font-size: 0.8rem;
+    cursor: pointer;
+    transition: all 0.2s;
+    font-family: 'Poppins', sans-serif;
+    color: var(--text-secondary);
+  }
+  .dna-opt:hover { border-color: rgba(110,251,62,0.3); color: var(--accent); }
+  .dna-opt.selected { background: rgba(110,251,62,0.1); border-color: var(--accent); color: var(--accent); }
+  .dna-result-card {
+    background: linear-gradient(135deg, rgba(110,251,62,0.05), rgba(255,122,26,0.03));
+    border: 1px solid rgba(110,251,62,0.2);
+    border-radius: 20px;
+    padding: 28px;
+    text-align: center;
+    position: sticky;
+    top: 80px;
+  }
+  .dna-dino-display { font-size: 7rem; line-height: 1; margin-bottom: 12px; filter: drop-shadow(0 0 30px rgba(110,251,62,0.3)); transition: all 0.4s; }
+  .dna-dino-name { font-family: 'Bebas Neue', sans-serif; font-size: 2rem; letter-spacing: 3px; color: var(--accent); margin-bottom: 6px; }
+  .dna-dino-desc { font-size: 0.82rem; color: var(--text-secondary); line-height: 1.6; margin-bottom: 16px; }
+  .dna-stats { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
+  .dna-stat { background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.07); border-radius: 10px; padding: 10px; }
+  .dna-stat-val { font-family: 'Bebas Neue', sans-serif; font-size: 1.4rem; color: var(--accent); }
+  .dna-stat-lbl { font-size: 0.62rem; color: var(--muted); letter-spacing: 1px; }
+  @media(max-width:768px) { .dna-builder-wrap { grid-template-columns: 1fr; } .dna-result-card { position: static; } }
+
+  /* ════════ TIME MACHINE ════════ */
+  .time-machine-wrap { position: relative; }
+  .time-era-tabs {
+    display: flex;
+    gap: 8px;
+    margin-bottom: 20px;
+    flex-wrap: wrap;
+  }
+  .time-era-btn {
+    background: rgba(255,255,255,0.03);
+    border: 1px solid rgba(255,255,255,0.07);
+    border-radius: 100px;
+    padding: 10px 20px;
+    font-family: 'Poppins', sans-serif;
+    font-size: 0.8rem;
+    font-weight: 700;
+    color: var(--muted);
+    cursor: pointer;
+    transition: all 0.2s;
+    -webkit-tap-highlight-color: transparent;
+  }
+  .time-era-btn:hover { border-color: rgba(110,251,62,0.3); color: var(--accent); }
+  .time-era-btn.active { background: var(--gradient-green); color: #000; border: none; box-shadow: 0 4px 16px rgba(110,251,62,0.3); }
+  .time-map-container {
+    background: rgba(255,255,255,0.02);
+    border: 1px solid rgba(255,255,255,0.07);
+    border-radius: 20px;
+    padding: 20px;
+    position: relative;
+    overflow: hidden;
+    min-height: 280px;
+    max-width: 100%;
+  }
+  .time-continent {
+    position: absolute;
+    transition: all 1.2s cubic-bezier(0.4,0,0.2,1);
+    cursor: pointer;
+  }
+  .time-continent-shape {
+    background: rgba(110,251,62,0.15);
+    border: 1px solid rgba(110,251,62,0.3);
+    border-radius: 30% 70% 50% 60% / 40% 50% 70% 60%;
+    transition: all 1.2s;
+  }
+  .time-continent-shape:hover { background: rgba(110,251,62,0.25); }
+  .time-dino-dot {
+    position: absolute;
+    width: 10px; height: 10px;
+    background: var(--accent2);
+    border-radius: 50%;
+    box-shadow: 0 0 10px rgba(255,122,26,0.5);
+    animation: dotPulse 2s ease-in-out infinite;
+    cursor: pointer;
+    z-index: 10;
+    transition: all 1s;
+  }
+  @keyframes dotPulse { 0%,100%{transform:scale(1)} 50%{transform:scale(1.4)} }
+  .time-dino-tooltip {
+    position: absolute;
+    background: rgba(10,10,10,0.95);
+    border: 1px solid var(--accent2);
+    border-radius: 10px;
+    padding: 10px 14px;
+    font-size: 0.78rem;
+    white-space: nowrap;
+    z-index: 100;
+    pointer-events: none;
+    opacity: 0;
+    transition: opacity 0.2s;
+    bottom: 18px; left: 50%;
+    transform: translateX(-50%);
+  }
+  .time-dino-dot:hover .time-dino-tooltip { opacity: 1; }
+  .time-info {
+    background: rgba(255,255,255,0.02);
+    border: 1px solid rgba(255,255,255,0.07);
+    border-radius: 16px;
+    padding: 20px;
+    margin-top: 16px;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 12px;
+  }
+  .time-info-item { text-align: center; padding: 12px; background: rgba(255,255,255,0.02); border-radius: 10px; }
+  .time-info-val { font-family: 'Bebas Neue', sans-serif; font-size: 1.4rem; color: var(--accent); display: block; }
+  .time-info-lbl { font-size: 0.65rem; color: var(--muted); letter-spacing: 1px; }
+  @media(max-width:600px) { .time-info { grid-template-columns: 1fr; } }
+
+  /* ════════ LEADERBOARD ════════ */
+  .lb-profile {
+    background: linear-gradient(135deg, rgba(110,251,62,0.06), rgba(255,122,26,0.04));
+    border: 1px solid rgba(110,251,62,0.2);
+    border-radius: 20px;
+    padding: 24px;
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    margin-bottom: 24px;
+    flex-wrap: wrap;
+  }
+  .lb-avatar { font-size: 4rem; filter: drop-shadow(0 0 20px rgba(110,251,62,0.3)); }
+  .lb-rank-badge {
+    background: var(--gradient-green);
+    color: #000;
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 0.85rem;
+    letter-spacing: 2px;
+    padding: 4px 12px;
+    border-radius: 100px;
+    display: inline-block;
+    margin-bottom: 4px;
+  }
+  .lb-username { font-family: 'Bebas Neue', sans-serif; font-size: 2rem; letter-spacing: 2px; }
+  .lb-pts { font-size: 0.85rem; color: var(--muted); }
+  .lb-pts span { color: var(--accent); font-weight: 700; font-size: 1.1rem; }
+  .lb-progress-bar { height: 6px; background: var(--bg3); border-radius: 6px; overflow: hidden; margin: 10px 0; flex: 1; min-width: 200px; }
+  .lb-progress-fill { height: 100%; background: var(--gradient-green); border-radius: 6px; transition: width 1s cubic-bezier(0.4,0,0.2,1); }
+  .lb-actions { display: flex; gap: 10px; flex-wrap: wrap; margin-bottom: 24px; }
+  .lb-action-card {
+    flex: 1;
+    min-width: 140px;
+    background: rgba(255,255,255,0.02);
+    border: 1px solid rgba(255,255,255,0.07);
+    border-radius: 14px;
+    padding: 16px;
+    text-align: center;
+    cursor: pointer;
+    transition: all 0.2s;
+  }
+  .lb-action-card:hover { border-color: rgba(110,251,62,0.3); background: rgba(110,251,62,0.04); transform: translateY(-3px); }
+  .lb-action-icon { font-size: 2rem; display: block; margin-bottom: 6px; }
+  .lb-action-title { font-size: 0.78rem; font-weight: 700; color: var(--text); margin-bottom: 2px; }
+  .lb-action-pts { font-size: 0.65rem; color: var(--accent); font-weight: 700; }
+  .lb-board { display: flex; flex-direction: column; gap: 8px; }
+  .lb-entry {
+    background: rgba(255,255,255,0.02);
+    border: 1px solid rgba(255,255,255,0.06);
+    border-radius: 12px;
+    padding: 14px 18px;
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    transition: all 0.2s;
+  }
+  .lb-entry:hover { background: rgba(110,251,62,0.03); border-color: rgba(110,251,62,0.12); }
+  .lb-entry.me { border-color: rgba(110,251,62,0.3); background: rgba(110,251,62,0.05); }
+  .lb-entry-rank { font-family: 'Bebas Neue', sans-serif; font-size: 1.4rem; min-width: 36px; color: var(--muted); }
+  .lb-entry-rank.gold { color: #ffd700; text-shadow: 0 0 12px rgba(255,215,0,0.4); }
+  .lb-entry-rank.silver { color: #c0c0c0; }
+  .lb-entry-rank.bronze { color: #cd7f32; }
+  .lb-entry-emoji { font-size: 1.5rem; }
+  .lb-entry-name { flex: 1; font-weight: 700; font-size: 0.88rem; }
+  .lb-entry-pts-val { font-family: 'Bebas Neue', sans-serif; font-size: 1.2rem; color: var(--accent); }
+  .lb-toast {
+    background: var(--gradient-green);
+    color: #000;
+    font-weight: 800;
+    border-radius: 100px;
+  }
+
+  /* ════════ SOUNDSCAPE ════════ */
+  .sound-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+    gap: 14px;
+    margin-bottom: 24px;
+  }
+  .sound-card {
+    background: rgba(255,255,255,0.02);
+    border: 1px solid rgba(255,255,255,0.07);
+    border-radius: 18px;
+    padding: 24px 16px;
+    text-align: center;
+    cursor: pointer;
+    transition: all 0.25s;
+    position: relative;
+    overflow: hidden;
+  }
+  .sound-card::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(circle at 50% 50%, var(--sc-color,rgba(110,251,62,0.1)) 0%, transparent 70%);
+    opacity: 0;
+    transition: opacity 0.25s;
+  }
+  .sound-card:hover::before, .sound-card.playing::before { opacity: 1; }
+  .sound-card:hover { transform: translateY(-4px); border-color: var(--sc-border,rgba(110,251,62,0.3)); }
+  .sound-card.playing { border-color: var(--sc-border,rgba(110,251,62,0.5)); box-shadow: 0 0 24px var(--sc-glow,rgba(110,251,62,0.2)); }
+  .sound-icon { font-size: 3rem; display: block; margin-bottom: 8px; transition: transform 0.25s; }
+  .sound-card:hover .sound-icon { transform: scale(1.15); }
+  .sound-card.playing .sound-icon { animation: sound-pulse 0.8s ease-in-out infinite alternate; }
+  @keyframes sound-pulse { from{transform:scale(1)} to{transform:scale(1.15)} }
+  .sound-name { font-size: 0.82rem; font-weight: 700; color: var(--text); margin-bottom: 3px; }
+  .sound-desc { font-size: 0.68rem; color: var(--muted); }
+  .sound-indicator {
+    position: absolute;
+    top: 10px; right: 10px;
+    width: 8px; height: 8px;
+    background: var(--accent);
+    border-radius: 50%;
+    opacity: 0;
+    transition: opacity 0.2s;
+  }
+  .sound-card.playing .sound-indicator { opacity: 1; animation: dotPulse 1s ease-in-out infinite; }
+  .sound-visualizer {
+    display: flex;
+    align-items: flex-end;
+    justify-content: center;
+    gap: 4px;
+    height: 40px;
+    margin-bottom: 20px;
+  }
+  .sv-bar {
+    width: 6px;
+    background: var(--gradient-green);
+    border-radius: 3px;
+    min-height: 4px;
+    transition: height 0.1s;
+    opacity: 0.7;
+  }
+  .sound-vol-wrap {
+    background: rgba(255,255,255,0.03);
+    border: 1px solid rgba(255,255,255,0.07);
+    border-radius: 14px;
+    padding: 16px 20px;
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    margin-bottom: 20px;
+  }
+  @media(max-width:480px) { .sound-grid { grid-template-columns: repeat(2,1fr); } }
+
+
   /* ══════════════════════════════════════════════════════
      🎨 MEGA DESIGN UPGRADE — Premium Dark Theme
   ══════════════════════════════════════════════════════ */
 
   /* Smooth everything */
-  html { scroll-behavior: smooth; }
+  html { scroll-behavior: smooth; overflow-x: hidden; }
+  body { overflow-x: hidden; max-width: 100vw; }
   *, *::before, *::after { box-sizing: border-box; }
 
   /* CSS Variable upgrades */
@@ -3612,6 +4101,341 @@
   }
   /* Prevent text selection on buttons */
   button { user-select: none; -webkit-user-select: none; }
+
+  /* ══ MOBILE OVERFLOW GLOBAL FIX ══ */
+  html, body { overflow-x: hidden !important; max-width: 100%; }
+  * { box-sizing: border-box; }
+  .page, section { max-width: 100%; overflow-x: hidden; }
+  img, svg, canvas { max-width: 100%; height: auto; }
+
+  /* Fix sections padding on small screens */
+  @media (max-width: 600px) {
+    section { padding-left: 16px !important; padding-right: 16px !important; }
+    .trending-box { margin: 0 12px 8px !important; padding: 14px !important; }
+    .battle-fighters { gap: 10px; }
+    .battle-vs { font-size: 2rem; }
+    .battle-fighter { padding: 14px 10px; }
+    .battle-fighter-emoji { font-size: 2.5rem; }
+    .dna-builder-wrap { grid-template-columns: 1fr !important; }
+    .time-info { grid-template-columns: 1fr 1fr !important; }
+    .time-era-tabs { gap: 6px; }
+    .time-era-btn { padding: 8px 12px; font-size: 0.72rem; }
+    .lb-profile { flex-direction: column; gap: 12px; }
+    .lb-actions { gap: 8px; }
+    .lb-action-card { min-width: 120px; }
+    .sound-grid { grid-template-columns: 1fr 1fr !important; }
+    .size-input-wrap { flex-direction: column; align-items: stretch; }
+    .size-scene { min-height: 240px; }
+    .battle-select-grid { grid-template-columns: repeat(3, 1fr) !important; }
+    .hero h1 { font-size: clamp(2.2rem, 9vw, 4rem) !important; }
+    .hero-stats { flex-wrap: wrap; padding: 12px; }
+    .hero-stat { padding: 6px 14px; }
+    .nav-logo { font-size: 1.1rem; letter-spacing: 2px; }
+  }
+
+
+  /* ══ DINO NEWS BANNER ══ */
+  .dino-news-banner {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    padding: 13px 28px;
+    background: linear-gradient(90deg,
+      rgba(110,251,62,0.08) 0%,
+      rgba(255,122,26,0.06) 50%,
+      rgba(110,251,62,0.08) 100%);
+    border-bottom: 1px solid rgba(110,251,62,0.18);
+    position: relative;
+    overflow: hidden;
+    cursor: pointer;
+    transition: background 0.3s;
+    flex-wrap: wrap;
+  }
+  .dino-news-banner:hover {
+    background: linear-gradient(90deg,
+      rgba(110,251,62,0.13) 0%,
+      rgba(255,122,26,0.1) 50%,
+      rgba(110,251,62,0.13) 100%);
+  }
+  .dino-news-banner::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(90deg, transparent 0%, rgba(110,251,62,0.06) 50%, transparent 100%);
+    animation: news-sweep 4s linear infinite;
+  }
+  @keyframes news-sweep {
+    0% { transform: translateX(-100%); }
+    100% { transform: translateX(100%); }
+  }
+  .news-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    background: var(--gradient-green);
+    color: #000;
+    font-size: 0.6rem;
+    font-weight: 900;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    padding: 3px 10px;
+    border-radius: 100px;
+    flex-shrink: 0;
+    animation: badge-glow 2s ease-in-out infinite;
+  }
+  .news-icon { font-size: 1.2rem; flex-shrink: 0; animation: float 3s ease-in-out infinite; }
+  .news-text-wrap { flex: 1; min-width: 0; }
+  .news-title {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 1rem;
+    letter-spacing: 2px;
+    color: var(--text);
+    line-height: 1;
+    margin-bottom: 2px;
+  }
+  .news-sub {
+    font-size: 0.7rem;
+    color: var(--muted);
+    letter-spacing: 0.5px;
+  }
+  .news-coming {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    background: rgba(255,122,26,0.1);
+    border: 1px solid rgba(255,122,26,0.3);
+    color: var(--accent2);
+    font-size: 0.7rem;
+    font-weight: 800;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    padding: 4px 12px;
+    border-radius: 100px;
+    flex-shrink: 0;
+    animation: coming-pulse 2s ease-in-out infinite;
+  }
+  @keyframes coming-pulse {
+    0%,100% { box-shadow: 0 0 0 0 rgba(255,122,26,0); }
+    50% { box-shadow: 0 0 0 4px rgba(255,122,26,0.15); }
+  }
+  .news-dismiss {
+    background: none;
+    border: none;
+    color: #444;
+    font-size: 1rem;
+    cursor: pointer;
+    padding: 4px;
+    flex-shrink: 0;
+    line-height: 1;
+    -webkit-tap-highlight-color: transparent;
+    transition: color 0.2s;
+  }
+  .news-dismiss:hover { color: var(--text); }
+  @media (max-width: 600px) {
+    .dino-news-banner { padding: 10px 16px; gap: 10px; }
+    .news-title { font-size: 0.88rem; }
+    .news-coming { display: none; }
+  }
+
+
+  /* ══ WHAT'S NEW STRIP ══ */
+  .whats-new-strip {
+    display: flex;
+    align-items: center;
+    gap: 0;
+    padding: 0 16px;
+    background: rgba(0,0,0,0.3);
+    border-bottom: 1px solid rgba(255,255,255,0.04);
+    overflow-x: auto;
+    scrollbar-width: none;
+    -webkit-overflow-scrolling: touch;
+    white-space: nowrap;
+  }
+  .whats-new-strip::-webkit-scrollbar { display: none; }
+  .wn-label {
+    font-size: 0.6rem;
+    font-weight: 900;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--accent);
+    padding: 8px 14px 8px 8px;
+    border-right: 1px solid rgba(255,255,255,0.08);
+    margin-right: 12px;
+    flex-shrink: 0;
+    white-space: nowrap;
+  }
+  .wn-item {
+    display: inline-flex;
+    align-items: center;
+    gap: 7px;
+    padding: 7px 14px;
+    border-radius: 100px;
+    font-size: 0.72rem;
+    font-weight: 600;
+    color: var(--text-secondary);
+    cursor: pointer;
+    transition: all 0.2s;
+    flex-shrink: 0;
+    border: 1px solid transparent;
+    margin: 5px 4px;
+    -webkit-tap-highlight-color: transparent;
+  }
+  .wn-item:hover {
+    background: rgba(255,255,255,0.05);
+    border-color: rgba(255,255,255,0.1);
+    color: var(--text);
+  }
+  .wn-item.hot {
+    background: rgba(110,251,62,0.07);
+    border-color: rgba(110,251,62,0.2);
+    color: var(--accent);
+  }
+  .wn-item.hot:hover { background: rgba(110,251,62,0.12); }
+  .wn-badge-new {
+    background: var(--gradient-green);
+    color: #000;
+    font-size: 0.5rem;
+    font-weight: 900;
+    padding: 1px 6px;
+    border-radius: 100px;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+  }
+  .wn-badge-hot {
+    background: var(--gradient-fire);
+    color: #fff;
+    font-size: 0.5rem;
+    font-weight: 900;
+    padding: 1px 6px;
+    border-radius: 100px;
+    letter-spacing: 1px;
+  }
+
+
+  /* ════════════════════════════════════════
+     🏃 DINO RUNNER GAME
+  ════════════════════════════════════════ */
+  .runner-wrap {
+    max-width: 700px;
+    margin: 0 auto;
+  }
+  .runner-canvas-wrap {
+    position: relative;
+    background: linear-gradient(180deg, #0a0a0a 0%, #0d1a05 100%);
+    border: 1px solid rgba(110,251,62,0.2);
+    border-radius: 20px;
+    overflow: hidden;
+    box-shadow: 0 0 60px rgba(110,251,62,0.08), inset 0 1px 0 rgba(110,251,62,0.1);
+    cursor: pointer;
+    -webkit-tap-highlight-color: transparent;
+    user-select: none;
+  }
+  #runnerCanvas {
+    display: block;
+    width: 100%;
+    height: auto;
+  }
+  .runner-overlay {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background: rgba(0,0,0,0.75);
+    -webkit-backdrop-filter: blur(4px);
+    backdrop-filter: blur(4px);
+    transition: opacity 0.3s;
+    border-radius: 20px;
+  }
+  .runner-overlay.hidden { opacity: 0; pointer-events: none; }
+  .runner-overlay-emoji { font-size: 5rem; margin-bottom: 10px; animation: float 2s ease-in-out infinite; }
+  .runner-overlay-title { font-family: 'Bebas Neue', sans-serif; font-size: 2.5rem; letter-spacing: 4px; color: var(--accent); margin-bottom: 6px; }
+  .runner-overlay-sub { font-size: 0.85rem; color: var(--muted); margin-bottom: 24px; text-align: center; padding: 0 20px; }
+  .runner-overlay-btn {
+    background: var(--gradient-green);
+    color: #000;
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 1.3rem;
+    letter-spacing: 3px;
+    border: none;
+    border-radius: 100px;
+    padding: 14px 40px;
+    cursor: pointer;
+    box-shadow: 0 4px 24px rgba(110,251,62,0.4);
+    transition: all 0.2s;
+    -webkit-tap-highlight-color: transparent;
+    animation: pulse-green 2s ease-in-out infinite;
+  }
+  .runner-overlay-btn:hover { transform: scale(1.05); box-shadow: 0 8px 32px rgba(110,251,62,0.5); }
+  .runner-score-bar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 12px 20px;
+    margin-bottom: 12px;
+    background: rgba(255,255,255,0.02);
+    border: 1px solid rgba(255,255,255,0.06);
+    border-radius: 14px;
+    flex-wrap: wrap;
+    gap: 10px;
+  }
+  .runner-score-item { text-align: center; }
+  .runner-score-val { font-family: 'Bebas Neue', sans-serif; font-size: 1.6rem; color: var(--accent); letter-spacing: 2px; line-height: 1; }
+  .runner-score-lbl { font-size: 0.6rem; color: var(--muted); letter-spacing: 2px; text-transform: uppercase; }
+  .runner-controls {
+    display: flex;
+    gap: 10px;
+    margin-top: 14px;
+    flex-wrap: wrap;
+  }
+  .runner-ctrl-btn {
+    flex: 1;
+    min-width: 120px;
+    background: rgba(255,255,255,0.03);
+    border: 1px solid rgba(255,255,255,0.08);
+    border-radius: 12px;
+    padding: 12px;
+    text-align: center;
+    cursor: pointer;
+    font-family: 'Poppins', sans-serif;
+    color: var(--text-secondary);
+    font-size: 0.82rem;
+    font-weight: 600;
+    transition: all 0.2s;
+    -webkit-tap-highlight-color: transparent;
+    touch-action: manipulation;
+  }
+  .runner-ctrl-btn:active { transform: scale(0.96); }
+  .runner-ctrl-btn:hover { border-color: rgba(110,251,62,0.3); color: var(--accent); }
+  .runner-share-btn {
+    background: rgba(110,251,62,0.1);
+    border: 1px solid rgba(110,251,62,0.3);
+    color: var(--accent);
+  }
+  .runner-share-btn:hover { background: rgba(110,251,62,0.2); }
+  .runner-tips {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(160px,1fr));
+    gap: 8px;
+    margin-top: 14px;
+  }
+  .runner-tip {
+    background: rgba(255,255,255,0.02);
+    border: 1px solid rgba(255,255,255,0.06);
+    border-radius: 10px;
+    padding: 10px 14px;
+    font-size: 0.75rem;
+    color: var(--text-secondary);
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  @media (max-width: 500px) {
+    .runner-overlay-title { font-size: 1.8rem; }
+    .runner-overlay-emoji { font-size: 3.5rem; }
+  }
+
 </style>
 </head>
 <body>
@@ -3653,6 +4477,34 @@
       <span></span>
     </button>
 </nav>
+<!-- 🦕 DINO NEWS BANNER -->
+<div class="dino-news-banner" id="dinoNewsBanner" onclick="dinoNewsClick()">
+  <span class="news-icon">🗞️</span>
+  <div class="news-badge">⚡ NEW</div>
+  <div class="news-text-wrap">
+    <div class="news-title">🦕 DINO NEWS — Paleontology Updates & Latest Discoveries</div>
+    <div class="news-sub">Breaking dino science • New fossil finds • Research updates • Real-time prehistoric world</div>
+  </div>
+  <div class="news-coming">🔬 Coming Soon</div>
+  <button class="news-dismiss" onclick="event.stopPropagation();dismissDinoNews()" aria-label="Dismiss">✕</button>
+</div>
+<!-- ✨ WHAT'S NEW STRIP -->
+<div class="whats-new-strip" id="whatsNewStrip">
+  <span class="wn-label">🆕 WHAT'S NEW</span>
+  <div class="wn-item hot" onclick="showPage('battle')">⚔️ Dino Battle <span class="wn-badge-new">NEW</span></div>
+  <div class="wn-item hot" onclick="showPage('dna-builder')">🧬 DNA Builder <span class="wn-badge-new">NEW</span></div>
+  <div class="wn-item hot" onclick="showPage('size-compare')">📏 Size Compare <span class="wn-badge-new">NEW</span></div>
+  <div class="wn-item hot" onclick="showPage('time-machine')">🗺️ Time Machine <span class="wn-badge-new">NEW</span></div>
+  <div class="wn-item" onclick="showPage('leaderboard')">🏆 Dino Points <span class="wn-badge-new">NEW</span></div>
+  <div class="wn-item" onclick="showPage('soundscape')">🎵 Dino Sounds <span class="wn-badge-new">NEW</span></div>
+  <div class="wn-item" onclick="showPage('rock-scanner')">🪨 Rock Scanner <span class="wn-badge-hot">HOT</span></div>
+  <div class="wn-item" onclick="showPage('quiz')">🧠 Quiz <span class="wn-badge-hot">HOT</span></div>
+  <div class="wn-item" onclick="showPage('fossils-map')">🗺️ Fossil Map</div>
+  <div class="wn-item" onclick="showPage('comparison')">⚔️ Compare Dinos</div>
+  <div class="wn-item hot" onclick="showPage('dino-runner')">🏃 Dino Runner <span class="wn-badge-hot">🔥 HOT</span></div>
+  <div class="wn-item" onclick="showPage('alldinos')">🦕 All Dinosaurs</div>
+</div>
+
 
 <!-- LANGUAGE DROPDOWN -->
 <div class="lang-dropdown" id="langDropdown">
@@ -3742,6 +4594,15 @@
     <span class="mm-section-label">Fun</span>
     <button class="mm-btn" data-page="quiz" onclick="showPage('quiz');closeMobileMenu()"><span class="mm-btn-icon">🧠</span>Which Dino Are You?</button>
     <button class="mm-btn" data-page="facts" onclick="showPage('facts');closeMobileMenu()"><span class="mm-btn-icon">✨</span>Random Facts</button>
+    <div class="mm-divider"></div>
+    <span class="mm-section-label">🎮 Games & Tools</span>
+    <button class="mm-btn" data-page="battle" onclick="showPage('battle');closeMobileMenu()"><span class="mm-btn-icon">⚔️</span>Dino Battle</button>
+    <button class="mm-btn" data-page="size-compare" onclick="showPage('size-compare');closeMobileMenu()"><span class="mm-btn-icon">📏</span>Size Comparator</button>
+    <button class="mm-btn" data-page="dna-builder" onclick="showPage('dna-builder');closeMobileMenu()"><span class="mm-btn-icon">🧬</span>DNA Builder</button>
+    <button class="mm-btn" data-page="time-machine" onclick="showPage('time-machine');closeMobileMenu()"><span class="mm-btn-icon">🗺️</span>Time Machine</button>
+    <button class="mm-btn" data-page="leaderboard" onclick="showPage('leaderboard');closeMobileMenu()"><span class="mm-btn-icon">🏆</span>Leaderboard</button>
+    <button class="mm-btn" data-page="dino-runner" onclick="showPage('dino-runner');closeMobileMenu()"><span class="mm-btn-icon">🏃</span>Dino Runner 🔥</button>
+    <button class="mm-btn" data-page="soundscape" onclick="showPage('soundscape');closeMobileMenu()"><span class="mm-btn-icon">🎵</span>Dino Sounds</button>
   </div>
 </div>
 
@@ -4909,6 +5770,435 @@
     <div class="ad-unit" style="margin-top:28px;">Advertisement · Google AdSense</div>
   </section>
 </div>
+<!-- ════════════ BATTLE GAME ════════════ -->
+<div class="page" id="page-battle">
+  <section>
+    <div class="section-label">🎮 Mini Game</div>
+    <div class="section-title">DINO <span>BATTLE</span></div>
+    <p style="color:var(--text-secondary);margin-bottom:28px;max-width:540px;">Pick two dinosaurs and watch them battle! Winner is decided by combined stats — strength, speed and defense.</p>
+
+    <!-- Pick fighters -->
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:20px;">
+      <div>
+        <div class="section-label" style="margin-bottom:8px;">🟢 Fighter 1</div>
+        <div class="battle-select-grid" id="battleGrid1"></div>
+      </div>
+      <div>
+        <div class="section-label" style="margin-bottom:8px;">🔴 Fighter 2</div>
+        <div class="battle-select-grid" id="battleGrid2"></div>
+      </div>
+    </div>
+
+    <!-- Arena -->
+    <div class="battle-arena" id="battleArena">
+      <div class="battle-fighters">
+        <div class="battle-fighter selected-1" id="bf1">
+          <span class="battle-fighter-emoji" id="bf1emoji">🦖</span>
+          <div class="battle-fighter-name" id="bf1name">T-Rex</div>
+          <div class="battle-fighter-stats" id="bf1stats">STR 95 · SPD 45 · DEF 60</div>
+        </div>
+        <div class="battle-vs">VS</div>
+        <div class="battle-fighter selected-2" id="bf2">
+          <span class="battle-fighter-emoji" id="bf2emoji">🦅</span>
+          <div class="battle-fighter-name" id="bf2name">Velociraptor</div>
+          <div class="battle-fighter-stats" id="bf2stats">STR 60 · SPD 90 · DEF 40</div>
+        </div>
+      </div>
+      <button class="btn btn-primary" onclick="startBattle()" style="font-size:1.1rem;padding:14px 40px;margin-top:8px;">⚔️ BATTLE!</button>
+    </div>
+
+    <!-- Result -->
+    <div class="battle-result" id="battleResult">
+      <span class="battle-winner-emoji" id="winnerEmoji">🦖</span>
+      <div class="battle-winner-title" id="winnerTitle">T-REX WINS!</div>
+      <p id="winnerDesc" style="color:var(--text-secondary);font-size:0.88rem;margin-bottom:16px;"></p>
+      <div class="battle-stat-bars" id="battleStatBars"></div>
+      <div style="display:flex;gap:10px;justify-content:center;margin-top:20px;flex-wrap:wrap;">
+        <button class="btn btn-primary" onclick="resetBattle()">🔄 Battle Again</button>
+        <button class="btn btn-secondary" onclick="showPage('comparison')">📊 Compare Stats</button>
+      </div>
+    </div>
+    <div class="ad-slot" style="margin-top:28px;"></div>
+  </section>
+</div>
+
+<!-- ════════════ SIZE COMPARATOR ════════════ -->
+<div class="page" id="page-size-compare">
+  <section>
+    <div class="section-label">📏 Visual Tool</div>
+    <div class="section-title">SIZE <span>COMPARATOR</span></div>
+    <p style="color:var(--text-secondary);margin-bottom:28px;max-width:540px;">How big were dinosaurs compared to you? Enter your height and see the real scale difference!</p>
+
+    <div class="size-input-wrap">
+      <span style="font-size:1.5rem;">🧍</span>
+      <div style="flex:1;min-width:180px;">
+        <div style="display:flex;justify-content:space-between;margin-bottom:8px;">
+          <span style="font-size:0.82rem;color:var(--muted);">Your height</span>
+          <span style="font-family:'Bebas Neue',sans-serif;font-size:1.1rem;color:var(--accent);" id="heightDisplay">175 cm</span>
+        </div>
+        <input type="range" class="size-slider" id="heightSlider" min="120" max="220" value="175" oninput="updateSizeComparison()">
+      </div>
+      <select class="size-dino-select" id="dinoSizeSelect" onchange="updateSizeComparison()">
+        <option value="trex">🦖 T-Rex (4m tall)</option>
+        <option value="brachiosaurus">🦕 Brachiosaurus (13m tall)</option>
+        <option value="velociraptor">🦅 Velociraptor (0.5m tall)</option>
+        <option value="spinosaurus">🐊 Spinosaurus (2.3m tall)</option>
+        <option value="triceratops">🦏 Triceratops (3m tall)</option>
+        <option value="ankylosaurus">🐢 Ankylosaurus (1.7m tall)</option>
+        <option value="diplodocus">🦕 Diplodocus (5m tall)</option>
+        <option value="microraptor">🐦 Microraptor (0.3m tall)</option>
+      </select>
+    </div>
+
+    <div class="size-scene" id="sizeScene">
+      <div class="size-ground"></div>
+      <div class="size-figure" id="humanFigure">
+        <div class="size-figure-body" id="humanEmoji">🧍</div>
+        <div class="size-figure-height" id="humanHeight">1.75m</div>
+        <div class="size-figure-label">You</div>
+      </div>
+      <div class="size-figure" id="dinoFigure">
+        <div class="size-figure-body" id="dinoSizeEmoji" style="font-size:8rem;">🦖</div>
+        <div class="size-figure-height" id="dinoHeight">4m</div>
+        <div class="size-figure-label" id="dinoSizeLabel">T-Rex</div>
+      </div>
+    </div>
+
+    <div class="size-fun-fact" id="sizeFunFact">
+      🦖 T-Rex was about 2.3x taller than an average adult human. Despite its size, it could move at up to 20 km/h!
+    </div>
+    <div class="ad-slot" style="margin-top:24px;"></div>
+  </section>
+</div>
+
+<!-- ════════════ DNA BUILDER ════════════ -->
+<div class="page" id="page-dna-builder">
+  <section>
+    <div class="section-label">🧬 Creative Tool</div>
+    <div class="section-title">DNA <span>BUILDER</span></div>
+    <p style="color:var(--text-secondary);margin-bottom:28px;max-width:540px;">Mix traits from different dinosaurs and create your own unique prehistoric creature!</p>
+
+    <div class="dna-builder-wrap">
+      <div>
+        <div class="dna-trait-group">
+          <span class="dna-trait-label">🏗️ Body Size</span>
+          <div class="dna-options" id="dna-size">
+            <div class="dna-opt selected" onclick="selectDNA('size','tiny','🦎')">Tiny (cat-sized)</div>
+            <div class="dna-opt" onclick="selectDNA('size','small','🐕')">Small (dog-sized)</div>
+            <div class="dna-opt" onclick="selectDNA('size','medium','🦌')">Medium (horse-sized)</div>
+            <div class="dna-opt" onclick="selectDNA('size','large','🐘')">Large (elephant-sized)</div>
+            <div class="dna-opt" onclick="selectDNA('size','giant','🏗️')">GIANT</div>
+          </div>
+        </div>
+        <div class="dna-trait-group">
+          <span class="dna-trait-label">🥩 Diet</span>
+          <div class="dna-options" id="dna-diet">
+            <div class="dna-opt selected" onclick="selectDNA('diet','carnivore','🥩')">Carnivore 🥩</div>
+            <div class="dna-opt" onclick="selectDNA('diet','herbivore','🌿')">Herbivore 🌿</div>
+            <div class="dna-opt" onclick="selectDNA('diet','omnivore','🍖')">Omnivore 🍖</div>
+          </div>
+        </div>
+        <div class="dna-trait-group">
+          <span class="dna-trait-label">🦕 Head Type</span>
+          <div class="dna-options" id="dna-head">
+            <div class="dna-opt selected" onclick="selectDNA('head','massive','💀')">Massive Jaws</div>
+            <div class="dna-opt" onclick="selectDNA('head','horned','🦏')">Horned</div>
+            <div class="dna-opt" onclick="selectDNA('head','crested','👑')">Crested</div>
+            <div class="dna-opt" onclick="selectDNA('head','beaked','🦆')">Bird Beak</div>
+            <div class="dna-opt" onclick="selectDNA('head','flat','🐊')">Flat/Wide</div>
+          </div>
+        </div>
+        <div class="dna-trait-group">
+          <span class="dna-trait-label">🛡️ Defense</span>
+          <div class="dna-options" id="dna-defense">
+            <div class="dna-opt selected" onclick="selectDNA('defense','none','⚡')">None (pure speed)</div>
+            <div class="dna-opt" onclick="selectDNA('defense','armor','🛡️')">Bone Armor</div>
+            <div class="dna-opt" onclick="selectDNA('defense','spikes','🔱')">Tail Spikes</div>
+            <div class="dna-opt" onclick="selectDNA('defense','plates','🏔️')">Back Plates</div>
+            <div class="dna-opt" onclick="selectDNA('defense','feathers','🪶')">Feathered</div>
+          </div>
+        </div>
+        <div class="dna-trait-group">
+          <span class="dna-trait-label">🌍 Habitat</span>
+          <div class="dna-options" id="dna-habitat">
+            <div class="dna-opt selected" onclick="selectDNA('habitat','forest','🌲')">Dense Forest</div>
+            <div class="dna-opt" onclick="selectDNA('habitat','plains','🌾')">Open Plains</div>
+            <div class="dna-opt" onclick="selectDNA('habitat','water','🌊')">Near Water</div>
+            <div class="dna-opt" onclick="selectDNA('habitat','desert','🏜️')">Desert</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Result -->
+      <div class="dna-result-card" id="dnaResult">
+        <div class="dna-dino-display" id="dnaEmoji">🦎</div>
+        <div class="dna-dino-name" id="dnaName">TINY CARNIVORE</div>
+        <div class="dna-dino-desc" id="dnaDesc">A small but deadly predator that hunts in the dense forest undergrowth.</div>
+        <div class="dna-stats">
+          <div class="dna-stat"><div class="dna-stat-val" id="dnaStr">45</div><div class="dna-stat-lbl">Strength</div></div>
+          <div class="dna-stat"><div class="dna-stat-val" id="dnaSpd">85</div><div class="dna-stat-lbl">Speed</div></div>
+          <div class="dna-stat"><div class="dna-stat-val" id="dnaDef">20</div><div class="dna-stat-lbl">Defense</div></div>
+          <div class="dna-stat"><div class="dna-stat-val" id="dnaInt">70</div><div class="dna-stat-lbl">Intellect</div></div>
+        </div>
+        <button class="btn btn-primary" style="width:100%;margin-top:16px;" onclick="shareDNA()">📤 Share My Dino!</button>
+        <button class="btn btn-secondary" style="width:100%;margin-top:8px;" onclick="addLBPoints(25,'🧬 DNA Builder')">+25 Pts</button>
+      </div>
+    </div>
+  </section>
+</div>
+
+<!-- ════════════ TIME MACHINE ════════════ -->
+<div class="page" id="page-time-machine">
+  <section>
+    <div class="section-label">🗺️ Interactive</div>
+    <div class="section-title">TIME <span>MACHINE</span></div>
+    <p style="color:var(--text-secondary);margin-bottom:20px;max-width:540px;">Travel through time and see how Earth looked during each dinosaur era — different continents, different dinosaurs!</p>
+
+    <div class="time-era-tabs">
+      <button class="time-era-btn active" onclick="setEra('triassic')">🌋 Triassic<br><small>252–201 Mya</small></button>
+      <button class="time-era-btn" onclick="setEra('jurassic')">🌿 Jurassic<br><small>201–145 Mya</small></button>
+      <button class="time-era-btn" onclick="setEra('cretaceous')">☄️ Cretaceous<br><small>145–66 Mya</small></button>
+      <button class="time-era-btn" onclick="setEra('present')">🌍 Present Day<br><small>Today</small></button>
+    </div>
+
+    <div class="time-map-container" id="timeMapContainer">
+      <!-- Continents rendered by JS -->
+    </div>
+
+    <div class="time-info" id="timeInfo">
+      <div class="time-info-item"><span class="time-info-val" id="ti-temp">35°C</span><span class="time-info-lbl">Avg Temperature</span></div>
+      <div class="time-info-item"><span class="time-info-val" id="ti-co2">2000ppm</span><span class="time-info-lbl">CO₂ Level</span></div>
+      <div class="time-info-item"><span class="time-info-val" id="ti-sealevel">+80m</span><span class="time-info-lbl">Sea Level vs Today</span></div>
+    </div>
+
+    <div id="timeEraDinos" style="margin-top:20px;display:grid;grid-template-columns:repeat(auto-fill,minmax(180px,1fr));gap:12px;"></div>
+    <div class="ad-slot" style="margin-top:24px;"></div>
+  </section>
+</div>
+
+<!-- ════════════ LEADERBOARD ════════════ -->
+<div class="page" id="page-leaderboard">
+  <section>
+    <div class="section-label">🏆 Gamification</div>
+    <div class="section-title">DINO <span>POINTS</span></div>
+
+    <!-- Your profile -->
+    <div class="lb-profile">
+      <div class="lb-avatar" id="lbAvatar">🥚</div>
+      <div style="flex:1;">
+        <div class="lb-rank-badge" id="lbRankBadge">EGG</div>
+        <div class="lb-username" id="lbUsername">EXPLORER</div>
+        <div class="lb-pts">Your points: <span id="lbMyPts">0</span> pts</div>
+        <div style="display:flex;align-items:center;gap:10px;margin-top:8px;">
+          <div class="lb-progress-bar" style="flex:1;"><div class="lb-progress-fill" id="lbProgressFill" style="width:0%"></div></div>
+          <span style="font-size:0.72rem;color:var(--muted);" id="lbNextRank">→ HATCHLING at 100pts</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- How to earn points -->
+    <div class="section-label" style="margin-bottom:12px;">💡 How to Earn Points</div>
+    <div class="lb-actions">
+      <div class="lb-action-card" onclick="showPage('alldinos')">
+        <span class="lb-action-icon">📖</span>
+        <div class="lb-action-title">Read Article</div>
+        <div class="lb-action-pts">+10 pts</div>
+      </div>
+      <div class="lb-action-card" onclick="showPage('quiz')">
+        <span class="lb-action-icon">🧠</span>
+        <div class="lb-action-title">Complete Quiz</div>
+        <div class="lb-action-pts">+50 pts</div>
+      </div>
+      <div class="lb-action-card" onclick="showPage('rock-scanner')">
+        <span class="lb-action-icon">🪨</span>
+        <div class="lb-action-title">Scan a Rock</div>
+        <div class="lb-action-pts">+15 pts</div>
+      </div>
+      <div class="lb-action-card" onclick="showPage('battle')">
+        <span class="lb-action-icon">⚔️</span>
+        <div class="lb-action-title">Win a Battle</div>
+        <div class="lb-action-pts">+20 pts</div>
+      </div>
+      <div class="lb-action-card" onclick="showPage('dna-builder')">
+        <span class="lb-action-icon">🧬</span>
+        <div class="lb-action-title">Build DNA</div>
+        <div class="lb-action-pts">+25 pts</div>
+      </div>
+      <div class="lb-action-card" onclick="toggleLike()">
+        <span class="lb-action-icon">❤️</span>
+        <div class="lb-action-title">Like Article</div>
+        <div class="lb-action-pts">+5 pts</div>
+      </div>
+    </div>
+
+    <!-- Global leaderboard -->
+    <div class="section-label" style="margin-bottom:12px;">🌍 Global Leaderboard (Simulated)</div>
+    <div class="lb-board" id="lbBoard"></div>
+    <div class="ad-slot" style="margin-top:24px;"></div>
+  </section>
+</div>
+
+<!-- ════════════ SOUNDSCAPE ════════════ -->
+<div class="page" id="page-soundscape">
+  <section>
+    <div class="section-label">🎵 Ambient Audio</div>
+    <div class="section-title">PREHISTORIC <span>SOUNDS</span></div>
+    <p style="color:var(--text-secondary);margin-bottom:20px;max-width:540px;">Immerse yourself in the sounds of the prehistoric world. Click any sound to play!</p>
+
+    <!-- Visualizer -->
+    <div class="sound-visualizer" id="soundVisualizer">
+      <div class="sv-bar" style="height:8px;"></div>
+      <div class="sv-bar" style="height:16px;"></div>
+      <div class="sv-bar" style="height:24px;"></div>
+      <div class="sv-bar" style="height:12px;"></div>
+      <div class="sv-bar" style="height:32px;"></div>
+      <div class="sv-bar" style="height:20px;"></div>
+      <div class="sv-bar" style="height:8px;"></div>
+      <div class="sv-bar" style="height:28px;"></div>
+      <div class="sv-bar" style="height:14px;"></div>
+      <div class="sv-bar" style="height:36px;"></div>
+      <div class="sv-bar" style="height:22px;"></div>
+      <div class="sv-bar" style="height:10px;"></div>
+    </div>
+
+    <!-- Volume -->
+    <div class="sound-vol-wrap">
+      <span>🔊</span>
+      <input type="range" class="size-slider" id="volumeSlider" min="0" max="100" value="70" oninput="setVolume(this.value)" style="flex:1;">
+      <span style="font-size:0.82rem;color:var(--muted);min-width:36px;" id="volDisplay">70%</span>
+    </div>
+
+    <!-- Sound cards -->
+    <div class="sound-grid">
+      <div class="sound-card" onclick="toggleSound('jungle')" id="sc-jungle" style="--sc-color:rgba(110,251,62,0.1);--sc-border:rgba(110,251,62,0.3);--sc-glow:rgba(110,251,62,0.2);">
+        <div class="sound-indicator"></div>
+        <span class="sound-icon">🌿</span>
+        <div class="sound-name">Jungle Ambience</div>
+        <div class="sound-desc">Dense prehistoric forest</div>
+      </div>
+      <div class="sound-card" onclick="toggleSound('trex')" id="sc-trex" style="--sc-color:rgba(239,68,68,0.1);--sc-border:rgba(239,68,68,0.3);--sc-glow:rgba(239,68,68,0.2);">
+        <div class="sound-indicator"></div>
+        <span class="sound-icon">🦖</span>
+        <div class="sound-name">T-Rex Roar</div>
+        <div class="sound-desc">The king announces himself</div>
+      </div>
+      <div class="sound-card" onclick="toggleSound('rain')" id="sc-rain" style="--sc-color:rgba(96,165,250,0.1);--sc-border:rgba(96,165,250,0.3);--sc-glow:rgba(96,165,250,0.2);">
+        <div class="sound-indicator"></div>
+        <span class="sound-icon">🌧️</span>
+        <div class="sound-name">Prehistoric Rain</div>
+        <div class="sound-desc">Warm Cretaceous downpour</div>
+      </div>
+      <div class="sound-card" onclick="toggleSound('volcano')" id="sc-volcano" style="--sc-color:rgba(251,146,60,0.1);--sc-border:rgba(251,146,60,0.3);--sc-glow:rgba(251,146,60,0.2);">
+        <div class="sound-indicator"></div>
+        <span class="sound-icon">🌋</span>
+        <div class="sound-name">Volcano Rumble</div>
+        <div class="sound-desc">Triassic volcanic activity</div>
+      </div>
+      <div class="sound-card" onclick="toggleSound('raptor')" id="sc-raptor" style="--sc-color:rgba(167,139,250,0.1);--sc-border:rgba(167,139,250,0.3);--sc-glow:rgba(167,139,250,0.2);">
+        <div class="sound-indicator"></div>
+        <span class="sound-icon">🦅</span>
+        <div class="sound-name">Raptor Calls</div>
+        <div class="sound-desc">Pack communication</div>
+      </div>
+      <div class="sound-card" onclick="toggleSound('ocean')" id="sc-ocean" style="--sc-color:rgba(34,211,238,0.1);--sc-border:rgba(34,211,238,0.3);--sc-glow:rgba(34,211,238,0.2);">
+        <div class="sound-indicator"></div>
+        <span class="sound-icon">🌊</span>
+        <div class="sound-name">Ancient Ocean</div>
+        <div class="sound-desc">Jurassic sea sounds</div>
+      </div>
+      <div class="sound-card" onclick="toggleSound('wind')" id="sc-wind" style="--sc-color:rgba(255,255,255,0.06);--sc-border:rgba(255,255,255,0.2);--sc-glow:rgba(255,255,255,0.1);">
+        <div class="sound-indicator"></div>
+        <span class="sound-icon">💨</span>
+        <div class="sound-name">Prehistoric Wind</div>
+        <div class="sound-desc">Open plains breeze</div>
+      </div>
+      <div class="sound-card" onclick="toggleSound('meteor')" id="sc-meteor" style="--sc-color:rgba(253,224,71,0.1);--sc-border:rgba(253,224,71,0.3);--sc-glow:rgba(253,224,71,0.2);">
+        <div class="sound-indicator"></div>
+        <span class="sound-icon">☄️</span>
+        <div class="sound-name">Meteor Impact</div>
+        <div class="sound-desc">The end of the age</div>
+      </div>
+    </div>
+    <div class="dyk">
+      <span class="dyk-icon">🎵</span>
+      <div><div class="dyk-label">Sound Science</div><div class="dyk-text">We don't know exactly what dinosaurs sounded like — but scientists study their nasal passages and ear bones to make educated guesses. Some may have made deep rumbling sounds like elephants or crocodiles!</div></div>
+    </div>
+  </section>
+</div>
+
+<!-- ════════════════════════════════════════
+     🏃 DINO RUNNER PAGE
+════════════════════════════════════════ -->
+<div class="page" id="page-dino-runner">
+  <section>
+    <div class="section-label">🎮 Arcade Game</div>
+    <div class="section-title">DINO <span>RUNNER</span></div>
+    <p style="color:var(--text-secondary);margin-bottom:20px;max-width:520px;">Run as far as you can! Dodge asteroids, rocks and obstacles. How long can you survive before extinction? 🦖</p>
+
+    <!-- Score bar -->
+    <div class="runner-score-bar">
+      <div class="runner-score-item">
+        <div class="runner-score-val" id="runnerScore">0</div>
+        <div class="runner-score-lbl">Score</div>
+      </div>
+      <div class="runner-score-item">
+        <div class="runner-score-val" id="runnerHigh">0</div>
+        <div class="runner-score-lbl">Best</div>
+      </div>
+      <div class="runner-score-item">
+        <div class="runner-score-val" id="runnerLevel">1</div>
+        <div class="runner-score-lbl">Level</div>
+      </div>
+      <div class="runner-score-item">
+        <div class="runner-score-val" id="runnerCoins">0</div>
+        <div class="runner-score-lbl">🦴 Bones</div>
+      </div>
+    </div>
+
+    <!-- Canvas -->
+    <div class="runner-canvas-wrap" id="runnerCanvasWrap">
+      <canvas id="runnerCanvas" width="700" height="220"></canvas>
+      <!-- Start overlay -->
+      <div class="runner-overlay" id="runnerOverlay">
+        <div class="runner-overlay-emoji">🦖</div>
+        <div class="runner-overlay-title">DINO RUNNER</div>
+        <div class="runner-overlay-sub">Dodge asteroids & survive as long as possible!<br>Tap or press Space / ↑ to jump · Double jump available!</div>
+        <button class="runner-overlay-btn" onclick="startRunner()">▶ PLAY NOW</button>
+      </div>
+      <!-- Game over overlay -->
+      <div class="runner-overlay hidden" id="runnerGameOver">
+        <div class="runner-overlay-emoji" id="goEmoji">💀</div>
+        <div class="runner-overlay-title" id="goTitle">EXTINCT!</div>
+        <div style="font-size:0.88rem;color:var(--muted);margin-bottom:6px;">Score: <span style="color:var(--accent);font-weight:700;" id="goScore">0</span></div>
+        <div style="font-size:0.78rem;color:var(--muted);margin-bottom:20px;" id="goMsg">Try again!</div>
+        <button class="runner-overlay-btn" onclick="restartRunner()">🔄 PLAY AGAIN</button>
+      </div>
+    </div>
+
+    <!-- Controls -->
+    <div class="runner-controls">
+      <div class="runner-ctrl-btn" onclick="runnerJump()">⬆️ Jump (Space/Tap)</div>
+      <div class="runner-ctrl-btn runner-share-btn" id="runnerShareBtn" onclick="shareRunnerScore()">📤 Share Score</div>
+      <div class="runner-ctrl-btn" onclick="showPage('leaderboard')">🏆 Leaderboard</div>
+    </div>
+
+    <!-- Tips -->
+    <div class="runner-tips">
+      <div class="runner-tip">⬆️ <span>Space / Tap to jump</span></div>
+      <div class="runner-tip">✌️ <span>Double jump in air</span></div>
+      <div class="runner-tip">🦴 <span>Collect bones for bonus pts</span></div>
+      <div class="runner-tip">⚡ <span>Speed increases over time</span></div>
+      <div class="runner-tip">☄️ <span>Watch out for asteroids!</span></div>
+      <div class="runner-tip">🏆 <span>Beat 500 pts for Reddit glory!</span></div>
+    </div>
+
+    <div class="dyk" style="margin-top:20px;">
+      <span class="dyk-icon">🦖</span>
+      <div><div class="dyk-label">Did You Know?</div><div class="dyk-text">The real T-Rex could run at only about 20 km/h — slower than most humans sprinting! But in this game, your dino is way faster. 🏃</div></div>
+    </div>
+  </section>
+</div>
+
 <!-- FOOTER -->
 <footer>
   <div class="footer-inner">
@@ -4950,7 +6240,7 @@
 
 <script>
 // ── PAGES ──
-const pages = ['home','basics','eras','types','popular','seo','tops','eggs','extinction','quiz','facts','article','alldinos','fossils-map','comparison','rock-scanner'];
+const pages = ['home','basics','eras','types','popular','seo','tops','eggs','extinction','quiz','facts','article','alldinos','fossils-map','comparison','rock-scanner','battle','time-machine','size-compare','dna-builder','soundscape','leaderboard','dino-runner'];
 
 function showPage(id) {
   // Update page title for SEO
@@ -6586,6 +7876,17 @@ function showArticle(id) {
         <span style="color:var(--accent)">${a.title}</span>
       </span>
     </nav>
+<!-- 🦕 DINO NEWS BANNER -->
+<div class="dino-news-banner" id="dinoNewsBanner" onclick="dinoNewsClick()">
+  <span class="news-icon">🗞️</span>
+  <div class="news-badge">⚡ NEW</div>
+  <div class="news-text-wrap">
+    <div class="news-title">🦕 DINO NEWS — Paleontology Updates & Latest Discoveries</div>
+    <div class="news-sub">Breaking dino science • New fossil finds • Research updates • Real-time prehistoric world</div>
+  </div>
+  <div class="news-coming">🔬 Coming Soon</div>
+  <button class="news-dismiss" onclick="event.stopPropagation();dismissDinoNews()" aria-label="Dismiss">✕</button>
+</div>
 
 <!-- LANGUAGE DROPDOWN -->
 <div class="lang-dropdown" id="langDropdown">
@@ -6696,26 +7997,7 @@ function showArticle(id) {
 }
 
 // ── ERA DETAIL ──
-const eraData = {
-  triassic: {
-    emoji:'🌵', name:'TRIASSIC PERIOD', period:'252 – 201 Million Years Ago',
-    climate:'Hot, dry, and harsh. One big supercontinent called Pangaea dominated. No polar ice.',
-    dinos:['Eoraptor – one of the first dinosaurs, small chicken-sized predator','Herrerasaurus – an early bipedal meat-eater','Plateosaurus – a large plant-eater, early ancestor of the giant sauropods','Coelophysis – a slender, fast predator that hunted in packs'],
-    fact:'The Triassic began after the largest extinction event in history wiped out 96% of all marine species!'
-  },
-  jurassic: {
-    emoji:'🌿', name:'JURASSIC PERIOD', period:'201 – 145 Million Years Ago',
-    climate:'Warm and lush. Pangaea split apart. Huge forests covered the land, providing food for giant herbivores.',
-    dinos:['Brachiosaurus – one of the tallest animals ever, reached 13m high','Stegosaurus – armored plant-eater with distinctive back plates','Allosaurus – the top predator of the Jurassic, a T-Rex ancestor','Diplodocus – up to 27m long, one of the longest dinosaurs','Archaeopteryx – part dinosaur, part bird — the evolutionary link'],
-    fact:'The first birds evolved during the Jurassic period from small feathered theropod dinosaurs!'
-  },
-  cretaceous: {
-    emoji:'🌺', name:'CRETACEOUS PERIOD', period:'145 – 66 Million Years Ago',
-    climate:'Warm with higher sea levels. Flowering plants appeared for the first time. Continents moved into familiar positions.',
-    dinos:['T-Rex – the most powerful land predator ever','Triceratops – the famous three-horned giant','Velociraptor – feathered, intelligent pack hunter','Ankylosaurus – armored like a tank with a bone club tail','Spinosaurus – possibly the largest carnivore, semi-aquatic','Pteranodon – flying reptile with 7m wingspan (not a dinosaur, but lived alongside them)'],
-    fact:'The Cretaceous ended with the most famous extinction event in history — the Chicxulub asteroid impact!'
-  }
-};
+;
 
 function showEra(id) {
   const e = eraData[id];
@@ -9717,6 +10999,1182 @@ showPage = function(id) {
   _visualPageHook(id);
   setTimeout(initVisualEffects, 200);
 };
+
+// ══════════════════════════════════════════════════════════════
+// ⚔️ BATTLE GAME
+// ══════════════════════════════════════════════════════════════
+const battleData = {
+  trex:         {name:'T-Rex',        emoji:'🦖', str:95, spd:45, def:60, intel:30},
+  velociraptor: {name:'Velociraptor', emoji:'🦅', str:60, spd:90, def:40, intel:90},
+  triceratops:  {name:'Triceratops',  emoji:'🦏', str:75, spd:40, def:90, intel:40},
+  spinosaurus:  {name:'Spinosaurus',  emoji:'🐊', str:88, spd:50, def:55, intel:35},
+  brachiosaurus:{name:'Brachiosaurus',emoji:'🦕', str:70, spd:25, def:80, intel:45},
+  ankylosaurus: {name:'Ankylosaurus', emoji:'🐢', str:65, spd:30, def:98, intel:35},
+  allosaurus:   {name:'Allosaurus',   emoji:'🦖', str:82, spd:60, def:50, intel:45},
+  diplodocus:   {name:'Diplodocus',   emoji:'🦕', str:60, spd:30, def:75, intel:40},
+  carnotaurus:  {name:'Carnotaurus',  emoji:'🐂', str:78, spd:75, def:45, intel:40},
+  stegosaurus:  {name:'Stegosaurus',  emoji:'🦎', str:60, spd:35, def:85, intel:30},
+  troodon:      {name:'Troodon',      emoji:'🦉', str:45, spd:80, def:30, intel:98},
+  utahraptor:   {name:'Utahraptor',   emoji:'🦖', str:75, spd:70, def:50, intel:75},
+};
+
+let battle1 = 'trex', battle2 = 'velociraptor';
+
+function initBattleGrids() {
+  ['battleGrid1','battleGrid2'].forEach((gid, gi) => {
+    const grid = document.getElementById(gid);
+    if (!grid) return;
+    grid.innerHTML = Object.entries(battleData).map(([id, d]) => `
+      <div class="battle-pick-card ${gi===0&&id===battle1?'picked-1':''} ${gi===1&&id===battle2?'picked-2':''}"
+           onclick="pickFighter(${gi+1},'${id}')" id="bpc-${gi+1}-${id}">
+        <span class="bpc-emoji">${d.emoji}</span>
+        <div class="bpc-name">${d.name}</div>
+      </div>`).join('');
+  });
+  updateBattleArena();
+}
+
+function pickFighter(num, id) {
+  if (num === 1) {
+    battle1 = id;
+    document.querySelectorAll('#battleGrid1 .battle-pick-card').forEach(c => c.classList.remove('picked-1'));
+    document.getElementById('bpc-1-'+id)?.classList.add('picked-1');
+  } else {
+    battle2 = id;
+    document.querySelectorAll('#battleGrid2 .battle-pick-card').forEach(c => c.classList.remove('picked-2'));
+    document.getElementById('bpc-2-'+id)?.classList.add('picked-2');
+  }
+  updateBattleArena();
+  document.getElementById('battleResult').classList.remove('visible');
+}
+
+function updateBattleArena() {
+  const d1 = battleData[battle1], d2 = battleData[battle2];
+  if (!d1||!d2) return;
+  document.getElementById('bf1emoji').textContent = d1.emoji;
+  document.getElementById('bf1name').textContent = d1.name;
+  document.getElementById('bf1stats').textContent = `STR ${d1.str} · SPD ${d1.spd} · DEF ${d1.def}`;
+  document.getElementById('bf2emoji').textContent = d2.emoji;
+  document.getElementById('bf2name').textContent = d2.name;
+  document.getElementById('bf2stats').textContent = `STR ${d2.str} · SPD ${d2.spd} · DEF ${d2.def}`;
+}
+
+function startBattle() {
+  const d1 = battleData[battle1], d2 = battleData[battle2];
+  if (!d1||!d2) return;
+  if (battle1 === battle2) { showToast('Pick two different dinosaurs!'); return; }
+  const score1 = d1.str * 0.4 + d1.spd * 0.3 + d1.def * 0.2 + d1.intel * 0.1 + Math.random() * 15;
+  const score2 = d2.str * 0.4 + d2.spd * 0.3 + d2.def * 0.2 + d2.intel * 0.1 + Math.random() * 15;
+  const winner = score1 > score2 ? d1 : d2;
+  const loser = score1 > score2 ? d2 : d1;
+  const margin = Math.abs(score1 - score2);
+  const closeCall = margin < 8;
+
+  document.getElementById('winnerEmoji').textContent = winner.emoji;
+  document.getElementById('winnerTitle').textContent = winner.name.toUpperCase() + ' WINS!';
+  document.getElementById('winnerDesc').textContent = closeCall
+    ? `It was an incredibly close fight! ${winner.name}'s superior ${score1>score2?'strength':'speed'} made the difference.`
+    : `${winner.name} dominated the battle with overwhelming force! ${loser.name} barely had a chance.`;
+
+  // Stat bars
+  const bars = document.getElementById('battleStatBars');
+  const stats = [{k:'STR',a:d1.str,b:d2.str},{k:'SPD',a:d1.spd,b:d2.spd},{k:'DEF',a:d1.def,b:d2.def},{k:'INT',a:d1.intel,b:d2.intel}];
+  bars.innerHTML = stats.map(s => `
+    <div class="battle-stat-row">
+      <div class="bsr-bar"><div class="bsr-fill green" style="width:${s.a}%"></div></div>
+      <div class="bsr-label">${s.k}</div>
+      <div class="bsr-bar"><div class="bsr-fill red" style="width:${s.b}%"></div></div>
+    </div>`).join('');
+
+  document.getElementById('battleResult').classList.add('visible');
+  document.getElementById('battleResult').scrollIntoView({behavior:'smooth', block:'nearest'});
+  addLBPoints(20, '⚔️ Battle completed!');
+  if (typeof spawnParticles === 'function') {
+    const rect = document.getElementById('battleResult').getBoundingClientRect();
+    spawnParticles(rect.left + rect.width/2, rect.top + 60, '#6efb3e');
+  }
+}
+
+function resetBattle() {
+  document.getElementById('battleResult').classList.remove('visible');
+}
+
+// ══════════════════════════════════════════════════════════════
+// 📏 SIZE COMPARATOR
+// ══════════════════════════════════════════════════════════════
+const dinoSizes = {
+  trex:         {name:'T-Rex',        emoji:'🦖', height:4.0,  fact:'T-Rex was about 2.3× taller than an average adult. Its skull alone was 1.5m long!'},
+  brachiosaurus:{name:'Brachiosaurus',emoji:'🦕', height:13.0, fact:'Brachiosaurus could look over a 4-story building. It weighed as much as 17 elephants!'},
+  velociraptor: {name:'Velociraptor', emoji:'🦅', height:0.5,  fact:'Real Velociraptors were turkey-sized! The ones in Jurassic Park were actually based on Deinonychus.'},
+  spinosaurus:  {name:'Spinosaurus',  emoji:'🐊', height:2.3,  fact:'Spinosaurus was taller than T-Rex and could swim! It had a 1.65m sail on its back.'},
+  triceratops:  {name:'Triceratops',  emoji:'🦏', height:3.0,  fact:'Triceratops had the largest skull of any land animal ever — up to 2.5m long with 3 horns!'},
+  ankylosaurus: {name:'Ankylosaurus', emoji:'🐢', height:1.7,  fact:'Ankylosaurus was low but massive — 7m long and covered in bone armor. Its tail club could break bones!'},
+  diplodocus:   {name:'Diplodocus',   emoji:'🦕', height:5.0,  fact:'Diplodocus was 27m long — longer than a tennis court! Its neck alone was 8m long.'},
+  microraptor:  {name:'Microraptor',  emoji:'🐦', height:0.3,  fact:'Microraptor was one of the smallest dinosaurs — about the size of a crow. It had 4 wings!'},
+};
+
+function updateSizeComparison() {
+  const userHeight = parseInt(document.getElementById('heightSlider').value);
+  const dinoId = document.getElementById('dinoSizeSelect').value;
+  const dino = dinoSizes[dinoId];
+  if (!dino) return;
+
+  document.getElementById('heightDisplay').textContent = userHeight + ' cm';
+
+  // Scale relative sizes — human base = 80px, scale dino relative
+  const humanPx = 80;
+  const scale = (userHeight / 100); // 1m = 80px
+  const dinoPx = (dino.height * 80);
+  const humanFS = Math.max(20, Math.min(80, humanPx)) + 'px';
+  const dinoFS = Math.max(24, Math.min(180, dinoPx)) + 'px';
+
+  document.getElementById('humanEmoji').style.fontSize = humanFS;
+  document.getElementById('humanHeight').textContent = (userHeight/100).toFixed(2) + 'm';
+  document.getElementById('dinoSizeEmoji').style.fontSize = dinoFS;
+  document.getElementById('dinoSizeEmoji').textContent = dino.emoji;
+  document.getElementById('dinoHeight').textContent = dino.height + 'm';
+  document.getElementById('dinoSizeLabel').textContent = dino.name;
+  document.getElementById('sizeFunFact').innerHTML = '🦕 ' + dino.fact;
+
+  const ratio = (dino.height / (userHeight/100)).toFixed(1);
+  const bigger = dino.height > (userHeight/100);
+  document.getElementById('sizeFunFact').innerHTML = `${dino.emoji} ${bigger ? dino.name + ' was <strong style="color:var(--accent)">' + ratio + '× taller</strong> than you!' : 'You would tower over a ' + dino.name + '! You are <strong style="color:var(--accent)">' + (1/ratio*ratio).toFixed(1) + '× taller</strong>!'} ${dino.fact}`;
+}
+
+// ══════════════════════════════════════════════════════════════
+// 🧬 DNA BUILDER
+// ══════════════════════════════════════════════════════════════
+const dnaState = {size:'tiny', diet:'carnivore', head:'massive', defense:'none', habitat:'forest'};
+
+const dnaEmojis = {
+  'tiny+carnivore':'🦎','small+carnivore':'🐍','medium+carnivore':'🦖',
+  'large+carnivore':'🦕','giant+carnivore':'👹',
+  'tiny+herbivore':'🐢','small+herbivore':'🦔','medium+herbivore':'🦙',
+  'large+herbivore':'🦏','giant+herbivore':'🐘',
+  'tiny+omnivore':'🦎','small+omnivore':'🦜','medium+omnivore':'🦅',
+  'large+omnivore':'🦕','giant+omnivore':'🦖',
+};
+
+const dnaSizeStats = {tiny:{str:20,spd:90,def:10},small:{str:40,spd:75,def:25},medium:{str:65,spd:60,def:45},large:{str:80,spd:40,def:70},giant:{str:95,spd:20,def:85}};
+const dnaDietStats = {carnivore:{str:20,intel:10},herbivore:{def:15,intel:20},omnivore:{str:10,intel:30}};
+const dnaDefStats  = {none:{spd:15},armor:{def:30,str:-5},spikes:{str:20,def:10},plates:{def:20,spd:-5},feathers:{spd:10,intel:15}};
+
+function selectDNA(trait, val, icon) {
+  dnaState[trait] = val;
+  document.querySelectorAll('#dna-'+trait+' .dna-opt').forEach(o => o.classList.remove('selected'));
+  event.target.classList.add('selected');
+  updateDNAResult();
+}
+
+function updateDNAResult() {
+  const s = dnaState;
+  const sStats = dnaSizeStats[s.size] || dnaSizeStats.medium;
+  const dStats = dnaDietStats[s.diet] || {};
+  const dfStats = dnaDefStats[s.defense] || {};
+
+  const str = Math.min(99, (sStats.str||0) + (dStats.str||0) + (dfStats.str||0));
+  const spd = Math.min(99, (sStats.spd||0) + (dStats.spd||0) + (dfStats.spd||0));
+  const def = Math.min(99, (sStats.def||0) + (dStats.def||0) + (dfStats.def||0));
+  const intel = Math.min(99, (dStats.intel||0) + (dfStats.intel||0) + 20);
+
+  const emoji = dnaEmojis[s.size+'+'+s.diet] || '🦕';
+  const name = s.size.toUpperCase() + ' ' + s.diet.toUpperCase();
+
+  const descs = {
+    'tiny+carnivore+forest': 'A lightning-fast tiny hunter darting through the undergrowth.',
+    'giant+carnivore+plains': 'A colossal apex predator that rules the open savanna.',
+    'large+herbivore+water': 'A peaceful giant wading through shallow Jurassic lakes.',
+    'medium+omnivore+desert': 'A resourceful survivor thriving in the harsh prehistoric desert.',
+  };
+  const descKey = s.size+'+'+s.diet+'+'+s.habitat;
+  const desc = descs[descKey] || `A ${s.size} ${s.diet} with ${s.head} features, ${s.defense === 'none' ? 'relying on pure speed' : 'protected by ' + s.defense}, living in ${s.habitat} environments.`;
+
+  document.getElementById('dnaEmoji').textContent = emoji;
+  document.getElementById('dnaName').textContent = name;
+  document.getElementById('dnaDesc').textContent = desc;
+  document.getElementById('dnaStr').textContent = str;
+  document.getElementById('dnaSpd').textContent = spd;
+  document.getElementById('dnaDef').textContent = def;
+  document.getElementById('dnaInt').textContent = intel;
+}
+
+function shareDNA() {
+  const s = dnaState;
+  const emoji = document.getElementById('dnaEmoji').textContent;
+  const text = `I built a ${s.size} ${s.diet} dinosaur with ${s.head} head in DinoWorld! ${emoji} Try it: https://jacobb-rgb.github.io/DinoWorld/`;
+  if (navigator.share) navigator.share({title:'My DinoWorld Creation',text});
+  else if (navigator.clipboard) { navigator.clipboard.writeText(text); showToast('🧬 Dino copied to clipboard!'); }
+}
+
+// ══════════════════════════════════════════════════════════════
+// 🗺️ TIME MACHINE
+// ══════════════════════════════════════════════════════════════
+const eraData = {
+  triassic: {
+    name:'Triassic Period', mya:'252–201 Mya', temp:'35°C', co2:'2000ppm', sea:'+80m',
+    desc:'All continents were joined as one supercontinent called Pangaea. Hot and dry climate.',
+    continents:[
+      {emoji:'🌋',label:'Pangaea',x:30,y:20,w:180,h:140,rx:'40% 60% 55% 45% / 35% 45% 60% 55%'},
+    ],
+    dinos:[
+      {id:'herrerasaurus',emoji:'🦖',name:'Herrerasaurus',desc:'One of the earliest dinosaurs',x:55,y:55},
+      {id:'coelophysis',emoji:'🦅',name:'Coelophysis',desc:'Fast early predator',x:70,y:40},
+      {id:'plateosaurus',emoji:'🦕',name:'Plateosaurus',desc:'Early large herbivore',x:40,y:65},
+    ],
+    dino_cards:[
+      {emoji:'🦖',name:'Herrerasaurus',tag:'Early Carnivore'},
+      {emoji:'🦅',name:'Coelophysis',tag:'Fast Predator'},
+      {emoji:'🦕',name:'Plateosaurus',tag:'Prosauropod'},
+      {emoji:'🐊',name:'Rutiodon',tag:'Phytosaur'},
+    ]
+  },
+  jurassic: {
+    name:'Jurassic Period', mya:'201–145 Mya', temp:'30°C', co2:'1600ppm', sea:'+75m',
+    desc:'Pangaea began splitting. Lush tropical forests covered most of the world.',
+    continents:[
+      {emoji:'🌿',label:'Laurasia',x:20,y:10,w:150,h:100,rx:'35% 65% 50% 50% / 40% 40% 65% 55%'},
+      {emoji:'🌿',label:'Gondwana',x:60,y:50,w:160,h:120,rx:'50% 50% 60% 40% / 45% 55% 50% 55%'},
+    ],
+    dinos:[
+      {id:'trex',emoji:'🦖',name:'Allosaurus',desc:'Jurassic apex predator',x:35,y:35},
+      {id:'brachiosaurus',emoji:'🦕',name:'Brachiosaurus',desc:'Tallest land animal',x:55,y:60},
+      {id:'stegosaurus',emoji:'🦎',name:'Stegosaurus',desc:'Plated herbivore',x:75,y:35},
+    ],
+    dino_cards:[
+      {emoji:'🦖',name:'Allosaurus',tag:'Apex Predator'},
+      {emoji:'🦕',name:'Brachiosaurus',tag:'Giant Sauropod'},
+      {emoji:'🦎',name:'Stegosaurus',tag:'Plated Dinosaur'},
+      {emoji:'🦅',name:'Archaeopteryx',tag:'First Bird'},
+      {emoji:'🦕',name:'Diplodocus',tag:'Long-Neck Giant'},
+    ]
+  },
+  cretaceous: {
+    name:'Cretaceous Period', mya:'145–66 Mya', temp:'26°C', co2:'1000ppm', sea:'+60m',
+    desc:'Continents drifted apart to near modern positions. Flowering plants appeared.',
+    continents:[
+      {emoji:'🌺',label:'North America',x:5,y:15,w:100,h:90,rx:'45% 55% 60% 40% / 50% 40% 60% 50%'},
+      {emoji:'🌺',label:'Europe',x:115,y:10,w:60,h:70,rx:'40% 60% 55% 45% / 55% 45% 60% 40%'},
+      {emoji:'🌺',label:'Asia',x:185,y:5,w:110,h:100,rx:'50% 50% 55% 45% / 40% 60% 50% 50%'},
+      {emoji:'🌺',label:'South America',x:35,y:120,w:80,h:100,rx:'55% 45% 50% 50% / 50% 50% 60% 40%'},
+      {emoji:'🌺',label:'Africa',x:120,y:100,w:85,h:110,rx:'50% 50% 50% 50% / 45% 55% 50% 50%'},
+      {emoji:'🌺',label:'Antarctica/Australia',x:185,y:130,w:100,h:80,rx:'40% 60% 55% 45% / 55% 45% 50% 50%'},
+    ],
+    dinos:[
+      {id:'trex',emoji:'🦖',name:'T-Rex',desc:'King of the Cretaceous',x:15,y:30},
+      {id:'velociraptor',emoji:'🦅',name:'Velociraptor',desc:'Pack hunter',x:70,y:15},
+      {id:'triceratops',emoji:'🦏',name:'Triceratops',desc:'Three-horned giant',x:20,y:55},
+      {id:'spinosaurus',emoji:'🐊',name:'Spinosaurus',desc:'Semi-aquatic hunter',x:60,y:55},
+      {id:'ankylosaurus',emoji:'🐢',name:'Ankylosaurus',desc:'Armored tank',x:40,y:35},
+    ],
+    dino_cards:[
+      {emoji:'🦖',name:'T-Rex',tag:'Apex Predator'},
+      {emoji:'🦏',name:'Triceratops',tag:'Horned Dinosaur'},
+      {emoji:'🦅',name:'Velociraptor',tag:'Pack Hunter'},
+      {emoji:'🐊',name:'Spinosaurus',tag:'Semi-Aquatic'},
+      {emoji:'🐢',name:'Ankylosaurus',tag:'Armored Tank'},
+    ]
+  },
+  present: {
+    name:'Present Day', mya:'Today', temp:'15°C', co2:'420ppm', sea:'0m',
+    desc:'Modern continents as we know them. Dinosaurs live on as birds (over 10,000 species!).',
+    continents:[
+      {emoji:'🌍',label:'Africa',x:120,y:90,w:85,h:110,rx:'50% 50% 50% 50% / 45% 55% 50% 50%'},
+      {emoji:'🌎',label:'Americas',x:10,y:20,w:120,h:180,rx:'45% 55% 50% 50% / 50% 50% 55% 45%'},
+      {emoji:'🌏',label:'Asia+Europe',x:185,y:10,w:130,h:120,rx:'50% 50% 55% 45% / 40% 60% 50% 50%'},
+      {emoji:'🐧',label:'Antarctica',x:130,y:195,w:90,h:60,rx:'50% 50% 60% 40% / 55% 45% 50% 50%'},
+      {emoji:'🦘',label:'Australia',x:220,y:140,w:80,h:70,rx:'40% 60% 50% 50% / 50% 50% 60% 40%'},
+    ],
+    dinos:[
+      {id:'trex',emoji:'🐦',name:'Birds (Living Dinos!)',desc:'10,000+ species worldwide',x:40,y:40},
+      {id:'fossils',emoji:'🦴',name:'Fossils',desc:'Found on every continent',x:65,y:60},
+    ],
+    dino_cards:[
+      {emoji:'🐦',name:'Modern Birds',tag:'Living Dinosaurs'},
+      {emoji:'🦴',name:'Fossils Worldwide',tag:'On every continent'},
+      {emoji:'🦎',name:'Crocodilians',tag:'Ancient relatives'},
+      {emoji:'🐊',name:'Komodo Dragon',tag:'Distant cousin'},
+    ]
+  }
+};
+
+let currentEra = 'triassic';
+
+function setEra(era) {
+  currentEra = era;
+  document.querySelectorAll('.time-era-btn').forEach((b,i) => {
+    b.classList.toggle('active', ['triassic','jurassic','cretaceous','present'][i] === era);
+  });
+  renderTimeMap(era);
+}
+
+function renderTimeMap(era) {
+  const data = eraData[era];
+  if (!data) return;
+
+  const container = document.getElementById('timeMapContainer');
+  if (!container) return;
+
+  // Render continent blobs
+  container.innerHTML = data.continents.map(c => `
+    <div class="time-continent" style="left:${c.x}px;top:${c.y}px;">
+      <div class="time-continent-shape" style="width:${c.w}px;height:${c.h}px;border-radius:${c.rx};">
+        <div style="padding:12px;font-size:0.72rem;font-weight:700;color:rgba(110,251,62,0.8);letter-spacing:1px;">${c.emoji} ${c.label}</div>
+      </div>
+    </div>`).join('') +
+    data.dinos.map(d => `
+    <div class="time-dino-dot" style="left:${d.x}%;top:${d.y}%" onclick="showArticle('${d.id}')">
+      <div class="time-dino-tooltip">${d.emoji} ${d.name}<br><span style="color:var(--muted);font-size:0.65rem">${d.desc}</span></div>
+    </div>`).join('');
+
+  // Update info
+  document.getElementById('ti-temp').textContent = data.temp;
+  document.getElementById('ti-co2').textContent = data.co2;
+  document.getElementById('ti-sealevel').textContent = data.sea;
+
+  // Dino cards
+  const cardsEl = document.getElementById('timeEraDinos');
+  if (cardsEl) {
+    cardsEl.innerHTML = `<div class="section-label" style="grid-column:1/-1;margin-bottom:0;">${data.name} · ${data.mya}</div>` +
+      data.dino_cards.map(d => `
+        <div class="card" style="padding:16px;cursor:pointer;" onclick="showArticle('${d.emoji==='🐦'?'feathers':'trex'}')">
+          <div style="font-size:2.5rem;margin-bottom:8px;">${d.emoji}</div>
+          <div style="font-weight:700;font-size:0.88rem;">${d.name}</div>
+          <div style="font-size:0.7rem;color:var(--muted);">${d.tag}</div>
+        </div>`).join('');
+  }
+}
+
+// ══════════════════════════════════════════════════════════════
+// 🏆 LEADERBOARD & POINTS SYSTEM
+// ══════════════════════════════════════════════════════════════
+const lbRanks = [
+  {name:'EGG',    emoji:'🥚',  min:0},
+  {name:'HATCHLING',emoji:'🐣', min:100},
+  {name:'RAPTOR', emoji:'🦅',  min:250},
+  {name:'TREX',   emoji:'🦖',  min:500},
+  {name:'ALPHA',  emoji:'👑',  min:1000},
+  {name:'LEGEND', emoji:'🌟',  min:2500},
+];
+
+const globalLB = [
+  {name:'DinoKing99',  emoji:'🦖', pts:2847},
+  {name:'FossilHunter',emoji:'🦕', pts:2341},
+  {name:'RaptorFan',   emoji:'🦅', pts:1893},
+  {name:'JurassicPro', emoji:'👑', pts:1567},
+  {name:'DinoNerd',    emoji:'🧬', pts:1234},
+  {name:'BoneDigger',  emoji:'🦴', pts:987},
+  {name:'PrehistoricQ',emoji:'☄️', pts:743},
+  {name:'T-RexLover',  emoji:'💪', pts:612},
+  {name:'SauroPal',    emoji:'🌿', pts:489},
+  {name:'YOU',         emoji:'🥚', pts:0, isMe:true},
+];
+
+function getLBPoints() {
+  try { return parseInt(localStorage.getItem('dw_pts') || '0'); } catch(e) { return 0; }
+}
+
+function addLBPoints(pts, reason) {
+  try {
+    const current = getLBPoints();
+    const newPts = current + pts;
+    localStorage.setItem('dw_pts', newPts);
+    showToast('🏆 +' + pts + ' pts — ' + reason);
+    updateLBDisplay();
+  } catch(e) {}
+}
+
+function getRank(pts) {
+  let rank = lbRanks[0];
+  for (const r of lbRanks) { if (pts >= r.min) rank = r; }
+  return rank;
+}
+
+function updateLBDisplay() {
+  const pts = getLBPoints();
+  const rank = getRank(pts);
+  const nextRank = lbRanks.find(r => r.min > pts);
+
+  const avatarEl = document.getElementById('lbAvatar');
+  const badgeEl = document.getElementById('lbRankBadge');
+  const ptsEl = document.getElementById('lbMyPts');
+  const fillEl = document.getElementById('lbProgressFill');
+  const nextEl = document.getElementById('lbNextRank');
+
+  if (avatarEl) avatarEl.textContent = rank.emoji;
+  if (badgeEl) badgeEl.textContent = rank.name;
+  if (ptsEl) ptsEl.textContent = pts;
+
+  if (nextRank) {
+    const progress = ((pts - rank.min) / (nextRank.min - rank.min)) * 100;
+    if (fillEl) fillEl.style.width = Math.min(100, progress) + '%';
+    if (nextEl) nextEl.textContent = '→ ' + nextRank.name + ' at ' + nextRank.min + ' pts';
+  } else {
+    if (fillEl) fillEl.style.width = '100%';
+    if (nextEl) nextEl.textContent = '🌟 Max Rank Achieved!';
+  }
+
+  // Update leaderboard
+  const myPts = getLBPoints();
+  globalLB[globalLB.length - 1].pts = myPts;
+  globalLB[globalLB.length - 1].emoji = rank.emoji;
+  const sorted = [...globalLB].sort((a, b) => b.pts - a.pts);
+
+  const board = document.getElementById('lbBoard');
+  if (board) {
+    const rankClasses = ['gold','silver','bronze'];
+    board.innerHTML = sorted.map((e, i) => `
+      <div class="lb-entry ${e.isMe ? 'me' : ''}">
+        <div class="lb-entry-rank ${rankClasses[i]||''}">${i+1}</div>
+        <div class="lb-entry-emoji">${e.emoji}</div>
+        <div class="lb-entry-name">${e.isMe ? '⭐ ' + e.name : e.name}</div>
+        <div class="lb-entry-pts-val">${e.pts.toLocaleString()}</div>
+      </div>`).join('');
+  }
+}
+
+// Award points for reading articles
+const _lbArticleHook = showArticle;
+showArticle = function(id) {
+  _lbArticleHook(id);
+  setTimeout(() => addLBPoints(10, '📖 Read article'), 3000);
+};
+
+// Award points for quiz completion
+document.addEventListener('DOMContentLoaded', () => {
+  setTimeout(() => {
+    if (typeof finishQuizUpg === 'function') {
+      const _lbQuizHook = finishQuizUpg;
+      finishQuizUpg = function() { _lbQuizHook(); addLBPoints(50, '🧠 Quiz completed!'); };
+    }
+  }, 500);
+});
+
+// ══════════════════════════════════════════════════════════════
+// 🎵 SOUNDSCAPE (Web Audio API)
+// ══════════════════════════════════════════════════════════════
+let audioCtx = null;
+const activeSounds = {};
+let masterVolume = 0.7;
+let vizInterval = null;
+
+function getAudioCtx() {
+  if (!audioCtx) audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+  if (audioCtx.state === 'suspended') audioCtx.resume();
+  return audioCtx;
+}
+
+function createSound(type) {
+  const ctx = getAudioCtx();
+  const gainNode = ctx.createGain();
+  gainNode.connect(ctx.destination);
+  gainNode.gain.setValueAtTime(0, ctx.currentTime);
+  gainNode.gain.linearRampToValueAtTime(masterVolume * 0.3, ctx.currentTime + 0.5);
+
+  let nodes = [];
+
+  if (type === 'jungle') {
+    // Layered oscillators for ambient forest sound
+    for (let i = 0; i < 4; i++) {
+      const osc = ctx.createOscillator();
+      const oscGain = ctx.createGain();
+      osc.type = 'sine';
+      osc.frequency.value = 180 + i * 80 + Math.random() * 40;
+      oscGain.gain.value = 0.08 + Math.random() * 0.05;
+      osc.connect(oscGain); oscGain.connect(gainNode);
+      osc.start();
+      nodes.push(osc, oscGain);
+    }
+  } else if (type === 'rain') {
+    const bufferSize = ctx.sampleRate * 2;
+    const buffer = ctx.createBuffer(1, bufferSize, ctx.sampleRate);
+    const data = buffer.getChannelData(0);
+    for (let i = 0; i < bufferSize; i++) data[i] = (Math.random() * 2 - 1) * 0.3;
+    const source = ctx.createBufferSource();
+    const filter = ctx.createBiquadFilter();
+    filter.type = 'lowpass'; filter.frequency.value = 1200;
+    source.buffer = buffer; source.loop = true;
+    source.connect(filter); filter.connect(gainNode);
+    source.start();
+    nodes.push(source, filter);
+  } else if (type === 'trex') {
+    const osc = ctx.createOscillator();
+    osc.type = 'sawtooth';
+    osc.frequency.setValueAtTime(80, ctx.currentTime);
+    osc.frequency.linearRampToValueAtTime(40, ctx.currentTime + 0.8);
+    osc.frequency.linearRampToValueAtTime(80, ctx.currentTime + 1.6);
+    gainNode.gain.setValueAtTime(masterVolume * 0.4, ctx.currentTime);
+    gainNode.gain.linearRampToValueAtTime(0, ctx.currentTime + 1.6);
+    osc.connect(gainNode); osc.start(); osc.stop(ctx.currentTime + 1.6);
+    nodes.push(osc);
+    setTimeout(() => { stopSound('trex'); }, 1700);
+  } else if (type === 'volcano') {
+    for (let i = 0; i < 3; i++) {
+      const osc = ctx.createOscillator();
+      osc.type = 'triangle';
+      osc.frequency.value = 30 + i * 15 + Math.random() * 10;
+      const oscG = ctx.createGain();
+      oscG.gain.value = 0.15 + Math.random() * 0.1;
+      osc.connect(oscG); oscG.connect(gainNode);
+      osc.start(); nodes.push(osc, oscG);
+    }
+  } else if (type === 'raptor') {
+    const osc = ctx.createOscillator();
+    osc.type = 'sine';
+    osc.frequency.setValueAtTime(600, ctx.currentTime);
+    osc.frequency.exponentialRampToValueAtTime(200, ctx.currentTime + 0.3);
+    gainNode.gain.linearRampToValueAtTime(masterVolume * 0.5, ctx.currentTime + 0.1);
+    gainNode.gain.linearRampToValueAtTime(0, ctx.currentTime + 0.4);
+    osc.connect(gainNode); osc.start(); osc.stop(ctx.currentTime + 0.4);
+    nodes.push(osc);
+    setTimeout(() => { stopSound('raptor'); }, 450);
+  } else if (type === 'ocean') {
+    const bufferSize = ctx.sampleRate * 3;
+    const buffer = ctx.createBuffer(1, bufferSize, ctx.sampleRate);
+    const data = buffer.getChannelData(0);
+    for (let i = 0; i < bufferSize; i++) {
+      data[i] = Math.sin(i * 0.0003) * Math.sin(i * 0.00007) * (Math.random() * 0.3 + 0.1);
+    }
+    const src = ctx.createBufferSource();
+    const f = ctx.createBiquadFilter();
+    f.type = 'lowpass'; f.frequency.value = 800;
+    src.buffer = buffer; src.loop = true;
+    src.connect(f); f.connect(gainNode); src.start();
+    nodes.push(src, f);
+  } else if (type === 'wind') {
+    const bufferSize = ctx.sampleRate * 2;
+    const buffer = ctx.createBuffer(1, bufferSize, ctx.sampleRate);
+    const data = buffer.getChannelData(0);
+    for (let i = 0; i < bufferSize; i++) data[i] = (Math.random() * 2 - 1) * 0.15;
+    const src = ctx.createBufferSource();
+    const f = ctx.createBiquadFilter();
+    f.type = 'bandpass'; f.frequency.value = 400; f.Q.value = 0.5;
+    src.buffer = buffer; src.loop = true;
+    src.connect(f); f.connect(gainNode); src.start();
+    nodes.push(src, f);
+  } else if (type === 'meteor') {
+    for (let i = 0; i < 2; i++) {
+      const osc = ctx.createOscillator();
+      osc.type = i === 0 ? 'sawtooth' : 'triangle';
+      osc.frequency.setValueAtTime(200 - i*50, ctx.currentTime);
+      osc.frequency.linearRampToValueAtTime(20, ctx.currentTime + 1.5);
+      const g = ctx.createGain();
+      g.gain.setValueAtTime(masterVolume * 0.4, ctx.currentTime);
+      g.gain.linearRampToValueAtTime(0, ctx.currentTime + 2);
+      osc.connect(g); g.connect(gainNode); osc.start(); osc.stop(ctx.currentTime + 2);
+      nodes.push(osc, g);
+    }
+    setTimeout(() => stopSound('meteor'), 2100);
+  }
+
+  return {gainNode, nodes};
+}
+
+function toggleSound(type) {
+  if (activeSounds[type]) {
+    stopSound(type);
+  } else {
+    activeSounds[type] = createSound(type);
+    document.getElementById('sc-'+type)?.classList.add('playing');
+    startVisualizer();
+    addLBPoints(5, '🎵 Prehistoric sounds!');
+  }
+}
+
+function stopSound(type) {
+  const s = activeSounds[type];
+  if (!s) return;
+  try {
+    s.gainNode.gain.linearRampToValueAtTime(0, audioCtx.currentTime + 0.3);
+    setTimeout(() => { s.nodes.forEach(n => { try { n.stop?.(); n.disconnect?.(); } catch(e){} }); }, 400);
+  } catch(e) {}
+  delete activeSounds[type];
+  document.getElementById('sc-'+type)?.classList.remove('playing');
+  if (Object.keys(activeSounds).length === 0) stopVisualizer();
+}
+
+function setVolume(val) {
+  masterVolume = val / 100;
+  document.getElementById('volDisplay').textContent = val + '%';
+  Object.values(activeSounds).forEach(s => {
+    try { s.gainNode.gain.setValueAtTime(masterVolume * 0.3, audioCtx.currentTime); } catch(e) {}
+  });
+}
+
+function startVisualizer() {
+  if (vizInterval) return;
+  const bars = document.querySelectorAll('.sv-bar');
+  vizInterval = setInterval(() => {
+    const isPlaying = Object.keys(activeSounds).length > 0;
+    bars.forEach(b => {
+      b.style.height = isPlaying ? (8 + Math.random() * 32) + 'px' : '4px';
+    });
+  }, 100);
+}
+function stopVisualizer() {
+  clearInterval(vizInterval); vizInterval = null;
+  document.querySelectorAll('.sv-bar').forEach(b => b.style.height = '4px');
+}
+
+// ══════════════════════════════════════════════════════════════
+// INIT ALL FEATURES ON PAGE SHOW
+// ══════════════════════════════════════════════════════════════
+const _featuresPageHook = showPage;
+showPage = function(id) {
+  _featuresPageHook(id);
+  setTimeout(() => {
+    if (id === 'battle') initBattleGrids();
+    if (id === 'size-compare') updateSizeComparison();
+    if (id === 'dna-builder') updateDNAResult();
+    if (id === 'time-machine') { setEra('triassic'); }
+    if (id === 'leaderboard') updateLBDisplay();
+  }, 100);
+};
+
+// Award pts when scanning rocks
+const _lbScanHook = scanRock;
+if (typeof _lbScanHook === 'function') {
+  scanRock = function() {
+    _lbScanHook();
+    setTimeout(() => addLBPoints(15, '🪨 Rock scanned!'), 2000);
+  };
+}
+
+// Init on load
+document.addEventListener('DOMContentLoaded', () => {
+  updateLBDisplay();
+});
+
+
+
+// ══ DINO NEWS BANNER ══
+function dinoNewsClick() {
+  showToast('🦕 Dino News launching soon — stay tuned!');
+}
+function dismissDinoNews() {
+  const b = document.getElementById('dinoNewsBanner');
+  if (b) { b.style.transition = 'all 0.3s ease'; b.style.maxHeight = '0'; b.style.padding = '0'; b.style.opacity = '0'; setTimeout(() => b.remove(), 350); }
+  try { localStorage.setItem('dw-news-dismissed', '1'); } catch(e) {}
+}
+// Check if dismissed
+document.addEventListener('DOMContentLoaded', () => {
+  try {
+    if (localStorage.getItem('dw-news-dismissed') === '1') {
+      const b = document.getElementById('dinoNewsBanner');
+      if (b) b.remove();
+    }
+  } catch(e) {}
+});
+
+
+// ══════════════════════════════════════════════════════════════
+// 🏃 DINO RUNNER — Full Game Engine
+// ══════════════════════════════════════════════════════════════
+(function() {
+  'use strict';
+
+  // ── CONFIG ──
+  const CFG = {
+    W: 700, H: 220,
+    GROUND: 170,
+    GRAVITY: 0.55,
+    JUMP_FORCE: -13,
+    INIT_SPEED: 4.5,
+    MAX_SPEED: 14,
+    ACCEL: 0.0015,
+    FPS_TARGET: 60,
+  };
+
+  // ── STATE ──
+  let canvas, ctx, running = false, gameOver = false;
+  let score = 0, highScore = 0, coins = 0, level = 1;
+  let speed, frame, raf;
+  let dino, obstacles, collectibles, clouds, particles;
+  let bgX = 0, groundX = 0;
+
+  // ── DINO ──
+  function makeDino() {
+    return {
+      x: 80, y: CFG.GROUND,
+      w: 44, h: 52,
+      vy: 0,
+      jumps: 0,
+      maxJumps: 2,
+      dead: false,
+      frame: 0,
+      frameTimer: 0,
+      dustTimer: 0,
+      invincible: 0,
+    };
+  }
+
+  // ── OBSTACLE TYPES ──
+  const OBS_TYPES = [
+    {emoji:'☄️', w:34, h:34, minY: CFG.GROUND - 34, pts:10, label:'Asteroid'},
+    {emoji:'🪨', w:36, h:30, minY: CFG.GROUND - 30, pts:10, label:'Rock'},
+    {emoji:'🌵', w:24, h:48, minY: CFG.GROUND - 48, pts:15, label:'Cactus'},
+    {emoji:'⚡', w:28, h:40, minY: CFG.GROUND - 40, pts:15, label:'Lightning', fly:true, flyY: CFG.GROUND - 90},
+    {emoji:'💥', w:40, h:40, minY: CFG.GROUND - 40, pts:20, label:'Explosion'},
+  ];
+
+  const COLLECT_TYPES = [
+    {emoji:'🦴', pts:5,  color:'#a0ff70'},
+    {emoji:'⭐', pts:15, color:'#ffd700'},
+    {emoji:'💎', pts:30, color:'#60a5fa'},
+  ];
+
+  const CLOUD_EMOJIS = ['☁️','🌤️','⛅'];
+
+  // ── INIT GAME ──
+  function initGame() {
+    canvas = document.getElementById('runnerCanvas');
+    if (!canvas) return;
+    ctx = canvas.getContext('2d');
+
+    // Load high score
+    try { highScore = parseInt(localStorage.getItem('dw_runner_hs') || '0'); } catch(e) {}
+
+    // Touch / keyboard controls
+    document.addEventListener('keydown', handleKey);
+    canvas.addEventListener('click', handleTap);
+    canvas.addEventListener('touchstart', handleTap, {passive: true});
+    document.getElementById('runnerCanvasWrap')?.addEventListener('click', handleTap);
+
+    updateScoreDisplay();
+    drawIdleScreen();
+  }
+
+  function handleKey(e) {
+    if (!running || gameOver) return;
+    if (e.code === 'Space' || e.code === 'ArrowUp' || e.key === ' ') {
+      e.preventDefault();
+      runnerJump();
+    }
+  }
+
+  function handleTap(e) {
+    if (e.type === 'touchstart') e.preventDefault?.();
+    if (gameOver) return;
+    if (!running) return;
+    runnerJump();
+  }
+
+  // ── START ──
+  window.startRunner = function() {
+    const overlay = document.getElementById('runnerOverlay');
+    if (overlay) overlay.classList.add('hidden');
+    resetGame();
+    running = true;
+    loop();
+  };
+
+  window.restartRunner = function() {
+    const go = document.getElementById('runnerGameOver');
+    if (go) go.classList.add('hidden');
+    resetGame();
+    running = true;
+    loop();
+  };
+
+  function resetGame() {
+    score = 0; coins = 0; level = 1; frame = 0;
+    speed = CFG.INIT_SPEED;
+    dino = makeDino();
+    obstacles = [];
+    collectibles = [];
+    particles = [];
+    clouds = [
+      {x:200, y:30, emoji:CLOUD_EMOJIS[0], speed:0.4},
+      {x:450, y:55, emoji:CLOUD_EMOJIS[1], speed:0.3},
+      {x:600, y:20, emoji:CLOUD_EMOJIS[2], speed:0.5},
+    ];
+    gameOver = false;
+    updateScoreDisplay();
+  }
+
+  // ── JUMP ──
+  window.runnerJump = function() {
+    if (!dino || !running || gameOver) return;
+    if (dino.jumps < dino.maxJumps) {
+      dino.vy = CFG.JUMP_FORCE;
+      if (dino.jumps === 1) dino.vy = CFG.JUMP_FORCE * 0.85; // weaker double jump
+      dino.jumps++;
+      spawnParticlesBurst(dino.x + dino.w/2, dino.y + dino.h, '#6efb3e', 5);
+    }
+  };
+
+  // ── MAIN LOOP ──
+  function loop() {
+    if (!running) return;
+    raf = requestAnimationFrame(loop);
+    update();
+    render();
+  }
+
+  // ── UPDATE ──
+  function update() {
+    frame++;
+    speed = Math.min(CFG.MAX_SPEED, CFG.INIT_SPEED + frame * CFG.ACCEL);
+    level = Math.floor(1 + (speed - CFG.INIT_SPEED) / 2);
+    score += Math.ceil(speed * 0.08);
+
+    // Update dino
+    dino.vy += CFG.GRAVITY;
+    dino.y += dino.vy;
+    if (dino.y >= CFG.GROUND) {
+      dino.y = CFG.GROUND;
+      dino.vy = 0;
+      dino.jumps = 0;
+    }
+    dino.frameTimer++;
+    if (dino.frameTimer > 8) { dino.frame = (dino.frame + 1) % 2; dino.frameTimer = 0; }
+    if (dino.invincible > 0) dino.invincible--;
+
+    // Dust trail
+    dino.dustTimer++;
+    if (dino.dustTimer > 4 && dino.y >= CFG.GROUND) {
+      particles.push({x:dino.x+5, y:dino.y+dino.h, vx:-1.5, vy:-0.5-Math.random(), life:20, maxLife:20, emoji:'💨', size:12});
+      dino.dustTimer = 0;
+    }
+
+    // Clouds
+    clouds.forEach(c => { c.x -= c.speed; if (c.x < -60) c.x = CFG.W + 60; });
+
+    // Spawn obstacles
+    const minGap = Math.max(60, 160 - frame * 0.05);
+    const lastObs = obstacles[obstacles.length-1];
+    if (!lastObs || lastObs.x < CFG.W - minGap - Math.random() * 80) {
+      if (Math.random() < 0.015 + level * 0.003) spawnObstacle();
+    }
+
+    // Spawn collectibles
+    if (Math.random() < 0.008) spawnCollectible();
+
+    // Move obstacles
+    obstacles = obstacles.filter(o => {
+      o.x -= speed;
+      if (o.fly) o.y = o.baseY + Math.sin(frame * 0.05) * 12;
+      return o.x > -60;
+    });
+
+    // Move collectibles
+    collectibles = collectibles.filter(c => {
+      c.x -= speed * 0.8;
+      c.y = c.baseY + Math.sin(frame * 0.06 + c.offset) * 8;
+      return c.x > -40;
+    });
+
+    // Update particles
+    particles = particles.filter(p => {
+      p.x += p.vx; p.y += p.vy;
+      p.vy += 0.1;
+      p.life--;
+      return p.life > 0;
+    });
+
+    // Collision detection
+    if (dino.invincible <= 0) {
+      const dBox = {x: dino.x+8, y: dino.y+6, w: dino.w-16, h: dino.h-10};
+      for (const o of obstacles) {
+        const oBox = {x: o.x+4, y: o.y+4, w: o.w-8, h: o.h-8};
+        if (overlap(dBox, oBox)) { triggerDeath(o); return; }
+      }
+    }
+
+    // Collect items
+    collectibles = collectibles.filter(c => {
+      const dBox = {x:dino.x+4, y:dino.y, w:dino.w-8, h:dino.h};
+      if (overlap(dBox, {x:c.x, y:c.y, w:c.w, h:c.h})) {
+        score += c.pts;
+        coins++;
+        spawnParticlesBurst(c.x + c.w/2, c.y + c.h/2, c.color, 8);
+        return false;
+      }
+      return true;
+    });
+
+    // Ground scroll
+    groundX = (groundX - speed) % 40;
+
+    // Update score display every 10 frames
+    if (frame % 10 === 0) updateScoreDisplay();
+
+    // Milestone
+    if (score > 0 && score % 500 < Math.ceil(speed) && score > 100) {
+      spawnParticlesBurst(CFG.W/2, CFG.H/2, '#6efb3e', 20);
+    }
+  }
+
+  function overlap(a, b) {
+    return a.x < b.x+b.w && a.x+a.w > b.x && a.y < b.y+b.h && a.y+a.h > b.y;
+  }
+
+  function spawnObstacle() {
+    const types = level < 3 ? OBS_TYPES.slice(0,3) : OBS_TYPES;
+    const type = types[Math.floor(Math.random() * types.length)];
+    const obs = {...type};
+    obs.x = CFG.W + 20;
+    obs.y = type.fly ? type.flyY : type.minY;
+    if (type.fly) obs.baseY = obs.y;
+    obstacles.push(obs);
+  }
+
+  function spawnCollectible() {
+    const weights = [0.65, 0.28, 0.07];
+    let r = Math.random(), type;
+    for (let i = 0; i < weights.length; i++) { r -= weights[i]; if (r <= 0) { type = COLLECT_TYPES[i]; break; } }
+    if (!type) type = COLLECT_TYPES[0];
+    collectibles.push({
+      ...type, w:24, h:24,
+      x: CFG.W + 20,
+      baseY: CFG.GROUND - 60 - Math.random() * 60,
+      y: CFG.GROUND - 80,
+      offset: Math.random() * Math.PI * 2,
+    });
+  }
+
+  function triggerDeath(obstacle) {
+    dino.dead = true;
+    running = false;
+    gameOver = true;
+    spawnParticlesBurst(dino.x + dino.w/2, dino.y + dino.h/2, '#ef4444', 20);
+
+    // Save high score
+    if (score > highScore) {
+      highScore = score;
+      try { localStorage.setItem('dw_runner_hs', highScore); } catch(e) {}
+    }
+
+    // Award points
+    if (typeof addLBPoints === 'function') addLBPoints(Math.floor(score/10), '🏃 Dino Runner!');
+
+    // Show game over
+    setTimeout(() => {
+      const go = document.getElementById('runnerGameOver');
+      if (!go) return;
+      const msgs = score > 1000 ? ['🌟 LEGENDARY! Share this score!','🔥 Incredible run! Reddit will love this!'] :
+                   score > 500  ? ['🦖 Amazing! You survived the asteroid age!','⭐ Brilliant! Post your score on Reddit!'] :
+                   score > 200  ? ['👏 Great run! Practice makes perfect!','🦕 You lasted longer than most dinosaurs!'] :
+                                  ['💀 The asteroid got you!','🪨 Even T-Rex had a bad day sometimes!'];
+      document.getElementById('goScore').textContent = score;
+      document.getElementById('goMsg').textContent = msgs[Math.floor(Math.random() * msgs.length)];
+      document.getElementById('goEmoji').textContent = score > 500 ? '🏆' : score > 200 ? '🦖' : '💀';
+      document.getElementById('goTitle').textContent = score > 1000 ? 'LEGENDARY!' : score > 500 ? 'AMAZING!' : score > 200 ? 'GREAT RUN!' : 'EXTINCT!';
+      go.classList.remove('hidden');
+      updateScoreDisplay();
+      render();
+    }, 600);
+  }
+
+  // ── RENDER ──
+  function render() {
+    if (!ctx) return;
+    const W = CFG.W, H = CFG.H;
+    ctx.clearRect(0, 0, W, H);
+
+    // Sky gradient
+    const sky = ctx.createLinearGradient(0, 0, 0, H);
+    sky.addColorStop(0, '#060d02');
+    sky.addColorStop(1, '#0a1a05');
+    ctx.fillStyle = sky;
+    ctx.fillRect(0, 0, W, H);
+
+    // Stars
+    ctx.fillStyle = 'rgba(255,255,255,0.4)';
+    for (let i = 0; i < 30; i++) {
+      const sx = ((i * 137 + frame * 0.1) % W);
+      const sy = (i * 53) % (CFG.GROUND - 20);
+      const ss = 0.5 + (i % 3) * 0.5;
+      ctx.beginPath(); ctx.arc(sx, sy, ss, 0, Math.PI*2); ctx.fill();
+    }
+
+    // Moon
+    ctx.font = '28px serif';
+    ctx.textBaseline = 'top';
+    ctx.fillText('🌕', W - 60, 8);
+
+    // Clouds
+    ctx.font = '32px serif';
+    clouds.forEach(c => ctx.fillText(c.emoji, c.x, c.y));
+
+    // Distant mountains
+    ctx.fillStyle = 'rgba(110,251,62,0.04)';
+    ctx.beginPath();
+    ctx.moveTo(0, CFG.GROUND - 10);
+    for (let x = 0; x <= W; x += 80) {
+      const h = 30 + Math.sin(x * 0.02 + frame * 0.001) * 20;
+      ctx.lineTo(x, CFG.GROUND - h);
+      ctx.lineTo(x + 40, CFG.GROUND - 10);
+    }
+    ctx.lineTo(W, CFG.GROUND - 10);
+    ctx.closePath(); ctx.fill();
+
+    // Ground
+    const grd = ctx.createLinearGradient(0, CFG.GROUND, 0, H);
+    grd.addColorStop(0, 'rgba(110,251,62,0.12)');
+    grd.addColorStop(1, 'rgba(0,0,0,0)');
+    ctx.fillStyle = grd;
+    ctx.fillRect(0, CFG.GROUND, W, H - CFG.GROUND);
+
+    // Ground line
+    ctx.strokeStyle = 'rgba(110,251,62,0.35)';
+    ctx.lineWidth = 2;
+    ctx.beginPath(); ctx.moveTo(0, CFG.GROUND); ctx.lineTo(W, CFG.GROUND); ctx.stroke();
+
+    // Ground dashes
+    ctx.strokeStyle = 'rgba(110,251,62,0.12)';
+    ctx.lineWidth = 1;
+    ctx.setLineDash([20, 20]);
+    ctx.beginPath();
+    for (let x = groundX; x < W; x += 40) {
+      ctx.moveTo(x, CFG.GROUND + 8); ctx.lineTo(x + 20, CFG.GROUND + 8);
+    }
+    ctx.stroke(); ctx.setLineDash([]);
+
+    // Particles
+    particles.forEach(p => {
+      const alpha = p.life / p.maxLife;
+      ctx.globalAlpha = alpha;
+      ctx.font = `${p.size}px serif`;
+      ctx.fillText(p.emoji, p.x, p.y);
+      ctx.globalAlpha = 1;
+    });
+
+    // Collectibles
+    ctx.font = '22px serif';
+    collectibles.forEach(c => {
+      ctx.globalAlpha = 0.9;
+      ctx.fillText(c.emoji, c.x, c.y);
+      ctx.globalAlpha = 1;
+    });
+
+    // Obstacles
+    ctx.font = '32px serif';
+    obstacles.forEach(o => {
+      ctx.save();
+      // Glow effect
+      ctx.shadowBlur = 12;
+      ctx.shadowColor = o.emoji === '☄️' ? '#ff7a1a' : '#ef4444';
+      ctx.fillText(o.emoji, o.x, o.y + o.h);
+      ctx.shadowBlur = 0;
+      ctx.restore();
+    });
+
+    // Dino
+    if (dino) {
+      const flash = dino.invincible > 0 && Math.floor(dino.invincible / 4) % 2 === 0;
+      if (!flash) {
+        ctx.font = '44px serif';
+        ctx.textBaseline = 'bottom';
+        ctx.save();
+        // Dino glow
+        ctx.shadowBlur = dino.y < CFG.GROUND - 10 ? 20 : 8;
+        ctx.shadowColor = '#6efb3e';
+        // Squish on landing
+        const scaleY = dino.y >= CFG.GROUND ? 1 : 1 + Math.abs(dino.vy) * 0.01;
+        ctx.translate(dino.x + dino.w/2, dino.y + dino.h);
+        ctx.scale(1, 1/scaleY);
+        ctx.fillText(dino.dead ? '💀' : '🦖', -dino.w/2, 0);
+        ctx.restore();
+        ctx.shadowBlur = 0;
+        ctx.textBaseline = 'top';
+      }
+    }
+
+    // Score overlay on canvas
+    ctx.fillStyle = 'rgba(110,251,62,0.8)';
+    ctx.font = 'bold 14px Poppins, sans-serif';
+    ctx.textBaseline = 'top';
+    ctx.textAlign = 'right';
+    ctx.fillText('SCORE: ' + score, W - 10, 10);
+    ctx.fillStyle = 'rgba(255,255,255,0.3)';
+    ctx.fillText('BEST: ' + highScore, W - 10, 28);
+    ctx.textAlign = 'left';
+
+    // Speed indicator
+    ctx.fillStyle = 'rgba(110,251,62,0.4)';
+    ctx.font = 'bold 11px Poppins, sans-serif';
+    ctx.fillText('LVL ' + level + '  ⚡ ' + speed.toFixed(1) + 'x', 10, 10);
+  }
+
+  function drawIdleScreen() {
+    if (!ctx) return;
+    const W = CFG.W, H = CFG.H;
+    ctx.clearRect(0, 0, W, H);
+    const sky = ctx.createLinearGradient(0, 0, 0, H);
+    sky.addColorStop(0, '#060d02'); sky.addColorStop(1, '#0a1a05');
+    ctx.fillStyle = sky; ctx.fillRect(0, 0, W, H);
+    ctx.fillStyle = 'rgba(110,251,62,0.12)';
+    ctx.fillRect(0, CFG.GROUND, W, H - CFG.GROUND);
+    ctx.strokeStyle = 'rgba(110,251,62,0.3)'; ctx.lineWidth = 2;
+    ctx.beginPath(); ctx.moveTo(0, CFG.GROUND); ctx.lineTo(W, CFG.GROUND); ctx.stroke();
+    ctx.font = '44px serif'; ctx.textBaseline = 'bottom';
+    ctx.shadowBlur = 16; ctx.shadowColor = '#6efb3e';
+    ctx.fillText('🦖', 80, CFG.GROUND + 4);
+    ctx.shadowBlur = 0;
+  }
+
+  function spawnParticlesBurst(x, y, color, count) {
+    for (let i = 0; i < count; i++) {
+      const angle = (i / count) * Math.PI * 2;
+      const speed = 2 + Math.random() * 4;
+      particles.push({
+        x, y, emoji: ['✨','💫','⭐','🌟'][Math.floor(Math.random()*4)],
+        vx: Math.cos(angle) * speed, vy: Math.sin(angle) * speed - 2,
+        life: 25, maxLife: 25, size: 12 + Math.random() * 8,
+      });
+    }
+  }
+
+  function updateScoreDisplay() {
+    const s = document.getElementById('runnerScore');
+    const h = document.getElementById('runnerHigh');
+    const l = document.getElementById('runnerLevel');
+    const c = document.getElementById('runnerCoins');
+    if (s) s.textContent = score;
+    if (h) h.textContent = Math.max(highScore, score);
+    if (l) l.textContent = level;
+    if (c) c.textContent = coins;
+  }
+
+  // ── SHARE ──
+  window.shareRunnerScore = function() {
+    const s = Math.max(score, 0);
+    const text = `🦖 I scored ${s} points in DinoWorld Dino Runner!\nCan you beat me? Play free at: https://jacobb-rgb.github.io/DinoWorld/ #DinoWorld #DinoRunner`;
+    if (navigator.share) {
+      navigator.share({title:'DinoWorld Dino Runner', text, url:'https://jacobb-rgb.github.io/DinoWorld/'});
+    } else if (navigator.clipboard) {
+      navigator.clipboard.writeText(text);
+      if (typeof showToast === 'function') showToast('📋 Score copied! Paste on Reddit!');
+    }
+  };
+
+  // ── STOP ON PAGE CHANGE ──
+  const _runnerPageHook = typeof showPage === 'function' ? showPage : null;
+  if (_runnerPageHook) {
+    showPage = function(id) {
+      _runnerPageHook(id);
+      if (id !== 'dino-runner' && running) {
+        running = false;
+        if (raf) cancelAnimationFrame(raf);
+      }
+      if (id === 'dino-runner') {
+        setTimeout(initGame, 100);
+      }
+    };
+  }
+
+  // ── INIT ──
+  document.addEventListener('DOMContentLoaded', () => {
+    // Init when page is visited
+    const checkInit = setInterval(() => {
+      if (document.getElementById('runnerCanvas')) {
+        clearInterval(checkInit);
+        initGame();
+      }
+    }, 500);
+  });
+
+})();
 
 </script>
 </body>
