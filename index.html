@@ -4497,6 +4497,9 @@
   <div class="wn-item hot" onclick="showPage('time-machine')">🗺️ Time Machine <span class="wn-badge-new">NEW</span></div>
   <div class="wn-item" onclick="showPage('leaderboard')">🏆 Dino Points <span class="wn-badge-new">NEW</span></div>
   <div class="wn-item" onclick="showPage('soundscape')">🎵 Dino Sounds <span class="wn-badge-new">NEW</span></div>
+  <div class="wn-item" onclick="showPage('evo-tree')">🌳 Evolution Tree <span class="wn-badge-new">NEW</span></div>
+  <div class="wn-item" onclick="showArticle('dino-intelligence')">🧠 Dino IQ <span class="wn-badge-new">NEW</span></div>
+  <div class="wn-item" onclick="showArticle('asteroid-impact')">☄️ Asteroid Story <span class="wn-badge-new">NEW</span></div>
   <div class="wn-item" onclick="showPage('rock-scanner')">🪨 Rock Scanner <span class="wn-badge-hot">HOT</span></div>
   <div class="wn-item" onclick="showPage('quiz')">🧠 Quiz <span class="wn-badge-hot">HOT</span></div>
   <div class="wn-item" onclick="showPage('fossils-map')">🗺️ Fossil Map</div>
@@ -4577,6 +4580,7 @@
     <button class="mm-btn" data-page="alldinos" onclick="showPage('alldinos');closeMobileMenu()"><span class="mm-btn-icon">🦕</span>All Dinosaurs</button>
     <button class="mm-btn" data-page="popular" onclick="showPage('popular');closeMobileMenu()"><span class="mm-btn-icon">⭐</span>Popular</button>
     <button class="mm-btn" data-page="comparison" onclick="showPage('comparison');closeMobileMenu()"><span class="mm-btn-icon">⚔️</span>Compare Dinos</button>
+    <button class="mm-btn" data-page="evo-tree" onclick="showPage('evo-tree');closeMobileMenu()"><span class="mm-btn-icon">🌳</span>Evolution Tree 🆕</button>
     <button class="mm-btn" data-page="fossils-map" onclick="showPage('fossils-map');closeMobileMenu()"><span class="mm-btn-icon">🗺️</span>Fossil Map</button>
     <button class="mm-btn" data-page="rock-scanner" onclick="showPage('rock-scanner');closeMobileMenu()"><span class="mm-btn-icon">🪨</span>Rock Scanner</button>
     <div class="mm-divider"></div>
@@ -4807,6 +4811,46 @@
           <div class="latest-card-meta">5 min read · Dinosaur Profile</div>
         </div>
       </div>
+      <div class="latest-card reveal reveal-delay-4" onclick="showArticle('dino-intelligence')">
+        <span class="latest-card-emoji">🧠</span>
+        <div class="latest-card-body">
+          <div class="latest-card-tag">New · Science</div>
+          <div class="latest-card-title">How Smart Were Dinosaurs?</div>
+          <div class="latest-card-meta">5 min read · Behaviour</div>
+        </div>
+      </div>
+      <div class="latest-card reveal reveal-delay-4" onclick="showArticle('dino-sounds')">
+        <span class="latest-card-emoji">🔊</span>
+        <div class="latest-card-body">
+          <div class="latest-card-tag">New · Science</div>
+          <div class="latest-card-title">What Did Dinosaurs Sound Like?</div>
+          <div class="latest-card-meta">5 min read · Palaeontology</div>
+        </div>
+      </div>
+      <div class="latest-card reveal reveal-delay-4" onclick="showArticle('dino-skin')">
+        <span class="latest-card-emoji">🎨</span>
+        <div class="latest-card-body">
+          <div class="latest-card-tag">New · Discovery</div>
+          <div class="latest-card-title">Dinosaur Skin & Colour</div>
+          <div class="latest-card-meta">5 min read · Science</div>
+        </div>
+      </div>
+      <div class="latest-card reveal reveal-delay-4" onclick="showArticle('asteroid-impact')">
+        <span class="latest-card-emoji">☄️</span>
+        <div class="latest-card-body">
+          <div class="latest-card-tag">New · Extinction</div>
+          <div class="latest-card-title">The Asteroid That Killed the Dinosaurs</div>
+          <div class="latest-card-meta">6 min read · Science</div>
+        </div>
+      </div>
+      <div class="latest-card reveal reveal-delay-4" onclick="showPage('evo-tree')">
+        <span class="latest-card-emoji">🌳</span>
+        <div class="latest-card-body">
+          <div class="latest-card-tag">New · Interactive</div>
+          <div class="latest-card-title">Dinosaur Evolution Tree</div>
+          <div class="latest-card-meta">Interactive · Explore</div>
+        </div>
+      </div>
     </div>
   </section>
 
@@ -4820,6 +4864,7 @@
         <button class="btn btn-primary" onclick="showPage('quiz')">🧠 Take the Quiz</button>
         <button class="btn btn-secondary" onclick="showPage('tops')">🏆 Top 10 Lists</button>
         <button class="btn btn-orange" onclick="showPage('seo')">📚 All Articles</button>
+        <button class="btn btn-secondary" onclick="showPage('evo-tree')">🌳 Evolution Tree</button>
       </div>
     </div>
   </div>
@@ -5141,6 +5186,11 @@
       <div class="card" onclick="showArticle('albertosaurus')"><span class="card-emoji">🦖</span><div class="card-body"><div class="card-tag">🆕 New Profile</div><div class="card-title">Albertosaurus – T-Rex's Faster Cousin</div><div class="card-desc">Canada's apex predator — faster than T-Rex and possibly hunted in packs.</div></div><div class="card-footer"><span>4 min</span><span class="card-arrow">→</span></div></div>
       <div class="card" onclick="showArticle('majungasaurus')"><span class="card-emoji">🦖</span><div class="card-body"><div class="card-tag">🆕 New Profile</div><div class="card-title">Majungasaurus – The Cannibal Dino</div><div class="card-desc">Madagascar's top predator — the only dinosaur proven to have eaten its own kind.</div></div><div class="card-footer"><span>4 min</span><span class="card-arrow">→</span></div></div>
       <div class="card" onclick="showArticle('fastest')"><span class="card-emoji">⚡</span><div class="card-body"><div class="card-tag">🆕 Speed Guide</div><div class="card-title">Fastest Dinosaurs Ever</div><div class="card-desc">Which dinosaur could outrun Usain Bolt? The rankings will surprise you.</div></div><div class="card-footer"><span>5 min</span><span class="card-arrow">→</span></div></div>
+      <div class="card" onclick="showArticle('dino-intelligence')"><span class="card-emoji">🧠</span><div class="card-body"><div class="card-tag">🔬 Science</div><div class="card-title">How Smart Were Dinosaurs?</div><div class="card-desc">From walnut-brained Stegosaurus to genius Troodon — the truth about dinosaur IQ.</div></div><div class="card-footer"><span>5 min</span><span class="card-arrow">→</span></div></div>
+      <div class="card" onclick="showArticle('dino-sounds')"><span class="card-emoji">🔊</span><div class="card-body"><div class="card-tag">🎵 Science</div><div class="card-title">What Did Dinosaurs Sound Like?</div><div class="card-desc">No, T-Rex didn't roar like in the movies. The real answer is stranger.</div></div><div class="card-footer"><span>5 min</span><span class="card-arrow">→</span></div></div>
+      <div class="card" onclick="showArticle('dino-speed')"><span class="card-emoji">🏃</span><div class="card-body"><div class="card-tag">⚡ Top Speeds</div><div class="card-title">Dinosaur Speed Rankings — Full Guide</div><div class="card-desc">Which dinosaurs were fastest? T-Rex was slower than you. Find out who was quickest.</div></div><div class="card-footer"><span>5 min</span><span class="card-arrow">→</span></div></div>
+      <div class="card" onclick="showArticle('dino-skin')"><span class="card-emoji">🎨</span><div class="card-body"><div class="card-tag">🔬 Discovery</div><div class="card-title">Dinosaur Skin & Colour — What Did They Look Like?</div><div class="card-desc">Forget grey lizards. Fossil pigment cells reveal a surprisingly colourful world.</div></div><div class="card-footer"><span>5 min</span><span class="card-arrow">→</span></div></div>
+      <div class="card" onclick="showArticle('asteroid-impact')"><span class="card-emoji">☄️</span><div class="card-body"><div class="card-tag">🌍 Extinction</div><div class="card-title">The Asteroid That Killed the Dinosaurs</div><div class="card-desc">The full story of Chicxulub — the 10 km rock that ended the age of dinosaurs.</div></div><div class="card-footer"><span>6 min</span><span class="card-arrow">→</span></div></div>
     </div>
   </section>
 </div>
@@ -6199,6 +6249,42 @@
   </section>
 </div>
 
+<!-- ════════════════════════════════════════
+     🌳 EVOLUTIONARY TREE PAGE
+════════════════════════════════════════ -->
+<div class="page" id="page-evo-tree">
+  <section>
+    <div class="section-label">🌳 Interactive</div>
+    <div class="section-title">DINOSAUR <span>EVOLUTION TREE</span></div>
+    <p style="color:var(--text-secondary);margin-bottom:28px;max-width:580px;">Explore how dinosaurs evolved over 230 million years. Click any group to learn more!</p>
+
+    <div id="evo-tree-wrap" style="overflow-x:auto;overflow-y:visible;padding-bottom:24px;">
+      <svg id="evoSVG" viewBox="0 0 900 680" xmlns="http://www.w3.org/2000/svg" style="width:100%;min-width:340px;max-width:900px;display:block;margin:0 auto;font-family:Poppins,sans-serif;"></svg>
+    </div>
+
+    <div id="evo-info-box" style="display:none;background:rgba(110,251,62,0.06);border:1.5px solid rgba(110,251,62,0.25);border-radius:16px;padding:24px 28px;margin-top:8px;max-width:600px;animation:fadeIn .3s ease;">
+      <div style="display:flex;align-items:center;gap:14px;margin-bottom:10px;">
+        <span id="evo-info-emoji" style="font-size:2.5rem;"></span>
+        <div>
+          <div id="evo-info-name" style="font-size:1.3rem;font-weight:800;color:#fff;letter-spacing:1px;"></div>
+          <div id="evo-info-period" style="font-size:0.78rem;color:var(--accent);font-weight:600;text-transform:uppercase;letter-spacing:1px;"></div>
+        </div>
+      </div>
+      <div id="evo-info-desc" style="color:var(--text-secondary);line-height:1.7;font-size:0.9rem;"></div>
+      <div id="evo-info-examples" style="margin-top:12px;display:flex;flex-wrap:wrap;gap:8px;"></div>
+    </div>
+
+    <div class="dyk" style="margin-top:32px;">
+      <span class="dyk-icon">🧬</span>
+      <div><div class="dyk-label">Evolution Fact</div><div class="dyk-text">All dinosaurs share a common ancestor — <strong>Eoraptor</strong> from the Late Triassic (~231 Ma). Birds are living dinosaurs and represent one surviving lineage of the theropod branch.</div></div>
+    </div>
+  </section>
+</div>
+
+<!-- ════════════════════════════════════════
+     NEW ARTICLES (SEO obsah)
+════════════════════════════════════════ -->
+
 <!-- FOOTER -->
 <footer>
   <div class="footer-inner">
@@ -6240,7 +6326,7 @@
 
 <script>
 // ── PAGES ──
-const pages = ['home','basics','eras','types','popular','seo','tops','eggs','extinction','quiz','facts','article','alldinos','fossils-map','comparison','rock-scanner','battle','time-machine','size-compare','dna-builder','soundscape','leaderboard','dino-runner'];
+const pages = ['home','basics','eras','types','popular','seo','tops','eggs','extinction','quiz','facts','article','alldinos','fossils-map','comparison','rock-scanner','battle','time-machine','size-compare','dna-builder','soundscape','leaderboard','dino-runner','evo-tree'];
 
 function showPage(id) {
   // Update page title for SEO
@@ -6252,7 +6338,8 @@ function showPage(id) {
     eggs:'Dinosaur Eggs – DinoWorld', extinction:'Dinosaur Extinction – DinoWorld',
     quiz:'Which Dinosaur Are You? – DinoWorld', facts:'Fun Dinosaur Facts – DinoWorld',
     alldinos:'All Dinosaurs – DinoWorld', 'fossils-map':'Fossil Locations Map – DinoWorld',
-    comparison:'Compare Dinosaurs – DinoWorld'
+    comparison:'Compare Dinosaurs – DinoWorld',
+    'evo-tree':'Dinosaur Evolution Tree – DinoWorld'
   };
   if (pageTitles[id]) document.title = pageTitles[id];
 
@@ -7794,6 +7881,151 @@ const articles = {
       {id:'raptor-speed', emoji:'🦅', title:'How Fast Was Velociraptor?'},
       {id:'ornithomimus', emoji:'🐦', title:'Ornithomimus — The bird mimic'},
       {id:'carnotaurus', emoji:'🐂', title:'Carnotaurus — Fastest large predator'},
+    ]
+  },
+
+  'dino-intelligence': {
+    emoji:'🧠', tag:'🔬 Science · Behaviour', title:'How Smart Were Dinosaurs? The Truth About Dinosaur Intelligence',
+    body: `
+      <div class="stat-grid">
+        <div class="stat-box"><span class="val">~80g</span><span class="lbl">Stegosaurus Brain</span></div>
+        <div class="stat-box"><span class="val">6×</span><span class="lbl">T-Rex bigger brain</span></div>
+        <div class="stat-box"><span class="val">Top 5</span><span class="lbl">Troodon IQ rank</span></div>
+        <div class="stat-box"><span class="val">Birds</span><span class="lbl">Smartest survivors</span></div>
+      </div>
+      <h2>Were Dinosaurs Dumb?</h2>
+      <p>For decades, dinosaurs were thought of as slow, dim-witted creatures. That picture has changed dramatically. While some dinosaurs had tiny brains relative to their body size, others showed surprisingly complex behaviour — problem-solving, social hunting, and even tool-like use of their claws.</p>
+      <h2>The Encephalization Quotient (EQ)</h2>
+      <p>Scientists measure animal intelligence using the <strong>Encephalization Quotient</strong> — a ratio of actual brain size to expected brain size for an animal of that weight. Modern humans score around 7.5. Here is how dinosaurs compare:</p>
+      <div class="stat-grid">
+        <div class="stat-box"><span class="val">~5.8</span><span class="lbl">Troodon EQ</span></div>
+        <div class="stat-box"><span class="val">~2.0</span><span class="lbl">Velociraptor EQ</span></div>
+        <div class="stat-box"><span class="val">~1.0</span><span class="lbl">T-Rex EQ</span></div>
+        <div class="stat-box"><span class="val">~0.6</span><span class="lbl">Stegosaurus EQ</span></div>
+      </div>
+      <h2>Troodon — The Einstein of Dinosaurs</h2>
+      <p><strong>Troodon</strong> had the largest brain relative to its body of any known dinosaur. It had forward-facing eyes for depth perception and grasping hands. Some palaeontologists have speculated that if the extinction event had not occurred, descendants of Troodon might eventually have evolved human-level intelligence over tens of millions of years.</p>
+      <h2>Pack Hunters and Social Behaviour</h2>
+      <p>Evidence from multiple fossil trackways suggests that some theropods — possibly <em>Deinonychus</em> and relatives of Velociraptor — hunted in coordinated groups. This requires communication, memory, and social awareness well beyond what a "dumb reptile" could manage.</p>
+      <h2>Stegosaurus — The Famous Small Brain</h2>
+      <p>Stegosaurus is often cited as having a "brain the size of a walnut." This is roughly true — about 80 grams for a 5-tonne animal. However, it was perfectly adequate for its lifestyle: finding plants, avoiding predators, and regulating temperature using its distinctive back plates.</p>
+      <h2>The Smartest Animals That Survived</h2>
+      <p>The survivors of the mass extinction 66 million years ago included the ancestors of modern birds. Crows and parrots today demonstrate tool use, self-recognition in mirrors, and complex social learning — all descended from the same lineage as Velociraptor.</p>
+    `,
+    related: [
+      {id:'feathers', emoji:'🪶', title:'Did Dinosaurs Have Feathers?'},
+      {id:'trex-eat', emoji:'🦖', title:'What Did T-Rex Actually Eat?'},
+      {id:'biggest', emoji:'🦕', title:'The Biggest Dinosaur Ever'},
+    ]
+  },
+
+  'dino-sounds': {
+    emoji:'🔊', tag:'🎵 Science · Palaeontology', title:'What Did Dinosaurs Actually Sound Like?',
+    body: `
+      <div class="stat-grid">
+        <div class="stat-box"><span class="val">No</span><span class="lbl">Vocal cords fossilise</span></div>
+        <div class="stat-box"><span class="val">Crocs</span><span class="lbl">Closest living relative</span></div>
+        <div class="stat-box"><span class="val">Boom</span><span class="lbl">Parasaurolophus crest</span></div>
+        <div class="stat-box"><span class="val">Closed</span><span class="lbl">Mouth vocalisation</span></div>
+      </div>
+      <h2>The Roar Problem</h2>
+      <p>The iconic T-Rex roar in Jurassic Park is almost certainly wrong. Soft tissues like vocal cords do not fossilise, so we cannot know exactly what sounds dinosaurs made. However, scientists have gathered clever indirect evidence from skulls, crests, and living relatives.</p>
+      <h2>Birds and Crocodiles as Clues</h2>
+      <p>The two closest living relatives of non-avian dinosaurs are <strong>birds</strong> and <strong>crocodilians</strong>. Neither group roars — birds sing, chirp and screech using a unique organ called the <em>syrinx</em>, while crocodiles hiss, grunt and bellow with their mouths mostly closed. Most researchers now think large dinosaurs made deep, low-frequency rumbles with closed mouths rather than open-mouthed roars.</p>
+      <h2>Parasaurolophus — Nature's Trombone</h2>
+      <p><strong>Parasaurolophus</strong> had a hollow bony crest up to 1.8 metres long running along the top of its skull. CT scans of fossilised crests show a complex network of tubes connecting the nostrils to the throat — essentially a built-in brass instrument. Computer simulations suggest it produced a deep, resonant tuba-like call that could carry for kilometres through Cretaceous forests.</p>
+      <h2>What About T-Rex?</h2>
+      <p>Based on its crocodilian-like skull structure and bird ancestry, T-Rex most likely produced infrasound — very low frequency vibrations below human hearing — as well as audible deep booming sounds made with a closed or slightly open mouth. Think less Hollywood roar, more giant pigeon coo... but much, much louder.</p>
+      <h2>Feathered Dinosaurs and Song</h2>
+      <p>Small feathered theropods closely related to modern birds may have communicated with calls similar to today's birds. Some researchers believe the ancestor of bird song evolved in dinosaurs well before the extinction event.</p>
+    `,
+    related: [
+      {id:'feathers', emoji:'🪶', title:'Did Dinosaurs Have Feathers?'},
+      {id:'dino-intelligence', emoji:'🧠', title:'How Smart Were Dinosaurs?'},
+      {id:'trex-eat', emoji:'🦖', title:'What Did T-Rex Actually Eat?'},
+    ]
+  },
+
+  'dino-speed': {
+    emoji:'⚡', tag:'⚡ Top Lists · Science', title:'Fastest Dinosaurs Ever — Top Speed Rankings Explained',
+    body: `
+      <div class="stat-grid">
+        <div class="stat-box"><span class="val">80 km/h</span><span class="lbl">Compsognathus (est.)</span></div>
+        <div class="stat-box"><span class="val">60 km/h</span><span class="lbl">Ornithomimus</span></div>
+        <div class="stat-box"><span class="val">45 km/h</span><span class="lbl">Velociraptor</span></div>
+        <div class="stat-box"><span class="val">20 km/h</span><span class="lbl">T-Rex (max)</span></div>
+      </div>
+      <h2>How Do We Measure Extinct Animal Speed?</h2>
+      <p>Palaeontologists use fossilised trackways, leg-bone proportions, muscle attachment scars on bones, and biomechanical computer modelling to estimate how fast dinosaurs could move. It is an inexact science — but the results are fascinating.</p>
+      <h2>The Fastest: Small Theropods</h2>
+      <p><strong>Compsognathus</strong>, a chicken-sized predator from the Late Jurassic, is estimated to have reached speeds of up to 64–80 km/h based on its slender limbs and lightweight skeleton. <strong>Ornithomimus</strong> — the "bird mimic" — had the long legs and light body of an ostrich and could likely sustain speeds of 50–60 km/h over distance.</p>
+      <h2>Velociraptor — Not As Fast As the Movies</h2>
+      <p>Jurassic Park portrayed Velociraptor as terrifyingly fast. In reality, its estimated top speed of around 40–45 km/h is comparable to a fit human sprinter. It was fast for its size but not superhuman. Its real advantage was its sickle claw and intelligence, not pure speed.</p>
+      <h2>The Slowest Giants</h2>
+      <p>The largest dinosaurs — <strong>Argentinosaurus</strong>, <strong>Patagotitan</strong>, <strong>Brachiosaurus</strong> — almost certainly could not run at all in the conventional sense. Their sheer mass (up to 70+ tonnes) meant that any running gait would risk catastrophic bone fractures. They moved at a stately walk of around 4–8 km/h — about human walking pace.</p>
+      <h2>T-Rex: Surprisingly Slow</h2>
+      <p>Multiple biomechanical studies published between 2002 and 2021 consistently conclude that T-Rex had a maximum speed of around 17–25 km/h — slower than most adult humans can sprint. However, its massive leg muscles gave it extraordinary acceleration from a standing start, and it likely ambushed rather than chased prey over long distances.</p>
+    `,
+    related: [
+      {id:'biggest', emoji:'🦕', title:'The Biggest Dinosaur Ever'},
+      {id:'trex-eat', emoji:'🦖', title:'What Did T-Rex Actually Eat?'},
+      {id:'dino-intelligence', emoji:'🧠', title:'How Smart Were Dinosaurs?'},
+    ]
+  },
+
+  'dino-skin': {
+    emoji:'🎨', tag:'🔬 Science · Discovery', title:'Dinosaur Skin and Colour — What Did They Really Look Like?',
+    body: `
+      <div class="stat-grid">
+        <div class="stat-box"><span class="val">2008</span><span class="lbl">First colour fossil found</span></div>
+        <div class="stat-box"><span class="val">Melanosomes</span><span class="lbl">Pigment cells preserved</span></div>
+        <div class="stat-box"><span class="val">Sinosauropteryx</span><span class="lbl">First coloured dino known</span></div>
+        <div class="stat-box"><span class="val">Iridescent</span><span class="lbl">Some feathered dinos</span></div>
+      </div>
+      <h2>Grey Dinosaurs Are Almost Certainly Wrong</h2>
+      <p>For most of the 20th century, dinosaurs in books and films were depicted as uniform grey or green — like big lizards. We now know this was almost entirely an artistic convention with no scientific basis. The evidence points to a far more colourful prehistoric world.</p>
+      <h2>Fossil Pigment Cells</h2>
+      <p>In 2008, scientists discovered that structures called <strong>melanosomes</strong> — pigment-carrying cells — can survive fossilisation in feathers and occasionally skin. By comparing fossil melanosomes to those in living birds, researchers can determine whether a dinosaur was rufous (reddish-brown), black, white, or even iridescent.</p>
+      <h2>Sinosauropteryx — The First Known Colour</h2>
+      <p><strong>Sinosauropteryx</strong>, a small feathered theropod from China, was found to have had a ginger-and-white striped tail — the first time a specific colour pattern was identified in a non-avian dinosaur. It likely used this pattern for camouflage and possibly species recognition.</p>
+      <h2>Microraptor's Iridescent Feathers</h2>
+      <p>The four-winged <strong>Microraptor</strong> had feathers whose melanosome structure matches those of modern iridescent black birds like starlings. It was almost certainly glossy, blue-black and iridescent in direct sunlight — far from the dull grey of old reconstructions.</p>
+      <h2>Skin Impressions from Large Dinosaurs</h2>
+      <p>Fossilised skin impressions have been found for many large dinosaurs including T-Rex, Edmontosaurus, and Hadrosaurs. These reveal scaly, pebbly textures — similar to crocodile or monitor lizard skin. However, the colour of these scales remains unknown as melanosomes are rarely preserved in thick scaly skin.</p>
+      <h2>What Colour Was T-Rex?</h2>
+      <p>Honestly — we do not know. Based on its size, likely habitat, and living analogues, some researchers speculate muted earth tones for camouflage. But T-Rex was so large it had few predators to hide from, so bold patterns for display cannot be ruled out. The mystery remains one of palaeontology's most tantalising open questions.</p>
+    `,
+    related: [
+      {id:'feathers', emoji:'🪶', title:'Did Dinosaurs Have Feathers?'},
+      {id:'dino-sounds', emoji:'🔊', title:'What Did Dinosaurs Sound Like?'},
+      {id:'biggest', emoji:'🦕', title:'The Biggest Dinosaur Ever'},
+    ]
+  },
+
+  'asteroid-impact': {
+    emoji:'☄️', tag:'🌍 Extinction · Science', title:'The Asteroid That Killed the Dinosaurs — Full Story',
+    body: `
+      <div class="stat-grid">
+        <div class="stat-box"><span class="val">10–15 km</span><span class="lbl">Asteroid diameter</span></div>
+        <div class="stat-box"><span class="val">66 Ma</span><span class="lbl">Impact date</span></div>
+        <div class="stat-box"><span class="val">Yucatán</span><span class="lbl">Impact site, Mexico</span></div>
+        <div class="stat-box"><span class="val">75%</span><span class="lbl">Species wiped out</span></div>
+      </div>
+      <h2>The Chicxulub Impactor</h2>
+      <p>66 million years ago, a rock roughly 10–15 kilometres in diameter travelling at around 20 km per second struck what is now the Yucatán Peninsula in Mexico. The resulting crater — the <strong>Chicxulub crater</strong> — is 180 kilometres wide and was buried under sediment for millions of years. It was only identified in the 1970s and confirmed as the dinosaur-killer in the 1990s.</p>
+      <h2>The Impact — First Minutes</h2>
+      <p>The kinetic energy of the impact was equivalent to roughly one billion times the energy of the Hiroshima atomic bomb. Within seconds, a fireball expanded across the Gulf of Mexico. Megatsunamis hundreds of metres high swept across coastlines. The immediate blast zone across North and Central America was completely sterilised.</p>
+      <h2>Impact Winter</h2>
+      <p>The longer-term killer was the vast cloud of dust, soot, and sulphur dioxide blasted into the upper atmosphere. Within weeks, sunlight was blocked globally. Temperatures plummeted by an estimated 15–20°C worldwide. Photosynthesis stopped. Within months, plant life collapsed, triggering a cascade of extinction up the food chain.</p>
+      <h2>Was It Only the Asteroid?</h2>
+      <p>Possibly not. The <strong>Deccan Traps</strong> — a massive volcanic eruption in what is now India — had been releasing enormous amounts of CO₂ and sulphur dioxide for hundreds of thousands of years before the impact, already stressing ecosystems. Most scientists now believe the asteroid was the primary kill mechanism, but the volcanoes may have weakened dinosaur populations beforehand.</p>
+      <h2>The Survivors</h2>
+      <p>Not everything died. Small animals that could burrow, survive on seeds, or live in water had better chances. Birds, crocodilians, turtles, snakes, and small mammals all survived — the ancestors of every large animal alive today. The extinction cleared ecological niches that mammals rapidly evolved to fill, ultimately leading to the evolution of primates and, 66 million years later, humans.</p>
+    `,
+    related: [
+      {id:'trex-eat', emoji:'🦖', title:'What Did T-Rex Actually Eat?'},
+      {id:'dino-intelligence', emoji:'🧠', title:'How Smart Were Dinosaurs?'},
+      {id:'feathers', emoji:'🪶', title:'Did Dinosaurs Have Feathers?'},
     ]
   },
 
@@ -11473,7 +11705,6 @@ function createSound(type) {
   let nodes = [];
 
   if (type === 'jungle') {
-    // Layered oscillators for ambient forest sound
     for (let i = 0; i < 4; i++) {
       const osc = ctx.createOscillator();
       const oscGain = ctx.createGain();
@@ -11515,7 +11746,8 @@ function createSound(type) {
       const oscG = ctx.createGain();
       oscG.gain.value = 0.15 + Math.random() * 0.1;
       osc.connect(oscG); oscG.connect(gainNode);
-      osc.start(); nodes.push(osc, oscG);
+      osc.start();
+      nodes.push(osc, oscG);
     }
   } else if (type === 'raptor') {
     const osc = ctx.createOscillator();
@@ -11580,18 +11812,26 @@ function toggleSound(type) {
   }
 }
 
+function stopAllSounds() {
+  Object.keys(activeSounds).forEach(type => stopSound(type));
+}
+
 function stopSound(type) {
   const s = activeSounds[type];
   if (!s) return;
   try {
+    s.gainNode.gain.cancelScheduledValues(audioCtx.currentTime);
+    s.gainNode.gain.setValueAtTime(s.gainNode.gain.value, audioCtx.currentTime);
     s.gainNode.gain.linearRampToValueAtTime(0, audioCtx.currentTime + 0.3);
-    setTimeout(() => { s.nodes.forEach(n => { try { n.stop?.(); n.disconnect?.(); } catch(e){} }); }, 400);
+    setTimeout(() => {
+      s.nodes.forEach(n => { try { n.stop?.(); n.disconnect?.(); } catch(e){} });
+      try { s.gainNode.disconnect(); } catch(e) {}
+    }, 400);
   } catch(e) {}
   delete activeSounds[type];
   document.getElementById('sc-'+type)?.classList.remove('playing');
   if (Object.keys(activeSounds).length === 0) stopVisualizer();
 }
-
 function setVolume(val) {
   masterVolume = val / 100;
   document.getElementById('volDisplay').textContent = val + '%';
@@ -11620,6 +11860,10 @@ function stopVisualizer() {
 // ══════════════════════════════════════════════════════════════
 const _featuresPageHook = showPage;
 showPage = function(id) {
+  // Stop all sounds when leaving soundscape
+  if (id !== 'soundscape' && typeof stopAllSounds === 'function') {
+    stopAllSounds();
+  }
   _featuresPageHook(id);
   setTimeout(() => {
     if (id === 'battle') initBattleGrids();
@@ -11629,6 +11873,14 @@ showPage = function(id) {
     if (id === 'leaderboard') updateLBDisplay();
   }, 100);
 };
+
+// Stop sounds when user switches tab or closes page
+document.addEventListener('visibilitychange', () => {
+  if (document.hidden && typeof stopAllSounds === 'function') stopAllSounds();
+});
+window.addEventListener('pagehide', () => {
+  if (typeof stopAllSounds === 'function') stopAllSounds();
+});
 
 // Award pts when scanning rocks
 const _lbScanHook = scanRock;
@@ -12172,6 +12424,244 @@ document.addEventListener('DOMContentLoaded', () => {
         initGame();
       }
     }, 500);
+  });
+
+})();
+
+// ══════════════════════════════════════════════════════════════
+// 🌳 EVOLUTIONARY TREE ENGINE
+// ══════════════════════════════════════════════════════════════
+(function() {
+  'use strict';
+
+  const EVO_DATA = {
+    id:'root', label:'Dinosauria', emoji:'🦴', period:'231 Ma', x:450, y:38,
+    color:'#6efb3e',
+    desc:'All dinosaurs share a common ancestor from the Late Triassic. The group split early into two main branches based on hip structure.',
+    examples:[],
+    children:[
+      {
+        id:'ornithischia', label:'Ornithischia', emoji:'🦏', period:'228 Ma', x:220, y:150,
+        color:'#60a5fa',
+        desc:'Bird-hipped dinosaurs — despite the name, birds did NOT descend from this group. All were herbivores with a distinctive backward-pointing pubis bone.',
+        examples:['🦕 Triceratops','🛡️ Ankylosaurus','🔪 Stegosaurus','🐊 Iguanodon'],
+        children:[
+          {
+            id:'thyreophora', label:'Thyreophora', emoji:'🛡️', period:'200 Ma', x:90, y:280,
+            color:'#34d399',
+            desc:'Armoured dinosaurs — protected by bony plates, spikes, and clubs. Slow-moving herbivores that relied on armour rather than speed.',
+            examples:['🛡️ Stegosaurus','🔒 Ankylosaurus','⚔️ Kentrosaurus'],
+            children:[
+              {id:'stegosauria', label:'Stegosauria', emoji:'🔪', period:'170 Ma', x:45, y:400, color:'#a3e635',
+               desc:'Plated dinosaurs with distinctive back plates and tail spikes (the thagomizer). Stegosaurus is the most famous member.',
+               examples:['🔪 Stegosaurus','⚔️ Kentrosaurus','🌿 Huayangosaurus'], children:[]},
+              {id:'ankylosauria', label:'Ankylosauria', emoji:'🛡️', period:'160 Ma', x:145, y:400, color:'#a3e635',
+               desc:'Tank-like dinosaurs covered head to tail in bony armour. Ankylosaurus had a tail club capable of shattering bone.',
+               examples:['🛡️ Ankylosaurus','🦎 Nodosaurus','🐢 Euoplocephalus'], children:[]},
+            ]
+          },
+          {
+            id:'ornithopoda', label:'Ornithopoda', emoji:'🦕', period:'196 Ma', x:230, y:280,
+            color:'#34d399',
+            desc:'Bipedal or four-legged herbivores — the most diverse and successful ornithischians. Included the duck-billed hadrosaurs.',
+            examples:['🎺 Parasaurolophus','🦴 Iguanodon','🐦 Edmontosaurus'],
+            children:[
+              {id:'hadrosauria', label:'Hadrosauria', emoji:'🎺', period:'90 Ma', x:195, y:400, color:'#a3e635',
+               desc:'Duck-billed dinosaurs — enormously successful herbivores of the Late Cretaceous. Many had elaborate hollow crests used for sound.',
+               examples:['🎺 Parasaurolophus','🐦 Edmontosaurus','🦴 Maiasaura'], children:[]},
+              {id:'iguanodontia', label:'Iguanodontia', emoji:'🦴', period:'155 Ma', x:295, y:400, color:'#a3e635',
+               desc:'Large bipedal herbivores with thumb spikes used for defence and food gathering. Iguanodon was among the first dinosaurs ever named.',
+               examples:['🦴 Iguanodon','🌿 Camptosaurus','🦎 Ouranosaurus'], children:[]},
+            ]
+          },
+          {
+            id:'marginocephalia', label:'Marginocephalia', emoji:'🦏', period:'160 Ma', x:370, y:280,
+            color:'#34d399',
+            desc:'Dinosaurs with distinctive bony frills, horns or thick skulls — evolved purely for display, species recognition, and combat.',
+            examples:['🦏 Triceratops','💥 Pachycephalosaurus','🌀 Protoceratops'],
+            children:[
+              {id:'ceratopsia', label:'Ceratopsia', emoji:'🦏', period:'158 Ma', x:345, y:400, color:'#a3e635',
+               desc:'Horned dinosaurs with elaborate frills. Triceratops is the most famous — with three horns and a large bony neck frill.',
+               examples:['🦏 Triceratops','🌀 Protoceratops','🐂 Styracosaurus'], children:[]},
+              {id:'pachycephalosauria', label:'Pachycephalosauria', emoji:'💥', period:'145 Ma', x:445, y:400, color:'#a3e635',
+               desc:'Thick-skulled dinosaurs that likely head-butted rivals for dominance — their domed skulls were up to 25 cm thick.',
+               examples:['💥 Pachycephalosaurus','🪨 Stygimoloch','🔵 Dracorex'], children:[]},
+            ]
+          },
+        ]
+      },
+      {
+        id:'saurischia', label:'Saurischia', emoji:'🦖', period:'231 Ma', x:680, y:150,
+        color:'#f97316',
+        desc:'Lizard-hipped dinosaurs — including both the giant sauropods and all carnivorous theropods. Birds evolved from this branch.',
+        examples:['🦖 T-Rex','🦕 Brachiosaurus','🦅 Velociraptor','🐦 Birds'],
+        children:[
+          {
+            id:'sauropodomorpha', label:'Sauropodomorpha', emoji:'🦕', period:'228 Ma', x:560, y:280,
+            color:'#fb923c',
+            desc:'Long-necked herbivores — evolved from small bipedal ancestors into the largest land animals that ever lived, up to 70+ tonnes.',
+            examples:['🦕 Brachiosaurus','🦕 Diplodocus','🦕 Argentinosaurus'],
+            children:[
+              {id:'sauropoda', label:'Sauropoda', emoji:'🦕', period:'180 Ma', x:510, y:400, color:'#fbbf24',
+               desc:'True giant sauropods — four-legged, barrel-bodied, with enormously long necks and tails. The largest animals ever to walk on land.',
+               examples:['🦕 Brachiosaurus','🦕 Diplodocus','🦕 Argentinosaurus','🦕 Patagotitan'], children:[]},
+              {id:'prosauropoda', label:'Prosauropoda', emoji:'🌿', period:'228 Ma', x:610, y:400, color:'#fbbf24',
+               desc:'Early ancestors of the giant sauropods — mostly bipedal or semi-bipedal herbivores from the Triassic and Early Jurassic.',
+               examples:['🌿 Plateosaurus','🦕 Massospondylus','🌱 Riojasaurus'], children:[]},
+            ]
+          },
+          {
+            id:'theropoda', label:'Theropoda', emoji:'🦖', period:'231 Ma', x:800, y:280,
+            color:'#fb923c',
+            desc:'Bipedal mostly-carnivorous dinosaurs — the most diverse dinosaur group, ranging from tiny feathered hunters to T-Rex. Birds are living theropods.',
+            examples:['🦖 T-Rex','🦅 Velociraptor','🐦 Modern Birds','🐊 Spinosaurus'],
+            children:[
+              {id:'tyrannosauridae', label:'Tyrannosauridae', emoji:'🦖', period:'90 Ma', x:700, y:400, color:'#ef4444',
+               desc:'The apex predators of the Late Cretaceous — large-skulled, tiny-armed bipedal hunters. T-Rex is the most famous member.',
+               examples:['🦖 T-Rex','🦴 Albertosaurus','🦎 Tarbosaurus'], children:[]},
+              {id:'dromaeosauridae', label:'Dromaeosauridae', emoji:'🦅', period:'167 Ma', x:800, y:400, color:'#ef4444',
+               desc:'Feathered sickle-clawed hunters — the raptors. Closely related to birds, with large brains and pack-hunting behaviour.',
+               examples:['🦅 Velociraptor','🦅 Deinonychus','🐦 Microraptor'], children:[]},
+              {id:'aves', label:'Aves (Birds)', emoji:'🐦', period:'150 Ma', x:900, y:400, color:'#ef4444',
+               desc:'Living dinosaurs — over 10,000 species alive today. Birds evolved from small feathered theropods and survived the extinction event 66 Ma.',
+               examples:['🐦 All 10,000+ bird species','🦜 Parrots','🦅 Eagles','🐧 Penguins'], children:[]},
+            ]
+          },
+        ]
+      }
+    ]
+  };
+
+  function getAllNodes(node, arr=[]) {
+    arr.push(node);
+    (node.children||[]).forEach(c => getAllNodes(c, arr));
+    return arr;
+  }
+
+  function drawTree() {
+    const svg = document.getElementById('evoSVG');
+    if (!svg) return;
+    svg.innerHTML = '';
+    const ns = 'http://www.w3.org/2000/svg';
+
+    function drawLinks(node) {
+      (node.children||[]).forEach(child => {
+        const line = document.createElementNS(ns,'path');
+        const mx = (node.x + child.x) / 2;
+        line.setAttribute('d', `M${node.x},${node.y+18} C${mx},${node.y+18} ${mx},${child.y-18} ${child.x},${child.y-18}`);
+        line.setAttribute('stroke', child.color || '#444');
+        line.setAttribute('stroke-width','2');
+        line.setAttribute('fill','none');
+        line.setAttribute('stroke-opacity','0.5');
+        svg.appendChild(line);
+        drawLinks(child);
+      });
+    }
+
+    function drawNode(node) {
+      const g = document.createElementNS(ns,'g');
+      g.setAttribute('cursor','pointer');
+      g.setAttribute('class','evo-node');
+
+      // Circle bg
+      const circle = document.createElementNS(ns,'circle');
+      circle.setAttribute('cx', node.x);
+      circle.setAttribute('cy', node.y);
+      circle.setAttribute('r','22');
+      circle.setAttribute('fill', 'rgba(0,0,0,0.7)');
+      circle.setAttribute('stroke', node.color || '#6efb3e');
+      circle.setAttribute('stroke-width','2');
+      g.appendChild(circle);
+
+      // Emoji
+      const emoji = document.createElementNS(ns,'text');
+      emoji.setAttribute('x', node.x);
+      emoji.setAttribute('y', node.y + 7);
+      emoji.setAttribute('text-anchor','middle');
+      emoji.setAttribute('font-size','18');
+      emoji.textContent = node.emoji;
+      g.appendChild(emoji);
+
+      // Label
+      const label = document.createElementNS(ns,'text');
+      label.setAttribute('x', node.x);
+      label.setAttribute('y', node.y + 38);
+      label.setAttribute('text-anchor','middle');
+      label.setAttribute('font-size','9');
+      label.setAttribute('font-weight','700');
+      label.setAttribute('fill', node.color || '#6efb3e');
+      label.setAttribute('font-family','Poppins,sans-serif');
+      // wrap long labels
+      const words = node.label.split(' ');
+      if (words.length > 1 && node.label.length > 12) {
+        const t1 = document.createElementNS(ns,'tspan');
+        t1.setAttribute('x', node.x); t1.setAttribute('dy','0');
+        t1.textContent = words[0];
+        const t2 = document.createElementNS(ns,'tspan');
+        t2.setAttribute('x', node.x); t2.setAttribute('dy','11');
+        t2.textContent = words.slice(1).join(' ');
+        label.innerHTML = '';
+        label.appendChild(t1); label.appendChild(t2);
+      } else {
+        label.textContent = node.label;
+      }
+      g.appendChild(label);
+
+      // Period
+      const period = document.createElementNS(ns,'text');
+      period.setAttribute('x', node.x);
+      period.setAttribute('y', node.y + 52);
+      period.setAttribute('text-anchor','middle');
+      period.setAttribute('font-size','7.5');
+      period.setAttribute('fill','rgba(255,255,255,0.35)');
+      period.setAttribute('font-family','Poppins,sans-serif');
+      period.textContent = node.period;
+      g.appendChild(period);
+
+      g.addEventListener('click', () => showEvoInfo(node));
+      g.addEventListener('mouseenter', () => {
+        circle.setAttribute('stroke-width','3');
+        circle.setAttribute('fill','rgba(110,251,62,0.12)');
+      });
+      g.addEventListener('mouseleave', () => {
+        circle.setAttribute('stroke-width','2');
+        circle.setAttribute('fill','rgba(0,0,0,0.7)');
+      });
+      svg.appendChild(g);
+      (node.children||[]).forEach(drawNode);
+    }
+
+    drawLinks(EVO_DATA);
+    drawNode(EVO_DATA);
+  }
+
+  function showEvoInfo(node) {
+    const box = document.getElementById('evo-info-box');
+    if (!box) return;
+    document.getElementById('evo-info-emoji').textContent = node.emoji;
+    document.getElementById('evo-info-name').textContent = node.label;
+    document.getElementById('evo-info-period').textContent = node.period + (node.period.includes('Ma') ? ' ago' : '');
+    document.getElementById('evo-info-desc').textContent = node.desc;
+    const ex = document.getElementById('evo-info-examples');
+    ex.innerHTML = (node.examples||[]).map(e =>
+      `<span style="background:rgba(255,255,255,0.07);border-radius:100px;padding:4px 12px;font-size:0.78rem;color:#ccc;">${e}</span>`
+    ).join('');
+    box.style.display = 'block';
+    box.scrollIntoView({behavior:'smooth', block:'nearest'});
+  }
+
+  // Init when page shown
+  const _origShowPage = window.showPage;
+  if (typeof _origShowPage === 'function') {
+    window.showPage = function(id) {
+      _origShowPage(id);
+      if (id === 'evo-tree') setTimeout(drawTree, 80);
+    };
+  }
+
+  document.addEventListener('DOMContentLoaded', () => {
+    // Draw if already on page
+    if (document.getElementById('evoSVG')) drawTree();
   });
 
 })();
