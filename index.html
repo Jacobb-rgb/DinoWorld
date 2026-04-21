@@ -4491,21 +4491,17 @@
 <!-- ✨ WHAT'S NEW STRIP -->
 <div class="whats-new-strip" id="whatsNewStrip">
   <span class="wn-label">🆕 WHAT'S NEW</span>
-  <div class="wn-item hot" onclick="showPage('battle')">⚔️ Dino Battle <span class="wn-badge-new">NEW</span></div>
-  <div class="wn-item hot" onclick="showPage('dna-builder')">🧬 DNA Builder <span class="wn-badge-new">NEW</span></div>
-  <div class="wn-item hot" onclick="showPage('size-compare')">📏 Size Compare <span class="wn-badge-new">NEW</span></div>
-  <div class="wn-item hot" onclick="showPage('time-machine')">🗺️ Time Machine <span class="wn-badge-new">NEW</span></div>
-  <div class="wn-item" onclick="showPage('leaderboard')">🏆 Dino Points <span class="wn-badge-new">NEW</span></div>
-  <div class="wn-item" onclick="showPage('soundscape')">🎵 Dino Sounds <span class="wn-badge-new">NEW</span></div>
+  <div class="wn-item hot" onclick="showPage('trivia')">🎯 Trivia Battle <span class="wn-badge-new">NEW</span></div>
+  <div class="wn-item hot" onclick="showPage('jurassic-park')">🌴 Jurský Park <span class="wn-badge-new">NEW</span></div>
   <div class="wn-item" onclick="showPage('evo-tree')">🌳 Evolution Tree <span class="wn-badge-new">NEW</span></div>
-  <div class="wn-item" onclick="showArticle('dino-intelligence')">🧠 Dino IQ <span class="wn-badge-new">NEW</span></div>
-  <div class="wn-item" onclick="showArticle('asteroid-impact')">☄️ Asteroid Story <span class="wn-badge-new">NEW</span></div>
-  <div class="wn-item" onclick="showPage('rock-scanner')">🪨 Rock Scanner <span class="wn-badge-hot">HOT</span></div>
-  <div class="wn-item" onclick="showPage('quiz')">🧠 Quiz <span class="wn-badge-hot">HOT</span></div>
-  <div class="wn-item" onclick="showPage('fossils-map')">🗺️ Fossil Map</div>
-  <div class="wn-item" onclick="showPage('comparison')">⚔️ Compare Dinos</div>
   <div class="wn-item hot" onclick="showPage('dino-runner')">🏃 Dino Runner <span class="wn-badge-hot">🔥 HOT</span></div>
+  <div class="wn-item" onclick="showPage('battle')">⚔️ Dino Battle</div>
+  <div class="wn-item" onclick="showPage('quiz')">🧠 Quiz</div>
+  <div class="wn-item" onclick="showPage('fossils-map')">🗺️ Fossil Map</div>
+  <div class="wn-item" onclick="showPage('comparison')">📊 Compare Dinos</div>
   <div class="wn-item" onclick="showPage('alldinos')">🦕 All Dinosaurs</div>
+  <div class="wn-item" onclick="showPage('rock-scanner')">🪨 Rock Scanner</div>
+  <div class="wn-item" onclick="showPage('soundscape')">🎵 Dino Sounds</div>
 </div>
 
 
@@ -4580,7 +4576,9 @@
     <button class="mm-btn" data-page="alldinos" onclick="showPage('alldinos');closeMobileMenu()"><span class="mm-btn-icon">🦕</span>All Dinosaurs</button>
     <button class="mm-btn" data-page="popular" onclick="showPage('popular');closeMobileMenu()"><span class="mm-btn-icon">⭐</span>Popular</button>
     <button class="mm-btn" data-page="comparison" onclick="showPage('comparison');closeMobileMenu()"><span class="mm-btn-icon">⚔️</span>Compare Dinos</button>
-    <button class="mm-btn" data-page="evo-tree" onclick="showPage('evo-tree');closeMobileMenu()"><span class="mm-btn-icon">🌳</span>Evolution Tree 🆕</button>
+    <button class="mm-btn" data-page="evo-tree" onclick="showPage('evo-tree');closeMobileMenu()"><span class="mm-btn-icon">🌳</span>Evolution Tree</button>
+    <button class="mm-btn" data-page="trivia" onclick="showPage('trivia');closeMobileMenu()"><span class="mm-btn-icon">🎯</span>Trivia Battle 🆕</button>
+    <button class="mm-btn" data-page="jurassic-park" onclick="showPage('jurassic-park');closeMobileMenu()"><span class="mm-btn-icon">🌴</span>Jurský Park 🆕</button>
     <button class="mm-btn" data-page="fossils-map" onclick="showPage('fossils-map');closeMobileMenu()"><span class="mm-btn-icon">🗺️</span>Fossil Map</button>
     <button class="mm-btn" data-page="rock-scanner" onclick="showPage('rock-scanner');closeMobileMenu()"><span class="mm-btn-icon">🪨</span>Rock Scanner</button>
     <div class="mm-divider"></div>
@@ -5388,7 +5386,7 @@
   <section>
     <div class="section-label">🦕 Complete Database</div>
     <div class="section-title">ALL <span>DINOSAURS</span></div>
-    <p style="color:var(--text-secondary);margin-bottom:24px;max-width:580px;font-size:0.93rem;">Browse all 17 dinosaur profiles. Filter by diet, period or size — click any card to read the full guide.</p>
+    <p style="color:var(--text-secondary);margin-bottom:24px;max-width:580px;font-size:0.93rem;">Browse all 32 dinosaur profiles. Filter by diet, period or size — click any card to read the full guide.</p>
     <div class="alldinos-controls">
       <div class="alldinos-search">
         <span style="color:var(--muted)">🔍</span>
@@ -6285,6 +6283,77 @@
      NEW ARTICLES (SEO obsah)
 ════════════════════════════════════════ -->
 
+<!-- ════════════════════════════════════════
+     🌴 JURASSIC PARK BUILDER
+════════════════════════════════════════ -->
+<div class="page" id="page-jurassic-park">
+  <section>
+    <div class="section-label">🌴 Minihra</div>
+    <div class="section-title">POSTAV SVŮJ <span>JURSKÝ PARK</span></div>
+    <p style="color:var(--text-secondary);margin-bottom:20px;max-width:580px;">Vyber dinosaury a přidej je do svého parku. Sestav kolekci s co nejvyšším skóre!</p>
+    <div id="jp-park-display" style="background:rgba(110,251,62,0.04);border:1.5px solid rgba(110,251,62,0.15);border-radius:20px;padding:24px;margin-bottom:24px;min-height:100px;">
+      <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:16px;flex-wrap:wrap;gap:10px;">
+        <div><div style="font-size:1.1rem;font-weight:800;color:#fff;">🏟️ Můj Jurský Park</div><div style="font-size:0.8rem;color:var(--text-secondary);">Kapacita: <span id="jp-capacity">0</span>/8</div></div>
+        <div style="text-align:right;"><div style="font-size:1.4rem;font-weight:900;color:var(--accent);" id="jp-score">0</div><div style="font-size:0.75rem;color:var(--text-secondary);">bodů</div></div>
+      </div>
+      <div id="jp-park-slots" style="display:flex;flex-wrap:wrap;gap:10px;min-height:50px;"></div>
+      <div id="jp-empty-msg" style="color:var(--text-secondary);font-size:0.9rem;padding:8px 0;">Park je prázdný — přidej dinosaury níže! 👇</div>
+    </div>
+    <div style="display:flex;gap:10px;margin-bottom:20px;flex-wrap:wrap;">
+      <button class="btn btn-primary" onclick="jpSortBy('rarity')">⭐ Vzácnost</button>
+      <button class="btn btn-secondary" onclick="jpSortBy('points')">🏆 Body</button>
+      <button class="btn" style="background:rgba(239,68,68,0.15);color:#ef4444;border:1px solid rgba(239,68,68,0.3);border-radius:10px;padding:8px 16px;cursor:pointer;font-weight:700;" onclick="jpClearPark()">🗑️ Vyprázdnit</button>
+    </div>
+    <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(148px,1fr));gap:12px;" id="jp-dino-shop"></div>
+    <div class="dyk" style="margin-top:28px;"><span class="dyk-icon">🌴</span><div><div class="dyk-label">Park Tip</div><div class="dyk-text">Legendární dinosauři jsou nejcennější — T-Rex a Spinosaurus přinášejí nejvíce bodů!</div></div></div>
+  </section>
+</div>
+
+<!-- ════════════════════════════════════════
+     🎯 DINO TRIVIA BATTLE
+════════════════════════════════════════ -->
+<div class="page" id="page-trivia">
+  <section>
+    <div class="section-label">🎯 Hra</div>
+    <div class="section-title">DINO TRIVIA <span>BATTLE</span></div>
+    <p style="color:var(--text-secondary);margin-bottom:20px;max-width:580px;">10 otázek, 15 sekund na každou. Čím rychleji odpovíš, tím více bodů!</p>
+    <div id="trivia-start-screen" style="text-align:center;padding:32px 0;">
+      <div style="font-size:5rem;margin-bottom:16px;">🦖</div>
+      <div style="font-size:1.5rem;font-weight:900;color:#fff;margin-bottom:8px;">Jsi připraven/a?</div>
+      <div style="color:var(--text-secondary);margin-bottom:28px;">10 otázek · 15 sekund každá · Bonus za rychlost</div>
+      <div style="display:flex;gap:12px;justify-content:center;flex-wrap:wrap;">
+        <button class="btn btn-primary" onclick="triviaStart('easy')">🌿 Lehká</button>
+        <button class="btn btn-secondary" onclick="triviaStart('medium')">⚡ Střední</button>
+        <button class="btn" style="background:rgba(239,68,68,0.15);color:#ef4444;border:1px solid rgba(239,68,68,0.3);border-radius:10px;padding:10px 20px;font-weight:700;cursor:pointer;" onclick="triviaStart('hard')">🔥 Těžká</button>
+      </div>
+    </div>
+    <div id="trivia-game-screen" style="display:none;">
+      <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:20px;flex-wrap:wrap;gap:10px;">
+        <div style="font-size:0.9rem;color:var(--text-secondary);">Otázka <span id="trivia-q-num">1</span>/10</div>
+        <div style="display:flex;align-items:center;gap:16px;">
+          <div style="width:130px;height:8px;background:rgba(255,255,255,0.1);border-radius:99px;overflow:hidden;"><div id="trivia-timer-fill" style="height:100%;background:var(--accent);border-radius:99px;transition:width 1s linear;width:100%;"></div></div>
+          <div style="font-weight:800;color:var(--accent);">⏱ <span id="trivia-timer">15</span>s</div>
+          <div style="font-weight:800;color:#ffd700;">⭐ <span id="trivia-score-live">0</span></div>
+        </div>
+      </div>
+      <div id="trivia-question" style="font-size:1.15rem;font-weight:700;color:#fff;margin-bottom:22px;background:rgba(255,255,255,0.04);border-radius:14px;padding:20px 24px;line-height:1.5;"></div>
+      <div id="trivia-options" style="display:grid;grid-template-columns:1fr 1fr;gap:12px;"></div>
+      <div id="trivia-feedback" style="display:none;margin-top:16px;border-radius:14px;padding:14px 18px;font-weight:600;"></div>
+    </div>
+    <div id="trivia-result-screen" style="display:none;text-align:center;padding:24px 0;">
+      <div id="trivia-result-emoji" style="font-size:4rem;margin-bottom:12px;"></div>
+      <div id="trivia-result-title" style="font-size:1.6rem;font-weight:900;color:#fff;margin-bottom:8px;"></div>
+      <div id="trivia-result-score" style="font-size:2.5rem;font-weight:900;color:var(--accent);margin-bottom:4px;"></div>
+      <div style="color:var(--text-secondary);margin-bottom:8px;" id="trivia-result-correct"></div>
+      <div id="trivia-result-rank" style="font-size:0.9rem;color:#ffd700;font-weight:700;margin-bottom:24px;"></div>
+      <div style="display:flex;gap:12px;justify-content:center;flex-wrap:wrap;">
+        <button class="btn btn-primary" onclick="triviaRestart()">🔄 Hrát znovu</button>
+        <button class="btn btn-secondary" onclick="showPage('quiz')">🧠 Který dino jsi?</button>
+      </div>
+    </div>
+  </section>
+</div>
+
 <!-- FOOTER -->
 <footer>
   <div class="footer-inner">
@@ -6326,7 +6395,7 @@
 
 <script>
 // ── PAGES ──
-const pages = ['home','basics','eras','types','popular','seo','tops','eggs','extinction','quiz','facts','article','alldinos','fossils-map','comparison','rock-scanner','battle','time-machine','size-compare','dna-builder','soundscape','leaderboard','dino-runner','evo-tree'];
+const pages = ['home','basics','eras','types','popular','seo','tops','eggs','extinction','quiz','facts','article','alldinos','fossils-map','comparison','rock-scanner','battle','time-machine','size-compare','dna-builder','soundscape','leaderboard','dino-runner','evo-tree','jurassic-park','trivia'];
 
 function showPage(id) {
   // Update page title for SEO
@@ -8764,12 +8833,21 @@ const allDinosData = [
   {id:'ornithomimus',name:'Ornithomimus',emoji:'🐦',diet:'omni',period:'cretaceous',size:'medium',periodLabel:'Late Cretaceous',length:'3.8 m',weight:'170 kg',desc:'Bird mimic — feathered, toothless, and one of the fastest at 65 km/h.'},
   {id:'troodon',name:'Troodon',emoji:'🦉',diet:'omni',period:'cretaceous',size:'small',periodLabel:'Late Cretaceous',length:'2.4 m',weight:'50 kg',desc:'Smartest dinosaur by brain-to-body ratio. Nocturnal hunter with huge eyes.'},
   {id:'iguanodon',name:'Iguanodon',emoji:'🦎',diet:'herb',period:'cretaceous',size:'large',periodLabel:'Early Cretaceous',length:'9–10 m',weight:'3–4 tons',desc:'One of the first dinosaurs named. Famous thumb spike was first put on its nose!'},
-  {id:'heterodontosaurus',name:'Heterodontosaurus',emoji:'🦎',diet:'omni',period:'triassic',size:'small',periodLabel:'Early Jurassic',length:'~1.2 m',weight:'~3 kg',desc:'Three types of teeth in one mouth. One of the most unique jaws ever.'},,
+  {id:'heterodontosaurus',name:'Heterodontosaurus',emoji:'🦎',diet:'omni',period:'triassic',size:'small',periodLabel:'Early Jurassic',length:'~1.2 m',weight:'~3 kg',desc:'Three types of teeth in one mouth. One of the most unique jaws ever.'},
   {id:'utahraptor',name:'Utahraptor',emoji:'🦅',diet:'carn',period:'cretaceous',size:'large',periodLabel:'Early Cretaceous',length:'5–7 m',weight:'280–500 kg',desc:'The real-life giant raptor — bigger and deadlier than anything in Jurassic Park. A 24cm sickle claw and pack-hunting intelligence.'},
   {id:'deinonychus',name:'Deinonychus',emoji:'🦅',diet:'carn',period:'cretaceous',size:'medium',periodLabel:'Early Cretaceous 115–108 Ma',length:'3.4 m',weight:'~73 kg',desc:'The dinosaur that changed science. Jurassic Park raptors were based on this pack-hunting genius with a terrible claw.'},
   {id:'microraptor',name:'Microraptor',emoji:'🐦',diet:'carn',period:'cretaceous',size:'small',periodLabel:'Early Cretaceous 125–120 Ma',length:'~60 cm',weight:'~1 kg',desc:'Four-winged crow-sized predator from China. Iridescent black feathers proved dinosaurs could be colorful.'},
   {id:'albertosaurus',name:'Albertosaurus',emoji:'🦖',diet:'carn',period:'cretaceous',size:'large',periodLabel:'Late Cretaceous 70 Ma',length:'8–9 m',weight:'1.3 tons',desc:'T-Rex faster Canadian cousin. Evidence suggests it hunted in packs — 26 individuals found at one site.'},
-  {id:'majungasaurus',name:'Majungasaurus',emoji:'🦖',diet:'carn',period:'cretaceous',size:'large',periodLabel:'Late Cretaceous 70–66 Ma',length:'6–7 m',weight:'~1.1 tons',desc:'Madagascar apex predator — the only dinosaur with confirmed evidence of cannibalism.'}
+  {id:'majungasaurus',name:'Majungasaurus',emoji:'🦖',diet:'carn',period:'cretaceous',size:'large',periodLabel:'Late Cretaceous 70–66 Ma',length:'6–7 m',weight:'~1.1 tons',desc:'Madagascar apex predator — the only dinosaur with confirmed evidence of cannibalism.'},
+  {id:'parasaurolophus',name:'Parasaurolophus',emoji:'🎺',diet:'herb',period:'cretaceous',size:'large',periodLabel:'Late Cretaceous 76–73 Ma',length:'9–10 m',weight:'2.5 tons',desc:'The trombone of the Cretaceous. Its hollow 1.8m crest produced a deep resonant call audible for kilometres.'},
+  {id:'pachycephalosaurus',name:'Pachycephalosaurus',emoji:'💥',diet:'herb',period:'cretaceous',size:'medium',periodLabel:'Late Cretaceous 70–66 Ma',length:'4–5 m',weight:'~450 kg',desc:'Head-butting dinosaur with a dome 25cm thick. Used its skull like a battering ram in dominance battles.'},
+  {id:'therizinosaurus',name:'Therizinosaurus',emoji:'🦥',diet:'herb',period:'cretaceous',size:'large',periodLabel:'Late Cretaceous 70 Ma',length:'9–10 m',weight:'3–5 tons',desc:'Had the longest claws of any animal ever — up to 1 metre each. Despite terrifying claws it only ate plants.'},
+  {id:'baryonyx',name:'Baryonyx',emoji:'🐟',diet:'carn',period:'cretaceous',size:'large',periodLabel:'Early Cretaceous 130–125 Ma',length:'7.5–10 m',weight:'1.7 tons',desc:'Fish-eating cousin of Spinosaurus. Discovered in a Surrey clay pit in 1983 with fish scales still in its stomach.'},
+  {id:'protoceratops',name:'Protoceratops',emoji:'🐏',diet:'herb',period:'cretaceous',size:'small',periodLabel:'Late Cretaceous 75–71 Ma',length:'1.5–2 m',weight:'~180 kg',desc:'The sheep of the Cretaceous. Lived in herds and laid eggs in spiral nests. May have inspired the griffin legend.'},
+  {id:'maiasaura',name:'Maiasaura',emoji:'🪺',diet:'herb',period:'cretaceous',size:'large',periodLabel:'Late Cretaceous 76–75 Ma',length:'7–9 m',weight:'3–4 tons',desc:'Good mother lizard — the first dinosaur proven to care for its young in nest colonies.'},
+  {id:'styracosaurus',name:'Styracosaurus',emoji:'🦏',diet:'herb',period:'cretaceous',size:'large',periodLabel:'Late Cretaceous 75.5–75 Ma',length:'5–6 m',weight:'~2.7 tons',desc:'Six long spikes on its frill plus a nose horn. One of the most spectacular-looking dinosaurs ever.'},
+  {id:'kentrosaurus',name:'Kentrosaurus',emoji:'⚔️',diet:'herb',period:'jurassic',size:'medium',periodLabel:'Late Jurassic 156–150 Ma',length:'4–5 m',weight:'~700 kg',desc:'African cousin of Stegosaurus with sharper more lethal spikes running all the way down its tail.'},
+  {id:'ceratosaurus',name:'Ceratosaurus',emoji:'🦕',diet:'carn',period:'jurassic',size:'large',periodLabel:'Late Jurassic 153–148 Ma',length:'5.5–7 m',weight:'~500 kg',desc:'Jurassic predator with a nose horn and two brow horns. Had crocodile-like osteoderms on its back.'}
 ];
 
 let dinoFilters = {diet:'all', period:'all', size:'all'};
@@ -12666,6 +12744,238 @@ document.addEventListener('DOMContentLoaded', () => {
 
 })();
 
+
+// ══════════════════════════════════════════════════════════════
+// 🌴 JURASSIC PARK BUILDER
+// ══════════════════════════════════════════════════════════════
+(function() {
+  var JP = [
+    {id:'trex',name:'T-Rex',emoji:'🦖',r:'legendary',p:500,desc:'Apex predátor'},
+    {id:'spinosaurus',name:'Spinosaurus',emoji:'🐊',r:'legendary',p:450,desc:'Plovoucí gigant'},
+    {id:'velociraptor',name:'Velociraptor',emoji:'🦅',r:'rare',p:300,desc:'Lovec v hejnu'},
+    {id:'triceratops-guide',name:'Triceratops',emoji:'🦏',r:'rare',p:280,desc:'Tank se třemi rohy'},
+    {id:'brachiosaurus-guide',name:'Brachiosaurus',emoji:'🦕',r:'rare',p:260,desc:'Jemný obr'},
+    {id:'therizinosaurus',name:'Therizinosaurus',emoji:'🦥',r:'rare',p:240,desc:'Obří drápy'},
+    {id:'stegosaurus-guide',name:'Stegosaurus',emoji:'🦎',r:'uncommon',p:180,desc:'Plátový obránce'},
+    {id:'ankylosaurus',name:'Ankylosaurus',emoji:'🐢',r:'uncommon',p:170,desc:'Živý tank'},
+    {id:'parasaurolophus',name:'Parasaurolophus',emoji:'🎺',r:'uncommon',p:150,desc:'Trubač druhohor'},
+    {id:'diplodocus',name:'Diplodocus',emoji:'🦕',r:'uncommon',p:140,desc:'Nejdelší dino'},
+    {id:'allosaurus',name:'Allosaurus',emoji:'🦖',r:'uncommon',p:160,desc:'Jurský lovec'},
+    {id:'microraptor',name:'Microraptor',emoji:'🐦',r:'rare',p:200,desc:'4-křídlý letec'},
+    {id:'pachycephalosaurus',name:'Pachycephalosaurus',emoji:'💥',r:'common',p:100,desc:'Hlavatý taranič'},
+    {id:'gallimimus',name:'Gallimimus',emoji:'🐦',r:'common',p:80,desc:'Rychlík'},
+    {id:'troodon',name:'Troodon',emoji:'🦉',r:'uncommon',p:130,desc:'Nejchytřejší dino'},
+    {id:'maiasaura',name:'Maiasaura',emoji:'🪺',r:'common',p:90,desc:'Dobrá matka'}
+  ];
+  var RC = {legendary:'#ffd700',rare:'#a78bfa',uncommon:'#34d399',common:'#94a3b8'};
+  var RL = {legendary:'⭐ Legendární',rare:'💜 Vzácný',uncommon:'🟢 Neobvyklý',common:'⚪ Běžný'};
+  var park = [], sMode = 'rarity';
+
+  window.jpSortBy = function(m){sMode=m;renderShop();};
+  window.jpClearPark = function(){park=[];renderShop();renderPark();};
+  window.jpToggleDino = function(id){
+    var d = JP.find(function(x){return x.id===id;});
+    if(!d) return;
+    var idx = park.findIndex(function(x){return x.id===id;});
+    if(idx>=0){ park.splice(idx,1); }
+    else {
+      if(park.length>=8){alert('Park je plný! Max 8 dinosaurů.');return;}
+      park.push(d);
+      if(typeof addLBPoints==='function') addLBPoints(Math.floor(d.p/10),'🌴 '+d.name+' přidán!');
+    }
+    renderShop(); renderPark();
+  };
+
+  function renderShop(){
+    var el = document.getElementById('jp-dino-shop');
+    if(!el) return;
+    var list = JP.slice().sort(function(a,b){
+      if(sMode==='rarity'){var o={legendary:0,rare:1,uncommon:2,common:3};return o[a.r]-o[b.r];}
+      return b.p-a.p;
+    });
+    el.innerHTML = list.map(function(d){
+      var inP = park.some(function(x){return x.id===d.id;});
+      var c = RC[d.r];
+      return '<div onclick="jpToggleDino(\''+d.id+'\')" style="background:rgba(255,255,255,0.04);border:1.5px solid '+(inP?c:'rgba(255,255,255,0.08)')+';border-radius:14px;padding:12px;text-align:center;cursor:pointer;'+(inP?'opacity:0.55;':'')+'">'
+        +'<div style="font-size:1.8rem;margin-bottom:4px;">'+d.emoji+'</div>'
+        +'<div style="font-size:0.78rem;font-weight:700;color:#fff;margin-bottom:2px;">'+d.name+'</div>'
+        +'<div style="font-size:0.68rem;color:'+c+';font-weight:600;margin-bottom:3px;">'+RL[d.r]+'</div>'
+        +'<div style="font-size:0.7rem;color:var(--text-secondary);margin-bottom:5px;">'+d.desc+'</div>'
+        +'<div style="font-size:0.82rem;font-weight:800;color:var(--accent);">+'+d.p+' bodů</div>'
+        +'<div style="margin-top:6px;font-size:0.7rem;padding:3px 8px;border-radius:99px;background:'+(inP?'rgba(239,68,68,0.2)':'rgba(110,251,62,0.15)')+';color:'+(inP?'#ef4444':'var(--accent)')+';">'+(inP?'✖ Odebrat':'＋ Přidat')+'</div>'
+        +'</div>';
+    }).join('');
+  }
+
+  function renderPark(){
+    var slots=document.getElementById('jp-park-slots');
+    var emsg=document.getElementById('jp-empty-msg');
+    var cap=document.getElementById('jp-capacity');
+    var sc=document.getElementById('jp-score');
+    if(!slots) return;
+    cap.textContent=park.length;
+    sc.textContent=park.reduce(function(s,d){return s+d.p;},0).toLocaleString();
+    if(park.length===0){slots.innerHTML='';emsg.style.display='block';}
+    else{
+      emsg.style.display='none';
+      slots.innerHTML=park.map(function(d){
+        var c=RC[d.r];
+        return '<div onclick="jpToggleDino(\''+d.id+'\')" style="background:rgba(255,255,255,0.06);border:1.5px solid '+c+';border-radius:12px;padding:8px 12px;display:flex;align-items:center;gap:8px;cursor:pointer;">'
+          +'<span style="font-size:1.4rem;">'+d.emoji+'</span>'
+          +'<div><div style="font-size:0.78rem;font-weight:700;color:#fff;">'+d.name+'</div>'
+          +'<div style="font-size:0.7rem;color:'+c+';">'+d.p+' bodů</div></div>'
+          +'<span style="margin-left:auto;color:rgba(239,68,68,0.6);font-size:0.8rem;">✖</span></div>';
+      }).join('');
+    }
+  }
+
+  function jpInit(){renderShop();renderPark();}
+  var _jpH=window.showPage;
+  window.showPage=function(id){_jpH(id);if(id==='jurassic-park')setTimeout(jpInit,80);};
+  document.addEventListener('DOMContentLoaded',jpInit);
+})();
+
+// ══════════════════════════════════════════════════════════════
+// 🎯 DINO TRIVIA BATTLE
+// ══════════════════════════════════════════════════════════════
+(function() {
+  var QS = {
+    easy:[
+      {q:'Kolik rohů měl Triceratops?',a:'3',o:['1','2','3','4']},
+      {q:'Co jedl Brachiosaurus?',a:'Rostliny',o:['Maso','Ryby','Rostliny','Hmyz']},
+      {q:'Jak velký byl Velociraptor?',a:'Jako krocan',o:['Jako slon','Jako pes','Jako krocan','Jako krokodýl']},
+      {q:'Kdy vymřeli dinosauři?',a:'Před 66 miliony let',o:['Před 10 miliony let','Před 66 miliony let','Před 200 miliony let','Před 500 miliony let']},
+      {q:'Jaká zvířata jsou nejbližší příbuzní dinosaurů?',a:'Ptáci',o:['Krokodýli','Ještěrky','Ptáci','Hadi']},
+      {q:'Jak se jmenuje vědec studující dinosaury?',a:'Paleontolog',o:['Geolog','Biolog','Paleontolog','Zoolog']},
+      {q:'Co měl Stegosaurus na zádech?',a:'Kostěné plotny',o:['Peří','Kostěné plotny','Ostny','Šupiny']},
+      {q:'Jak se nazývá věk dinosaurů?',a:'Mesozoikum',o:['Paleozoikum','Mesozoikum','Kenozoikum','Neozoikum']},
+      {q:'Co měl Parasaurolophus na hlavě?',a:'Dutý hřeben',o:['Roh','Dutý hřeben','Ostny','Štít']},
+      {q:'Spinosaurus byl větší než...',a:'T-Rex',o:['Brachiosaurus','T-Rex','Diplodocus','Allosaurus']},
+      {q:'Jak velký mozek měl Stegosaurus?',a:'Jako vlašský ořech',o:['Jako pomeranč','Jako vlašský ořech','Jako meloun','Jako hrách']},
+      {q:'Kde byl nalezen první T-Rex?',a:'Montana, USA',o:['Argentina','Mongolsko','Montana, USA','Čína']}
+    ],
+    medium:[
+      {q:'Jak rychle mohl T-Rex maximálně běžet?',a:'~25 km/h',o:['~10 km/h','~25 km/h','~50 km/h','~80 km/h']},
+      {q:'Jak dlouhé byly drápy Therizinosaura?',a:'Až 1 metr',o:['20 cm','50 cm','Až 1 metr','2 metry']},
+      {q:'Co znamená Velociraptor latinsky?',a:'Rychlý lupič',o:['Rychlý lupič','Ostrý dráp','Malý drak','Rychlý plaz']},
+      {q:'Kde byl objeven Spinosaurus?',a:'Egyptě',o:['Argentině','Číně','Egyptě','Kanadě']},
+      {q:'Jak se jmenuje místo dopadu asteroidu?',a:'Chicxulub',o:['Chixulub','Chicxulub','Yucatan Prime','Deccan']},
+      {q:'Pachycephalosaurus měl lebku tlustou...',a:'25 cm',o:['5 cm','10 cm','25 cm','50 cm']},
+      {q:'Který dinosaurus byl nejchytřejší?',a:'Troodon',o:['Velociraptor','Troodon','Deinonychus','Microraptor']},
+      {q:'Kolik zubů měl T-Rex?',a:'60',o:['20','40','60','80']},
+      {q:'Microraptor měl...',a:'4 křídla',o:['2 křídla','4 křídla','Peří bez křídel','Šupiny']},
+      {q:'Co jedl Baryonyx?',a:'Ryby',o:['Dinosaury','Ryby','Rostliny','Vše']},
+      {q:'Kentrosaurus byl příbuzný...',a:'Stegosaura',o:['Ankylosaura','Triceratopse','Stegosaura','Iguanodona']},
+      {q:'Maiasaura byla první dinosaurus s důkazem...',a:'Péče o mláďata',o:['Létání','Péče o mláďata','Lovu v hejnu','Nočního vidění']}
+    ],
+    hard:[
+      {q:'Jak se vědecky nazývají ptakopánví dinosauři?',a:'Ornithischia',o:['Saurischia','Ornithischia','Theropoda','Sauropodomorpha']},
+      {q:'Deinonychus inspiroval filmového...',a:'Velociraptora v JP',o:['T-Rexe','Velociraptora v JP','Spinosaura','Compyho']},
+      {q:'Který dinosaurus byl první pojmenovaný?',a:'Megalosaurus 1824',o:['Iguanodon 1825','Megalosaurus 1824','T-Rex 1905','Brachiosaurus 1903']},
+      {q:'Co je EQ v paleontologii?',a:'Encephalization Quotient',o:['Evolution Quotient','Encephalization Quotient','Extinction Qualifier','Energy Quotient']},
+      {q:'Kde byl objeven Baryonyx?',a:'Surrey Anglie',o:['Patagonie','Mongolsko','Surrey Anglie','Maroko']},
+      {q:'Maiasaura znamená...',a:'Dobrá matka ještěrka',o:['Velká ještěrka','Dobrá matka ještěrka','Hnízdo ještěrka','Stará ještěrka']},
+      {q:'Protokeratops inspiroval legendu o...',a:'Griffinovi',o:['Drakovi','Griffinovi','Jednorožci','Fenixovi']},
+      {q:'Jak se nazývá ocasní zbraň Stegosaura?',a:'Thagomizer',o:['Tailsmasher','Thagomizer','Spinetail','Spiketail']},
+      {q:'Jaká byla barva Sinosauropteryxe?',a:'Zrzavá s bílým ocasem',o:['Šedá','Zelená','Zrzavá s bílým ocasem','Černá']},
+      {q:'Kolik druhů dinosaurů bylo vědecky popsáno?',a:'Asi 1000',o:['Asi 100','Asi 500','Asi 1000','Asi 5000']},
+      {q:'Jak se nazývá skupina zahrnující ptáky a jejich dino předky?',a:'Archosauria',o:['Reptilia','Archosauria','Diapsida','Amniota']},
+      {q:'Jak se nazývají fosilní stopy dinosaurů?',a:'Ichnofosilie',o:['Dermofosilie','Ichnofosilie','Koprofosilie','Osteofosilie']}
+    ]
+  };
+
+  var cQ=0,score=0,correct=0,diff='medium',tInt=null,qs=[],tLeft=15;
+
+  window.triviaStart=function(d){
+    diff=d;
+    qs=QS[d].slice().sort(function(){return Math.random()-0.5;}).slice(0,10);
+    cQ=0;score=0;correct=0;
+    document.getElementById('trivia-start-screen').style.display='none';
+    document.getElementById('trivia-result-screen').style.display='none';
+    document.getElementById('trivia-game-screen').style.display='block';
+    showQ();
+  };
+
+  function showQ(){
+    var q=qs[cQ];
+    document.getElementById('trivia-q-num').textContent=cQ+1;
+    document.getElementById('trivia-score-live').textContent=score;
+    document.getElementById('trivia-question').textContent=q.q;
+    document.getElementById('trivia-feedback').style.display='none';
+    var sh=q.o.slice().sort(function(){return Math.random()-0.5;});
+    document.getElementById('trivia-options').innerHTML=sh.map(function(opt){
+      var safe=opt.replace(/\\/g,'\\\\').replace(/'/g,"\\'");
+      var safeA=q.a.replace(/\\/g,'\\\\').replace(/'/g,"\\'");
+      return '<button onclick="triviaAns(this,\''+safe+'\',\''+safeA+'\')" style="background:rgba(255,255,255,0.06);border:1.5px solid rgba(255,255,255,0.12);border-radius:12px;padding:14px;color:#fff;font-size:0.88rem;font-weight:600;cursor:pointer;text-align:left;">'+opt+'</button>';
+    }).join('');
+    startTimer();
+  }
+
+  function startTimer(){
+    clearInterval(tInt);tLeft=15;updateTimer();
+    tInt=setInterval(function(){
+      tLeft--;updateTimer();
+      if(tLeft<=0){clearInterval(tInt);triviaAns(null,'__timeout__',qs[cQ].a);}
+    },1000);
+  }
+
+  function updateTimer(){
+    var el=document.getElementById('trivia-timer');
+    var fill=document.getElementById('trivia-timer-fill');
+    if(!el)return;
+    el.textContent=tLeft;
+    fill.style.width=(tLeft/15*100)+'%';
+    fill.style.background=tLeft>8?'var(--accent)':tLeft>4?'#ff7a1a':'#ef4444';
+  }
+
+  window.triviaAns=function(btn,ans,corr){
+    clearInterval(tInt);
+    var ok=ans===corr;
+    var bonus=Math.floor(tLeft/15*100);
+    var pts=ok?(100+bonus):0;
+    if(ok){score+=pts;correct++;}
+    document.querySelectorAll('#trivia-options button').forEach(function(b){
+      b.disabled=true;
+      if(b.textContent.trim()===corr){b.style.background='rgba(110,251,62,0.25)';b.style.borderColor='#6efb3e';b.style.color='#6efb3e';}
+      else if(b===btn&&!ok){b.style.background='rgba(239,68,68,0.25)';b.style.borderColor='#ef4444';b.style.color='#ef4444';}
+    });
+    var fb=document.getElementById('trivia-feedback');
+    fb.style.display='block';
+    if(ans==='__timeout__'){fb.style.background='rgba(255,122,26,0.15)';fb.style.color='#ff7a1a';fb.innerHTML='⏱ Čas vypršel! Správně: <strong>'+corr+'</strong>';}
+    else if(ok){fb.style.background='rgba(110,251,62,0.12)';fb.style.color='#6efb3e';fb.innerHTML='✅ Správně! +'+pts+' bodů (rychlostní bonus: +'+bonus+')';}
+    else{fb.style.background='rgba(239,68,68,0.12)';fb.style.color='#ef4444';fb.innerHTML='❌ Špatně. Správně: <strong>'+corr+'</strong>';}
+    document.getElementById('trivia-score-live').textContent=score;
+    setTimeout(function(){cQ++;if(cQ<qs.length)showQ();else showResult();},1600);
+  };
+
+  function showResult(){
+    document.getElementById('trivia-game-screen').style.display='none';
+    document.getElementById('trivia-result-screen').style.display='block';
+    var pct=correct/qs.length;
+    var emoji,title,rank;
+    if(pct===1){emoji='🏆';title='Perfektní skóre!';rank='🥇 Dinosauří expert';}
+    else if(pct>=0.8){emoji='🦖';title='Výborně!';rank='🥈 Zkušený paleontolog';}
+    else if(pct>=0.6){emoji='🦕';title='Dobrý výsledek!';rank='🥉 Dinosauří nadšenec';}
+    else if(pct>=0.4){emoji='🦎';title='Slušný pokus!';rank='📚 Začínající paleontolog';}
+    else{emoji='🥚';title='Zkus to znovu!';rank='🥚 Dinosauří vejce';}
+    document.getElementById('trivia-result-emoji').textContent=emoji;
+    document.getElementById('trivia-result-title').textContent=title;
+    document.getElementById('trivia-result-score').textContent=score+' bodů';
+    document.getElementById('trivia-result-correct').textContent=correct+' / '+qs.length+' správně';
+    document.getElementById('trivia-result-rank').textContent=rank;
+    if(typeof addLBPoints==='function') addLBPoints(Math.floor(score/10),'🎯 Trivia: '+correct+'/'+qs.length+'!');
+  }
+
+  window.triviaRestart=function(){
+    clearInterval(tInt);
+    document.getElementById('trivia-result-screen').style.display='none';
+    document.getElementById('trivia-game-screen').style.display='none';
+    document.getElementById('trivia-start-screen').style.display='block';
+  };
+
+  var _tH=window.showPage;
+  window.showPage=function(id){if(id!=='trivia')clearInterval(tInt);_tH(id);};
+})();
 </script>
 </body>
 </html>
