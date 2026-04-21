@@ -34,7 +34,7 @@
 
 <!-- Open Graph -->
 <meta property="og:title" content="DinoWorld – Explore the World of Dinosaurs">
-<meta property="og:description" content="22 dinosaur profiles, 38+ articles, quizzes, fossil map and Top 10 lists. The best free dinosaur educational resource!">
+<meta property="og:description" content="32 dinosaur profiles, 40+ articles, quizzes, fossil map, rock scanner & games. The best free dinosaur educational resource!">
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://dinoworld.netlify.app/">
 <meta property="og:site_name" content="DinoWorld">
@@ -4492,7 +4492,7 @@
 <div class="whats-new-strip" id="whatsNewStrip">
   <span class="wn-label">🆕 WHAT'S NEW</span>
   <div class="wn-item hot" onclick="showPage('trivia')">🎯 Trivia Battle <span class="wn-badge-new">NEW</span></div>
-  <div class="wn-item hot" onclick="showPage('jurassic-park')">🌴 Jurský Park <span class="wn-badge-new">NEW</span></div>
+  <div class="wn-item hot" onclick="showPage('jurassic-park')">🌴 Jurassic Park <span class="wn-badge-new">NEW</span></div>
   <div class="wn-item" onclick="showPage('evo-tree')">🌳 Evolution Tree <span class="wn-badge-new">NEW</span></div>
   <div class="wn-item hot" onclick="showPage('dino-runner')">🏃 Dino Runner <span class="wn-badge-hot">🔥 HOT</span></div>
   <div class="wn-item" onclick="showPage('battle')">⚔️ Dino Battle</div>
@@ -4578,7 +4578,7 @@
     <button class="mm-btn" data-page="comparison" onclick="showPage('comparison');closeMobileMenu()"><span class="mm-btn-icon">⚔️</span>Compare Dinos</button>
     <button class="mm-btn" data-page="evo-tree" onclick="showPage('evo-tree');closeMobileMenu()"><span class="mm-btn-icon">🌳</span>Evolution Tree</button>
     <button class="mm-btn" data-page="trivia" onclick="showPage('trivia');closeMobileMenu()"><span class="mm-btn-icon">🎯</span>Trivia Battle 🆕</button>
-    <button class="mm-btn" data-page="jurassic-park" onclick="showPage('jurassic-park');closeMobileMenu()"><span class="mm-btn-icon">🌴</span>Jurský Park 🆕</button>
+    <button class="mm-btn" data-page="jurassic-park" onclick="showPage('jurassic-park');closeMobileMenu()"><span class="mm-btn-icon">🌴</span>Jurassic Park 🆕</button>
     <button class="mm-btn" data-page="fossils-map" onclick="showPage('fossils-map');closeMobileMenu()"><span class="mm-btn-icon">🗺️</span>Fossil Map</button>
     <button class="mm-btn" data-page="rock-scanner" onclick="showPage('rock-scanner');closeMobileMenu()"><span class="mm-btn-icon">🪨</span>Rock Scanner</button>
     <div class="mm-divider"></div>
@@ -6288,24 +6288,24 @@
 ════════════════════════════════════════ -->
 <div class="page" id="page-jurassic-park">
   <section>
-    <div class="section-label">🌴 Minihra</div>
-    <div class="section-title">POSTAV SVŮJ <span>JURSKÝ PARK</span></div>
-    <p style="color:var(--text-secondary);margin-bottom:20px;max-width:580px;">Vyber dinosaury a přidej je do svého parku. Sestav kolekci s co nejvyšším skóre!</p>
+    <div class="section-label">🌴 Mini Game</div>
+    <div class="section-title">BUILD YOUR <span>JURASSIC PARK</span></div>
+    <p style="color:var(--text-secondary);margin-bottom:20px;max-width:580px;">Pick dinosaurs and add them to your park. Build the collection with the highest score!</p>
     <div id="jp-park-display" style="background:rgba(110,251,62,0.04);border:1.5px solid rgba(110,251,62,0.15);border-radius:20px;padding:24px;margin-bottom:24px;min-height:100px;">
       <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:16px;flex-wrap:wrap;gap:10px;">
-        <div><div style="font-size:1.1rem;font-weight:800;color:#fff;">🏟️ Můj Jurský Park</div><div style="font-size:0.8rem;color:var(--text-secondary);">Kapacita: <span id="jp-capacity">0</span>/8</div></div>
-        <div style="text-align:right;"><div style="font-size:1.4rem;font-weight:900;color:var(--accent);" id="jp-score">0</div><div style="font-size:0.75rem;color:var(--text-secondary);">bodů</div></div>
+        <div><div style="font-size:1.1rem;font-weight:800;color:#fff;">🏟️ My Jurassic Park</div><div style="font-size:0.8rem;color:var(--text-secondary);">Capacity: <span id="jp-capacity">0</span>/8</div></div>
+        <div style="text-align:right;"><div style="font-size:1.4rem;font-weight:900;color:var(--accent);" id="jp-score">0</div><div style="font-size:0.75rem;color:var(--text-secondary);">pts</div></div>
       </div>
       <div id="jp-park-slots" style="display:flex;flex-wrap:wrap;gap:10px;min-height:50px;"></div>
-      <div id="jp-empty-msg" style="color:var(--text-secondary);font-size:0.9rem;padding:8px 0;">Park je prázdný — přidej dinosaury níže! 👇</div>
+      <div id="jp-empty-msg" style="color:var(--text-secondary);font-size:0.9rem;padding:8px 0;">Park is empty — add dinosaurs below! 👇</div>
     </div>
     <div style="display:flex;gap:10px;margin-bottom:20px;flex-wrap:wrap;">
-      <button class="btn btn-primary" onclick="jpSortBy('rarity')">⭐ Vzácnost</button>
-      <button class="btn btn-secondary" onclick="jpSortBy('points')">🏆 Body</button>
-      <button class="btn" style="background:rgba(239,68,68,0.15);color:#ef4444;border:1px solid rgba(239,68,68,0.3);border-radius:10px;padding:8px 16px;cursor:pointer;font-weight:700;" onclick="jpClearPark()">🗑️ Vyprázdnit</button>
+      <button class="btn btn-primary" onclick="jpSortBy('rarity')">⭐ Rarity</button>
+      <button class="btn btn-secondary" onclick="jpSortBy('points')">🏆 Points</button>
+      <button class="btn" style="background:rgba(239,68,68,0.15);color:#ef4444;border:1px solid rgba(239,68,68,0.3);border-radius:10px;padding:8px 16px;cursor:pointer;font-weight:700;" onclick="jpClearPark()">🗑️ Clear Park</button>
     </div>
     <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(148px,1fr));gap:12px;" id="jp-dino-shop"></div>
-    <div class="dyk" style="margin-top:28px;"><span class="dyk-icon">🌴</span><div><div class="dyk-label">Park Tip</div><div class="dyk-text">Legendární dinosauři jsou nejcennější — T-Rex a Spinosaurus přinášejí nejvíce bodů!</div></div></div>
+    <div class="dyk" style="margin-top:28px;"><span class="dyk-icon">🌴</span><div><div class="dyk-label">Park Tip</div><div class="dyk-text">Legendary dinosaurs are the most valuable — T-Rex and Spinosaurus bring the most points!</div></div></div>
   </section>
 </div>
 
@@ -6316,20 +6316,20 @@
   <section>
     <div class="section-label">🎯 Hra</div>
     <div class="section-title">DINO TRIVIA <span>BATTLE</span></div>
-    <p style="color:var(--text-secondary);margin-bottom:20px;max-width:580px;">10 otázek, 15 sekund na každou. Čím rychleji odpovíš, tím více bodů!</p>
+    <p style="color:var(--text-secondary);margin-bottom:20px;max-width:580px;">10 questions, 15 seconds each. The faster you answer, the more points you get!</p>
     <div id="trivia-start-screen" style="text-align:center;padding:32px 0;">
       <div style="font-size:5rem;margin-bottom:16px;">🦖</div>
-      <div style="font-size:1.5rem;font-weight:900;color:#fff;margin-bottom:8px;">Jsi připraven/a?</div>
-      <div style="color:var(--text-secondary);margin-bottom:28px;">10 otázek · 15 sekund každá · Bonus za rychlost</div>
+      <div style="font-size:1.5rem;font-weight:900;color:#fff;margin-bottom:8px;">Are you ready?</div>
+      <div style="color:var(--text-secondary);margin-bottom:28px;">10 questions · 15 seconds each · Speed bonus</div>
       <div style="display:flex;gap:12px;justify-content:center;flex-wrap:wrap;">
-        <button class="btn btn-primary" onclick="triviaStart('easy')">🌿 Lehká</button>
-        <button class="btn btn-secondary" onclick="triviaStart('medium')">⚡ Střední</button>
-        <button class="btn" style="background:rgba(239,68,68,0.15);color:#ef4444;border:1px solid rgba(239,68,68,0.3);border-radius:10px;padding:10px 20px;font-weight:700;cursor:pointer;" onclick="triviaStart('hard')">🔥 Těžká</button>
+        <button class="btn btn-primary" onclick="triviaStart('easy')">🌿 Easy</button>
+        <button class="btn btn-secondary" onclick="triviaStart('medium')">⚡ Medium</button>
+        <button class="btn" style="background:rgba(239,68,68,0.15);color:#ef4444;border:1px solid rgba(239,68,68,0.3);border-radius:10px;padding:10px 20px;font-weight:700;cursor:pointer;" onclick="triviaStart('hard')">🔥 Hard</button>
       </div>
     </div>
     <div id="trivia-game-screen" style="display:none;">
       <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:20px;flex-wrap:wrap;gap:10px;">
-        <div style="font-size:0.9rem;color:var(--text-secondary);">Otázka <span id="trivia-q-num">1</span>/10</div>
+        <div style="font-size:0.9rem;color:var(--text-secondary);">Question <span id="trivia-q-num">1</span>/10</div>
         <div style="display:flex;align-items:center;gap:16px;">
           <div style="width:130px;height:8px;background:rgba(255,255,255,0.1);border-radius:99px;overflow:hidden;"><div id="trivia-timer-fill" style="height:100%;background:var(--accent);border-radius:99px;transition:width 1s linear;width:100%;"></div></div>
           <div style="font-weight:800;color:var(--accent);">⏱ <span id="trivia-timer">15</span>s</div>
@@ -6347,8 +6347,8 @@
       <div style="color:var(--text-secondary);margin-bottom:8px;" id="trivia-result-correct"></div>
       <div id="trivia-result-rank" style="font-size:0.9rem;color:#ffd700;font-weight:700;margin-bottom:24px;"></div>
       <div style="display:flex;gap:12px;justify-content:center;flex-wrap:wrap;">
-        <button class="btn btn-primary" onclick="triviaRestart()">🔄 Hrát znovu</button>
-        <button class="btn btn-secondary" onclick="showPage('quiz')">🧠 Který dino jsi?</button>
+        <button class="btn btn-primary" onclick="triviaRestart()">🔄 Play Again</button>
+        <button class="btn btn-secondary" onclick="showPage('quiz')">🧠 Which Dino Are You?</button>
       </div>
     </div>
   </section>
@@ -6356,6 +6356,16 @@
 
 <!-- FOOTER -->
 <footer>
+<div style="text-align:center;padding:20px 0 0;margin-bottom:4px;">
+    <div style="font-size:0.8rem;color:var(--muted);margin-bottom:12px;letter-spacing:1px;text-transform:uppercase;">Share DinoWorld</div>
+    <div style="display:flex;gap:10px;justify-content:center;flex-wrap:wrap;">
+      <button onclick="shareToTwitter()" style="background:rgba(29,161,242,0.12);color:#1da1f2;border:1px solid rgba(29,161,242,0.25);border-radius:10px;padding:8px 16px;font-size:0.82rem;font-weight:700;cursor:pointer;">𝕏 Twitter/X</button>
+      <button onclick="shareToFacebook()" style="background:rgba(24,119,242,0.12);color:#1877f2;border:1px solid rgba(24,119,242,0.25);border-radius:10px;padding:8px 16px;font-size:0.82rem;font-weight:700;cursor:pointer;">📘 Facebook</button>
+      <button onclick="shareToWhatsApp()" style="background:rgba(37,211,102,0.12);color:#25d366;border:1px solid rgba(37,211,102,0.25);border-radius:10px;padding:8px 16px;font-size:0.82rem;font-weight:700;cursor:pointer;">💬 WhatsApp</button>
+      <button onclick="shareToReddit()" style="background:rgba(255,69,0,0.12);color:#ff4500;border:1px solid rgba(255,69,0,0.25);border-radius:10px;padding:8px 16px;font-size:0.82rem;font-weight:700;cursor:pointer;">🤖 Reddit</button>
+      <button onclick="copyWebLink()" style="background:rgba(110,251,62,0.1);color:var(--accent);border:1px solid rgba(110,251,62,0.25);border-radius:10px;padding:8px 16px;font-size:0.82rem;font-weight:700;cursor:pointer;" id="copy-web-btn">🔗 Copy Link</button>
+    </div>
+  </div>
   <div class="footer-inner">
     <div>
       <div class="footer-brand">DINO<span>WORLD</span></div>
@@ -8570,6 +8580,8 @@ function renderQuestion() {
         <div style="display:flex; gap:12px; justify-content:center; flex-wrap:wrap">
           <button class="btn btn-primary" onclick="initQuiz()">🔄 Take Again</button>
           <button class="btn btn-secondary" onclick="showPage('popular')">🦖 Meet All Dinos</button>
+          <button class="btn" onclick="shareQuizResult('${r.dino}','${r.emoji}')" style="background:rgba(29,161,242,0.15);color:#1da1f2;border:1px solid rgba(29,161,242,0.3);border-radius:10px;padding:10px 18px;font-weight:700;cursor:pointer;">𝕏 Share Result</button>
+          <button class="btn" onclick="copyShareLink('${r.dino}')" style="background:rgba(110,251,62,0.1);color:var(--accent);border:1px solid rgba(110,251,62,0.25);border-radius:10px;padding:10px 18px;font-weight:700;cursor:pointer;">🔗 Copy Link</button>
         </div>
       </div>
     `;
@@ -10041,6 +10053,14 @@ function setLang(lang) {
 
   // Save preference
   try { localStorage.setItem('dw-lang', lang); } catch(e) {}
+
+  // Apply i18n data-i18n elements immediately
+  if (typeof applyI18n === 'function') applyI18n(lang);
+
+  // Also apply full translation layer
+  if (typeof applyFullLang === 'function' && lang !== 'en') {
+    setTimeout(() => applyFullLang(lang), 50);
+  }
 }
 
 // Close dropdown when clicking outside
@@ -10139,110 +10159,334 @@ const i18nData = {
   en: {
     nav_home:'Home', nav_basics:'Basics', nav_eras:'Eras', nav_types:'Types',
     nav_popular:'Popular', nav_articles:'Articles', nav_tops:'Top Lists',
-    nav_eggs:'Eggs', nav_extinction:'Extinction', nav_quiz:'Quiz',
-    nav_facts:'Fun Facts',
-    hero_sub:'Travel back 230 million years and discover the giants that ruled our planet. From tiny feathered raptors to colossal long-necked titans — the dinosaur world is waiting.',
+    nav_eggs:'Eggs', nav_extinction:'Extinction', nav_quiz:'Quiz', nav_facts:'Fun Facts',
+    hero_sub:'Travel back 230 million years and discover the giants that ruled our planet.',
     stat_years:'Million Years of History', stat_species:'Known Species',
     stat_continents:'Continents with Fossils', stat_articles:'Articles & Guides',
-    btn_view_all:'View All Dinosaurs →',
-    trending_label:'Based on Views', trending_title:'TRENDING',
+    btn_view_all:'View All Dinosaurs →', trending_label:'Based on Views', trending_title:'TRENDING',
     btn_scan:'🔍 Scan This Rock!', btn_reset:'↺ Try Another',
-    scan_drop:'Drop or Click to Upload',
-    scan_sub:'Upload a photo of your rock · JPG, PNG, WEBP',
+    scan_drop:'Drop or Click to Upload', scan_sub:'Upload a photo of your rock · JPG, PNG, WEBP',
   },
   cs: {
     nav_home:'Domů', nav_basics:'Základy', nav_eras:'Éry', nav_types:'Typy',
     nav_popular:'Populární', nav_articles:'Články', nav_tops:'Top Seznamy',
-    nav_eggs:'Vejce', nav_extinction:'Vymření', nav_quiz:'Kvíz',
-    nav_facts:'Zábavná Fakta',
-    hero_sub:'Cestuj 230 milionů let zpět a objevuj obry, kteří vládli naší planetě. Od malých opeřených raptorů až po obrovské dlouhokrké titány.',
+    nav_eggs:'Vejce', nav_extinction:'Vymření', nav_quiz:'Kvíz', nav_facts:'Zábavná Fakta',
+    hero_sub:'Cestuj 230 milionů let zpět a objevuj obry, kteří vládli naší planetě.',
     stat_years:'Milionů Let Historie', stat_species:'Známých Druhů',
     stat_continents:'Kontinentů s Fosíliemi', stat_articles:'Článků a Průvodců',
-    btn_view_all:'Zobrazit Všechny Dinosaury →',
-    trending_label:'Podle Zhlédnutí', trending_title:'TRENDY',
+    btn_view_all:'Zobrazit Všechny Dinosaury →', trending_label:'Podle Zhlédnutí', trending_title:'TRENDY',
     btn_scan:'🔍 Skenovat Kámen!', btn_reset:'↺ Zkusit Znovu',
-    scan_drop:'Přetáhni nebo klikni pro nahrání',
-    scan_sub:'Nahraj foto kamene · JPG, PNG, WEBP',
+    scan_drop:'Přetáhni nebo klikni', scan_sub:'Nahraj foto kamene · JPG, PNG, WEBP',
   },
   de: {
     nav_home:'Startseite', nav_basics:'Grundlagen', nav_eras:'Epochen', nav_types:'Typen',
     nav_popular:'Beliebt', nav_articles:'Artikel', nav_tops:'Top Listen',
-    nav_eggs:'Eier', nav_extinction:'Aussterben', nav_quiz:'Quiz',
-    nav_facts:'Spaßige Fakten',
+    nav_eggs:'Eier', nav_extinction:'Aussterben', nav_quiz:'Quiz', nav_facts:'Spaßige Fakten',
     hero_sub:'Reise 230 Millionen Jahre zurück und entdecke die Giganten, die unseren Planeten beherrschten.',
     stat_years:'Millionen Jahre', stat_species:'Bekannte Arten',
     stat_continents:'Kontinente', stat_articles:'Artikel & Guides',
-    btn_view_all:'Alle Dinosaurier →',
-    trending_label:'Nach Aufrufen', trending_title:'TRENDING',
+    btn_view_all:'Alle Dinosaurier →', trending_label:'Nach Aufrufen', trending_title:'TRENDING',
     btn_scan:'🔍 Stein Scannen!', btn_reset:'↺ Nochmal',
     scan_drop:'Ziehen oder klicken', scan_sub:'Steinfoto hochladen · JPG, PNG, WEBP',
   },
   fr: {
-    nav_home:'Accueil', nav_basics:'Bases', nav_eras:'Epochs', nav_types:'Types',
+    nav_home:'Accueil', nav_basics:'Bases', nav_eras:'Époques', nav_types:'Types',
     nav_popular:'Populaire', nav_articles:'Articles', nav_tops:'Top Listes',
-    nav_eggs:'Oeufs', nav_extinction:'Extinction', nav_quiz:'Quiz',
-    nav_facts:'Faits Amusants',
-    hero_sub:'Voyagez 230 millions d\'années en arrière et decouvrez les geants.',
-    stat_years:'Millions Annees', stat_species:'Especes Connues',
+    nav_eggs:'Œufs', nav_extinction:'Extinction', nav_quiz:'Quiz', nav_facts:'Faits Amusants',
+    hero_sub:'Voyagez 230 millions d\'années en arrière et découvrez les géants qui ont gouverné notre planète.',
+    stat_years:'Millions d\'Années', stat_species:'Espèces Connues',
     stat_continents:'Continents', stat_articles:'Articles et Guides',
-    btn_view_all:'Voir Tous les Dinosaures →',
-    trending_label:'Par Vues', trending_title:'TENDANCES',
-    btn_scan:'🔍 Scanner!', btn_reset:'↺ Reessayer',
-    scan_drop:'Glisser ou cliquer', scan_sub:'Telecharger photo de roche',
+    btn_view_all:'Voir Tous les Dinosaures →', trending_label:'Par Vues', trending_title:'TENDANCES',
+    btn_scan:'🔍 Scanner!', btn_reset:'↺ Réessayer',
+    scan_drop:'Glisser ou cliquer', scan_sub:'Télécharger photo de roche',
   },
   es: {
     nav_home:'Inicio', nav_basics:'Básicos', nav_eras:'Eras', nav_types:'Tipos',
     nav_popular:'Popular', nav_articles:'Artículos', nav_tops:'Top Listas',
-    nav_eggs:'Huevos', nav_extinction:'Extinción', nav_quiz:'Quiz',
-    nav_facts:'Datos Divertidos',
+    nav_eggs:'Huevos', nav_extinction:'Extinción', nav_quiz:'Quiz', nav_facts:'Datos Divertidos',
     hero_sub:'Viaja 230 millones de años atrás y descubre los gigantes que gobernaron nuestro planeta.',
     stat_years:'Millones de Años', stat_species:'Especies Conocidas',
     stat_continents:'Continentes', stat_articles:'Artículos y Guías',
-    btn_view_all:'Ver Todos los Dinosaurios →',
-    trending_label:'Por Vistas', trending_title:'TENDENCIAS',
+    btn_view_all:'Ver Todos los Dinosaurios →', trending_label:'Por Vistas', trending_title:'TENDENCIAS',
     btn_scan:'🔍 ¡Escanear!', btn_reset:'↺ Reintentar',
     scan_drop:'Arrastra o haz clic', scan_sub:'Subir foto de roca · JPG, PNG, WEBP',
   },
   zh: {
     nav_home:'主页', nav_basics:'基础', nav_eras:'时代', nav_types:'类型',
     nav_popular:'热门', nav_articles:'文章', nav_tops:'排行榜',
-    nav_eggs:'蛋', nav_extinction:'灭绝', nav_quiz:'测验',
-    nav_facts:'趣味事实',
-    hero_sub:'穿越2.3亿年，发现统治地球的巨兽。',
+    nav_eggs:'蛋', nav_extinction:'灭绝', nav_quiz:'测验', nav_facts:'趣味事实',
+    hero_sub:'穿越2.3亿年，发现统治地球的巨兽。从微小的有羽毛猛禽到庞大的长颈巨兽。',
     stat_years:'百万年历史', stat_species:'已知物种',
     stat_continents:'有化石的大陆', stat_articles:'文章和指南',
-    btn_view_all:'查看所有恐龙 →',
-    trending_label:'按浏览量', trending_title:'热门',
+    btn_view_all:'查看所有恐龙 →', trending_label:'按浏览量', trending_title:'热门',
     btn_scan:'🔍 扫描！', btn_reset:'↺ 再试',
-    scan_drop:'拖放或点击', scan_sub:'上传岩石照片',
-  },
-  ru: {
-    nav_home:'Главная', nav_basics:'Основы', nav_eras:'Эпохи', nav_types:'Типы',
-    nav_popular:'Популярное', nav_articles:'Статьи', nav_tops:'Топ Списки',
-    nav_eggs:'Яйца', nav_extinction:'Вымирание', nav_quiz:'Квиз',
-    nav_facts:'Интересные Факты',
-    hero_sub:'Отправляйся на 230 миллионов лет назад и открывай гигантов.',
-    stat_years:'Миллионов Лет', stat_species:'Известных Видов',
-    stat_continents:'Континентов', stat_articles:'Статей и Гайдов',
-    btn_view_all:'Все Динозавры →',
-    trending_label:'По Просмотрам', trending_title:'ТРЕНДЫ',
-    btn_scan:'🔍 Сканировать!', btn_reset:'↺ Ещё раз',
-    scan_drop:'Перетащите или нажмите', scan_sub:'Загрузите фото камня',
+    scan_drop:'拖放或点击上传', scan_sub:'上传岩石照片 · JPG, PNG, WEBP',
   },
   ja: {
     nav_home:'ホーム', nav_basics:'基本', nav_eras:'時代', nav_types:'タイプ',
     nav_popular:'人気', nav_articles:'記事', nav_tops:'トップ',
-    nav_eggs:'卵', nav_extinction:'絶滅', nav_quiz:'クイズ',
-    nav_facts:'楽しい事実',
+    nav_eggs:'卵', nav_extinction:'絶滅', nav_quiz:'クイズ', nav_facts:'楽しい事実',
     hero_sub:'2億3千万年前に遡り、地球を支配した巨人を発見しよう。',
     stat_years:'万年の歴史', stat_species:'既知の種',
-    stat_continents:'大陸', stat_articles:'記事とガイド',
-    btn_view_all:'すべての恐竜を見る →',
-    trending_label:'閲覧数順', trending_title:'トレンド',
+    stat_continents:'化石のある大陸', stat_articles:'記事とガイド',
+    btn_view_all:'すべての恐竜を見る →', trending_label:'閲覧数順', trending_title:'トレンド',
     btn_scan:'🔍 スキャン！', btn_reset:'↺ やり直し',
     scan_drop:'ドラッグまたはクリック', scan_sub:'岩の写真をアップロード',
   },
-};
+  ko: {
+    nav_home:'홈', nav_basics:'기초', nav_eras:'시대', nav_types:'유형',
+    nav_popular:'인기', nav_articles:'기사', nav_tops:'탑 목록',
+    nav_eggs:'알', nav_extinction:'멸종', nav_quiz:'퀴즈', nav_facts:'재미있는 사실',
+    hero_sub:'2억 3천만 년 전으로 돌아가 지구를 지배했던 거인들을 발견하세요.',
+    stat_years:'백만 년의 역사', stat_species:'알려진 종',
+    stat_continents:'화석이 있는 대륙', stat_articles:'기사 및 가이드',
+    btn_view_all:'모든 공룡 보기 →', trending_label:'조회수 기준', trending_title:'트렌딩',
+    btn_scan:'🔍 스캔!', btn_reset:'↺ 다시 시도',
+    scan_drop:'드래그하거나 클릭', scan_sub:'암석 사진 업로드',
+  },
+  ru: {
+    nav_home:'Главная', nav_basics:'Основы', nav_eras:'Эпохи', nav_types:'Типы',
+    nav_popular:'Популярное', nav_articles:'Статьи', nav_tops:'Топ Списки',
+    nav_eggs:'Яйца', nav_extinction:'Вымирание', nav_quiz:'Квиз', nav_facts:'Интересные Факты',
+    hero_sub:'Отправляйся на 230 миллионов лет назад и открывай гигантов, которые правили нашей планетой.',
+    stat_years:'Миллионов Лет', stat_species:'Известных Видов',
+    stat_continents:'Континентов', stat_articles:'Статей и Гайдов',
+    btn_view_all:'Все Динозавры →', trending_label:'По Просмотрам', trending_title:'ТРЕНДЫ',
+    btn_scan:'🔍 Сканировать!', btn_reset:'↺ Ещё раз',
+    scan_drop:'Перетащите или нажмите', scan_sub:'Загрузите фото камня',
+  },
+  pt: {
+    nav_home:'Início', nav_basics:'Básico', nav_eras:'Eras', nav_types:'Tipos',
+    nav_popular:'Popular', nav_articles:'Artigos', nav_tops:'Top Listas',
+    nav_eggs:'Ovos', nav_extinction:'Extinção', nav_quiz:'Quiz', nav_facts:'Fatos Divertidos',
+    hero_sub:'Volte 230 milhões de anos e descubra os gigantes que governaram nosso planeta.',
+    stat_years:'Milhões de Anos', stat_species:'Espécies Conhecidas',
+    stat_continents:'Continentes', stat_articles:'Artigos e Guias',
+    btn_view_all:'Ver Todos os Dinossauros →', trending_label:'Por Visualizações', trending_title:'TENDÊNCIAS',
+    btn_scan:'🔍 Escanear!', btn_reset:'↺ Tentar Novamente',
+    scan_drop:'Arraste ou clique', scan_sub:'Enviar foto da rocha',
+  },
+  hi: {
+    nav_home:'होम', nav_basics:'मूल बातें', nav_eras:'युग', nav_types:'प्रकार',
+    nav_popular:'लोकप्रिय', nav_articles:'लेख', nav_tops:'शीर्ष सूचियां',
+    nav_eggs:'अंडे', nav_extinction:'विलुप्ति', nav_quiz:'क्विज़', nav_facts:'मज़ेदार तथ्य',
+    hero_sub:'23 करोड़ साल पीछे जाइए और उन दिग्गजों को खोजिए जिन्होंने हमारी धरती पर राज किया।',
+    stat_years:'लाख साल का इतिहास', stat_species:'ज्ञात प्रजातियाँ',
+    stat_continents:'महाद्वीप', stat_articles:'लेख और गाइड',
+    btn_view_all:'सभी डायनासोर देखें →', trending_label:'व्यूज़ के आधार पर', trending_title:'ट्रेंडिंग',
+    btn_scan:'🔍 स्कैन करें!', btn_reset:'↺ फिर से',
+    scan_drop:'खींचें या क्लिक करें', scan_sub:'पत्थर की फोटो अपलोड करें',
+  },
+  ar: {
+    nav_home:'الرئيسية', nav_basics:'الأساسيات', nav_eras:'العصور', nav_types:'الأنواع',
+    nav_popular:'الشائع', nav_articles:'المقالات', nav_tops:'القوائم',
+    nav_eggs:'البيض', nav_extinction:'الانقراض', nav_quiz:'اختبار', nav_facts:'حقائق ممتعة',
+    hero_sub:'سافر 230 مليون سنة للوراء واكتشف العمالقة الذين حكموا كوكبنا.',
+    stat_years:'مليون سنة', stat_species:'الأنواع المعروفة',
+    stat_continents:'قارات', stat_articles:'مقالات وأدلة',
+    btn_view_all:'عرض جميع الديناصورات →', trending_label:'حسب المشاهدات', trending_title:'رائج',
+    btn_scan:'🔍 مسح!', btn_reset:'↺ إعادة المحاولة',
+    scan_drop:'اسحب أو انقر للتحميل', scan_sub:'تحميل صورة الصخرة',
+  },
+  tr: {
+    nav_home:'Ana Sayfa', nav_basics:'Temel Bilgiler', nav_eras:'Çağlar', nav_types:'Türler',
+    nav_popular:'Popüler', nav_articles:'Makaleler', nav_tops:'Top Listeler',
+    nav_eggs:'Yumurtalar', nav_extinction:'Nesli Tükenme', nav_quiz:'Quiz', nav_facts:'Eğlenceli Bilgiler',
+    hero_sub:'230 milyon yıl öncesine gidin ve gezegenimize hükmeden devleri keşfedin.',
+    stat_years:'Milyon Yıllık Tarih', stat_species:'Bilinen Türler',
+    stat_continents:'Kıta', stat_articles:'Makale ve Rehberler',
+    btn_view_all:'Tüm Dinozorları Gör →', trending_label:'Görüntülenmelere Göre', trending_title:'TREND',
+    btn_scan:'🔍 Taramak!', btn_reset:'↺ Tekrar Dene',
+    scan_drop:'Sürükle veya tıkla', scan_sub:'Kaya fotoğrafı yükle',
+  },
+  it: {
+    nav_home:'Casa', nav_basics:'Nozioni Base', nav_eras:'Ere', nav_types:'Tipi',
+    nav_popular:'Popolare', nav_articles:'Articoli', nav_tops:'Top Liste',
+    nav_eggs:'Uova', nav_extinction:'Estinzione', nav_quiz:'Quiz', nav_facts:'Fatti Divertenti',
+    hero_sub:'Viaggia indietro di 230 milioni di anni e scopri i giganti che governavano il nostro pianeta.',
+    stat_years:'Milioni di Anni', stat_species:'Specie Conosciute',
+    stat_continents:'Continenti', stat_articles:'Articoli e Guide',
+    btn_view_all:'Vedi Tutti i Dinosauri →', trending_label:'Per Visualizzazioni', trending_title:'TENDENZE',
+    btn_scan:'🔍 Scansiona!', btn_reset:'↺ Riprova',
+    scan_drop:'Trascina o clicca', scan_sub:'Carica foto della roccia',
+  },
+  nl: {
+    nav_home:'Thuis', nav_basics:'Basis', nav_eras:'Tijdperken', nav_types:'Types',
+    nav_popular:'Populair', nav_articles:'Artikelen', nav_tops:'Top Lijsten',
+    nav_eggs:'Eieren', nav_extinction:'Uitsterven', nav_quiz:'Quiz', nav_facts:'Leuke Feiten',
+    hero_sub:'Reis 230 miljoen jaar terug en ontdek de giganten die onze planeet regeerden.',
+    stat_years:'Miljoen Jaar', stat_species:'Bekende Soorten',
+    stat_continents:'Continenten', stat_articles:'Artikelen en Gidsen',
+    btn_view_all:'Alle Dinosaurussen Bekijken →', trending_label:'Op Weergaven', trending_title:'TRENDING',
+    btn_scan:'🔍 Scannen!', btn_reset:'↺ Opnieuw',
+    scan_drop:'Slepen of klikken', scan_sub:'Steen foto uploaden',
+  },
+  pl: {
+    nav_home:'Strona Główna', nav_basics:'Podstawy', nav_eras:'Ery', nav_types:'Typy',
+    nav_popular:'Popularne', nav_articles:'Artykuły', nav_tops:'Listy Top',
+    nav_eggs:'Jaja', nav_extinction:'Wymieranie', nav_quiz:'Quiz', nav_facts:'Ciekawostki',
+    hero_sub:'Cofnij się 230 milionów lat i odkryj gigantów, którzy rządzili naszą planetą.',
+    stat_years:'Milionów Lat', stat_species:'Znanych Gatunków',
+    stat_continents:'Kontynentów', stat_articles:'Artykuły i Przewodniki',
+    btn_view_all:'Zobacz Wszystkie Dinozaury →', trending_label:'Według Wyświetleń', trending_title:'TRENDY',
+    btn_scan:'🔍 Skanuj!', btn_reset:'↺ Spróbuj Ponownie',
+    scan_drop:'Przeciągnij lub kliknij', scan_sub:'Prześlij zdjęcie skały',
+  },
+  sk: {
+    nav_home:'Domov', nav_basics:'Základy', nav_eras:'Éry', nav_types:'Typy',
+    nav_popular:'Populárne', nav_articles:'Články', nav_tops:'Top Zoznamy',
+    nav_eggs:'Vajcia', nav_extinction:'Vymretie', nav_quiz:'Kvíz', nav_facts:'Zábavné Fakty',
+    hero_sub:'Cestuj 230 miliónov rokov späť a objavuj obrov, ktorí vládli našej planéte.',
+    stat_years:'Miliónov Rokov', stat_species:'Známych Druhov',
+    stat_continents:'Kontinentov', stat_articles:'Článkov a Sprievodcov',
+    btn_view_all:'Zobraziť Všetkých Dinosaurov →', trending_label:'Podľa Zhliadnutí', trending_title:'TRENDY',
+    btn_scan:'🔍 Skenovať!', btn_reset:'↺ Skúsiť Znovu',
+    scan_drop:'Presuňte alebo kliknite', scan_sub:'Nahrajte foto kameňa',
+  },
+  sv: {
+    nav_home:'Hem', nav_basics:'Grunder', nav_eras:'Eror', nav_types:'Typer',
+    nav_popular:'Populär', nav_articles:'Artiklar', nav_tops:'Topplistor',
+    nav_eggs:'Ägg', nav_extinction:'Utrotning', nav_quiz:'Quiz', nav_facts:'Roliga Fakta',
+    hero_sub:'Res 230 miljoner år tillbaka och upptäck jättarna som regerade vår planet.',
+    stat_years:'Miljoner År', stat_species:'Kända Arter',
+    stat_continents:'Kontinenter', stat_articles:'Artiklar och Guider',
+    btn_view_all:'Se Alla Dinosaurier →', trending_label:'Efter Visningar', trending_title:'TRENDING',
+    btn_scan:'🔍 Skanna!', btn_reset:'↺ Försök Igen',
+    scan_drop:'Dra eller klicka', scan_sub:'Ladda upp bergfoto',
+  },
+  no: {
+    nav_home:'Hjem', nav_basics:'Grunnleggende', nav_eras:'Eraer', nav_types:'Typer',
+    nav_popular:'Populær', nav_articles:'Artikler', nav_tops:'Topplister',
+    nav_eggs:'Egg', nav_extinction:'Utryddelse', nav_quiz:'Quiz', nav_facts:'Morsomme Fakta',
+    hero_sub:'Reis 230 millioner år tilbake og oppdage gigantene som regjerte planeten vår.',
+    stat_years:'Millioner År', stat_species:'Kjente Arter',
+    stat_continents:'Kontinenter', stat_articles:'Artikler og Guider',
+    btn_view_all:'Se Alle Dinosaurer →', trending_label:'Etter Visninger', trending_title:'TRENDING',
+    btn_scan:'🔍 Skann!', btn_reset:'↺ Prøv Igjen',
+    scan_drop:'Dra eller klikk', scan_sub:'Last opp steinbilde',
+  },
+  da: {
+    nav_home:'Hjem', nav_basics:'Grundlæggende', nav_eras:'Eraer', nav_types:'Typer',
+    nav_popular:'Populær', nav_articles:'Artikler', nav_tops:'Toplister',
+    nav_eggs:'Æg', nav_extinction:'Uddøen', nav_quiz:'Quiz', nav_facts:'Sjove Fakta',
+    hero_sub:'Rejs 230 millioner år tilbage og opdage giganterne der regerede vores planet.',
+    stat_years:'Millioner År', stat_species:'Kendte Arter',
+    stat_continents:'Kontinenter', stat_articles:'Artikler og Guider',
+    btn_view_all:'Se Alle Dinosaurer →', trending_label:'Efter Visninger', trending_title:'TRENDING',
+    btn_scan:'🔍 Scan!', btn_reset:'↺ Prøv Igen',
+    scan_drop:'Træk eller klik', scan_sub:'Upload stenfoto',
+  },
+  fi: {
+    nav_home:'Koti', nav_basics:'Perusteet', nav_eras:'Aikakausia', nav_types:'Tyypit',
+    nav_popular:'Suosittu', nav_articles:'Artikkelit', nav_tops:'Toplistat',
+    nav_eggs:'Munat', nav_extinction:'Sukupuutto', nav_quiz:'Tietovisa', nav_facts:'Hauskoja Faktoja',
+    hero_sub:'Matkaa 230 miljoonaa vuotta taaksepäin ja löydä jättiläiset jotka hallitsivat planeettaamme.',
+    stat_years:'Miljoonaa Vuotta', stat_species:'Tunnettuja Lajeja',
+    stat_continents:'Manteretta', stat_articles:'Artikkelia ja Oppaita',
+    btn_view_all:'Katso Kaikki Dinosaurukset →', trending_label:'Katselujen Mukaan', trending_title:'TRENDING',
+    btn_scan:'🔍 Skannaa!', btn_reset:'↺ Yritä Uudelleen',
+    scan_drop:'Vedä tai klikkaa', scan_sub:'Lataa kuva kivestä',
+  },
+  uk: {
+    nav_home:'Головна', nav_basics:'Основи', nav_eras:'Епохи', nav_types:'Типи',
+    nav_popular:'Популярне', nav_articles:'Статті', nav_tops:'Топ Списки',
+    nav_eggs:'Яйця', nav_extinction:'Вимирання', nav_quiz:'Квіз', nav_facts:'Цікаві Факти',
+    hero_sub:'Вирушай 230 мільйонів років тому і відкривай гігантів, що правили нашою планетою.',
+    stat_years:'Мільйонів Років', stat_species:'Відомих Видів',
+    stat_continents:'Континентів', stat_articles:'Статей і Гайдів',
+    btn_view_all:'Всі Динозаври →', trending_label:'За Переглядами', trending_title:'ТРЕНДИ',
+    btn_scan:'🔍 Сканувати!', btn_reset:'↺ Ще Раз',
+    scan_drop:'Перетягніть або натисніть', scan_sub:'Завантажте фото каменю',
+  },
+  ro: {
+    nav_home:'Acasă', nav_basics:'Bazele', nav_eras:'Ere', nav_types:'Tipuri',
+    nav_popular:'Popular', nav_articles:'Articole', nav_tops:'Top Liste',
+    nav_eggs:'Ouă', nav_extinction:'Extincție', nav_quiz:'Quiz', nav_facts:'Fapte Distractive',
+    hero_sub:'Călătorește 230 de milioane de ani înapoi și descoperă giganții care au condus planeta noastră.',
+    stat_years:'Milioane de Ani', stat_species:'Specii Cunoscute',
+    stat_continents:'Continente', stat_articles:'Articole și Ghiduri',
+    btn_view_all:'Vezi Toți Dinozaurii →', trending_label:'După Vizualizări', trending_title:'TRENDING',
+    btn_scan:'🔍 Scanează!', btn_reset:'↺ Încearcă Din Nou',
+    scan_drop:'Glisați sau faceți clic', scan_sub:'Încărcați fotografia pietrei',
+  },
+  hu: {
+    nav_home:'Főoldal', nav_basics:'Alapok', nav_eras:'Korszakok', nav_types:'Típusok',
+    nav_popular:'Népszerű', nav_articles:'Cikkek', nav_tops:'Top Listák',
+    nav_eggs:'Tojások', nav_extinction:'Kihalás', nav_quiz:'Kvíz', nav_facts:'Érdekes Tények',
+    hero_sub:'Utazz vissza 230 millió évvel és fedezd fel a bolygónkat uraló óriásokat.',
+    stat_years:'Millió Év', stat_species:'Ismert Faj',
+    stat_continents:'Kontinens', stat_articles:'Cikk és Útmutató',
+    btn_view_all:'Összes Dinoszaurusz →', trending_label:'Megtekintések Szerint', trending_title:'TRENDING',
+    btn_scan:'🔍 Beolvasás!', btn_reset:'↺ Próbáld Újra',
+    scan_drop:'Húzza ide vagy kattintson', scan_sub:'Töltse fel a kő fotóját',
+  },
+  el: {
+    nav_home:'Αρχική', nav_basics:'Βασικά', nav_eras:'Εποχές', nav_types:'Τύποι',
+    nav_popular:'Δημοφιλές', nav_articles:'Άρθρα', nav_tops:'Κορυφαίες Λίστες',
+    nav_eggs:'Αυγά', nav_extinction:'Εξαφάνιση', nav_quiz:'Κουίζ', nav_facts:'Διασκεδαστικά Γεγονότα',
+    hero_sub:'Ταξίδεψε 230 εκατομμύρια χρόνια πίσω και ανακάλυψε τους γίγαντες που κυβερνούσαν τον πλανήτη μας.',
+    stat_years:'Εκατ. Χρόνια', stat_species:'Γνωστά Είδη',
+    stat_continents:'Ηπείροι', stat_articles:'Άρθρα και Οδηγοί',
+    btn_view_all:'Δες Όλους τους Δεινόσαυρους →', trending_label:'Κατά Προβολές', trending_title:'ΤΡΕΝΤ',
+    btn_scan:'🔍 Σάρωση!', btn_reset:'↺ Δοκιμή Ξανά',
+    scan_drop:'Σύρε ή κάνε κλικ', scan_sub:'Ανέβασε φωτογραφία βράχου',
+  },
+  th: {
+    nav_home:'หน้าแรก', nav_basics:'พื้นฐาน', nav_eras:'ยุค', nav_types:'ประเภท',
+    nav_popular:'ยอดนิยม', nav_articles:'บทความ', nav_tops:'รายการยอดนิยม',
+    nav_eggs:'ไข่', nav_extinction:'การสูญพันธุ์', nav_quiz:'แบบทดสอบ', nav_facts:'ข้อเท็จจริงสนุกๆ',
+    hero_sub:'ย้อนเวลากลับไป 230 ล้านปีและค้นพบยักษ์ใหญ่ที่ครองโลก',
+    stat_years:'ล้านปีแห่งประวัติศาสตร์', stat_species:'สายพันธุ์ที่รู้จัก',
+    stat_continents:'ทวีป', stat_articles:'บทความและคู่มือ',
+    btn_view_all:'ดูไดโนเสาร์ทั้งหมด →', trending_label:'ตามการดู', trending_title:'กำลังมาแรง',
+    btn_scan:'🔍 สแกน!', btn_reset:'↺ ลองอีกครั้ง',
+    scan_drop:'ลากหรือคลิกเพื่ออัพโหลด', scan_sub:'อัพโหลดรูปหิน',
+  },
+  vi: {
+    nav_home:'Trang Chủ', nav_basics:'Cơ Bản', nav_eras:'Kỷ Nguyên', nav_types:'Loại',
+    nav_popular:'Phổ Biến', nav_articles:'Bài Viết', nav_tops:'Top Danh Sách',
+    nav_eggs:'Trứng', nav_extinction:'Tuyệt Chủng', nav_quiz:'Câu Đố', nav_facts:'Sự Thật Thú Vị',
+    hero_sub:'Quay ngược 230 triệu năm và khám phá những gã khổng lồ đã thống trị hành tinh của chúng ta.',
+    stat_years:'Triệu Năm Lịch Sử', stat_species:'Loài Đã Biết',
+    stat_continents:'Lục Địa', stat_articles:'Bài Viết và Hướng Dẫn',
+    btn_view_all:'Xem Tất Cả Khủng Long →', trending_label:'Theo Lượt Xem', trending_title:'XU HƯỚNG',
+    btn_scan:'🔍 Quét!', btn_reset:'↺ Thử Lại',
+    scan_drop:'Kéo hoặc nhấp để tải lên', scan_sub:'Tải ảnh đá lên',
+  },
+  id: {
+    nav_home:'Beranda', nav_basics:'Dasar', nav_eras:'Era', nav_types:'Jenis',
+    nav_popular:'Populer', nav_articles:'Artikel', nav_tops:'Daftar Teratas',
+    nav_eggs:'Telur', nav_extinction:'Kepunahan', nav_quiz:'Kuis', nav_facts:'Fakta Menarik',
+    hero_sub:'Kembali 230 juta tahun dan temukan raksasa yang menguasai planet kita.',
+    stat_years:'Juta Tahun Sejarah', stat_species:'Spesies yang Diketahui',
+    stat_continents:'Benua', stat_articles:'Artikel dan Panduan',
+    btn_view_all:'Lihat Semua Dinosaurus →', trending_label:'Berdasarkan Tampilan', trending_title:'TRENDING',
+    btn_scan:'🔍 Pindai!', btn_reset:'↺ Coba Lagi',
+    scan_drop:'Seret atau klik untuk mengunggah', scan_sub:'Unggah foto batu',
+  },
+  ms: {
+    nav_home:'Laman Utama', nav_basics:'Asas', nav_eras:'Era', nav_types:'Jenis',
+    nav_popular:'Popular', nav_articles:'Artikel', nav_tops:'Senarai Teratas',
+    nav_eggs:'Telur', nav_extinction:'Kepupusan', nav_quiz:'Kuiz', nav_facts:'Fakta Menarik',
+    hero_sub:'Kembali 230 juta tahun dan temui gergasi yang memerintah planet kita.',
+    stat_years:'Juta Tahun Sejarah', stat_species:'Spesies Diketahui',
+    stat_continents:'Benua', stat_articles:'Artikel dan Panduan',
+    btn_view_all:'Lihat Semua Dinosaur →', trending_label:'Mengikut Tontonan', trending_title:'TRENDING',
+    btn_scan:'🔍 Imbas!', btn_reset:'↺ Cuba Lagi',
+    scan_drop:'Seret atau klik untuk muat naik', scan_sub:'Muat naik foto batu',
+  },
+  he: {
+    nav_home:'בית', nav_basics:'בסיס', nav_eras:'עידנים', nav_types:'סוגים',
+    nav_popular:'פופולרי', nav_articles:'מאמרים', nav_tops:'רשימות מובילות',
+    nav_eggs:'ביצים', nav_extinction:'הכחדה', nav_quiz:'חידון', nav_facts:'עובדות מהנות',
+    hero_sub:'חזור 230 מיליון שנה ומצא את הענקים ששלטו בכוכב שלנו.',
+    stat_years:'מיליון שנות היסטוריה', stat_species:'מינים ידועים',
+    stat_continents:'יבשות', stat_articles:'מאמרים ומדריכים',
+    btn_view_all:'ראה את כל הדינוזאורים →', trending_label:'לפי צפיות', trending_title:'טרנדינג',
+    btn_scan:'🔍 סריקה!', btn_reset:'↺ נסה שוב',
+    scan_drop:'גרור או לחץ להעלאה', scan_sub:'העלה תמונת סלע',
+  },
+}
 
 // Apply i18n translations to ALL data-i18n elements
 function applyI18n(lang) {
@@ -10261,11 +10505,16 @@ function applyI18n(lang) {
 // Init on page load
 document.addEventListener('DOMContentLoaded', function() {
   renderTrendingNow();
-  // Load saved language
+  // Load saved language - try both setLang and applyFullLang
   try {
     const saved = localStorage.getItem('dw-lang');
-    if (saved) {
-      setTimeout(() => setLang(saved), 150);
+    if (saved && saved !== 'en') {
+      setTimeout(() => {
+        if (typeof setLang === 'function') setLang(saved);
+        setTimeout(() => {
+          if (typeof applyFullLang === 'function') applyFullLang(saved);
+        }, 100);
+      }, 200);
     }
   } catch(e) {}
 });
@@ -11029,6 +11278,25 @@ function applyFullLang(lang) {
   const t = fullLangData[lang] || fullLangData.en;
   const currentId = lang;
 
+  // Set global currentLang
+  if (typeof currentLang !== 'undefined') currentLang = lang;
+
+  // Save to localStorage
+  try { localStorage.setItem('dw-lang', lang); } catch(e) {}
+
+  // Update active lang button
+  document.querySelectorAll('.lang-option').forEach(b => {
+    b.classList.toggle('active', b.id === 'lopt-' + lang);
+  });
+
+  // RTL support
+  document.documentElement.dir = (lang === 'ar' || lang === 'he') ? 'rtl' : 'ltr';
+  document.documentElement.lang = lang;
+
+  // Update globe label
+  const _glLabel = document.getElementById('langCurrentLabel');
+  if (_glLabel && typeof langNames !== 'undefined') _glLabel.textContent = langNames[lang] || lang.toUpperCase();
+
   // 1. Apply to all data-i18n elements
   document.querySelectorAll('[data-i18n]').forEach(el => {
     const key = el.getAttribute('data-i18n');
@@ -11146,23 +11414,14 @@ setLang = function(lang) {
   // Re-apply when changing pages (hook into page changes)
 };
 
-// Apply language on page load
-document.addEventListener('DOMContentLoaded', () => {
-  try {
-    const saved = localStorage.getItem('dw-lang');
-    if (saved && (fullLangData[saved])) {
-      currentLang = saved;
-      setTimeout(() => applyFullLang(saved), 200);
-    }
-  } catch(e) {}
-});
-
 // Apply language whenever a page is shown
 const _langPageHook = showPage;
 showPage = function(id) {
   _langPageHook(id);
   if (typeof currentLang !== 'undefined' && currentLang !== 'en') {
-    setTimeout(() => applyFullLang(currentLang), 120);
+    setTimeout(() => {
+      if (typeof applyFullLang === 'function') applyFullLang(currentLang);
+    }, 120);
   }
 };
 
@@ -12750,25 +13009,25 @@ document.addEventListener('DOMContentLoaded', () => {
 // ══════════════════════════════════════════════════════════════
 (function() {
   var JP = [
-    {id:'trex',name:'T-Rex',emoji:'🦖',r:'legendary',p:500,desc:'Apex predátor'},
-    {id:'spinosaurus',name:'Spinosaurus',emoji:'🐊',r:'legendary',p:450,desc:'Plovoucí gigant'},
-    {id:'velociraptor',name:'Velociraptor',emoji:'🦅',r:'rare',p:300,desc:'Lovec v hejnu'},
-    {id:'triceratops-guide',name:'Triceratops',emoji:'🦏',r:'rare',p:280,desc:'Tank se třemi rohy'},
-    {id:'brachiosaurus-guide',name:'Brachiosaurus',emoji:'🦕',r:'rare',p:260,desc:'Jemný obr'},
-    {id:'therizinosaurus',name:'Therizinosaurus',emoji:'🦥',r:'rare',p:240,desc:'Obří drápy'},
-    {id:'stegosaurus-guide',name:'Stegosaurus',emoji:'🦎',r:'uncommon',p:180,desc:'Plátový obránce'},
-    {id:'ankylosaurus',name:'Ankylosaurus',emoji:'🐢',r:'uncommon',p:170,desc:'Živý tank'},
-    {id:'parasaurolophus',name:'Parasaurolophus',emoji:'🎺',r:'uncommon',p:150,desc:'Trubač druhohor'},
-    {id:'diplodocus',name:'Diplodocus',emoji:'🦕',r:'uncommon',p:140,desc:'Nejdelší dino'},
-    {id:'allosaurus',name:'Allosaurus',emoji:'🦖',r:'uncommon',p:160,desc:'Jurský lovec'},
-    {id:'microraptor',name:'Microraptor',emoji:'🐦',r:'rare',p:200,desc:'4-křídlý letec'},
-    {id:'pachycephalosaurus',name:'Pachycephalosaurus',emoji:'💥',r:'common',p:100,desc:'Hlavatý taranič'},
-    {id:'gallimimus',name:'Gallimimus',emoji:'🐦',r:'common',p:80,desc:'Rychlík'},
-    {id:'troodon',name:'Troodon',emoji:'🦉',r:'uncommon',p:130,desc:'Nejchytřejší dino'},
-    {id:'maiasaura',name:'Maiasaura',emoji:'🪺',r:'common',p:90,desc:'Dobrá matka'}
+    {id:'trex',name:'T-Rex',emoji:'🦖',r:'legendary',p:500,desc:'Apex predator'},
+    {id:'spinosaurus',name:'Spinosaurus',emoji:'🐊',r:'legendary',p:450,desc:'Swimming giant'},
+    {id:'velociraptor',name:'Velociraptor',emoji:'🦅',r:'rare',p:300,desc:'Pack hunter'},
+    {id:'triceratops-guide',name:'Triceratops',emoji:'🦏',r:'rare',p:280,desc:'Three-horned tank'},
+    {id:'brachiosaurus-guide',name:'Brachiosaurus',emoji:'🦕',r:'rare',p:260,desc:'Gentle giant'},
+    {id:'therizinosaurus',name:'Therizinosaurus',emoji:'🦥',r:'rare',p:240,desc:'Giant claws'},
+    {id:'stegosaurus-guide',name:'Stegosaurus',emoji:'🦎',r:'uncommon',p:180,desc:'Plate defender'},
+    {id:'ankylosaurus',name:'Ankylosaurus',emoji:'🐢',r:'uncommon',p:170,desc:'Living tank'},
+    {id:'parasaurolophus',name:'Parasaurolophus',emoji:'🎺',r:'uncommon',p:150,desc:'Cretaceous trumpeter'},
+    {id:'diplodocus',name:'Diplodocus',emoji:'🦕',r:'uncommon',p:140,desc:'Longest dino'},
+    {id:'allosaurus',name:'Allosaurus',emoji:'🦖',r:'uncommon',p:160,desc:'Jurassic hunter'},
+    {id:'microraptor',name:'Microraptor',emoji:'🐦',r:'rare',p:200,desc:'4-winged flyer'},
+    {id:'pachycephalosaurus',name:'Pachycephalosaurus',emoji:'💥',r:'common',p:100,desc:'Head-butter'},
+    {id:'gallimimus',name:'Gallimimus',emoji:'🐦',r:'common',p:80,desc:'Speed runner'},
+    {id:'troodon',name:'Troodon',emoji:'🦉',r:'uncommon',p:130,desc:'Smartest dino'},
+    {id:'maiasaura',name:'Maiasaura',emoji:'🪺',r:'common',p:90,desc:'Good mother'}
   ];
   var RC = {legendary:'#ffd700',rare:'#a78bfa',uncommon:'#34d399',common:'#94a3b8'};
-  var RL = {legendary:'⭐ Legendární',rare:'💜 Vzácný',uncommon:'🟢 Neobvyklý',common:'⚪ Běžný'};
+  var RL = {legendary:'⭐ Legendary',rare:'💜 Rare',uncommon:'🟢 Uncommon',common:'⚪ Common'};
   var park = [], sMode = 'rarity';
 
   window.jpSortBy = function(m){sMode=m;renderShop();};
@@ -12781,7 +13040,7 @@ document.addEventListener('DOMContentLoaded', () => {
     else {
       if(park.length>=8){alert('Park je plný! Max 8 dinosaurů.');return;}
       park.push(d);
-      if(typeof addLBPoints==='function') addLBPoints(Math.floor(d.p/10),'🌴 '+d.name+' přidán!');
+      if(typeof addLBPoints==='function') addLBPoints(Math.floor(d.p/10),'🌴 '+d.name+' added!');
     }
     renderShop(); renderPark();
   };
@@ -12801,8 +13060,8 @@ document.addEventListener('DOMContentLoaded', () => {
         +'<div style="font-size:0.78rem;font-weight:700;color:#fff;margin-bottom:2px;">'+d.name+'</div>'
         +'<div style="font-size:0.68rem;color:'+c+';font-weight:600;margin-bottom:3px;">'+RL[d.r]+'</div>'
         +'<div style="font-size:0.7rem;color:var(--text-secondary);margin-bottom:5px;">'+d.desc+'</div>'
-        +'<div style="font-size:0.82rem;font-weight:800;color:var(--accent);">+'+d.p+' bodů</div>'
-        +'<div style="margin-top:6px;font-size:0.7rem;padding:3px 8px;border-radius:99px;background:'+(inP?'rgba(239,68,68,0.2)':'rgba(110,251,62,0.15)')+';color:'+(inP?'#ef4444':'var(--accent)')+';">'+(inP?'✖ Odebrat':'＋ Přidat')+'</div>'
+        +'<div style="font-size:0.82rem;font-weight:800;color:var(--accent);">+'+d.p+' pts</div>'
+        +'<div style="margin-top:6px;font-size:0.7rem;padding:3px 8px;border-radius:99px;background:'+(inP?'rgba(239,68,68,0.2)':'rgba(110,251,62,0.15)')+';color:'+(inP?'#ef4444':'var(--accent)')+';">'+(inP?'✖ Remove':'＋ Add')+'</div>'
         +'</div>';
     }).join('');
   }
@@ -12823,7 +13082,7 @@ document.addEventListener('DOMContentLoaded', () => {
         return '<div onclick="jpToggleDino(\''+d.id+'\')" style="background:rgba(255,255,255,0.06);border:1.5px solid '+c+';border-radius:12px;padding:8px 12px;display:flex;align-items:center;gap:8px;cursor:pointer;">'
           +'<span style="font-size:1.4rem;">'+d.emoji+'</span>'
           +'<div><div style="font-size:0.78rem;font-weight:700;color:#fff;">'+d.name+'</div>'
-          +'<div style="font-size:0.7rem;color:'+c+';">'+d.p+' bodů</div></div>'
+          +'<div style="font-size:0.7rem;color:'+c+';">'+d.p+' pts</div></div>'
           +'<span style="margin-left:auto;color:rgba(239,68,68,0.6);font-size:0.8rem;">✖</span></div>';
       }).join('');
     }
@@ -12841,46 +13100,46 @@ document.addEventListener('DOMContentLoaded', () => {
 (function() {
   var QS = {
     easy:[
-      {q:'Kolik rohů měl Triceratops?',a:'3',o:['1','2','3','4']},
-      {q:'Co jedl Brachiosaurus?',a:'Rostliny',o:['Maso','Ryby','Rostliny','Hmyz']},
-      {q:'Jak velký byl Velociraptor?',a:'Jako krocan',o:['Jako slon','Jako pes','Jako krocan','Jako krokodýl']},
-      {q:'Kdy vymřeli dinosauři?',a:'Před 66 miliony let',o:['Před 10 miliony let','Před 66 miliony let','Před 200 miliony let','Před 500 miliony let']},
-      {q:'Jaká zvířata jsou nejbližší příbuzní dinosaurů?',a:'Ptáci',o:['Krokodýli','Ještěrky','Ptáci','Hadi']},
-      {q:'Jak se jmenuje vědec studující dinosaury?',a:'Paleontolog',o:['Geolog','Biolog','Paleontolog','Zoolog']},
-      {q:'Co měl Stegosaurus na zádech?',a:'Kostěné plotny',o:['Peří','Kostěné plotny','Ostny','Šupiny']},
-      {q:'Jak se nazývá věk dinosaurů?',a:'Mesozoikum',o:['Paleozoikum','Mesozoikum','Kenozoikum','Neozoikum']},
-      {q:'Co měl Parasaurolophus na hlavě?',a:'Dutý hřeben',o:['Roh','Dutý hřeben','Ostny','Štít']},
-      {q:'Spinosaurus byl větší než...',a:'T-Rex',o:['Brachiosaurus','T-Rex','Diplodocus','Allosaurus']},
-      {q:'Jak velký mozek měl Stegosaurus?',a:'Jako vlašský ořech',o:['Jako pomeranč','Jako vlašský ořech','Jako meloun','Jako hrách']},
-      {q:'Kde byl nalezen první T-Rex?',a:'Montana, USA',o:['Argentina','Mongolsko','Montana, USA','Čína']}
+      {q:'How many horns did Triceratops have?',a:'3',o:['1','2','3','4']},
+      {q:'What did Brachiosaurus eat?',a:'Plants',o:['Meat','Fish','Plants','Insects']},
+      {q:'How big was Velociraptor?',a:'Turkey-sized',o:['Elephant-sized','Dog-sized','Turkey-sized','Crocodile-sized']},
+      {q:'When did dinosaurs go extinct?',a:'66 million years ago',o:['10 million years ago','66 million years ago','200 million years ago','500 million years ago']},
+      {q:'Which animals are the closest living relatives of dinosaurs?',a:'Birds',o:['Crocodiles','Lizards','Birds','Snakes']},
+      {q:'What is a scientist who studies dinosaurs called?',a:'Paleontologist',o:['Geologist','Biologist','Paleontologist','Zoologist']},
+      {q:'What did Stegosaurus have on its back?',a:'Bony plates',o:['Feathers','Bony plates','Spikes','Scales']},
+      {q:'What era is known as the age of dinosaurs?',a:'Mesozoic',o:['Paleozoic','Mesozoic','Cenozoic','Neozoic']},
+      {q:'What did Parasaurolophus have on its head?',a:'Hollow crest',o:['Horn','Hollow crest','Spines','Shield']},
+      {q:'Spinosaurus was bigger than...',a:'T-Rex',o:['Brachiosaurus','T-Rex','Diplodocus','Allosaurus']},
+      {q:'How big was the brain of Stegosaurus?',a:'Walnut-sized',o:['Orange-sized','Walnut-sized','Melon-sized','Grape-sized']},
+      {q:'Where was the first T-Rex discovered?',a:'Montana, USA',o:['Argentina','Mongolia','Montana, USA','China']}
     ],
     medium:[
-      {q:'Jak rychle mohl T-Rex maximálně běžet?',a:'~25 km/h',o:['~10 km/h','~25 km/h','~50 km/h','~80 km/h']},
-      {q:'Jak dlouhé byly drápy Therizinosaura?',a:'Až 1 metr',o:['20 cm','50 cm','Až 1 metr','2 metry']},
-      {q:'Co znamená Velociraptor latinsky?',a:'Rychlý lupič',o:['Rychlý lupič','Ostrý dráp','Malý drak','Rychlý plaz']},
-      {q:'Kde byl objeven Spinosaurus?',a:'Egyptě',o:['Argentině','Číně','Egyptě','Kanadě']},
-      {q:'Jak se jmenuje místo dopadu asteroidu?',a:'Chicxulub',o:['Chixulub','Chicxulub','Yucatan Prime','Deccan']},
-      {q:'Pachycephalosaurus měl lebku tlustou...',a:'25 cm',o:['5 cm','10 cm','25 cm','50 cm']},
-      {q:'Který dinosaurus byl nejchytřejší?',a:'Troodon',o:['Velociraptor','Troodon','Deinonychus','Microraptor']},
-      {q:'Kolik zubů měl T-Rex?',a:'60',o:['20','40','60','80']},
-      {q:'Microraptor měl...',a:'4 křídla',o:['2 křídla','4 křídla','Peří bez křídel','Šupiny']},
-      {q:'Co jedl Baryonyx?',a:'Ryby',o:['Dinosaury','Ryby','Rostliny','Vše']},
-      {q:'Kentrosaurus byl příbuzný...',a:'Stegosaura',o:['Ankylosaura','Triceratopse','Stegosaura','Iguanodona']},
-      {q:'Maiasaura byla první dinosaurus s důkazem...',a:'Péče o mláďata',o:['Létání','Péče o mláďata','Lovu v hejnu','Nočního vidění']}
+      {q:'What was the maximum speed of T-Rex?',a:'~25 km/h',o:['~10 km/h','~25 km/h','~50 km/h','~80 km/h']},
+      {q:'How long were the claws of Therizinosaurus?',a:'Up to 1 metre',o:['20 cm','50 cm','Up to 1 metre','2 metres']},
+      {q:'What does Velociraptor mean in Latin?',a:'Swift thief',o:['Swift thief','Sharp claw','Small dragon','Quick lizard']},
+      {q:'Where was Spinosaurus discovered?',a:'Egypt',o:['Argentina','China','Egypt','Canada']},
+      {q:'What is the name of the asteroid impact site?',a:'Chicxulub',o:['Chixulub','Chicxulub','Yucatan Prime','Deccan']},
+      {q:'How thick was the skull of Pachycephalosaurus?',a:'25 cm',o:['5 cm','10 cm','25 cm','50 cm']},
+      {q:'Which dinosaur was the most intelligent?',a:'Troodon',o:['Velociraptor','Troodon','Deinonychus','Microraptor']},
+      {q:'How many teeth did T-Rex have?',a:'60',o:['20','40','60','80']},
+      {q:'How many wings did Microraptor have?',a:'4 wings',o:['2 wings','4 wings','Feathers without wings','Scales']},
+      {q:'What did Baryonyx eat?',a:'Fish',o:['Dinosaurs','Fish','Plants','Everything']},
+      {q:'Kentrosaurus was related to...',a:'Stegosaurus',o:['Ankylosaurus','Triceratops','Stegosaurus','Iguanodon']},
+      {q:'Maiasaura was the first dinosaur with evidence of...',a:'Parental care',o:['Flying','Parental care','Pack hunting','Night vision']}
     ],
     hard:[
-      {q:'Jak se vědecky nazývají ptakopánví dinosauři?',a:'Ornithischia',o:['Saurischia','Ornithischia','Theropoda','Sauropodomorpha']},
-      {q:'Deinonychus inspiroval filmového...',a:'Velociraptora v JP',o:['T-Rexe','Velociraptora v JP','Spinosaura','Compyho']},
-      {q:'Který dinosaurus byl první pojmenovaný?',a:'Megalosaurus 1824',o:['Iguanodon 1825','Megalosaurus 1824','T-Rex 1905','Brachiosaurus 1903']},
-      {q:'Co je EQ v paleontologii?',a:'Encephalization Quotient',o:['Evolution Quotient','Encephalization Quotient','Extinction Qualifier','Energy Quotient']},
-      {q:'Kde byl objeven Baryonyx?',a:'Surrey Anglie',o:['Patagonie','Mongolsko','Surrey Anglie','Maroko']},
-      {q:'Maiasaura znamená...',a:'Dobrá matka ještěrka',o:['Velká ještěrka','Dobrá matka ještěrka','Hnízdo ještěrka','Stará ještěrka']},
-      {q:'Protokeratops inspiroval legendu o...',a:'Griffinovi',o:['Drakovi','Griffinovi','Jednorožci','Fenixovi']},
-      {q:'Jak se nazývá ocasní zbraň Stegosaura?',a:'Thagomizer',o:['Tailsmasher','Thagomizer','Spinetail','Spiketail']},
-      {q:'Jaká byla barva Sinosauropteryxe?',a:'Zrzavá s bílým ocasem',o:['Šedá','Zelená','Zrzavá s bílým ocasem','Černá']},
-      {q:'Kolik druhů dinosaurů bylo vědecky popsáno?',a:'Asi 1000',o:['Asi 100','Asi 500','Asi 1000','Asi 5000']},
-      {q:'Jak se nazývá skupina zahrnující ptáky a jejich dino předky?',a:'Archosauria',o:['Reptilia','Archosauria','Diapsida','Amniota']},
-      {q:'Jak se nazývají fosilní stopy dinosaurů?',a:'Ichnofosilie',o:['Dermofosilie','Ichnofosilie','Koprofosilie','Osteofosilie']}
+      {q:'What is the scientific name for bird-hipped dinosaurs?',a:'Ornithischia',o:['Saurischia','Ornithischia','Theropoda','Sauropodomorpha']},
+      {q:'Deinonychus inspired the movie character of...',a:'Velociraptor in JP',o:['T-Rex','Velociraptor in JP','Spinosaurus','Compy']},
+      {q:'Which dinosaur was named first?',a:'Megalosaurus 1824',o:['Iguanodon 1825','Megalosaurus 1824','T-Rex 1905','Brachiosaurus 1903']},
+      {q:'What is EQ in paleontology?',a:'Encephalization Quotient',o:['Evolution Quotient','Encephalization Quotient','Extinction Qualifier','Energy Quotient']},
+      {q:'Where was Baryonyx discovered?',a:'Surrey England',o:['Patagonia','Mongolia','Surrey England','Morocco']},
+      {q:'What does Maiasaura mean?',a:'Good mother lizard',o:['Big lizard','Good mother lizard','Nest lizard','Old lizard']},
+      {q:'Protoceratops may have inspired the legend of...',a:'The Griffin',o:['The Dragon','The Griffin','The Unicorn','The Phoenix']},
+      {q:'What is the name of the tail weapon of Stegosaurus?',a:'Thagomizer',o:['Tailsmasher','Thagomizer','Spinetail','Spiketail']},
+      {q:'What colour was Sinosauropteryx?',a:'Ginger with white tail',o:['Grey','Green','Ginger with white tail','Black']},
+      {q:'How many dinosaur species have been scientifically described?',a:'About 1000',o:['About 100','About 500','About 1000','About 5000']},
+      {q:'What group includes birds and their dinosaur ancestors?',a:'Archosauria',o:['Reptilia','Archosauria','Diapsida','Amniota']},
+      {q:'What are fossilised dinosaur footprints called?',a:'Ichnofossils',o:['Dermofossils','Ichnofossils','Coprofossils','Osteofossils']}
     ]
   };
 
@@ -12941,9 +13200,9 @@ document.addEventListener('DOMContentLoaded', () => {
     });
     var fb=document.getElementById('trivia-feedback');
     fb.style.display='block';
-    if(ans==='__timeout__'){fb.style.background='rgba(255,122,26,0.15)';fb.style.color='#ff7a1a';fb.innerHTML='⏱ Čas vypršel! Správně: <strong>'+corr+'</strong>';}
-    else if(ok){fb.style.background='rgba(110,251,62,0.12)';fb.style.color='#6efb3e';fb.innerHTML='✅ Správně! +'+pts+' bodů (rychlostní bonus: +'+bonus+')';}
-    else{fb.style.background='rgba(239,68,68,0.12)';fb.style.color='#ef4444';fb.innerHTML='❌ Špatně. Správně: <strong>'+corr+'</strong>';}
+    if(ans==='__timeout__'){fb.style.background='rgba(255,122,26,0.15)';fb.style.color='#ff7a1a';fb.innerHTML='⏱ Time\'s up! Correct answer: <strong>'+corr+'</strong>';}
+    else if(ok){fb.style.background='rgba(110,251,62,0.12)';fb.style.color='#6efb3e';fb.innerHTML='✅ Correct! +'+pts+' points (speed bonus: +'+bonus+')';}
+    else{fb.style.background='rgba(239,68,68,0.12)';fb.style.color='#ef4444';fb.innerHTML='❌ Wrong! Correct: <strong>'+corr+'</strong>';}
     document.getElementById('trivia-score-live').textContent=score;
     setTimeout(function(){cQ++;if(cQ<qs.length)showQ();else showResult();},1600);
   };
@@ -12953,17 +13212,17 @@ document.addEventListener('DOMContentLoaded', () => {
     document.getElementById('trivia-result-screen').style.display='block';
     var pct=correct/qs.length;
     var emoji,title,rank;
-    if(pct===1){emoji='🏆';title='Perfektní skóre!';rank='🥇 Dinosauří expert';}
-    else if(pct>=0.8){emoji='🦖';title='Výborně!';rank='🥈 Zkušený paleontolog';}
-    else if(pct>=0.6){emoji='🦕';title='Dobrý výsledek!';rank='🥉 Dinosauří nadšenec';}
-    else if(pct>=0.4){emoji='🦎';title='Slušný pokus!';rank='📚 Začínající paleontolog';}
-    else{emoji='🥚';title='Zkus to znovu!';rank='🥚 Dinosauří vejce';}
+    if(pct===1){emoji='🏆';title='Perfect Score!';rank='🥇 Dino Expert';}
+    else if(pct>=0.8){emoji='🦖';title='Excellent!';rank='🥈 Experienced Paleontologist';}
+    else if(pct>=0.6){emoji='🦕';title='Good Result!';rank='🥉 Dino Enthusiast';}
+    else if(pct>=0.4){emoji='🦎';title='Nice Try!';rank='📚 Beginner Paleontologist';}
+    else{emoji='🥚';title='Try Again!';rank='🥚 Dino Egg';}
     document.getElementById('trivia-result-emoji').textContent=emoji;
     document.getElementById('trivia-result-title').textContent=title;
     document.getElementById('trivia-result-score').textContent=score+' bodů';
     document.getElementById('trivia-result-correct').textContent=correct+' / '+qs.length+' správně';
     document.getElementById('trivia-result-rank').textContent=rank;
-    if(typeof addLBPoints==='function') addLBPoints(Math.floor(score/10),'🎯 Trivia: '+correct+'/'+qs.length+'!');
+    if(typeof addLBPoints==='function') addLBPoints(Math.floor(score/10),'🎯 Trivia: '+correct+'/'+qs.length+' correct!');
   }
 
   window.triviaRestart=function(){
@@ -12975,6 +13234,151 @@ document.addEventListener('DOMContentLoaded', () => {
 
   var _tH=window.showPage;
   window.showPage=function(id){if(id!=='trivia')clearInterval(tInt);_tH(id);};
+})();
+
+// ══════════════════════════════════════════════════════════════
+// 📤 SHARE FUNCTIONS
+// ══════════════════════════════════════════════════════════════
+var SITE_URL = 'https://jacobb-rgb.github.io/DinoWorld';
+var SITE_NAME = 'DinoWorld';
+
+function shareToTwitter(text, url) {
+  var t = text || 'Check out DinoWorld — the best free dinosaur encyclopedia! 🦖 Quizzes, fossil maps, rock scanner and more!';
+  var u = url || SITE_URL;
+  window.open('https://twitter.com/intent/tweet?text=' + encodeURIComponent(t) + '&url=' + encodeURIComponent(u), '_blank', 'width=600,height=400');
+}
+
+function shareToFacebook(url) {
+  var u = url || SITE_URL;
+  window.open('https://www.facebook.com/sharer/sharer.php?u=' + encodeURIComponent(u), '_blank', 'width=600,height=400');
+}
+
+function shareToWhatsApp(text, url) {
+  var t = text || 'Check out DinoWorld — the best free dinosaur website! 🦖';
+  var u = url || SITE_URL;
+  window.open('https://wa.me/?text=' + encodeURIComponent(t + ' ' + u), '_blank');
+}
+
+function shareToReddit(title, url) {
+  var t = title || 'DinoWorld — Free interactive dinosaur encyclopedia with quizzes, fossil map & games';
+  var u = url || SITE_URL;
+  window.open('https://www.reddit.com/submit?url=' + encodeURIComponent(u) + '&title=' + encodeURIComponent(t), '_blank');
+}
+
+function copyWebLink() {
+  var btn = document.getElementById('copy-web-btn');
+  navigator.clipboard.writeText(SITE_URL).then(function() {
+    if (btn) { var orig = btn.textContent; btn.textContent = '✅ Copied!'; setTimeout(function(){btn.textContent=orig;},2000); }
+  }).catch(function() {
+    var ta = document.createElement('textarea');
+    ta.value = SITE_URL; document.body.appendChild(ta); ta.select(); document.execCommand('copy'); document.body.removeChild(ta);
+    if (btn) { var orig = btn.textContent; btn.textContent = '✅ Copied!'; setTimeout(function(){btn.textContent=orig;},2000); }
+  });
+}
+
+function copyShareLink(dinoName) {
+  var text = SITE_URL + ' — I got ' + dinoName + ' on DinoWorld quiz! 🦖';
+  navigator.clipboard.writeText(text).catch(function(){});
+  // Show toast
+  showShareToast('🔗 Link copied to clipboard!');
+}
+
+function shareQuizResult(dinoName, emoji) {
+  var text = 'I just took the DinoWorld quiz and I am ' + emoji + ' ' + dinoName + '! Which dinosaur are you? 🦖 Take the quiz at ' + SITE_URL;
+  shareToTwitter(text, SITE_URL);
+}
+
+function showShareToast(msg) {
+  var t = document.createElement('div');
+  t.textContent = msg;
+  t.style.cssText = 'position:fixed;bottom:30px;left:50%;transform:translateX(-50%);background:#6efb3e;color:#000;padding:12px 24px;border-radius:99px;font-weight:700;font-size:0.9rem;z-index:9999;animation:fadeIn 0.3s ease;box-shadow:0 4px 20px rgba(110,251,62,0.4);';
+  document.body.appendChild(t);
+  setTimeout(function(){t.remove();},2500);
+}
+
+// ══════════════════════════════════════════════════════════════
+// 🦕 DINO OF THE DAY
+// ══════════════════════════════════════════════════════════════
+(function() {
+  var DOTD_DINOS = [
+    {id:'trex',name:'Tyrannosaurus Rex',emoji:'🦖',desc:'The most feared predator ever — bone-crushing jaws, 60 teeth, and an unstoppable force of nature.',period:'Late Cretaceous · 68–66 Ma',diet:'🥩 Carnivore',length:'📏 12–13 m'},
+    {id:'velociraptor',name:'Velociraptor',emoji:'🦅',desc:'Turkey-sized feathered hunter with bird-level intelligence and a deadly sickle claw that changed how we see dinosaurs.',period:'Late Cretaceous · 75–71 Ma',diet:'🥩 Carnivore',length:'📏 2 m'},
+    {id:'triceratops-guide',name:'Triceratops',emoji:'🦏',desc:'Three-horned tank with a massive frill. One of the last non-avian dinosaurs, it fought T-Rex and sometimes won.',period:'Late Cretaceous · 68–66 Ma',diet:'🌿 Herbivore',length:'📏 9 m'},
+    {id:'brachiosaurus-guide',name:'Brachiosaurus',emoji:'🦕',desc:'As tall as a 4-story building, it needed up to 400 kg of plants per day to fuel its enormous body.',period:'Late Jurassic · 154–150 Ma',diet:'🌿 Herbivore',length:'📏 26 m'},
+    {id:'spinosaurus',name:'Spinosaurus',emoji:'🐊',desc:'Larger than T-Rex and capable of swimming — the most unusual and mysterious apex predator ever discovered.',period:'Cretaceous · 99–93 Ma',diet:'🥩 Carnivore',length:'📏 14–18 m'},
+    {id:'stegosaurus-guide',name:'Stegosaurus',emoji:'🦎',desc:'Its distinctive back plates may have regulated temperature or been used for display. The thagomizer tail could pierce Allosaurus bone.',period:'Late Jurassic · 155–150 Ma',diet:'🌿 Herbivore',length:'📏 9 m'},
+    {id:'ankylosaurus',name:'Ankylosaurus',emoji:'🐢',desc:'The ultimate living tank — covered head to tail in bony armour with a tail club capable of shattering T-Rex bones.',period:'Late Cretaceous · 68–66 Ma',diet:'🌿 Herbivore',length:'📏 6–8 m'},
+    {id:'allosaurus',name:'Allosaurus',emoji:'🦖',desc:'The T-Rex of the Jurassic Period. It used its skull like a hatchet to slash at prey — a completely unique hunting technique.',period:'Late Jurassic · 155–150 Ma',diet:'🥩 Carnivore',length:'📏 8–12 m'},
+    {id:'diplodocus',name:'Diplodocus',emoji:'🦕',desc:'One of the longest animals ever — its tail may have moved faster than the speed of sound, creating a sonic boom.',period:'Late Jurassic · 154–150 Ma',diet:'🌿 Herbivore',length:'📏 27 m'},
+    {id:'parasaurolophus',name:'Parasaurolophus',emoji:'🎺',desc:'Its 1.8m hollow crest worked like a trombone — producing deep resonant calls audible for kilometres through Cretaceous forests.',period:'Late Cretaceous · 76–73 Ma',diet:'🌿 Herbivore',length:'📏 9–10 m'},
+    {id:'therizinosaurus',name:'Therizinosaurus',emoji:'🦥',desc:'It had the longest claws of any animal ever — up to 1 metre each — yet was a peaceful plant eater.',period:'Late Cretaceous · 70 Ma',diet:'🌿 Herbivore',length:'📏 9–10 m'},
+    {id:'microraptor',name:'Microraptor',emoji:'🐦',desc:'Four-winged crow-sized predator from China. Its iridescent black feathers proved dinosaurs could be as colourful as peacocks.',period:'Early Cretaceous · 125–120 Ma',diet:'🥩 Carnivore',length:'📏 ~60 cm'},
+    {id:'pachycephalosaurus',name:'Pachycephalosaurus',emoji:'💥',desc:'Its dome-shaped skull was 25cm thick — used like a battering ram in head-butting contests for dominance.',period:'Late Cretaceous · 70–66 Ma',diet:'🌿 Herbivore',length:'📏 4–5 m'},
+    {id:'troodon',name:'Troodon',emoji:'🦉',desc:'The Einstein of dinosaurs — largest brain-to-body ratio of any known dinosaur. Some scientists think its descendants could have evolved intelligence.',period:'Late Cretaceous · 77–75 Ma',diet:'🍳 Omnivore',length:'📏 2.4 m'},
+    {id:'carnotaurus',name:'Carnotaurus',emoji:'🐂',desc:'Bull-horned speed demon — possibly the fastest large predator that ever lived, with powerful legs built purely for running.',period:'Late Cretaceous · 72–69 Ma',diet:'🥩 Carnivore',length:'📏 7–8 m'},
+    {id:'maiasaura',name:'Maiasaura',emoji:'🪺',desc:'The Good Mother Lizard — the first dinosaur proven to raise its young in colonies, changing everything we thought about dinosaur behaviour.',period:'Late Cretaceous · 76–75 Ma',diet:'🌿 Herbivore',length:'📏 7–9 m'},
+    {id:'styracosaurus',name:'Styracosaurus',emoji:'🦏',desc:'Six enormous spikes radiating from its frill plus a nose horn — one of the most spectacular-looking animals to ever walk the Earth.',period:'Late Cretaceous · 75.5–75 Ma',diet:'🌿 Herbivore',length:'📏 5–6 m'},
+    {id:'baryonyx',name:'Baryonyx',emoji:'🐟',desc:'Found in a Surrey clay pit with fish scales still in its stomach — this fish-eating Spinosaurus relative rewrote British dinosaur history.',period:'Early Cretaceous · 130–125 Ma',diet:'🥩 Carnivore',length:'📏 7.5–10 m'},
+    {id:'dilophosaurus',name:'Dilophosaurus',emoji:'🦎',desc:'Twin-crested early predator — nothing like its Jurassic Park portrayal. No neck frill, no venom. Just a sleek 6-metre Jurassic killer.',period:'Early Jurassic · 193–183 Ma',diet:'🥩 Carnivore',length:'📏 6–7 m'},
+    {id:'oviraptor',name:'Oviraptor',emoji:'🦅',desc:'Wrongly named "egg thief" for 70 years — it was actually a devoted parent brooding its own eggs, just like modern birds.',period:'Late Cretaceous · 75–71 Ma',diet:'🍳 Omnivore',length:'📏 1.5–2 m'},
+    {id:'albertosaurus',name:'Albertosaurus',emoji:'🦖',desc:'T-Rex\'s faster Canadian cousin. A mass grave of 26 individuals suggests it hunted in coordinated packs — a terrifying thought.',period:'Late Cretaceous · 70 Ma',diet:'🥩 Carnivore',length:'📏 8–9 m'},
+    {id:'utahraptor',name:'Utahraptor',emoji:'🦅',desc:'The real Jurassic Park raptor — bigger and more dangerous than anything in the films, with a 24cm sickle claw that could disembowel prey.',period:'Early Cretaceous · 126–125 Ma',diet:'🥩 Carnivore',length:'📏 5–7 m'},
+    {id:'protoceratops',name:'Protoceratops',emoji:'🐏',desc:'The sheep of the Cretaceous — small, herding, egg-laying. Scientists believe its hoarded skulls may have inspired the Griffin legend.',period:'Late Cretaceous · 75–71 Ma',diet:'🌿 Herbivore',length:'📏 1.5–2 m'},
+    {id:'gallimimus',name:'Gallimimus',emoji:'🐦',desc:'The dinosaur ostrich — star of the Jurassic Park stampede scene. Could reach 55 km/h, making it one of the fastest dinosaurs.',period:'Late Cretaceous · 70 Ma',diet:'🍳 Omnivore',length:'📏 6 m'},
+    {id:'kentrosaurus',name:'Kentrosaurus',emoji:'⚔️',desc:'Stegosaurus\'s African cousin with sharper, more lethal spikes running all the way down its tail. More dangerous than its famous relative.',period:'Late Jurassic · 156–150 Ma',diet:'🌿 Herbivore',length:'📏 4–5 m'},
+    {id:'ceratosaurus',name:'Ceratosaurus',emoji:'🦕',desc:'Jurassic predator with a nose horn and two brow horns. It had crocodile-like armour on its back — unique among large theropods.',period:'Late Jurassic · 153–148 Ma',diet:'🥩 Carnivore',length:'📏 5.5–7 m'},
+    {id:'deinonychus',name:'Deinonychus',emoji:'🦅',desc:'The dinosaur that changed science in 1969 — proved dinosaurs were warm-blooded, active hunters. Jurassic Park\'s raptors were based on this.',period:'Early Cretaceous · 115–108 Ma',diet:'🥩 Carnivore',length:'📏 3.4 m'},
+    {id:'iguanodon',name:'Iguanodon',emoji:'🦎',desc:'One of the very first dinosaurs named. Its famous thumb spike was originally put on its nose — a mistake that took decades to correct!',period:'Early Cretaceous · 126–122 Ma',diet:'🌿 Herbivore',length:'📏 9–10 m'},
+  ];
+
+  function getDotd() {
+    var dayOfYear = Math.floor((Date.now() - new Date(new Date().getFullYear(),0,0)) / 86400000);
+    return DOTD_DINOS[dayOfYear % DOTD_DINOS.length];
+  }
+
+  function updateCountdown() {
+    var el = document.getElementById('dotd-countdown');
+    if (!el) return;
+    var now = new Date();
+    var midnight = new Date(now); midnight.setHours(24,0,0,0);
+    var diff = midnight - now;
+    var h = Math.floor(diff/3600000);
+    var m = Math.floor((diff%3600000)/60000);
+    var s = Math.floor((diff%60000)/1000);
+    el.textContent = (h<10?'0':'')+h+':'+(m<10?'0':'')+m+':'+(s<10?'0':'')+s;
+  }
+
+  function initDotd() {
+    var dino = getDotd();
+    window._dotdId = dino.id;
+    var nameEl = document.getElementById('dotd-name');
+    var descEl = document.getElementById('dotd-desc');
+    var emojiEl = document.getElementById('dotd-emoji');
+    var periodEl = document.getElementById('dotd-period');
+    var dietEl = document.getElementById('dotd-diet');
+    var lengthEl = document.getElementById('dotd-length');
+    if (!nameEl) return;
+    nameEl.textContent = dino.name;
+    descEl.textContent = dino.desc;
+    emojiEl.textContent = dino.emoji;
+    periodEl.textContent = dino.period;
+    dietEl.textContent = dino.diet;
+    lengthEl.textContent = dino.length;
+    updateCountdown();
+    setInterval(updateCountdown, 1000);
+  }
+
+  window.shareDotd = function() {
+    var dino = getDotd();
+    var text = 'Today\'s DinoWorld Dino of the Day is ' + dino.emoji + ' ' + dino.name + '! ' + dino.desc.substring(0,80) + '... Learn more at ' + SITE_URL;
+    if (navigator.share) {
+      navigator.share({title: 'DinoWorld — Dino of the Day: ' + dino.name, text: text, url: SITE_URL});
+    } else {
+      shareToTwitter(text, SITE_URL);
+    }
+  };
+
+  document.addEventListener('DOMContentLoaded', initDotd);
 })();
 </script>
 </body>
