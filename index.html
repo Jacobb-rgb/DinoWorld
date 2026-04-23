@@ -4494,6 +4494,7 @@
   <div class="wn-item hot" onclick="showPage('trivia')">🎯 Trivia Battle <span class="wn-badge-new">NEW</span></div>
   <div class="wn-item hot" onclick="showPage('jurassic-park')">🌴 Jurassic Park <span class="wn-badge-new">NEW</span></div>
   <div class="wn-item" onclick="showPage('evo-tree')">🌳 Evolution Tree <span class="wn-badge-new">NEW</span></div>
+  <div class="wn-item" onclick="showPage('birthday')">🎂 Birthday Dino <span class="wn-badge-new">NEW</span></div>
   <div class="wn-item hot" onclick="showPage('dino-runner')">🏃 Dino Runner <span class="wn-badge-hot">🔥 HOT</span></div>
   <div class="wn-item" onclick="showPage('battle')">⚔️ Dino Battle</div>
   <div class="wn-item" onclick="showPage('quiz')">🧠 Quiz</div>
@@ -4504,6 +4505,17 @@
   <div class="wn-item" onclick="showPage('soundscape')">🎵 Dino Sounds</div>
 </div>
 
+<!-- STREAK BANNER -->
+<div id="streak-banner" style="display:none;background:linear-gradient(90deg,rgba(255,122,26,0.12),rgba(255,200,0,0.08));border-bottom:1px solid rgba(255,122,26,0.2);padding:8px 20px;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap;">
+  <div style="display:flex;align-items:center;gap:10px;">
+    <span style="font-size:1.3rem;">🔥</span>
+    <div>
+      <span style="font-weight:700;color:#fff;" id="streak-text">You are on a streak!</span>
+      <span style="color:var(--text-secondary);font-size:0.82rem;margin-left:8px;" id="streak-sub"></span>
+    </div>
+  </div>
+  <button onclick="document.getElementById('streak-banner').style.display='none'" style="background:none;border:none;color:var(--muted);cursor:pointer;font-size:1.1rem;">x</button>
+</div>
 
 <!-- LANGUAGE DROPDOWN -->
 <div class="lang-dropdown" id="langDropdown">
@@ -4579,6 +4591,7 @@
     <button class="mm-btn" data-page="evo-tree" onclick="showPage('evo-tree');closeMobileMenu()"><span class="mm-btn-icon">🌳</span>Evolution Tree</button>
     <button class="mm-btn" data-page="trivia" onclick="showPage('trivia');closeMobileMenu()"><span class="mm-btn-icon">🎯</span>Trivia Battle 🆕</button>
     <button class="mm-btn" data-page="jurassic-park" onclick="showPage('jurassic-park');closeMobileMenu()"><span class="mm-btn-icon">🌴</span>Jurassic Park 🆕</button>
+    <button class="mm-btn" data-page="birthday" onclick="showPage('birthday');closeMobileMenu()"><span class="mm-btn-icon">🎂</span>Birthday Dino 🆕</button>
     <button class="mm-btn" data-page="fossils-map" onclick="showPage('fossils-map');closeMobileMenu()"><span class="mm-btn-icon">🗺️</span>Fossil Map</button>
     <button class="mm-btn" data-page="rock-scanner" onclick="showPage('rock-scanner');closeMobileMenu()"><span class="mm-btn-icon">🪨</span>Rock Scanner</button>
     <div class="mm-divider"></div>
@@ -6290,22 +6303,28 @@
   <section>
     <div class="section-label">🌴 Mini Game</div>
     <div class="section-title">BUILD YOUR <span>JURASSIC PARK</span></div>
-    <p style="color:var(--text-secondary);margin-bottom:20px;max-width:580px;">Pick dinosaurs and add them to your park. Build the collection with the highest score!</p>
-    <div id="jp-park-display" style="background:rgba(110,251,62,0.04);border:1.5px solid rgba(110,251,62,0.15);border-radius:20px;padding:24px;margin-bottom:24px;min-height:100px;">
+    <p style="color:var(--text-secondary);margin-bottom:20px;max-width:620px;">Pick enclosures and dinosaurs to build the ultimate park! Matching enclosures to diets gives bonus points. 🏆</p>
+    <div id="jp-park-display" style="background:rgba(110,251,62,0.04);border:1.5px solid rgba(110,251,62,0.15);border-radius:20px;padding:24px;margin-bottom:20px;">
       <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:16px;flex-wrap:wrap;gap:10px;">
-        <div><div style="font-size:1.1rem;font-weight:800;color:#fff;">🏟️ My Jurassic Park</div><div style="font-size:0.8rem;color:var(--text-secondary);">Capacity: <span id="jp-capacity">0</span>/8</div></div>
-        <div style="text-align:right;"><div style="font-size:1.4rem;font-weight:900;color:var(--accent);" id="jp-score">0</div><div style="font-size:0.75rem;color:var(--text-secondary);">pts</div></div>
+        <div><div style="font-size:1.1rem;font-weight:800;color:#fff;">🏟️ My Jurassic Park</div><div style="font-size:0.8rem;color:var(--text-secondary);">Dinos: <span id="jp-capacity">0</span>/10 &nbsp;·&nbsp; Enclosures: <span id="jp-enc-count">0</span>/4</div></div>
+        <div style="text-align:right;"><div style="font-size:1.6rem;font-weight:900;color:var(--accent);" id="jp-score">0</div><div style="font-size:0.72rem;color:var(--text-secondary);">total points</div></div>
       </div>
       <div id="jp-park-slots" style="display:flex;flex-wrap:wrap;gap:10px;min-height:50px;"></div>
-      <div id="jp-empty-msg" style="color:var(--text-secondary);font-size:0.9rem;padding:8px 0;">Park is empty — add dinosaurs below! 👇</div>
+      <div id="jp-empty-msg" style="color:var(--text-secondary);font-size:0.9rem;padding:8px 0;">Park is empty — pick enclosures and dinosaurs below! 👇</div>
     </div>
-    <div style="display:flex;gap:10px;margin-bottom:20px;flex-wrap:wrap;">
+    <div style="margin-bottom:20px;">
+      <div style="font-size:0.82rem;font-weight:700;color:var(--accent);letter-spacing:1px;text-transform:uppercase;margin-bottom:10px;">🏗️ Enclosures (max 4)</div>
+      <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(155px,1fr));gap:10px;" id="jp-enc-shop"></div>
+    </div>
+    <div style="display:flex;gap:10px;margin-bottom:16px;flex-wrap:wrap;">
       <button class="btn btn-primary" onclick="jpSortBy('rarity')">⭐ Rarity</button>
       <button class="btn btn-secondary" onclick="jpSortBy('points')">🏆 Points</button>
-      <button class="btn" style="background:rgba(239,68,68,0.15);color:#ef4444;border:1px solid rgba(239,68,68,0.3);border-radius:10px;padding:8px 16px;cursor:pointer;font-weight:700;" onclick="jpClearPark()">🗑️ Clear Park</button>
+      <button class="btn btn-secondary" onclick="jpSortBy('type')">🦴 Diet</button>
+      <button class="btn" style="background:rgba(239,68,68,0.15);color:#ef4444;border:1px solid rgba(239,68,68,0.3);border-radius:10px;padding:8px 16px;cursor:pointer;font-weight:700;" onclick="jpClearPark()">🗑️ Reset Park</button>
     </div>
-    <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(148px,1fr));gap:12px;" id="jp-dino-shop"></div>
-    <div class="dyk" style="margin-top:28px;"><span class="dyk-icon">🌴</span><div><div class="dyk-label">Park Tip</div><div class="dyk-text">Legendary dinosaurs are the most valuable — T-Rex and Spinosaurus bring the most points!</div></div></div>
+    <div style="font-size:0.82rem;font-weight:700;color:var(--accent);letter-spacing:1px;text-transform:uppercase;margin-bottom:10px;">🦕 Dinosaurs (max 10)</div>
+    <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(145px,1fr));gap:12px;" id="jp-dino-shop"></div>
+    <div class="dyk" style="margin-top:28px;"><span class="dyk-icon">🌴</span><div><div class="dyk-label">Park Tip</div><div class="dyk-text">Match enclosures to dinosaur diets for bonus points! Glacier Dome gives the highest bonus. T-Rex and Spinosaurus are the most valuable dinos!</div></div></div>
   </section>
 </div>
 
@@ -6349,6 +6368,36 @@
       <div style="display:flex;gap:12px;justify-content:center;flex-wrap:wrap;">
         <button class="btn btn-primary" onclick="triviaRestart()">🔄 Play Again</button>
         <button class="btn btn-secondary" onclick="showPage('quiz')">🧠 Which Dino Are You?</button>
+      </div>
+    </div>
+  </section>
+</div>
+
+<!-- ════════════════════════════════════════
+     🎂 BIRTHDAY DINO
+════════════════════════════════════════ -->
+<div class="page" id="page-birthday">
+  <section>
+    <div class="section-label">🎂 Fun</div>
+    <div class="section-title">YOUR <span>BIRTHDAY DINO</span></div>
+    <p style="color:var(--text-secondary);margin-bottom:28px;max-width:520px;">Enter your birthday and discover which dinosaur matches your personality! Share with friends.</p>
+    <div style="max-width:420px;margin:0 auto;text-align:center;">
+      <div style="background:rgba(255,255,255,0.04);border:1.5px solid rgba(255,255,255,0.1);border-radius:16px;padding:28px;margin-bottom:24px;">
+        <div style="font-size:0.85rem;font-weight:600;color:var(--text-secondary);margin-bottom:12px;">Enter your date of birth</div>
+        <input type="date" id="birthday-input" style="background:rgba(255,255,255,0.06);border:1.5px solid rgba(255,255,255,0.15);border-radius:10px;padding:12px 16px;color:#fff;font-size:1rem;width:100%;margin-bottom:16px;font-family:Poppins,sans-serif;" max="2025-12-31"/>
+        <button class="btn btn-primary" onclick="findBirthdayDino()" style="width:100%;justify-content:center;">🎂 Find My Dino!</button>
+      </div>
+      <div id="birthday-result" style="display:none;background:rgba(110,251,62,0.05);border:1.5px solid rgba(110,251,62,0.2);border-radius:20px;padding:28px;animation:fadeIn .4s ease;">
+        <div id="bd-emoji" style="font-size:5rem;margin-bottom:12px;"></div>
+        <div id="bd-name" style="font-size:1.8rem;font-weight:900;color:#fff;margin-bottom:8px;"></div>
+        <div id="bd-subtitle" style="font-size:0.8rem;color:var(--accent);font-weight:700;letter-spacing:1px;text-transform:uppercase;margin-bottom:16px;"></div>
+        <div id="bd-desc" style="color:var(--text-secondary);line-height:1.7;font-size:0.9rem;margin-bottom:20px;"></div>
+        <div id="bd-traits" style="display:flex;flex-wrap:wrap;gap:8px;justify-content:center;margin-bottom:20px;"></div>
+        <div style="display:flex;gap:10px;justify-content:center;flex-wrap:wrap;">
+          <button class="btn btn-primary" onclick="shareBirthdayDino()">📤 Share My Dino!</button>
+          <button class="btn btn-secondary" onclick="showArticle(window._bdDinoId)">🦖 Learn More</button>
+          <button class="btn" onclick="document.getElementById('birthday-result').style.display='none'" style="background:rgba(255,255,255,0.06);color:var(--text-secondary);border:1px solid rgba(255,255,255,0.1);border-radius:10px;padding:10px 16px;cursor:pointer;font-weight:600;">↺ Try Again</button>
+        </div>
       </div>
     </div>
   </section>
@@ -6418,7 +6467,10 @@ function showPage(id) {
     quiz:'Which Dinosaur Are You? – DinoWorld', facts:'Fun Dinosaur Facts – DinoWorld',
     alldinos:'All Dinosaurs – DinoWorld', 'fossils-map':'Fossil Locations Map – DinoWorld',
     comparison:'Compare Dinosaurs – DinoWorld',
-    'evo-tree':'Dinosaur Evolution Tree – DinoWorld'
+    'evo-tree':'Dinosaur Evolution Tree – DinoWorld',
+    'birthday':'Your Birthday Dinosaur – DinoWorld',
+    'jurassic-park':'Build Your Jurassic Park – DinoWorld',
+    'trivia':'Dino Trivia Battle – DinoWorld'
   };
   if (pageTitles[id]) document.title = pageTitles[id];
 
@@ -13005,90 +13057,137 @@ document.addEventListener('DOMContentLoaded', () => {
 
 
 // ══════════════════════════════════════════════════════════════
-// 🌴 JURASSIC PARK BUILDER
+// 🌴 JURASSIC PARK BUILDER — with Enclosures
 // ══════════════════════════════════════════════════════════════
 (function() {
   var JP = [
-    {id:'trex',name:'T-Rex',emoji:'🦖',r:'legendary',p:500,desc:'Apex predator'},
-    {id:'spinosaurus',name:'Spinosaurus',emoji:'🐊',r:'legendary',p:450,desc:'Swimming giant'},
-    {id:'velociraptor',name:'Velociraptor',emoji:'🦅',r:'rare',p:300,desc:'Pack hunter'},
-    {id:'triceratops-guide',name:'Triceratops',emoji:'🦏',r:'rare',p:280,desc:'Three-horned tank'},
-    {id:'brachiosaurus-guide',name:'Brachiosaurus',emoji:'🦕',r:'rare',p:260,desc:'Gentle giant'},
-    {id:'therizinosaurus',name:'Therizinosaurus',emoji:'🦥',r:'rare',p:240,desc:'Giant claws'},
-    {id:'stegosaurus-guide',name:'Stegosaurus',emoji:'🦎',r:'uncommon',p:180,desc:'Plate defender'},
-    {id:'ankylosaurus',name:'Ankylosaurus',emoji:'🐢',r:'uncommon',p:170,desc:'Living tank'},
-    {id:'parasaurolophus',name:'Parasaurolophus',emoji:'🎺',r:'uncommon',p:150,desc:'Cretaceous trumpeter'},
-    {id:'diplodocus',name:'Diplodocus',emoji:'🦕',r:'uncommon',p:140,desc:'Longest dino'},
-    {id:'allosaurus',name:'Allosaurus',emoji:'🦖',r:'uncommon',p:160,desc:'Jurassic hunter'},
-    {id:'microraptor',name:'Microraptor',emoji:'🐦',r:'rare',p:200,desc:'4-winged flyer'},
-    {id:'pachycephalosaurus',name:'Pachycephalosaurus',emoji:'💥',r:'common',p:100,desc:'Head-butter'},
-    {id:'gallimimus',name:'Gallimimus',emoji:'🐦',r:'common',p:80,desc:'Speed runner'},
-    {id:'troodon',name:'Troodon',emoji:'🦉',r:'uncommon',p:130,desc:'Smartest dino'},
-    {id:'maiasaura',name:'Maiasaura',emoji:'🪺',r:'common',p:90,desc:'Good mother'}
+    {id:'trex',name:'T-Rex',emoji:'🦖',r:'legendary',p:500,desc:'Apex predator',diet:'carn'},
+    {id:'spinosaurus',name:'Spinosaurus',emoji:'🐊',r:'legendary',p:470,desc:'Swimming giant',diet:'carn'},
+    {id:'giganotosaurus',name:'Giganotosaurus',emoji:'🦖',r:'legendary',p:440,desc:'South American titan',diet:'carn'},
+    {id:'argentinosaurus',name:'Argentinosaurus',emoji:'🦕',r:'legendary',p:420,desc:'Heaviest dino ever',diet:'herb'},
+    {id:'velociraptor',name:'Velociraptor',emoji:'🦅',r:'rare',p:310,desc:'Pack hunter',diet:'carn'},
+    {id:'triceratops-guide',name:'Triceratops',emoji:'🦏',r:'rare',p:290,desc:'Three-horned tank',diet:'herb'},
+    {id:'brachiosaurus-guide',name:'Brachiosaurus',emoji:'🦕',r:'rare',p:270,desc:'Gentle giant',diet:'herb'},
+    {id:'therizinosaurus',name:'Therizinosaurus',emoji:'🦥',r:'rare',p:250,desc:'Giant claws',diet:'herb'},
+    {id:'microraptor',name:'Microraptor',emoji:'🐦',r:'rare',p:210,desc:'4-winged flyer',diet:'carn'},
+    {id:'carnotaurus',name:'Carnotaurus',emoji:'🐂',r:'rare',p:230,desc:'Fastest predator',diet:'carn'},
+    {id:'utahraptor',name:'Utahraptor',emoji:'🦅',r:'rare',p:220,desc:'Giant sickle claw',diet:'carn'},
+    {id:'styracosaurus',name:'Styracosaurus',emoji:'🦏',r:'rare',p:200,desc:'Spike-frilled titan',diet:'herb'},
+    {id:'stegosaurus-guide',name:'Stegosaurus',emoji:'🦎',r:'uncommon',p:185,desc:'Plate defender',diet:'herb'},
+    {id:'ankylosaurus',name:'Ankylosaurus',emoji:'🐢',r:'uncommon',p:175,desc:'Living tank',diet:'herb'},
+    {id:'parasaurolophus',name:'Parasaurolophus',emoji:'🎺',r:'uncommon',p:155,desc:'Cretaceous trumpeter',diet:'herb'},
+    {id:'diplodocus',name:'Diplodocus',emoji:'🦕',r:'uncommon',p:145,desc:'Longest dino',diet:'herb'},
+    {id:'allosaurus',name:'Allosaurus',emoji:'🦖',r:'uncommon',p:165,desc:'Jurassic hunter',diet:'carn'},
+    {id:'troodon',name:'Troodon',emoji:'🦉',r:'uncommon',p:135,desc:'Smartest dino',diet:'omni'},
+    {id:'deinonychus',name:'Deinonychus',emoji:'🦅',r:'uncommon',p:150,desc:'Pack genius',diet:'carn'},
+    {id:'pachycephalosaurus',name:'Pachycephalosaurus',emoji:'💥',r:'uncommon',p:125,desc:'Head-butter',diet:'herb'},
+    {id:'kentrosaurus',name:'Kentrosaurus',emoji:'⚔️',r:'uncommon',p:140,desc:'African spike lizard',diet:'herb'},
+    {id:'baryonyx',name:'Baryonyx',emoji:'🐟',r:'uncommon',p:145,desc:'Fish hunter',diet:'carn'},
+    {id:'maiasaura',name:'Maiasaura',emoji:'🪺',r:'uncommon',p:120,desc:'Good mother',diet:'herb'},
+    {id:'gallimimus',name:'Gallimimus',emoji:'🐦',r:'common',p:85,desc:'Speed runner',diet:'omni'},
+    {id:'ornithomimus',name:'Ornithomimus',emoji:'🐦',r:'common',p:80,desc:'Bird mimic',diet:'omni'},
+    {id:'protoceratops',name:'Protoceratops',emoji:'🐏',r:'common',p:75,desc:'Griffin inspiration',diet:'herb'},
+    {id:'dilophosaurus',name:'Dilophosaurus',emoji:'🦎',r:'common',p:90,desc:'Twin-crested predator',diet:'carn'},
+    {id:'oviraptor',name:'Oviraptor',emoji:'🦅',r:'common',p:70,desc:'Devoted parent',diet:'omni'},
+    {id:'iguanodon',name:'Iguanodon',emoji:'🦎',r:'common',p:80,desc:'First named dino',diet:'herb'},
+    {id:'heterodontosaurus',name:'Heterodontosaurus',emoji:'🦎',r:'common',p:65,desc:'Three tooth types',diet:'omni'}
   ];
-  var RC = {legendary:'#ffd700',rare:'#a78bfa',uncommon:'#34d399',common:'#94a3b8'};
-  var RL = {legendary:'⭐ Legendary',rare:'💜 Rare',uncommon:'🟢 Uncommon',common:'⚪ Common'};
-  var park = [], sMode = 'rarity';
+  var ENCLOSURES = [
+    {id:'savanna',name:'Savanna',emoji:'🌾',bonus:80,bonusDesc:'+80 pts for large herbivores',bestFor:'herb',color:'#f97316'},
+    {id:'jungle',name:'Jungle',emoji:'🌿',bonus:70,bonusDesc:'+70 pts for raptors',bestFor:'carn',color:'#22c55e'},
+    {id:'canyon',name:'Canyon',emoji:'🏔️',bonus:90,bonusDesc:'+90 pts for apex predators',bestFor:'carn',color:'#ef4444'},
+    {id:'lake',name:'Lake Zone',emoji:'🌊',bonus:75,bonusDesc:'+75 pts for aquatic hunters',bestFor:'carn',color:'#3b82f6'},
+    {id:'plains',name:'Open Plains',emoji:'🌍',bonus:60,bonusDesc:'+60 pts for herding herbivores',bestFor:'herb',color:'#eab308'},
+    {id:'glacier',name:'Glacier Dome',emoji:'❄️',bonus:100,bonusDesc:'+100 pts max bonus enclosure',bestFor:'any',color:'#a78bfa'},
+    {id:'volcano',name:'Volcano Pit',emoji:'🌋',bonus:85,bonusDesc:'+85 pts for fearsome predators',bestFor:'carn',color:'#dc2626'},
+    {id:'forest',name:'Dense Forest',emoji:'🌲',bonus:65,bonusDesc:'+65 pts for omnivores',bestFor:'omni',color:'#16a34a'}
+  ];
+  var RC={legendary:'#ffd700',rare:'#a78bfa',uncommon:'#34d399',common:'#94a3b8'};
+  var RL={legendary:'⭐ Legendary',rare:'💜 Rare',uncommon:'🟢 Uncommon',common:'⚪ Common'};
+  var park=[],enclosures=[],sMode='rarity';
 
-  window.jpSortBy = function(m){sMode=m;renderShop();};
-  window.jpClearPark = function(){park=[];renderShop();renderPark();};
-  window.jpToggleDino = function(id){
-    var d = JP.find(function(x){return x.id===id;});
-    if(!d) return;
-    var idx = park.findIndex(function(x){return x.id===id;});
-    if(idx>=0){ park.splice(idx,1); }
-    else {
-      if(park.length>=8){alert('Park je plný! Max 8 dinosaurů.');return;}
-      park.push(d);
-      if(typeof addLBPoints==='function') addLBPoints(Math.floor(d.p/10),'🌴 '+d.name+' added!');
-    }
-    renderShop(); renderPark();
+  window.jpSortBy=function(m){sMode=m;renderShop();};
+  window.jpClearPark=function(){park=[];enclosures=[];renderShop();renderEncShop();renderPark();};
+  window.jpToggleDino=function(id){
+    var d=JP.find(function(x){return x.id===id;});
+    if(!d)return;
+    var idx=park.findIndex(function(x){return x.id===id;});
+    if(idx>=0){park.splice(idx,1);}
+    else{if(park.length>=10){alert('Max 10 dinosaurs!');return;}park.push(d);if(typeof addLBPoints==='function')addLBPoints(Math.floor(d.p/10),'🌴 '+d.name+' added!');}
+    renderShop();renderPark();
   };
-
-  function renderShop(){
-    var el = document.getElementById('jp-dino-shop');
-    if(!el) return;
-    var list = JP.slice().sort(function(a,b){
-      if(sMode==='rarity'){var o={legendary:0,rare:1,uncommon:2,common:3};return o[a.r]-o[b.r];}
-      return b.p-a.p;
+  window.jpToggleEnc=function(id){
+    var e=ENCLOSURES.find(function(x){return x.id===id;});
+    if(!e)return;
+    var idx=enclosures.findIndex(function(x){return x.id===id;});
+    if(idx>=0){enclosures.splice(idx,1);}
+    else{if(enclosures.length>=4){alert('Max 4 enclosures!');return;}enclosures.push(e);}
+    renderEncShop();renderPark();
+  };
+  function calcScore(){
+    var base=park.reduce(function(s,d){return s+d.p;},0);
+    var encBonus=enclosures.reduce(function(s,e){return s+e.bonus;},0);
+    var matchBonus=0;
+    enclosures.forEach(function(e){
+      if(e.bestFor==='any'){matchBonus+=50;}
+      else{var m=park.filter(function(d){return d.diet===e.bestFor;}).length;matchBonus+=m>=3?40:m>=1?15:0;}
     });
-    el.innerHTML = list.map(function(d){
-      var inP = park.some(function(x){return x.id===d.id;});
-      var c = RC[d.r];
-      return '<div onclick="jpToggleDino(\''+d.id+'\')" style="background:rgba(255,255,255,0.04);border:1.5px solid '+(inP?c:'rgba(255,255,255,0.08)')+';border-radius:14px;padding:12px;text-align:center;cursor:pointer;'+(inP?'opacity:0.55;':'')+'">'
-        +'<div style="font-size:1.8rem;margin-bottom:4px;">'+d.emoji+'</div>'
-        +'<div style="font-size:0.78rem;font-weight:700;color:#fff;margin-bottom:2px;">'+d.name+'</div>'
-        +'<div style="font-size:0.68rem;color:'+c+';font-weight:600;margin-bottom:3px;">'+RL[d.r]+'</div>'
-        +'<div style="font-size:0.7rem;color:var(--text-secondary);margin-bottom:5px;">'+d.desc+'</div>'
-        +'<div style="font-size:0.82rem;font-weight:800;color:var(--accent);">+'+d.p+' pts</div>'
-        +'<div style="margin-top:6px;font-size:0.7rem;padding:3px 8px;border-radius:99px;background:'+(inP?'rgba(239,68,68,0.2)':'rgba(110,251,62,0.15)')+';color:'+(inP?'#ef4444':'var(--accent)')+';">'+(inP?'✖ Remove':'＋ Add')+'</div>'
+    return base+encBonus+matchBonus;
+  }
+  function renderEncShop(){
+    var el=document.getElementById('jp-enc-shop');
+    if(!el)return;
+    el.innerHTML=ENCLOSURES.map(function(e){
+      var inP=enclosures.some(function(x){return x.id===e.id;});
+      return '<div onclick="jpToggleEnc('+e.id+')" style="background:rgba(255,255,255,0.04);border:1.5px solid '+(inP?e.color:'rgba(255,255,255,0.08)')+';border-radius:12px;padding:11px;cursor:pointer;'+(inP?'opacity:0.6;':'')+'">'
+        +'<div style="font-size:1.5rem;margin-bottom:4px;">'+e.emoji+'</div>'
+        +'<div style="font-size:0.78rem;font-weight:700;color:#fff;margin-bottom:2px;">'+e.name+'</div>'
+        +'<div style="font-size:0.65rem;color:'+e.color+';margin-bottom:5px;">'+e.bonusDesc+'</div>'
+        +'<div style="font-size:0.68rem;padding:2px 7px;border-radius:99px;background:'+(inP?'rgba(239,68,68,0.2)':'rgba(110,251,62,0.1)')+';color:'+(inP?'#ef4444':'var(--accent)')+';display:inline-block;">'+(inP?'Remove':'Add')+'</div>'
         +'</div>';
     }).join('');
   }
-
+  function renderShop(){
+    var el=document.getElementById('jp-dino-shop');
+    if(!el)return;
+    var list=JP.slice().sort(function(a,b){
+      if(sMode==='rarity'){var o={legendary:0,rare:1,uncommon:2,common:3};return o[a.r]-o[b.r];}
+      if(sMode==='type'){var dt={carn:0,herb:1,omni:2};return dt[a.diet]-dt[b.diet];}
+      return b.p-a.p;
+    });
+    el.innerHTML=list.map(function(d){
+      var inP=park.some(function(x){return x.id===d.id;});
+      var c=RC[d.r];
+      var di=d.diet==='carn'?'🥩':d.diet==='herb'?'🌿':'🍳';
+      return '<div onclick="jpToggleDino('+d.id+')" style="background:rgba(255,255,255,0.04);border:1.5px solid '+(inP?c:'rgba(255,255,255,0.08)')+';border-radius:14px;padding:11px;text-align:center;cursor:pointer;'+(inP?'opacity:0.55;':'')+'">'
+        +'<div style="font-size:1.7rem;margin-bottom:3px;">'+d.emoji+'</div>'
+        +'<div style="font-size:0.75rem;font-weight:700;color:#fff;margin-bottom:2px;">'+d.name+'</div>'
+        +'<div style="font-size:0.65rem;color:'+c+';font-weight:600;margin-bottom:2px;">'+RL[d.r]+'</div>'
+        +'<div style="font-size:0.65rem;color:var(--text-secondary);margin-bottom:4px;">'+di+' '+d.desc+'</div>'
+        +'<div style="font-size:0.8rem;font-weight:800;color:var(--accent);">+'+d.p+' pts</div>'
+        +'<div style="margin-top:5px;font-size:0.67rem;padding:2px 7px;border-radius:99px;background:'+(inP?'rgba(239,68,68,0.2)':'rgba(110,251,62,0.15)')+';color:'+(inP?'#ef4444':'var(--accent)')+';display:inline-block;">'+(inP?'Remove':'Add')+'</div>'
+        +'</div>';
+    }).join('');
+  }
   function renderPark(){
     var slots=document.getElementById('jp-park-slots');
     var emsg=document.getElementById('jp-empty-msg');
     var cap=document.getElementById('jp-capacity');
+    var encCount=document.getElementById('jp-enc-count');
     var sc=document.getElementById('jp-score');
-    if(!slots) return;
-    cap.textContent=park.length;
-    sc.textContent=park.reduce(function(s,d){return s+d.p;},0).toLocaleString();
-    if(park.length===0){slots.innerHTML='';emsg.style.display='block';}
+    if(!slots)return;
+    if(cap)cap.textContent=park.length;
+    if(encCount)encCount.textContent=enclosures.length;
+    if(sc)sc.textContent=calcScore().toLocaleString();
+    if(park.length===0&&enclosures.length===0){slots.innerHTML='';emsg.style.display='block';}
     else{
       emsg.style.display='none';
-      slots.innerHTML=park.map(function(d){
-        var c=RC[d.r];
-        return '<div onclick="jpToggleDino(\''+d.id+'\')" style="background:rgba(255,255,255,0.06);border:1.5px solid '+c+';border-radius:12px;padding:8px 12px;display:flex;align-items:center;gap:8px;cursor:pointer;">'
-          +'<span style="font-size:1.4rem;">'+d.emoji+'</span>'
-          +'<div><div style="font-size:0.78rem;font-weight:700;color:#fff;">'+d.name+'</div>'
-          +'<div style="font-size:0.7rem;color:'+c+';">'+d.p+' pts</div></div>'
-          +'<span style="margin-left:auto;color:rgba(239,68,68,0.6);font-size:0.8rem;">✖</span></div>';
-      }).join('');
+      var eH=enclosures.map(function(e){return '<div onclick="jpToggleEnc('+e.id+')" style="background:rgba(255,255,255,0.05);border:1.5px solid '+e.color+';border-radius:10px;padding:6px 11px;display:flex;align-items:center;gap:6px;cursor:pointer;"><span style="font-size:1.1rem;">'+e.emoji+'</span><div><div style="font-size:0.72rem;font-weight:700;color:'+e.color+';">'+e.name+'</div><div style="font-size:0.63rem;color:var(--muted);">+'+e.bonus+' pts</div></div><span style="margin-left:auto;color:rgba(239,68,68,0.5);font-size:0.7rem;">x</span></div>';}).join('');
+      var dH=park.map(function(d){var c=RC[d.r];return '<div onclick="jpToggleDino('+d.id+')" style="background:rgba(255,255,255,0.06);border:1.5px solid '+c+';border-radius:10px;padding:6px 10px;display:flex;align-items:center;gap:6px;cursor:pointer;"><span style="font-size:1.2rem;">'+d.emoji+'</span><div><div style="font-size:0.73rem;font-weight:700;color:#fff;">'+d.name+'</div><div style="font-size:0.63rem;color:'+c+';">'+d.p+' pts</div></div><span style="margin-left:auto;color:rgba(239,68,68,0.5);font-size:0.7rem;">x</span></div>';}).join('');
+      slots.innerHTML=(eH?'<div style="width:100%;font-size:0.68rem;color:var(--muted);margin-bottom:4px;letter-spacing:1px;text-transform:uppercase;">Enclosures</div>'+eH+'<div style="width:100%;font-size:0.68rem;color:var(--muted);margin:7px 0 4px;letter-spacing:1px;text-transform:uppercase;">Dinosaurs</div>':'')+dH;
     }
   }
-
-  function jpInit(){renderShop();renderPark();}
+  function jpInit(){renderEncShop();renderShop();renderPark();}
   var _jpH=window.showPage;
   window.showPage=function(id){_jpH(id);if(id==='jurassic-park')setTimeout(jpInit,80);};
   document.addEventListener('DOMContentLoaded',jpInit);
@@ -13379,6 +13478,118 @@ function showShareToast(msg) {
   };
 
   document.addEventListener('DOMContentLoaded', initDotd);
+})();
+
+// ══════════════════════════════════════════════════════════════
+// 🔥 STREAK SYSTEM
+// ══════════════════════════════════════════════════════════════
+(function() {
+  function initStreak() {
+    try {
+      var today = new Date().toDateString();
+      var data = JSON.parse(localStorage.getItem('dw-streak') || '{}');
+      var lastVisit = data.last || '';
+      var streak = data.streak || 0;
+      var yesterday = new Date(Date.now() - 86400000).toDateString();
+      if (lastVisit === today) {
+        // already visited today
+      } else if (lastVisit === yesterday) {
+        streak++;
+        data = {last:today, streak:streak, best:Math.max(streak, data.best||0)};
+        localStorage.setItem('dw-streak', JSON.stringify(data));
+      } else {
+        streak = 1;
+        data = {last:today, streak:1, best:Math.max(1, data.best||0)};
+        localStorage.setItem('dw-streak', JSON.stringify(data));
+      }
+      if (streak >= 2) {
+        var banner = document.getElementById('streak-banner');
+        var text = document.getElementById('streak-text');
+        var sub = document.getElementById('streak-sub');
+        if (banner && text && sub) {
+          var emoji = streak >= 30 ? '🏆' : streak >= 14 ? '💎' : streak >= 7 ? '🌟' : '🔥';
+          text.textContent = emoji + ' ' + streak + '-day streak! Keep it up!';
+          sub.textContent = 'Best: ' + (data.best||streak) + ' days - come back tomorrow to extend it!';
+          banner.style.display = 'flex';
+        }
+      }
+    } catch(e) {}
+  }
+  document.addEventListener('DOMContentLoaded', initStreak);
+})();
+
+// ══════════════════════════════════════════════════════════════
+// 🎂 BIRTHDAY DINO
+// ══════════════════════════════════════════════════════════════
+(function() {
+  var BD = [
+    {month:1,d1:1,d2:10,id:'trex',name:'T-Rex',emoji:'🦖',sub:'Born Jan 1-10 - The Unstoppable Force',desc:'You are powerful, confident and command respect wherever you go. Like T-Rex, you lead from the front.',traits:['Leader','Intense','Focused','Dominant']},
+    {month:1,d1:11,d2:20,id:'velociraptor',name:'Velociraptor',emoji:'🦅',sub:'Born Jan 11-20 - The Sharp Mind',desc:'Quick-thinking and always ahead — you combine intelligence with speed to outmaneuver any obstacle.',traits:['Intelligent','Fast Thinker','Strategic','Team Player']},
+    {month:1,d1:21,d2:31,id:'triceratops-guide',name:'Triceratops',emoji:'🦏',sub:'Born Jan 21-31 - The Loyal Defender',desc:'Steadfast and protective — the person everyone turns to in tough times. Your loyalty is unmatched.',traits:['Protective','Loyal','Grounded','Reliable']},
+    {month:2,d1:1,d2:14,id:'parasaurolophus',name:'Parasaurolophus',emoji:'🎺',sub:'Born Feb 1-14 - The Creative Soul',desc:'Expressive and deeply communicative — you have a unique voice that resonates with everyone around you.',traits:['Creative','Expressive','Warm','Artistic']},
+    {month:2,d1:15,d2:28,id:'brachiosaurus-guide',name:'Brachiosaurus',emoji:'🦕',sub:'Born Feb 15-28 - The Gentle Giant',desc:'Peaceful, thoughtful and magnificent. You rise above the noise, always reaching for greater heights.',traits:['Peaceful','Gentle','Visionary','Wise']},
+    {month:3,d1:1,d2:15,id:'allosaurus',name:'Allosaurus',emoji:'🦖',sub:'Born Mar 1-15 - The Pioneering Hunter',desc:'Bold and pioneering — you forge your own path. You are always first to explore new territory.',traits:['Pioneering','Bold','Driven','Courageous']},
+    {month:3,d1:16,d2:31,id:'stegosaurus-guide',name:'Stegosaurus',emoji:'🦎',sub:'Born Mar 16-31 - The Quiet Strength',desc:'Your unique personality stands out without you even trying. Behind a calm exterior lies incredible power.',traits:['Calm','Unique','Strong','Peaceful']},
+    {month:4,d1:1,d2:15,id:'spinosaurus',name:'Spinosaurus',emoji:'🐊',sub:'Born Apr 1-15 - The Mysterious Explorer',desc:'Unconventional and fascinating — comfortable in any environment. You thrive where others cannot.',traits:['Adaptable','Mysterious','Adventurous','Innovative']},
+    {month:4,d1:16,d2:30,id:'ankylosaurus',name:'Ankylosaurus',emoji:'🐢',sub:'Born Apr 16-30 - The Unbreakable',desc:'Nothing can break your spirit. Patient, practical and completely unshakeable when it matters most.',traits:['Resilient','Patient','Unbreakable','Grounded']},
+    {month:5,d1:1,d2:20,id:'diplodocus',name:'Diplodocus',emoji:'🦕',sub:'Born May 1-20 - The Grand Thinker',desc:'You think big — truly massive thoughts that span horizons others cannot see.',traits:['Big Thinker','Philosophical','Peaceful','Intellectual']},
+    {month:5,d1:21,d2:31,id:'troodon',name:'Troodon',emoji:'🦉',sub:'Born May 21-31 - The Genius',desc:'The smartest person in the room — often without anyone realising. Intelligence is your greatest gift.',traits:['Genius IQ','Perceptive','Night Owl','Inventive']},
+    {month:6,d1:1,d2:15,id:'carnotaurus',name:'Carnotaurus',emoji:'🐂',sub:'Born Jun 1-15 - The Speed Demon',desc:'Fast, fierce and free-spirited — you live life at full speed and love the thrill of the chase.',traits:['Lightning Fast','Fierce','Spontaneous','Competitive']},
+    {month:6,d1:16,d2:30,id:'therizinosaurus',name:'Therizinosaurus',emoji:'🦥',sub:'Born Jun 16-30 - The Surprising One',desc:'You look gentle but have hidden depths that surprise everyone. Incredible precision behind a calm face.',traits:['Surprising','Gentle','Detail-Oriented','Mysterious']},
+    {month:7,d1:1,d2:15,id:'microraptor',name:'Microraptor',emoji:'🐦',sub:'Born Jul 1-15 - The Free Spirit',desc:'Small but spectacular — you live life on your own terms, move fast and leave everyone wondering how.',traits:['Iridescent','Free','Colourful','Quick']},
+    {month:7,d1:16,d2:31,id:'utahraptor',name:'Utahraptor',emoji:'🦅',sub:'Born Jul 16-31 - The True Power',desc:'Bigger and more powerful than anyone expected. You are what reality delivers versus the hype.',traits:['True Strength','Precise','Fierce','Champion']},
+    {month:8,d1:1,d2:15,id:'pachycephalosaurus',name:'Pachycephalosaurus',emoji:'💥',sub:'Born Aug 1-15 - The Headstrong',desc:'Once you set your mind to something, nothing can stop you. Head first, always.',traits:['Determined','Unstoppable','Single-Minded','Winner']},
+    {month:8,d1:16,d2:31,id:'styracosaurus',name:'Styracosaurus',emoji:'🦏',sub:'Born Aug 16-31 - The Show-Stopper',desc:'You make an entrance — always. Like Styracosaurus with its spectacular spikes, you are impossible to ignore.',traits:['Spectacular','Attention-Getter','Dramatic','Unforgettable']},
+    {month:9,d1:1,d2:15,id:'maiasaura',name:'Maiasaura',emoji:'🪺',sub:'Born Sep 1-15 - The Nurturer',desc:'Kind, caring and fiercely protective of those you love. You were built for devotion.',traits:['Caring','Nurturing','Family-First','Warm']},
+    {month:9,d1:16,d2:30,id:'gallimimus',name:'Gallimimus',emoji:'🐦',sub:'Born Sep 16-30 - The Social Butterfly',desc:'Social, speedy and always in motion — you thrive in groups and love the energy of being around people.',traits:['Social','Energetic','Always Moving','Fun-Loving']},
+    {month:10,d1:1,d2:15,id:'dilophosaurus',name:'Dilophosaurus',emoji:'🦎',sub:'Born Oct 1-15 - The Misunderstood',desc:'Far more than meets the eye. People make assumptions about you that could not be more wrong.',traits:['Misunderstood','Complex','Mysterious','Multi-Faceted']},
+    {month:10,d1:16,d2:31,id:'kentrosaurus',name:'Kentrosaurus',emoji:'⚔️',sub:'Born Oct 16-31 - The Hidden Warrior',desc:'More dangerous than your famous relatives. Underestimating you is always a mistake.',traits:['Hidden Power','Defensive','Surprising','Underrated']},
+    {month:11,d1:1,d2:15,id:'baryonyx',name:'Baryonyx',emoji:'🐟',sub:'Born Nov 1-15 - The Patient Hunter',desc:'You know exactly what you want and wait for the right moment. Patient, strategic and effective.',traits:['Patient','Fluid','Strategic','Precise']},
+    {month:11,d1:16,d2:30,id:'deinonychus',name:'Deinonychus',emoji:'🦅',sub:'Born Nov 16-30 - The Revolutionary',desc:'You change minds. Like Deinonychus changed all of science in 1969, you challenge assumptions.',traits:['Revolutionary','Mind-Changing','Passionate','Impactful']},
+    {month:12,d1:1,d2:15,id:'protoceratops',name:'Protoceratops',emoji:'🐏',sub:'Born Dec 1-15 - The Legend Maker',desc:'You create legends — stories that outlast you and inspire others for generations.',traits:['Story-Teller','Legendary','Inspiring','Mythical']},
+    {month:12,d1:16,d2:31,id:'oviraptor',name:'Oviraptor',emoji:'🦅',sub:'Born Dec 16-31 - The Devoted',desc:'Wrongly judged, ultimately vindicated. Your dedication to those you love is total and unconditional.',traits:['Devoted','Faithful','Vindicated','Genuine']}
+  ];
+
+  window.findBirthdayDino = function() {
+    var input = document.getElementById('birthday-input');
+    if (!input || !input.value) { alert('Please enter your birthday!'); return; }
+    var d = new Date(input.value);
+    var month = d.getMonth() + 1;
+    var day = d.getDate();
+    var dino = null;
+    for (var i = 0; i < BD.length; i++) {
+      if (BD[i].month === month && day >= BD[i].d1 && day <= BD[i].d2) { dino = BD[i]; break; }
+    }
+    if (!dino) dino = BD[0];
+    window._bdDinoId = dino.id;
+    window._bdDinoName = dino.name;
+    window._bdDinoEmoji = dino.emoji;
+    document.getElementById('bd-emoji').textContent = dino.emoji;
+    document.getElementById('bd-name').textContent = dino.name;
+    document.getElementById('bd-subtitle').textContent = dino.sub;
+    document.getElementById('bd-desc').textContent = dino.desc;
+    document.getElementById('bd-traits').innerHTML = dino.traits.map(function(t){
+      return '<span style="background:rgba(110,251,62,0.1);border:1px solid rgba(110,251,62,0.2);border-radius:99px;padding:5px 14px;font-size:0.8rem;color:var(--accent);">'+t+'</span>';
+    }).join('');
+    document.getElementById('birthday-result').style.display = 'block';
+    document.getElementById('birthday-result').scrollIntoView({behavior:'smooth',block:'nearest'});
+    if (typeof addLBPoints === 'function') addLBPoints(20, '🎂 Birthday Dino found!');
+  };
+
+  window.shareBirthdayDino = function() {
+    var name = window._bdDinoName || 'T-Rex';
+    var emoji = window._bdDinoEmoji || '🦖';
+    var url = typeof SITE_URL !== 'undefined' ? SITE_URL : 'https://jacobb-rgb.github.io/DinoWorld';
+    var text = 'My birthday dinosaur is ' + emoji + ' ' + name + '! Find yours at DinoWorld: ' + url;
+    if (navigator.share) {
+      navigator.share({title:'My Birthday Dino is '+name+'!', text:text});
+    } else if (typeof shareToTwitter === 'function') {
+      shareToTwitter(text);
+    } else {
+      navigator.clipboard.writeText(text).catch(function(){});
+      if (typeof showShareToast === 'function') showShareToast('Copied! Share it with friends!');
+    }
+  };
 })();
 </script>
 </body>
