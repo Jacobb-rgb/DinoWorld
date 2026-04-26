@@ -13818,6 +13818,7 @@ var firebaseConfig = {
       html2 += '<button class="pn-pact pn-open" data-pid="' + p.id + '">&#x1F4AC; Read Article</button>';
       html2 += '<span class="pn-rate-wrap" data-pid="' + p.id + '" style="display:flex;align-items:center;gap:3px;">' + ratingHtmlStatic(p.id) + '</span>';
       if (p.src) html2 += '<a href="' + p.src + '" target="_blank" style="color:var(--muted);font-size:0.7rem;font-weight:600;">&#x1F517; Source</a>';
+      if (pnIsAdmin) html2 += '<button class="pn-del-btn" data-pid="' + p.id + '" style="background:none;border:none;color:rgba(239,68,68,0.4);font-size:0.72rem;font-weight:600;cursor:pointer;padding:3px 7px;border-radius:4px;font-family:inherit;transition:all .15s;">🗑️ Delete</button>';
       html2 += '</div></div>';
       html2 += '<div class="pn-pthumb">' + (p.emoji || '&#x1F995;') + '</div>';
       html2 += '</div>';
@@ -13836,6 +13837,11 @@ var firebaseConfig = {
     });
     feed.querySelectorAll('.pn-star').forEach(function(star) {
       star.addEventListener('click', function(e) { e.stopPropagation(); pnRate(this.dataset.pid, parseInt(this.dataset.star)); });
+    });
+    feed.querySelectorAll('.pn-del-btn').forEach(function(btn) {
+      btn.addEventListener('click', function(e) { e.stopPropagation(); pnDeletePost(this.dataset.pid); });
+      btn.addEventListener('mouseover', function() { this.style.color='#ef4444'; this.style.background='rgba(239,68,68,0.1)'; });
+      btn.addEventListener('mouseout', function() { this.style.color='rgba(239,68,68,0.4)'; this.style.background='none'; });
     });
   }
 
@@ -13872,6 +13878,18 @@ var firebaseConfig = {
         if (feed) feed.innerHTML = '<div style="text-align:center;padding:40px;color:#ef4444;">⚠️ Could not load posts. Check connection.</div>';
       });
   }
+
+  window.pnDeletePost = function(id) {
+    if (!pnIsAdmin) return;
+    if (!confirm('Delete this post? This cannot be undone.')) return;
+    if (!db) return;
+    db.collection('paleo_posts').doc(id).delete()
+      .then(function() {
+        loadPosts();
+        if (typeof addLBPoints === 'function') addLBPoints(0, '');
+      })
+      .catch(function(e) { alert('Error deleting: ' + e.message); });
+  };
 
   window.pnSort = function(s, btn) {
     curSort = s;
