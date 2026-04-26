@@ -4436,6 +4436,136 @@
     .runner-overlay-emoji { font-size: 3.5rem; }
   }
 
+
+  /* ── PALEO NEWS (Reddit Style) ─────────────── */
+  .pn-sort-btn { background:none; border:none; color:var(--muted); font-size:0.78rem; font-weight:700; cursor:pointer; padding:6px 12px; border-radius:7px; font-family:inherit; transition:all .15s; }
+  .pn-sort-btn.active { background:rgba(110,251,62,0.12); color:var(--accent); }
+  .pn-sort-btn:hover:not(.active) { background:rgba(255,255,255,0.06); color:#fff; }
+  .pn-create-btn { background:var(--accent); color:#000; border:none; border-radius:99px; padding:8px 18px; font-size:0.8rem; font-weight:800; cursor:pointer; font-family:inherit; transition:all .2s; }
+  .pn-create-btn:hover { background:#8aff5a; }
+  /* Reddit post row */
+  .pn-row { display:flex; background:rgba(255,255,255,0.03); border:1px solid rgba(255,255,255,0.07); border-radius:6px; overflow:hidden; transition:border-color .15s; margin-bottom:2px; }
+  .pn-row:hover { border-color:rgba(255,255,255,0.18); background:rgba(255,255,255,0.05); }
+  /* Vote column - NO white background */
+  .pn-vcol { display:flex; flex-direction:column; align-items:center; padding:10px 6px; gap:4px; background:transparent; min-width:44px; }
+  .pn-vbtn { background:none; border:none; color:var(--muted); font-size:1rem; cursor:pointer; padding:4px; border-radius:4px; line-height:1; transition:all .15s; }
+  .pn-vbtn:hover { color:var(--accent); }
+  .pn-vbtn.up { color:var(--accent); }
+  .pn-vbtn.dn { color:#ef4444; }
+  .pn-vscore { font-size:0.78rem; font-weight:800; color:#fff; line-height:1; }
+  .pn-pbody { flex:1; padding:10px 14px; min-width:0; cursor:pointer; }
+  .pn-pmeta { display:flex; align-items:center; gap:8px; font-size:0.7rem; color:var(--muted); margin-bottom:6px; flex-wrap:wrap; }
+  .pn-pcat { background:rgba(110,251,62,0.1); color:var(--accent); border-radius:3px; padding:1px 6px; font-weight:700; font-size:0.65rem; text-transform:uppercase; letter-spacing:0.5px; }
+  .pn-ptitle { font-size:0.95rem; font-weight:700; color:#fff; line-height:1.4; margin-bottom:5px; }
+  .pn-pdesc { font-size:0.8rem; color:var(--text-secondary); line-height:1.55; margin-bottom:8px; display:-webkit-box; -webkit-line-clamp:2; -webkit-box-orient:vertical; overflow:hidden; }
+  .pn-pactions { display:flex; align-items:center; gap:10px; }
+  .pn-pact { background:none; border:none; color:var(--muted); font-size:0.72rem; font-weight:600; cursor:pointer; display:flex; align-items:center; gap:4px; padding:3px 7px; border-radius:4px; font-family:inherit; transition:all .15s; }
+  .pn-pact:hover { background:rgba(255,255,255,0.06); color:#fff; }
+  .pn-pthumb { width:80px; flex-shrink:0; display:flex; align-items:center; justify-content:center; font-size:2.2rem; background:rgba(255,255,255,0.03); }
+  /* Stars - NO white box */
+  .pn-star { cursor:pointer; font-size:0.88rem; transition:transform .1s; display:inline-block; background:none; border:none; padding:0; }
+  .pn-star:hover { transform:scale(1.3); }
+  #ov-body h2 { font-size:1.05rem; font-weight:800; color:#fff; margin:20px 0 8px; }
+  #ov-body p { margin-bottom:12px; }
+  /* Flame vote button */
+  .pn-flame-vote { display:flex; align-items:center; gap:5px; background:rgba(255,122,26,0.08); border:1px solid rgba(255,122,26,0.2); border-radius:99px; padding:4px 10px; cursor:pointer; transition:all .15s; }
+  .pn-flame-vote:hover { background:rgba(255,122,26,0.16); }
+  .pn-flame-vote.active { background:rgba(255,122,26,0.2); color:#ff7a1a; }
+  .pn-flame-count { font-size:0.75rem; font-weight:700; color:var(--muted); }
+  .pn-flame-vote.active .pn-flame-count { color:#ff7a1a; }
+
+  /* ── HERO LATEST POST WIDGET ───────────────── */
+  .hero-pn-widget {
+    position: absolute;
+    right: 48px;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 288px;
+    background: rgba(6,10,8,0.82);
+    border: 1.5px solid rgba(110,251,62,0.3);
+    border-radius: 20px;
+    padding: 20px 22px;
+    cursor: pointer;
+    transition: all .3s ease;
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    z-index: 5;
+    box-shadow:
+      0 0 0 1px rgba(110,251,62,0.1),
+      0 8px 32px rgba(0,0,0,0.5),
+      inset 0 1px 0 rgba(255,255,255,0.05),
+      0 0 60px rgba(110,251,62,0.04);
+  }
+  .hero-pn-widget::after {
+    content: '';
+    position: absolute;
+    top: -1px; left: -1px; right: -1px; bottom: -1px;
+    border-radius: 21px;
+    background: linear-gradient(135deg,
+      rgba(110,251,62,0.2) 0%,
+      transparent 40%,
+      rgba(255,122,26,0.12) 100%
+    );
+    z-index: -1;
+    pointer-events: none;
+  }
+  .hero-pn-widget:hover {
+    border-color: rgba(110,251,62,0.5);
+    transform: translateY(-52%);
+    box-shadow:
+      0 0 0 1px rgba(110,251,62,0.2),
+      0 20px 60px rgba(0,0,0,0.6),
+      0 0 80px rgba(110,251,62,0.08),
+      inset 0 1px 0 rgba(255,255,255,0.08);
+  }
+  .hpn-label {
+    font-size: 0.6rem; font-weight: 800; letter-spacing: 2px;
+    text-transform: uppercase; color: #6efb3e;
+    display: flex; align-items: center; gap: 7px; margin-bottom: 12px;
+  }
+  .hpn-dot {
+    width: 6px; height: 6px; border-radius: 50%;
+    background: #6efb3e;
+    box-shadow: 0 0 8px rgba(110,251,62,0.8);
+    animation: blink 2s infinite;
+  }
+  .hpn-emoji { font-size: 2rem; margin-bottom: 8px; display: block; line-height: 1; }
+  .hpn-cat {
+    font-size: 0.64rem; font-weight: 700; color: rgba(110,251,62,0.65);
+    text-transform: uppercase; letter-spacing: 0.8px; margin-bottom: 7px;
+  }
+  .hpn-title {
+    font-size: 0.86rem; font-weight: 800; color: #fff; line-height: 1.45;
+    margin-bottom: 8px; letter-spacing: -0.2px;
+    display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical; overflow: hidden;
+  }
+  .hpn-desc {
+    font-size: 0.71rem; color: rgba(255,255,255,0.42); line-height: 1.55;
+    margin-bottom: 14px;
+    display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden;
+  }
+  .hpn-footer {
+    display: flex; align-items: center; justify-content: space-between;
+    padding-top: 11px;
+    border-top: 1px solid rgba(255,255,255,0.08);
+  }
+  .hpn-meta { font-size: 0.66rem; color: rgba(255,255,255,0.32); }
+  .hpn-btn {
+    background: linear-gradient(135deg, rgba(110,251,62,0.15), rgba(255,122,26,0.1));
+    color: #6efb3e;
+    border: 1px solid rgba(110,251,62,0.25);
+    border-radius: 99px;
+    padding: 5px 13px;
+    font-size: 0.71rem;
+    font-weight: 700;
+    transition: all .2s;
+    letter-spacing: 0.3px;
+  }
+  .hero-pn-widget:hover .hpn-btn {
+    background: linear-gradient(135deg, rgba(110,251,62,0.25), rgba(255,122,26,0.15));
+    border-color: rgba(110,251,62,0.45);
+  }
+  @media (max-width: 1100px) { .hero-pn-widget { display: none; } }
 </style>
 </head>
 <body>
@@ -4485,16 +4615,16 @@
     <div class="news-title">🦕 DINO NEWS — Paleontology Updates & Latest Discoveries</div>
     <div class="news-sub">Breaking dino science • New fossil finds • Research updates • Real-time prehistoric world</div>
   </div>
-  <div class="news-coming">🔬 Coming Soon</div>
+  <div class="news-coming" onclick="showPage('paleo-news')" style="cursor:pointer;">🔬 Paleo News →</div>
   <button class="news-dismiss" onclick="event.stopPropagation();dismissDinoNews()" aria-label="Dismiss">✕</button>
 </div>
 <!-- ✨ WHAT'S NEW STRIP -->
 <div class="whats-new-strip" id="whatsNewStrip">
   <span class="wn-label">🆕 WHAT'S NEW</span>
+  <div class="wn-item hot" onclick="showPage('paleo-news')">🔬 Paleo News <span class="wn-badge-new">NEW</span></div>
   <div class="wn-item hot" onclick="showPage('trivia')">🎯 Trivia Battle <span class="wn-badge-new">NEW</span></div>
   <div class="wn-item hot" onclick="showPage('jurassic-park')">🌴 Jurassic Park <span class="wn-badge-new">NEW</span></div>
   <div class="wn-item" onclick="showPage('evo-tree')">🌳 Evolution Tree <span class="wn-badge-new">NEW</span></div>
-  <div class="wn-item" onclick="showPage('birthday')">🎂 Birthday Dino <span class="wn-badge-new">NEW</span></div>
   <div class="wn-item hot" onclick="showPage('dino-runner')">🏃 Dino Runner <span class="wn-badge-hot">🔥 HOT</span></div>
   <div class="wn-item" onclick="showPage('battle')">⚔️ Dino Battle</div>
   <div class="wn-item" onclick="showPage('quiz')">🧠 Quiz</div>
@@ -4505,17 +4635,6 @@
   <div class="wn-item" onclick="showPage('soundscape')">🎵 Dino Sounds</div>
 </div>
 
-<!-- STREAK BANNER -->
-<div id="streak-banner" style="display:none;background:linear-gradient(90deg,rgba(255,122,26,0.12),rgba(255,200,0,0.08));border-bottom:1px solid rgba(255,122,26,0.2);padding:8px 20px;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap;">
-  <div style="display:flex;align-items:center;gap:10px;">
-    <span style="font-size:1.3rem;">🔥</span>
-    <div>
-      <span style="font-weight:700;color:#fff;" id="streak-text">You are on a streak!</span>
-      <span style="color:var(--text-secondary);font-size:0.82rem;margin-left:8px;" id="streak-sub"></span>
-    </div>
-  </div>
-  <button onclick="document.getElementById('streak-banner').style.display='none'" style="background:none;border:none;color:var(--muted);cursor:pointer;font-size:1.1rem;">x</button>
-</div>
 
 <!-- LANGUAGE DROPDOWN -->
 <div class="lang-dropdown" id="langDropdown">
@@ -4589,9 +4708,9 @@
     <button class="mm-btn" data-page="popular" onclick="showPage('popular');closeMobileMenu()"><span class="mm-btn-icon">⭐</span>Popular</button>
     <button class="mm-btn" data-page="comparison" onclick="showPage('comparison');closeMobileMenu()"><span class="mm-btn-icon">⚔️</span>Compare Dinos</button>
     <button class="mm-btn" data-page="evo-tree" onclick="showPage('evo-tree');closeMobileMenu()"><span class="mm-btn-icon">🌳</span>Evolution Tree</button>
+    <button class="mm-btn" data-page="paleo-news" onclick="showPage('paleo-news');closeMobileMenu()"><span class="mm-btn-icon">🔬</span>Paleo News 🆕</button>
     <button class="mm-btn" data-page="trivia" onclick="showPage('trivia');closeMobileMenu()"><span class="mm-btn-icon">🎯</span>Trivia Battle 🆕</button>
     <button class="mm-btn" data-page="jurassic-park" onclick="showPage('jurassic-park');closeMobileMenu()"><span class="mm-btn-icon">🌴</span>Jurassic Park 🆕</button>
-    <button class="mm-btn" data-page="birthday" onclick="showPage('birthday');closeMobileMenu()"><span class="mm-btn-icon">🎂</span>Birthday Dino 🆕</button>
     <button class="mm-btn" data-page="fossils-map" onclick="showPage('fossils-map');closeMobileMenu()"><span class="mm-btn-icon">🗺️</span>Fossil Map</button>
     <button class="mm-btn" data-page="rock-scanner" onclick="showPage('rock-scanner');closeMobileMenu()"><span class="mm-btn-icon">🪨</span>Rock Scanner</button>
     <div class="mm-divider"></div>
@@ -4663,6 +4782,19 @@
         <div class="hero-stat"><span class="hs-val" data-count="50">0</span><span class="hs-lbl" data-i18n="stat_articles">Articles &amp; Guides</span></div>
       </div>
     </div>
+    <!-- 🔬 HERO LATEST POST WIDGET -->
+    <div class="hero-pn-widget" onclick="showPage('paleo-news')">
+      <div class="hpn-label"><span class="hpn-dot"></span> Latest Discovery</div>
+      <span class="hpn-emoji" id="hpn-emoji">🦕</span>
+      <div class="hpn-cat" id="hpn-cat">🔬 Paleontology</div>
+      <div class="hpn-title" id="hpn-title">New Fossil from Brazil Reveals Unexpected Diversity among Pre-Dinosaur Herbivores</div>
+      <div class="hpn-desc" id="hpn-desc">Paleontologists identified a new Triassic rhynchosaur species revealing broader evolutionary diversity than previously thought.</div>
+      <div class="hpn-footer">
+        <span class="hpn-meta" id="hpn-meta">Apr 23 · 3 min · 👁 0</span>
+        <span class="hpn-btn">Read →</span>
+      </div>
+    </div>
+
     <div class="hero-scroll-indicator" onclick="document.querySelector('.dotd').scrollIntoView({behavior:'smooth'})">
       <span>Scroll to explore</span>
       <div class="scroll-arrow"></div>
@@ -4694,6 +4826,30 @@
       </button>
     </div>
 
+
+    <!-- 🔬 LATEST PALEO NEWS WIDGET -->
+    <div class="latest-pn-wrap reveal">
+      <div class="section-label" style="margin-bottom:12px;">🔬 Latest Discovery</div>
+      <div class="latest-pn-card" id="latest-pn-card" onclick="showPage('paleo-news')">
+        <div class="latest-pn-thumb" id="lpn-thumb">🦕</div>
+        <div class="latest-pn-body">
+          <div class="latest-pn-tag">
+            <span class="latest-pn-tag-dot"></span>
+            <span id="lpn-tag">PALEO NEWS</span>
+          </div>
+          <div class="latest-pn-title" id="lpn-title">New Fossil from Brazil Reveals Unexpected Diversity among Pre-Dinosaur Herbivores</div>
+          <div class="latest-pn-desc" id="lpn-desc">Paleontologists in Brazil identified a new genus of hyperodapedontine rhynchosaur — an extinct lineage of beaked herbivorous reptiles from the Triassic period, revealing broader evolutionary diversity than previously thought.</div>
+          <div class="latest-pn-footer">
+            <span id="lpn-date">Apr 23, 2026</span>
+            <span>·</span>
+            <span id="lpn-mins">3 min read</span>
+            <span>·</span>
+            <span id="lpn-views">👁 0 views</span>
+          </div>
+        </div>
+        <div class="latest-pn-arrow">→</div>
+      </div>
+    </div>
 
     <!-- 🔥 TRENDING BOX -->
     <div class="trending-box reveal" id="trendingBox">
@@ -6270,7 +6426,7 @@
     <p style="color:var(--text-secondary);margin-bottom:28px;max-width:580px;">Explore how dinosaurs evolved over 230 million years. Click any group to learn more!</p>
 
     <div id="evo-tree-wrap" style="overflow-x:auto;overflow-y:visible;padding-bottom:24px;">
-      <svg id="evoSVG" viewBox="0 0 900 680" xmlns="http://www.w3.org/2000/svg" style="width:100%;min-width:340px;max-width:900px;display:block;margin:0 auto;font-family:Poppins,sans-serif;"></svg>
+      <svg id="evoSVG" viewBox="0 0 1440 510" xmlns="http://www.w3.org/2000/svg" style="width:100%;min-width:340px;max-width:1440px;display:block;margin:0 auto;font-family:Poppins,sans-serif;"></svg>
     </div>
 
     <div id="evo-info-box" style="display:none;background:rgba(110,251,62,0.06);border:1.5px solid rgba(110,251,62,0.25);border-radius:16px;padding:24px 28px;margin-top:8px;max-width:600px;animation:fadeIn .3s ease;">
@@ -6287,7 +6443,7 @@
 
     <div class="dyk" style="margin-top:32px;">
       <span class="dyk-icon">🧬</span>
-      <div><div class="dyk-label">Evolution Fact</div><div class="dyk-text">All dinosaurs share a common ancestor — <strong>Eoraptor</strong> from the Late Triassic (~231 Ma). Birds are living dinosaurs and represent one surviving lineage of the theropod branch.</div></div>
+      <div><div class="dyk-label">Evolution Fact</div><div class="dyk-text">Birds are living dinosaurs — they represent one surviving lineage of the theropod branch. <strong>Eoraptor</strong> (~231 Ma) is one of the earliest known dinosaurs and closely resembles what the last common ancestor probably looked like, though the true ancestor remains unknown.</div></div>
     </div>
   </section>
 </div>
@@ -6303,28 +6459,22 @@
   <section>
     <div class="section-label">🌴 Mini Game</div>
     <div class="section-title">BUILD YOUR <span>JURASSIC PARK</span></div>
-    <p style="color:var(--text-secondary);margin-bottom:20px;max-width:620px;">Pick enclosures and dinosaurs to build the ultimate park! Matching enclosures to diets gives bonus points. 🏆</p>
-    <div id="jp-park-display" style="background:rgba(110,251,62,0.04);border:1.5px solid rgba(110,251,62,0.15);border-radius:20px;padding:24px;margin-bottom:20px;">
+    <p style="color:var(--text-secondary);margin-bottom:20px;max-width:580px;">Pick dinosaurs and add them to your park. Build the collection with the highest score!</p>
+    <div id="jp-park-display" style="background:rgba(110,251,62,0.04);border:1.5px solid rgba(110,251,62,0.15);border-radius:20px;padding:24px;margin-bottom:24px;min-height:100px;">
       <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:16px;flex-wrap:wrap;gap:10px;">
-        <div><div style="font-size:1.1rem;font-weight:800;color:#fff;">🏟️ My Jurassic Park</div><div style="font-size:0.8rem;color:var(--text-secondary);">Dinos: <span id="jp-capacity">0</span>/10 &nbsp;·&nbsp; Enclosures: <span id="jp-enc-count">0</span>/4</div></div>
-        <div style="text-align:right;"><div style="font-size:1.6rem;font-weight:900;color:var(--accent);" id="jp-score">0</div><div style="font-size:0.72rem;color:var(--text-secondary);">total points</div></div>
+        <div><div style="font-size:1.1rem;font-weight:800;color:#fff;">🏟️ My Jurassic Park</div><div style="font-size:0.8rem;color:var(--text-secondary);">Capacity: <span id="jp-capacity">0</span>/8</div></div>
+        <div style="text-align:right;"><div style="font-size:1.4rem;font-weight:900;color:var(--accent);" id="jp-score">0</div><div style="font-size:0.75rem;color:var(--text-secondary);">pts</div></div>
       </div>
       <div id="jp-park-slots" style="display:flex;flex-wrap:wrap;gap:10px;min-height:50px;"></div>
-      <div id="jp-empty-msg" style="color:var(--text-secondary);font-size:0.9rem;padding:8px 0;">Park is empty — pick enclosures and dinosaurs below! 👇</div>
+      <div id="jp-empty-msg" style="color:var(--text-secondary);font-size:0.9rem;padding:8px 0;">Park is empty — add dinosaurs below! 👇</div>
     </div>
-    <div style="margin-bottom:20px;">
-      <div style="font-size:0.82rem;font-weight:700;color:var(--accent);letter-spacing:1px;text-transform:uppercase;margin-bottom:10px;">🏗️ Enclosures (max 4)</div>
-      <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(155px,1fr));gap:10px;" id="jp-enc-shop"></div>
-    </div>
-    <div style="display:flex;gap:10px;margin-bottom:16px;flex-wrap:wrap;">
+    <div style="display:flex;gap:10px;margin-bottom:20px;flex-wrap:wrap;">
       <button class="btn btn-primary" onclick="jpSortBy('rarity')">⭐ Rarity</button>
       <button class="btn btn-secondary" onclick="jpSortBy('points')">🏆 Points</button>
-      <button class="btn btn-secondary" onclick="jpSortBy('type')">🦴 Diet</button>
-      <button class="btn" style="background:rgba(239,68,68,0.15);color:#ef4444;border:1px solid rgba(239,68,68,0.3);border-radius:10px;padding:8px 16px;cursor:pointer;font-weight:700;" onclick="jpClearPark()">🗑️ Reset Park</button>
+      <button class="btn" style="background:rgba(239,68,68,0.15);color:#ef4444;border:1px solid rgba(239,68,68,0.3);border-radius:10px;padding:8px 16px;cursor:pointer;font-weight:700;" onclick="jpClearPark()">🗑️ Clear Park</button>
     </div>
-    <div style="font-size:0.82rem;font-weight:700;color:var(--accent);letter-spacing:1px;text-transform:uppercase;margin-bottom:10px;">🦕 Dinosaurs (max 10)</div>
-    <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(145px,1fr));gap:12px;" id="jp-dino-shop"></div>
-    <div class="dyk" style="margin-top:28px;"><span class="dyk-icon">🌴</span><div><div class="dyk-label">Park Tip</div><div class="dyk-text">Match enclosures to dinosaur diets for bonus points! Glacier Dome gives the highest bonus. T-Rex and Spinosaurus are the most valuable dinos!</div></div></div>
+    <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(148px,1fr));gap:12px;" id="jp-dino-shop"></div>
+    <div class="dyk" style="margin-top:28px;"><span class="dyk-icon">🌴</span><div><div class="dyk-label">Park Tip</div><div class="dyk-text">Legendary dinosaurs are the most valuable — T-Rex and Spinosaurus bring the most points!</div></div></div>
   </section>
 </div>
 
@@ -6374,32 +6524,121 @@
 </div>
 
 <!-- ════════════════════════════════════════
-     🎂 BIRTHDAY DINO
+     🔬 PALEO NEWS HUB
 ════════════════════════════════════════ -->
-<div class="page" id="page-birthday">
+<div class="page" id="page-paleo-news">
   <section>
-    <div class="section-label">🎂 Fun</div>
-    <div class="section-title">YOUR <span>BIRTHDAY DINO</span></div>
-    <p style="color:var(--text-secondary);margin-bottom:28px;max-width:520px;">Enter your birthday and discover which dinosaur matches your personality! Share with friends.</p>
-    <div style="max-width:420px;margin:0 auto;text-align:center;">
-      <div style="background:rgba(255,255,255,0.04);border:1.5px solid rgba(255,255,255,0.1);border-radius:16px;padding:28px;margin-bottom:24px;">
-        <div style="font-size:0.85rem;font-weight:600;color:var(--text-secondary);margin-bottom:12px;">Enter your date of birth</div>
-        <input type="date" id="birthday-input" style="background:rgba(255,255,255,0.06);border:1.5px solid rgba(255,255,255,0.15);border-radius:10px;padding:12px 16px;color:#fff;font-size:1rem;width:100%;margin-bottom:16px;font-family:Poppins,sans-serif;" max="2025-12-31"/>
-        <button class="btn btn-primary" onclick="findBirthdayDino()" style="width:100%;justify-content:center;">🎂 Find My Dino!</button>
+    <div class="section-label">🔬 Paleo News</div>
+    <div class="section-title">FOSSIL <span>FEED</span></div>
+    <p style="color:var(--text-secondary);margin-bottom:24px;max-width:680px;">The latest paleontology discoveries, fossil finds and dino science — posted by the DinoWorld team. Upvote your favourites, rate articles and see how many people read each one.</p>
+
+    <!-- Reddit-style top bar -->
+    <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:16px;gap:12px;flex-wrap:wrap;max-width:740px;">
+      <div style="display:flex;align-items:center;gap:6px;background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.08);border-radius:10px;padding:4px;">
+        <button class="pn-sort-btn active" onclick="pnSort('hot',this)">🔥 Hot</button>
+        <button class="pn-sort-btn" onclick="pnSort('new',this)">🆕 New</button>
+        <button class="pn-sort-btn" onclick="pnSort('top',this)">⬆️ Top</button>
       </div>
-      <div id="birthday-result" style="display:none;background:rgba(110,251,62,0.05);border:1.5px solid rgba(110,251,62,0.2);border-radius:20px;padding:28px;animation:fadeIn .4s ease;">
-        <div id="bd-emoji" style="font-size:5rem;margin-bottom:12px;"></div>
-        <div id="bd-name" style="font-size:1.8rem;font-weight:900;color:#fff;margin-bottom:8px;"></div>
-        <div id="bd-subtitle" style="font-size:0.8rem;color:var(--accent);font-weight:700;letter-spacing:1px;text-transform:uppercase;margin-bottom:16px;"></div>
-        <div id="bd-desc" style="color:var(--text-secondary);line-height:1.7;font-size:0.9rem;margin-bottom:20px;"></div>
-        <div id="bd-traits" style="display:flex;flex-wrap:wrap;gap:8px;justify-content:center;margin-bottom:20px;"></div>
-        <div style="display:flex;gap:10px;justify-content:center;flex-wrap:wrap;">
-          <button class="btn btn-primary" onclick="shareBirthdayDino()">📤 Share My Dino!</button>
-          <button class="btn btn-secondary" onclick="showArticle(window._bdDinoId)">🦖 Learn More</button>
-          <button class="btn" onclick="document.getElementById('birthday-result').style.display='none'" style="background:rgba(255,255,255,0.06);color:var(--text-secondary);border:1px solid rgba(255,255,255,0.1);border-radius:10px;padding:10px 16px;cursor:pointer;font-weight:600;">↺ Try Again</button>
+      <div style="display:flex;gap:8px;align-items:center;">
+        <select id="pn-cat-filter" onchange="pnCatFilter(this.value)" style="background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.1);color:var(--muted);border-radius:8px;padding:7px 12px;font-size:0.78rem;font-family:inherit;cursor:pointer;outline:none;">
+          <option value="all">All categories</option>
+          <option value="Discovery">🦴 Discovery</option>
+          <option value="Research">🔬 Research</option>
+          <option value="Fossil">🪨 Fossil Find</option>
+          <option value="Science">🧬 Science</option>
+          <option value="News">📰 News</option>
+        </select>
+        <button class="pn-create-btn" onclick="pnAdminLogin()" id="pn-admin-btn">🔐 Admin</button>
+      </div>
+    </div>
+
+    <!-- Create post form (Reddit style) -->
+    <div id="pn-form" style="display:none;max-width:740px;background:rgba(255,255,255,0.03);border:1.5px solid rgba(110,251,62,0.2);border-radius:14px;padding:22px 24px;margin-bottom:20px;animation:fadeIn .2s ease;">
+      <div style="font-size:0.72rem;font-weight:700;letter-spacing:1.2px;text-transform:uppercase;color:var(--accent);margin-bottom:16px;display:flex;align-items:center;justify-content:space-between;">
+        <span>📝 New Post</span>
+        <button onclick="pnToggleForm()" style="background:none;border:none;color:var(--muted);cursor:pointer;font-size:1.1rem;">✕</button>
+      </div>
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:10px;">
+        <div>
+          <label style="font-size:0.7rem;font-weight:700;color:var(--muted);text-transform:uppercase;letter-spacing:0.5px;display:block;margin-bottom:5px;">Title *</label>
+          <input id="pn-title" style="width:100%;background:rgba(255,255,255,0.06);border:1.5px solid rgba(255,255,255,0.1);border-radius:8px;padding:9px 12px;color:#fff;font-size:0.85rem;font-family:inherit;outline:none;" placeholder="e.g. New T-Rex fossil found in Montana">
+        </div>
+        <div>
+          <label style="font-size:0.7rem;font-weight:700;color:var(--muted);text-transform:uppercase;letter-spacing:0.5px;display:block;margin-bottom:5px;">Category</label>
+          <select id="pn-cat" style="width:100%;background:rgba(255,255,255,0.06);border:1.5px solid rgba(255,255,255,0.1);border-radius:8px;padding:9px 12px;color:#fff;font-size:0.85rem;font-family:inherit;outline:none;">
+            <option value="Discovery">🦴 Discovery</option>
+            <option value="Research">🔬 Research</option>
+            <option value="Fossil">🪨 Fossil Find</option>
+            <option value="Science">🧬 Science</option>
+            <option value="News">📰 News</option>
+          </select>
+        </div>
+      </div>
+      <div style="display:grid;grid-template-columns:80px 1fr;gap:12px;margin-bottom:10px;">
+        <div>
+          <label style="font-size:0.7rem;font-weight:700;color:var(--muted);text-transform:uppercase;letter-spacing:0.5px;display:block;margin-bottom:5px;">Emoji</label>
+          <input id="pn-emoji" style="width:100%;background:rgba(255,255,255,0.06);border:1.5px solid rgba(255,255,255,0.1);border-radius:8px;padding:9px 12px;color:#fff;font-size:1.2rem;font-family:inherit;outline:none;text-align:center;" placeholder="🦕">
+        </div>
+        <div>
+          <label style="font-size:0.7rem;font-weight:700;color:var(--muted);text-transform:uppercase;letter-spacing:0.5px;display:block;margin-bottom:5px;">Short description *</label>
+          <input id="pn-desc" style="width:100%;background:rgba(255,255,255,0.06);border:1.5px solid rgba(255,255,255,0.1);border-radius:8px;padding:9px 12px;color:#fff;font-size:0.85rem;font-family:inherit;outline:none;" placeholder="1-2 sentence summary shown under the title">
+        </div>
+      </div>
+      <label style="font-size:0.7rem;font-weight:700;color:var(--muted);text-transform:uppercase;letter-spacing:0.5px;display:block;margin-bottom:5px;">Full article *</label>
+      <textarea id="pn-body" style="width:100%;background:rgba(255,255,255,0.06);border:1.5px solid rgba(255,255,255,0.1);border-radius:8px;padding:9px 12px;color:#fff;font-size:0.85rem;font-family:inherit;outline:none;resize:vertical;min-height:110px;margin-bottom:10px;" placeholder="Write the full article text here.
+
+Use empty line between paragraphs.
+## This becomes a heading"></textarea>
+      <label style="font-size:0.7rem;font-weight:700;color:var(--muted);text-transform:uppercase;letter-spacing:0.5px;display:block;margin-bottom:5px;">Image (optional)</label>
+      <div style="margin-bottom:10px;">
+        <input type="file" id="pn-img-file" accept="image/*" style="display:none;" onchange="pnPreviewImg(this)">
+        <div style="display:flex;gap:8px;align-items:center;">
+          <button type="button" onclick="document.getElementById('pn-img-file').click()" style="background:rgba(255,255,255,0.06);border:1.5px solid rgba(255,255,255,0.15);border-radius:8px;padding:9px 16px;color:var(--muted);font-size:0.82rem;cursor:pointer;font-family:inherit;transition:all .2s;">📷 Upload Image</button>
+          <span id="pn-img-name" style="font-size:0.75rem;color:var(--muted);">No image selected</span>
+        </div>
+        <div id="pn-img-preview" style="display:none;margin-top:10px;border-radius:8px;overflow:hidden;max-height:140px;">
+          <img id="pn-img-thumb" style="width:100%;height:140px;object-fit:cover;display:block;" src="" alt="Preview">
+        </div>
+      </div>
+      <label style="font-size:0.7rem;font-weight:700;color:var(--muted);text-transform:uppercase;letter-spacing:0.5px;display:block;margin-bottom:5px;">Source URL (optional)</label>
+      <input id="pn-src" style="width:100%;background:rgba(255,255,255,0.06);border:1.5px solid rgba(255,255,255,0.1);border-radius:8px;padding:9px 12px;color:#fff;font-size:0.85rem;font-family:inherit;outline:none;margin-bottom:14px;" placeholder="https://nature.com/...">
+      <div style="display:flex;align-items:center;gap:10px;">
+        <button onclick="pnPublish()" style="background:var(--accent);color:#000;border:none;border-radius:8px;padding:10px 22px;font-weight:800;font-size:0.87rem;cursor:pointer;font-family:inherit;">🚀 Publish</button>
+        <button onclick="pnToggleForm()" style="background:transparent;color:var(--muted);border:1px solid rgba(255,255,255,0.1);border-radius:8px;padding:10px 16px;font-weight:600;font-size:0.85rem;cursor:pointer;font-family:inherit;">Cancel</button>
+        <span id="pn-msg" style="font-size:0.8rem;color:var(--accent);display:none;"></span>
+      </div>
+    </div>
+
+    <!-- Feed -->
+    <div id="pn-feed" style="display:flex;flex-direction:column;gap:2px;max-width:740px;"></div>
+
+    <!-- Empty state -->
+    <div id="pn-empty" style="max-width:740px;text-align:center;padding:60px 24px;background:rgba(255,255,255,0.02);border:1.5px dashed rgba(255,255,255,0.08);border-radius:16px;display:none;">
+      <div style="font-size:3rem;margin-bottom:16px;">🔬</div>
+      <div style="font-size:1.1rem;font-weight:700;color:#fff;margin-bottom:8px;">No posts yet</div>
+      <div style="color:var(--muted);font-size:0.88rem;margin-bottom:20px;">Be the first to share a paleontology discovery!</div>
+      <p style="color:var(--muted);font-size:0.85rem;">New articles coming soon! 🦕</p>
+    </div>
+
+    <!-- Article full view overlay -->
+    <div id="pn-overlay" style="display:none;position:fixed;inset:0;z-index:200;background:rgba(0,0,0,0.88);backdrop-filter:blur(6px);overflow-y:auto;padding:40px 16px;justify-content:center;align-items:flex-start;">
+      <div style="background:#0d1a0f;border:1.5px solid rgba(110,251,62,0.2);border-radius:20px;max-width:680px;width:100%;padding:32px 36px;position:relative;animation:fadeIn .25s ease;margin:0 auto;">
+        <button onclick="pnCloseArt()" style="position:absolute;top:14px;right:14px;background:rgba(255,255,255,0.08);border:none;color:var(--muted);width:32px;height:32px;border-radius:50%;cursor:pointer;font-size:1rem;display:flex;align-items:center;justify-content:center;">✕</button>
+        <div style="font-size:0.7rem;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:var(--accent);margin-bottom:10px;" id="ov-tag"></div>
+        <h1 style="font-size:1.45rem;font-weight:900;color:#fff;line-height:1.4;margin-bottom:12px;" id="ov-title"></h1>
+        <div style="font-size:0.75rem;color:var(--muted);margin-bottom:18px;display:flex;gap:14px;flex-wrap:wrap;" id="ov-meta"></div>
+        <div style="display:flex;align-items:center;gap:8px;padding:12px 0;border-top:1px solid rgba(255,255,255,0.07);border-bottom:1px solid rgba(255,255,255,0.07);margin-bottom:24px;">
+          <span style="font-size:0.8rem;color:var(--muted);">Rate this article:</span>
+          <span id="ov-stars"></span>
+          <span id="ov-avg" style="font-size:0.78rem;color:var(--accent);font-weight:700;margin-left:6px;"></span>
+        </div>
+        <div style="color:var(--text-secondary);line-height:1.8;font-size:0.92rem;" id="ov-body"></div>
+        <div style="margin-top:20px;padding-top:14px;border-top:1px solid rgba(255,255,255,0.07);">
+          <a id="ov-src" href="#" target="_blank" style="color:var(--accent);font-size:0.82rem;display:none;">📎 Original source →</a>
         </div>
       </div>
     </div>
+
   </section>
 </div>
 
@@ -6454,7 +6693,7 @@
 
 <script>
 // ── PAGES ──
-const pages = ['home','basics','eras','types','popular','seo','tops','eggs','extinction','quiz','facts','article','alldinos','fossils-map','comparison','rock-scanner','battle','time-machine','size-compare','dna-builder','soundscape','leaderboard','dino-runner','evo-tree','jurassic-park','trivia'];
+const pages = ['home','basics','eras','types','popular','seo','tops','eggs','extinction','quiz','facts','article','alldinos','fossils-map','comparison','rock-scanner','battle','time-machine','size-compare','dna-builder','soundscape','leaderboard','dino-runner','evo-tree','jurassic-park','trivia','paleo-news'];
 
 function showPage(id) {
   // Update page title for SEO
@@ -6467,10 +6706,7 @@ function showPage(id) {
     quiz:'Which Dinosaur Are You? – DinoWorld', facts:'Fun Dinosaur Facts – DinoWorld',
     alldinos:'All Dinosaurs – DinoWorld', 'fossils-map':'Fossil Locations Map – DinoWorld',
     comparison:'Compare Dinosaurs – DinoWorld',
-    'evo-tree':'Dinosaur Evolution Tree – DinoWorld',
-    'birthday':'Your Birthday Dinosaur – DinoWorld',
-    'jurassic-park':'Build Your Jurassic Park – DinoWorld',
-    'trivia':'Dino Trivia Battle – DinoWorld'
+    'evo-tree':'Dinosaur Evolution Tree – DinoWorld'
   };
   if (pageTitles[id]) document.title = pageTitles[id];
 
@@ -8247,7 +8483,7 @@ function showArticle(id) {
     <div class="news-title">🦕 DINO NEWS — Paleontology Updates & Latest Discoveries</div>
     <div class="news-sub">Breaking dino science • New fossil finds • Research updates • Real-time prehistoric world</div>
   </div>
-  <div class="news-coming">🔬 Coming Soon</div>
+  <div class="news-coming" onclick="showPage('paleo-news')" style="cursor:pointer;">🔬 Paleo News →</div>
   <button class="news-dismiss" onclick="event.stopPropagation();dismissDinoNews()" aria-label="Dismiss">✕</button>
 </div>
 
@@ -12824,95 +13060,107 @@ document.addEventListener('DOMContentLoaded', () => {
   'use strict';
 
   const EVO_DATA = {
-    id:'root', label:'Dinosauria', emoji:'🦴', period:'231 Ma', x:450, y:38,
+    id:'root', label:'Dinosauria', emoji:'🦴', period:'231 Ma', x:700, y:40,
     color:'#6efb3e',
-    desc:'All dinosaurs share a common ancestor from the Late Triassic. The group split early into two main branches based on hip structure.',
-    examples:[],
+    desc:'Dinosauria originated in the Late Triassic (~231 Ma). The group split early into two main branches based on hip bone structure. The exact last common ancestor is unknown — Eoraptor closely resembles what it may have looked like.',
+    examples:['🦖 T-Rex','🦕 Brachiosaurus','🦏 Triceratops','🐦 Birds'],
     children:[
       {
-        id:'ornithischia', label:'Ornithischia', emoji:'🦏', period:'228 Ma', x:220, y:150,
+        id:'ornithischia', label:'Ornithischia', emoji:'🦏', period:'228 Ma', x:300, y:160,
         color:'#60a5fa',
         desc:'Bird-hipped dinosaurs — despite the name, birds did NOT descend from this group. All were herbivores with a distinctive backward-pointing pubis bone.',
-        examples:['🦕 Triceratops','🛡️ Ankylosaurus','🔪 Stegosaurus','🐊 Iguanodon'],
+        examples:['🦏 Triceratops','🛡️ Ankylosaurus','🔪 Stegosaurus','🎺 Parasaurolophus'],
         children:[
           {
-            id:'thyreophora', label:'Thyreophora', emoji:'🛡️', period:'200 Ma', x:90, y:280,
+            id:'thyreophora', label:'Thyreophora', emoji:'🛡️', period:'200 Ma', x:100, y:290,
             color:'#34d399',
             desc:'Armoured dinosaurs — protected by bony plates, spikes, and clubs. Slow-moving herbivores that relied on armour rather than speed.',
             examples:['🛡️ Stegosaurus','🔒 Ankylosaurus','⚔️ Kentrosaurus'],
             children:[
-              {id:'stegosauria', label:'Stegosauria', emoji:'🔪', period:'170 Ma', x:45, y:400, color:'#a3e635',
-               desc:'Plated dinosaurs with distinctive back plates and tail spikes (the thagomizer). Stegosaurus is the most famous member.',
+              {id:'stegosauria', label:'Stegosauria', emoji:'🔪', period:'170 Ma', x:40, y:430, color:'#a3e635',
+               desc:'Plated dinosaurs with distinctive back plates and tail spikes (the thagomizer). The plates may have regulated body temperature or been used for display.',
                examples:['🔪 Stegosaurus','⚔️ Kentrosaurus','🌿 Huayangosaurus'], children:[]},
-              {id:'ankylosauria', label:'Ankylosauria', emoji:'🛡️', period:'160 Ma', x:145, y:400, color:'#a3e635',
-               desc:'Tank-like dinosaurs covered head to tail in bony armour. Ankylosaurus had a tail club capable of shattering bone.',
+              {id:'ankylosauria', label:'Ankylosauria', emoji:'🛡️', period:'160 Ma', x:155, y:430, color:'#a3e635',
+               desc:'Tank-like dinosaurs covered head to tail in bony armour (osteoderms). Ankylosaurus had a massive tail club capable of shattering tyrannosaur bone.',
                examples:['🛡️ Ankylosaurus','🦎 Nodosaurus','🐢 Euoplocephalus'], children:[]},
             ]
           },
           {
-            id:'ornithopoda', label:'Ornithopoda', emoji:'🦕', period:'196 Ma', x:230, y:280,
+            id:'ornithopoda', label:'Ornithopoda', emoji:'🎺', period:'196 Ma', x:295, y:290,
             color:'#34d399',
-            desc:'Bipedal or four-legged herbivores — the most diverse and successful ornithischians. Included the duck-billed hadrosaurs.',
+            desc:'The most diverse ornithischians — bipedal or four-legged herbivores including the spectacular duck-billed hadrosaurs.',
             examples:['🎺 Parasaurolophus','🦴 Iguanodon','🐦 Edmontosaurus'],
             children:[
-              {id:'hadrosauria', label:'Hadrosauria', emoji:'🎺', period:'90 Ma', x:195, y:400, color:'#a3e635',
-               desc:'Duck-billed dinosaurs — enormously successful herbivores of the Late Cretaceous. Many had elaborate hollow crests used for sound.',
-               examples:['🎺 Parasaurolophus','🐦 Edmontosaurus','🦴 Maiasaura'], children:[]},
-              {id:'iguanodontia', label:'Iguanodontia', emoji:'🦴', period:'155 Ma', x:295, y:400, color:'#a3e635',
-               desc:'Large bipedal herbivores with thumb spikes used for defence and food gathering. Iguanodon was among the first dinosaurs ever named.',
+              {id:'hadrosauria', label:'Hadrosauria', emoji:'🎺', period:'90 Ma', x:245, y:430, color:'#a3e635',
+               desc:'Duck-billed dinosaurs — spectacularly successful Late Cretaceous herbivores. Their hollow crests produced resonant calls heard for kilometres.',
+               examples:['🎺 Parasaurolophus','🐦 Edmontosaurus','🪺 Maiasaura'], children:[]},
+              {id:'iguanodontia', label:'Iguanodontia', emoji:'🦴', period:'155 Ma', x:350, y:430, color:'#a3e635',
+               desc:'Large bipedal herbivores with distinctive thumb spikes. Iguanodon was among the very first dinosaurs ever scientifically named.',
                examples:['🦴 Iguanodon','🌿 Camptosaurus','🦎 Ouranosaurus'], children:[]},
             ]
           },
           {
-            id:'marginocephalia', label:'Marginocephalia', emoji:'🦏', period:'160 Ma', x:370, y:280,
+            id:'marginocephalia', label:'Marginocephalia', emoji:'🦏', period:'160 Ma', x:490, y:290,
             color:'#34d399',
-            desc:'Dinosaurs with distinctive bony frills, horns or thick skulls — evolved purely for display, species recognition, and combat.',
+            desc:'Dinosaurs with distinctive bony frills, horns or thick dome-shaped skulls — evolved for display, species recognition, and head-to-head combat.',
             examples:['🦏 Triceratops','💥 Pachycephalosaurus','🌀 Protoceratops'],
             children:[
-              {id:'ceratopsia', label:'Ceratopsia', emoji:'🦏', period:'158 Ma', x:345, y:400, color:'#a3e635',
-               desc:'Horned dinosaurs with elaborate frills. Triceratops is the most famous — with three horns and a large bony neck frill.',
+              {id:'ceratopsia', label:'Ceratopsia', emoji:'🦏', period:'158 Ma', x:445, y:430, color:'#a3e635',
+               desc:'Horned dinosaurs with elaborate bony neck frills. Triceratops is the most famous — three horns and a massive frill used in display and defence.',
                examples:['🦏 Triceratops','🌀 Protoceratops','🐂 Styracosaurus'], children:[]},
-              {id:'pachycephalosauria', label:'Pachycephalosauria', emoji:'💥', period:'145 Ma', x:445, y:400, color:'#a3e635',
-               desc:'Thick-skulled dinosaurs that likely head-butted rivals for dominance — their domed skulls were up to 25 cm thick.',
+              {id:'pachycephalosauria', label:'Pachycephalosauria', emoji:'💥', period:'145 Ma', x:550, y:430, color:'#a3e635',
+               desc:'Thick-skulled dinosaurs with dome-shaped heads up to 25cm thick — used in head-butting contests for dominance, like modern rams.',
                examples:['💥 Pachycephalosaurus','🪨 Stygimoloch','🔵 Dracorex'], children:[]},
             ]
           },
         ]
       },
       {
-        id:'saurischia', label:'Saurischia', emoji:'🦖', period:'231 Ma', x:680, y:150,
+        id:'saurischia', label:'Saurischia', emoji:'🦖', period:'231 Ma', x:1100, y:160,
         color:'#f97316',
-        desc:'Lizard-hipped dinosaurs — including both the giant sauropods and all carnivorous theropods. Birds evolved from this branch.',
+        desc:'Lizard-hipped dinosaurs — including both the giant long-necked sauropods and all theropods (including birds). The most successful dinosaur group.',
         examples:['🦖 T-Rex','🦕 Brachiosaurus','🦅 Velociraptor','🐦 Birds'],
         children:[
           {
-            id:'sauropodomorpha', label:'Sauropodomorpha', emoji:'🦕', period:'228 Ma', x:560, y:280,
+            id:'sauropodomorpha', label:'Sauropodomorpha', emoji:'🦕', period:'228 Ma', x:780, y:290,
             color:'#fb923c',
-            desc:'Long-necked herbivores — evolved from small bipedal ancestors into the largest land animals that ever lived, up to 70+ tonnes.',
+            desc:'Long-necked plant-eaters — evolved from small Triassic ancestors into the largest land animals that ever lived, some exceeding 70 tonnes.',
             examples:['🦕 Brachiosaurus','🦕 Diplodocus','🦕 Argentinosaurus'],
             children:[
-              {id:'sauropoda', label:'Sauropoda', emoji:'🦕', period:'180 Ma', x:510, y:400, color:'#fbbf24',
-               desc:'True giant sauropods — four-legged, barrel-bodied, with enormously long necks and tails. The largest animals ever to walk on land.',
-               examples:['🦕 Brachiosaurus','🦕 Diplodocus','🦕 Argentinosaurus','🦕 Patagotitan'], children:[]},
-              {id:'prosauropoda', label:'Prosauropoda', emoji:'🌿', period:'228 Ma', x:610, y:400, color:'#fbbf24',
-               desc:'Early ancestors of the giant sauropods — mostly bipedal or semi-bipedal herbivores from the Triassic and Early Jurassic.',
+              {id:'prosauropoda', label:'Early Sauropodomorpha', emoji:'🌿', period:'228 Ma', x:700, y:430, color:'#fbbf24',
+               desc:'An evolutionary grade (not a true clade) of early long-necked herbivores — bipedal Triassic ancestors that led to the giant four-legged sauropods.',
                examples:['🌿 Plateosaurus','🦕 Massospondylus','🌱 Riojasaurus'], children:[]},
+              {id:'sauropoda', label:'Sauropoda', emoji:'🦕', period:'180 Ma', x:855, y:430, color:'#fbbf24',
+               desc:'True giant sauropods — four-legged, barrel-bodied, with enormously long necks and tails. The largest land animals in Earthʼs history.',
+               examples:['🦕 Brachiosaurus','🦕 Diplodocus','🦕 Argentinosaurus','🦕 Patagotitan'], children:[]},
             ]
           },
           {
-            id:'theropoda', label:'Theropoda', emoji:'🦖', period:'231 Ma', x:800, y:280,
+            id:'theropoda', label:'Theropoda', emoji:'🦖', period:'231 Ma', x:1150, y:290,
             color:'#fb923c',
-            desc:'Bipedal mostly-carnivorous dinosaurs — the most diverse dinosaur group, ranging from tiny feathered hunters to T-Rex. Birds are living theropods.',
+            desc:'Bipedal mostly-carnivorous dinosaurs — the most diverse group, from tiny feathered hunters to T-Rex and Spinosaurus. Birds are living theropods.',
             examples:['🦖 T-Rex','🦅 Velociraptor','🐦 Modern Birds','🐊 Spinosaurus'],
             children:[
-              {id:'tyrannosauridae', label:'Tyrannosauridae', emoji:'🦖', period:'90 Ma', x:700, y:400, color:'#ef4444',
-               desc:'The apex predators of the Late Cretaceous — large-skulled, tiny-armed bipedal hunters. T-Rex is the most famous member.',
+              {id:'spinosauridae', label:'Spinosauridae', emoji:'🐊', period:'130 Ma', x:940, y:430, color:'#ef4444',
+               desc:'Semi-aquatic fish-hunting theropods with elongated crocodile-like skulls and tall neural spine sails. The most aquatic non-avian dinosaurs known.',
+               examples:['🐊 Spinosaurus','🐟 Baryonyx','🦎 Suchomimus'], children:[]},
+              {id:'allosauridae', label:'Allosauridae', emoji:'🦖', period:'155 Ma', x:1010, y:430, color:'#ef4444',
+               desc:'The apex predators of the Jurassic — large three-fingered hunters that used their massive skulls like a hatchet to slash at prey.',
+               examples:['🦖 Allosaurus','🦎 Saurophaganax','🦕 Carcharodontosaurus'], children:[]},
+              {id:'abelisauridae', label:'Abelisauridae', emoji:'🐂', period:'95 Ma', x:1080, y:430, color:'#ef4444',
+               desc:'Southern-hemisphere predators with vestigial arms and rough-textured skulls. Ruled Gondwana while tyrannosaurs dominated the northern continents.',
+               examples:['🐂 Carnotaurus','🦕 Abelisaurus','🦎 Majungasaurus'], children:[]},
+              {id:'tyrannosauridae', label:'Tyrannosauridae', emoji:'🦖', period:'90 Ma', x:1155, y:430, color:'#ef4444',
+               desc:'The ultimate apex predators of the Late Cretaceous — enormous, bone-crushing bipedal hunters with the most powerful bite force of any land animal.',
                examples:['🦖 T-Rex','🦴 Albertosaurus','🦎 Tarbosaurus'], children:[]},
-              {id:'dromaeosauridae', label:'Dromaeosauridae', emoji:'🦅', period:'167 Ma', x:800, y:400, color:'#ef4444',
-               desc:'Feathered sickle-clawed hunters — the raptors. Closely related to birds, with large brains and pack-hunting behaviour.',
+              {id:'oviraptorosauria', label:'Oviraptorosauria', emoji:'🦅', period:'125 Ma', x:1240, y:430, color:'#ef4444',
+               desc:'Toothless beaked theropods with crests and elaborate plumage. Once wrongly accused of stealing eggs — they were actually devoted parents brooding their own.',
+               examples:['🦅 Oviraptor','🦜 Gigantoraptor','🌿 Therizinosaurus'], children:[]},
+              {id:'dromaeosauridae', label:'Dromaeosauridae', emoji:'🦅', period:'167 Ma', x:1315, y:430, color:'#ef4444',
+               desc:'Feathered sickle-clawed pack hunters — the true raptors. Highly intelligent, with the largest brains relative to body size of any non-avian dinosaurs.',
                examples:['🦅 Velociraptor','🦅 Deinonychus','🐦 Microraptor'], children:[]},
-              {id:'aves', label:'Aves (Birds)', emoji:'🐦', period:'150 Ma', x:900, y:400, color:'#ef4444',
-               desc:'Living dinosaurs — over 10,000 species alive today. Birds evolved from small feathered theropods and survived the extinction event 66 Ma.',
+              {id:'aves', label:'Aves (Birds)', emoji:'🐦', period:'150 Ma', x:1385, y:430, color:'#ef4444',
+               desc:'Living dinosaurs — with over 10,000 species, birds are the most species-rich group of tetrapods alive today. They survived the 66 Ma extinction event.',
                examples:['🐦 All 10,000+ bird species','🦜 Parrots','🦅 Eagles','🐧 Penguins'], children:[]},
             ]
           },
@@ -13057,137 +13305,90 @@ document.addEventListener('DOMContentLoaded', () => {
 
 
 // ══════════════════════════════════════════════════════════════
-// 🌴 JURASSIC PARK BUILDER — with Enclosures
+// 🌴 JURASSIC PARK BUILDER
 // ══════════════════════════════════════════════════════════════
 (function() {
   var JP = [
-    {id:'trex',name:'T-Rex',emoji:'🦖',r:'legendary',p:500,desc:'Apex predator',diet:'carn'},
-    {id:'spinosaurus',name:'Spinosaurus',emoji:'🐊',r:'legendary',p:470,desc:'Swimming giant',diet:'carn'},
-    {id:'giganotosaurus',name:'Giganotosaurus',emoji:'🦖',r:'legendary',p:440,desc:'South American titan',diet:'carn'},
-    {id:'argentinosaurus',name:'Argentinosaurus',emoji:'🦕',r:'legendary',p:420,desc:'Heaviest dino ever',diet:'herb'},
-    {id:'velociraptor',name:'Velociraptor',emoji:'🦅',r:'rare',p:310,desc:'Pack hunter',diet:'carn'},
-    {id:'triceratops-guide',name:'Triceratops',emoji:'🦏',r:'rare',p:290,desc:'Three-horned tank',diet:'herb'},
-    {id:'brachiosaurus-guide',name:'Brachiosaurus',emoji:'🦕',r:'rare',p:270,desc:'Gentle giant',diet:'herb'},
-    {id:'therizinosaurus',name:'Therizinosaurus',emoji:'🦥',r:'rare',p:250,desc:'Giant claws',diet:'herb'},
-    {id:'microraptor',name:'Microraptor',emoji:'🐦',r:'rare',p:210,desc:'4-winged flyer',diet:'carn'},
-    {id:'carnotaurus',name:'Carnotaurus',emoji:'🐂',r:'rare',p:230,desc:'Fastest predator',diet:'carn'},
-    {id:'utahraptor',name:'Utahraptor',emoji:'🦅',r:'rare',p:220,desc:'Giant sickle claw',diet:'carn'},
-    {id:'styracosaurus',name:'Styracosaurus',emoji:'🦏',r:'rare',p:200,desc:'Spike-frilled titan',diet:'herb'},
-    {id:'stegosaurus-guide',name:'Stegosaurus',emoji:'🦎',r:'uncommon',p:185,desc:'Plate defender',diet:'herb'},
-    {id:'ankylosaurus',name:'Ankylosaurus',emoji:'🐢',r:'uncommon',p:175,desc:'Living tank',diet:'herb'},
-    {id:'parasaurolophus',name:'Parasaurolophus',emoji:'🎺',r:'uncommon',p:155,desc:'Cretaceous trumpeter',diet:'herb'},
-    {id:'diplodocus',name:'Diplodocus',emoji:'🦕',r:'uncommon',p:145,desc:'Longest dino',diet:'herb'},
-    {id:'allosaurus',name:'Allosaurus',emoji:'🦖',r:'uncommon',p:165,desc:'Jurassic hunter',diet:'carn'},
-    {id:'troodon',name:'Troodon',emoji:'🦉',r:'uncommon',p:135,desc:'Smartest dino',diet:'omni'},
-    {id:'deinonychus',name:'Deinonychus',emoji:'🦅',r:'uncommon',p:150,desc:'Pack genius',diet:'carn'},
-    {id:'pachycephalosaurus',name:'Pachycephalosaurus',emoji:'💥',r:'uncommon',p:125,desc:'Head-butter',diet:'herb'},
-    {id:'kentrosaurus',name:'Kentrosaurus',emoji:'⚔️',r:'uncommon',p:140,desc:'African spike lizard',diet:'herb'},
-    {id:'baryonyx',name:'Baryonyx',emoji:'🐟',r:'uncommon',p:145,desc:'Fish hunter',diet:'carn'},
-    {id:'maiasaura',name:'Maiasaura',emoji:'🪺',r:'uncommon',p:120,desc:'Good mother',diet:'herb'},
-    {id:'gallimimus',name:'Gallimimus',emoji:'🐦',r:'common',p:85,desc:'Speed runner',diet:'omni'},
-    {id:'ornithomimus',name:'Ornithomimus',emoji:'🐦',r:'common',p:80,desc:'Bird mimic',diet:'omni'},
-    {id:'protoceratops',name:'Protoceratops',emoji:'🐏',r:'common',p:75,desc:'Griffin inspiration',diet:'herb'},
-    {id:'dilophosaurus',name:'Dilophosaurus',emoji:'🦎',r:'common',p:90,desc:'Twin-crested predator',diet:'carn'},
-    {id:'oviraptor',name:'Oviraptor',emoji:'🦅',r:'common',p:70,desc:'Devoted parent',diet:'omni'},
-    {id:'iguanodon',name:'Iguanodon',emoji:'🦎',r:'common',p:80,desc:'First named dino',diet:'herb'},
-    {id:'heterodontosaurus',name:'Heterodontosaurus',emoji:'🦎',r:'common',p:65,desc:'Three tooth types',diet:'omni'}
+    {id:'trex',name:'T-Rex',emoji:'🦖',r:'legendary',p:500,desc:'Apex predator'},
+    {id:'spinosaurus',name:'Spinosaurus',emoji:'🐊',r:'legendary',p:450,desc:'Swimming giant'},
+    {id:'velociraptor',name:'Velociraptor',emoji:'🦅',r:'rare',p:300,desc:'Pack hunter'},
+    {id:'triceratops-guide',name:'Triceratops',emoji:'🦏',r:'rare',p:280,desc:'Three-horned tank'},
+    {id:'brachiosaurus-guide',name:'Brachiosaurus',emoji:'🦕',r:'rare',p:260,desc:'Gentle giant'},
+    {id:'therizinosaurus',name:'Therizinosaurus',emoji:'🦥',r:'rare',p:240,desc:'Giant claws'},
+    {id:'stegosaurus-guide',name:'Stegosaurus',emoji:'🦎',r:'uncommon',p:180,desc:'Plate defender'},
+    {id:'ankylosaurus',name:'Ankylosaurus',emoji:'🐢',r:'uncommon',p:170,desc:'Living tank'},
+    {id:'parasaurolophus',name:'Parasaurolophus',emoji:'🎺',r:'uncommon',p:150,desc:'Cretaceous trumpeter'},
+    {id:'diplodocus',name:'Diplodocus',emoji:'🦕',r:'uncommon',p:140,desc:'Longest dino'},
+    {id:'allosaurus',name:'Allosaurus',emoji:'🦖',r:'uncommon',p:160,desc:'Jurassic hunter'},
+    {id:'microraptor',name:'Microraptor',emoji:'🐦',r:'rare',p:200,desc:'4-winged flyer'},
+    {id:'pachycephalosaurus',name:'Pachycephalosaurus',emoji:'💥',r:'common',p:100,desc:'Head-butter'},
+    {id:'gallimimus',name:'Gallimimus',emoji:'🐦',r:'common',p:80,desc:'Speed runner'},
+    {id:'troodon',name:'Troodon',emoji:'🦉',r:'uncommon',p:130,desc:'Smartest dino'},
+    {id:'maiasaura',name:'Maiasaura',emoji:'🪺',r:'common',p:90,desc:'Good mother'}
   ];
-  var ENCLOSURES = [
-    {id:'savanna',name:'Savanna',emoji:'🌾',bonus:80,bonusDesc:'+80 pts for large herbivores',bestFor:'herb',color:'#f97316'},
-    {id:'jungle',name:'Jungle',emoji:'🌿',bonus:70,bonusDesc:'+70 pts for raptors',bestFor:'carn',color:'#22c55e'},
-    {id:'canyon',name:'Canyon',emoji:'🏔️',bonus:90,bonusDesc:'+90 pts for apex predators',bestFor:'carn',color:'#ef4444'},
-    {id:'lake',name:'Lake Zone',emoji:'🌊',bonus:75,bonusDesc:'+75 pts for aquatic hunters',bestFor:'carn',color:'#3b82f6'},
-    {id:'plains',name:'Open Plains',emoji:'🌍',bonus:60,bonusDesc:'+60 pts for herding herbivores',bestFor:'herb',color:'#eab308'},
-    {id:'glacier',name:'Glacier Dome',emoji:'❄️',bonus:100,bonusDesc:'+100 pts max bonus enclosure',bestFor:'any',color:'#a78bfa'},
-    {id:'volcano',name:'Volcano Pit',emoji:'🌋',bonus:85,bonusDesc:'+85 pts for fearsome predators',bestFor:'carn',color:'#dc2626'},
-    {id:'forest',name:'Dense Forest',emoji:'🌲',bonus:65,bonusDesc:'+65 pts for omnivores',bestFor:'omni',color:'#16a34a'}
-  ];
-  var RC={legendary:'#ffd700',rare:'#a78bfa',uncommon:'#34d399',common:'#94a3b8'};
-  var RL={legendary:'⭐ Legendary',rare:'💜 Rare',uncommon:'🟢 Uncommon',common:'⚪ Common'};
-  var park=[],enclosures=[],sMode='rarity';
+  var RC = {legendary:'#ffd700',rare:'#a78bfa',uncommon:'#34d399',common:'#94a3b8'};
+  var RL = {legendary:'⭐ Legendary',rare:'💜 Rare',uncommon:'🟢 Uncommon',common:'⚪ Common'};
+  var park = [], sMode = 'rarity';
 
-  window.jpSortBy=function(m){sMode=m;renderShop();};
-  window.jpClearPark=function(){park=[];enclosures=[];renderShop();renderEncShop();renderPark();};
-  window.jpToggleDino=function(id){
-    var d=JP.find(function(x){return x.id===id;});
-    if(!d)return;
-    var idx=park.findIndex(function(x){return x.id===id;});
-    if(idx>=0){park.splice(idx,1);}
-    else{if(park.length>=10){alert('Max 10 dinosaurs!');return;}park.push(d);if(typeof addLBPoints==='function')addLBPoints(Math.floor(d.p/10),'🌴 '+d.name+' added!');}
-    renderShop();renderPark();
+  window.jpSortBy = function(m){sMode=m;renderShop();};
+  window.jpClearPark = function(){park=[];renderShop();renderPark();};
+  window.jpToggleDino = function(id){
+    var d = JP.find(function(x){return x.id===id;});
+    if(!d) return;
+    var idx = park.findIndex(function(x){return x.id===id;});
+    if(idx>=0){ park.splice(idx,1); }
+    else {
+      if(park.length>=8){alert('Park je plný! Max 8 dinosaurů.');return;}
+      park.push(d);
+      if(typeof addLBPoints==='function') addLBPoints(Math.floor(d.p/10),'🌴 '+d.name+' added!');
+    }
+    renderShop(); renderPark();
   };
-  window.jpToggleEnc=function(id){
-    var e=ENCLOSURES.find(function(x){return x.id===id;});
-    if(!e)return;
-    var idx=enclosures.findIndex(function(x){return x.id===id;});
-    if(idx>=0){enclosures.splice(idx,1);}
-    else{if(enclosures.length>=4){alert('Max 4 enclosures!');return;}enclosures.push(e);}
-    renderEncShop();renderPark();
-  };
-  function calcScore(){
-    var base=park.reduce(function(s,d){return s+d.p;},0);
-    var encBonus=enclosures.reduce(function(s,e){return s+e.bonus;},0);
-    var matchBonus=0;
-    enclosures.forEach(function(e){
-      if(e.bestFor==='any'){matchBonus+=50;}
-      else{var m=park.filter(function(d){return d.diet===e.bestFor;}).length;matchBonus+=m>=3?40:m>=1?15:0;}
-    });
-    return base+encBonus+matchBonus;
-  }
-  function renderEncShop(){
-    var el=document.getElementById('jp-enc-shop');
-    if(!el)return;
-    el.innerHTML=ENCLOSURES.map(function(e){
-      var inP=enclosures.some(function(x){return x.id===e.id;});
-      return '<div onclick="jpToggleEnc('+e.id+')" style="background:rgba(255,255,255,0.04);border:1.5px solid '+(inP?e.color:'rgba(255,255,255,0.08)')+';border-radius:12px;padding:11px;cursor:pointer;'+(inP?'opacity:0.6;':'')+'">'
-        +'<div style="font-size:1.5rem;margin-bottom:4px;">'+e.emoji+'</div>'
-        +'<div style="font-size:0.78rem;font-weight:700;color:#fff;margin-bottom:2px;">'+e.name+'</div>'
-        +'<div style="font-size:0.65rem;color:'+e.color+';margin-bottom:5px;">'+e.bonusDesc+'</div>'
-        +'<div style="font-size:0.68rem;padding:2px 7px;border-radius:99px;background:'+(inP?'rgba(239,68,68,0.2)':'rgba(110,251,62,0.1)')+';color:'+(inP?'#ef4444':'var(--accent)')+';display:inline-block;">'+(inP?'Remove':'Add')+'</div>'
-        +'</div>';
-    }).join('');
-  }
+
   function renderShop(){
-    var el=document.getElementById('jp-dino-shop');
-    if(!el)return;
-    var list=JP.slice().sort(function(a,b){
+    var el = document.getElementById('jp-dino-shop');
+    if(!el) return;
+    var list = JP.slice().sort(function(a,b){
       if(sMode==='rarity'){var o={legendary:0,rare:1,uncommon:2,common:3};return o[a.r]-o[b.r];}
-      if(sMode==='type'){var dt={carn:0,herb:1,omni:2};return dt[a.diet]-dt[b.diet];}
       return b.p-a.p;
     });
-    el.innerHTML=list.map(function(d){
-      var inP=park.some(function(x){return x.id===d.id;});
-      var c=RC[d.r];
-      var di=d.diet==='carn'?'🥩':d.diet==='herb'?'🌿':'🍳';
-      return '<div onclick="jpToggleDino('+d.id+')" style="background:rgba(255,255,255,0.04);border:1.5px solid '+(inP?c:'rgba(255,255,255,0.08)')+';border-radius:14px;padding:11px;text-align:center;cursor:pointer;'+(inP?'opacity:0.55;':'')+'">'
-        +'<div style="font-size:1.7rem;margin-bottom:3px;">'+d.emoji+'</div>'
-        +'<div style="font-size:0.75rem;font-weight:700;color:#fff;margin-bottom:2px;">'+d.name+'</div>'
-        +'<div style="font-size:0.65rem;color:'+c+';font-weight:600;margin-bottom:2px;">'+RL[d.r]+'</div>'
-        +'<div style="font-size:0.65rem;color:var(--text-secondary);margin-bottom:4px;">'+di+' '+d.desc+'</div>'
-        +'<div style="font-size:0.8rem;font-weight:800;color:var(--accent);">+'+d.p+' pts</div>'
-        +'<div style="margin-top:5px;font-size:0.67rem;padding:2px 7px;border-radius:99px;background:'+(inP?'rgba(239,68,68,0.2)':'rgba(110,251,62,0.15)')+';color:'+(inP?'#ef4444':'var(--accent)')+';display:inline-block;">'+(inP?'Remove':'Add')+'</div>'
+    el.innerHTML = list.map(function(d){
+      var inP = park.some(function(x){return x.id===d.id;});
+      var c = RC[d.r];
+      return '<div onclick="jpToggleDino(\''+d.id+'\')" style="background:rgba(255,255,255,0.04);border:1.5px solid '+(inP?c:'rgba(255,255,255,0.08)')+';border-radius:14px;padding:12px;text-align:center;cursor:pointer;'+(inP?'opacity:0.55;':'')+'">'
+        +'<div style="font-size:1.8rem;margin-bottom:4px;">'+d.emoji+'</div>'
+        +'<div style="font-size:0.78rem;font-weight:700;color:#fff;margin-bottom:2px;">'+d.name+'</div>'
+        +'<div style="font-size:0.68rem;color:'+c+';font-weight:600;margin-bottom:3px;">'+RL[d.r]+'</div>'
+        +'<div style="font-size:0.7rem;color:var(--text-secondary);margin-bottom:5px;">'+d.desc+'</div>'
+        +'<div style="font-size:0.82rem;font-weight:800;color:var(--accent);">+'+d.p+' pts</div>'
+        +'<div style="margin-top:6px;font-size:0.7rem;padding:3px 8px;border-radius:99px;background:'+(inP?'rgba(239,68,68,0.2)':'rgba(110,251,62,0.15)')+';color:'+(inP?'#ef4444':'var(--accent)')+';">'+(inP?'✖ Remove':'＋ Add')+'</div>'
         +'</div>';
     }).join('');
   }
+
   function renderPark(){
     var slots=document.getElementById('jp-park-slots');
     var emsg=document.getElementById('jp-empty-msg');
     var cap=document.getElementById('jp-capacity');
-    var encCount=document.getElementById('jp-enc-count');
     var sc=document.getElementById('jp-score');
-    if(!slots)return;
-    if(cap)cap.textContent=park.length;
-    if(encCount)encCount.textContent=enclosures.length;
-    if(sc)sc.textContent=calcScore().toLocaleString();
-    if(park.length===0&&enclosures.length===0){slots.innerHTML='';emsg.style.display='block';}
+    if(!slots) return;
+    cap.textContent=park.length;
+    sc.textContent=park.reduce(function(s,d){return s+d.p;},0).toLocaleString();
+    if(park.length===0){slots.innerHTML='';emsg.style.display='block';}
     else{
       emsg.style.display='none';
-      var eH=enclosures.map(function(e){return '<div onclick="jpToggleEnc('+e.id+')" style="background:rgba(255,255,255,0.05);border:1.5px solid '+e.color+';border-radius:10px;padding:6px 11px;display:flex;align-items:center;gap:6px;cursor:pointer;"><span style="font-size:1.1rem;">'+e.emoji+'</span><div><div style="font-size:0.72rem;font-weight:700;color:'+e.color+';">'+e.name+'</div><div style="font-size:0.63rem;color:var(--muted);">+'+e.bonus+' pts</div></div><span style="margin-left:auto;color:rgba(239,68,68,0.5);font-size:0.7rem;">x</span></div>';}).join('');
-      var dH=park.map(function(d){var c=RC[d.r];return '<div onclick="jpToggleDino('+d.id+')" style="background:rgba(255,255,255,0.06);border:1.5px solid '+c+';border-radius:10px;padding:6px 10px;display:flex;align-items:center;gap:6px;cursor:pointer;"><span style="font-size:1.2rem;">'+d.emoji+'</span><div><div style="font-size:0.73rem;font-weight:700;color:#fff;">'+d.name+'</div><div style="font-size:0.63rem;color:'+c+';">'+d.p+' pts</div></div><span style="margin-left:auto;color:rgba(239,68,68,0.5);font-size:0.7rem;">x</span></div>';}).join('');
-      slots.innerHTML=(eH?'<div style="width:100%;font-size:0.68rem;color:var(--muted);margin-bottom:4px;letter-spacing:1px;text-transform:uppercase;">Enclosures</div>'+eH+'<div style="width:100%;font-size:0.68rem;color:var(--muted);margin:7px 0 4px;letter-spacing:1px;text-transform:uppercase;">Dinosaurs</div>':'')+dH;
+      slots.innerHTML=park.map(function(d){
+        var c=RC[d.r];
+        return '<div onclick="jpToggleDino(\''+d.id+'\')" style="background:rgba(255,255,255,0.06);border:1.5px solid '+c+';border-radius:12px;padding:8px 12px;display:flex;align-items:center;gap:8px;cursor:pointer;">'
+          +'<span style="font-size:1.4rem;">'+d.emoji+'</span>'
+          +'<div><div style="font-size:0.78rem;font-weight:700;color:#fff;">'+d.name+'</div>'
+          +'<div style="font-size:0.7rem;color:'+c+';">'+d.p+' pts</div></div>'
+          +'<span style="margin-left:auto;color:rgba(239,68,68,0.6);font-size:0.8rem;">✖</span></div>';
+      }).join('');
     }
   }
-  function jpInit(){renderEncShop();renderShop();renderPark();}
+
+  function jpInit(){renderShop();renderPark();}
   var _jpH=window.showPage;
   window.showPage=function(id){_jpH(id);if(id==='jurassic-park')setTimeout(jpInit,80);};
   document.addEventListener('DOMContentLoaded',jpInit);
@@ -13481,115 +13682,540 @@ function showShareToast(msg) {
 })();
 
 // ══════════════════════════════════════════════════════════════
-// 🔥 STREAK SYSTEM
+// 🔬 PALEO NEWS HUB — Firebase powered
 // ══════════════════════════════════════════════════════════════
+
+// Firebase config
+var firebaseConfig = {
+  apiKey: "AIzaSyBECU4xP17JZSy-dkS7BUmPiHsy1Sl07zk",
+  authDomain: "dinoworld-4cfc0.firebaseapp.com",
+  projectId: "dinoworld-4cfc0",
+  storageBucket: "dinoworld-4cfc0.firebasestorage.app",
+  messagingSenderId: "391723249093",
+  appId: "1:391723249093:web:891d179c9555e5aab86fac"
+};
+
+// Load Firebase dynamically
 (function() {
-  function initStreak() {
-    try {
-      var today = new Date().toDateString();
-      var data = JSON.parse(localStorage.getItem('dw-streak') || '{}');
-      var lastVisit = data.last || '';
-      var streak = data.streak || 0;
-      var yesterday = new Date(Date.now() - 86400000).toDateString();
-      if (lastVisit === today) {
-        // already visited today
-      } else if (lastVisit === yesterday) {
-        streak++;
-        data = {last:today, streak:streak, best:Math.max(streak, data.best||0)};
-        localStorage.setItem('dw-streak', JSON.stringify(data));
-      } else {
-        streak = 1;
-        data = {last:today, streak:1, best:Math.max(1, data.best||0)};
-        localStorage.setItem('dw-streak', JSON.stringify(data));
-      }
-      if (streak >= 2) {
-        var banner = document.getElementById('streak-banner');
-        var text = document.getElementById('streak-text');
-        var sub = document.getElementById('streak-sub');
-        if (banner && text && sub) {
-          var emoji = streak >= 30 ? '🏆' : streak >= 14 ? '💎' : streak >= 7 ? '🌟' : '🔥';
-          text.textContent = emoji + ' ' + streak + '-day streak! Keep it up!';
-          sub.textContent = 'Best: ' + (data.best||streak) + ' days - come back tomorrow to extend it!';
-          banner.style.display = 'flex';
-        }
-      }
-    } catch(e) {}
+  var fbLoaded = false;
+  var pendingInit = false;
+
+  function loadFirebase(cb) {
+    if (fbLoaded) { cb(); return; }
+    var s1 = document.createElement('script');
+    s1.src = 'https://www.gstatic.com/firebasejs/10.12.0/firebase-app-compat.js';
+    s1.onload = function() {
+      var s2 = document.createElement('script');
+      s2.src = 'https://www.gstatic.com/firebasejs/10.12.0/firebase-firestore-compat.js';
+      s2.onload = function() {
+        if (!firebase.apps.length) firebase.initializeApp(firebaseConfig);
+        fbLoaded = true;
+        cb();
+      };
+      document.head.appendChild(s2);
+    };
+    document.head.appendChild(s1);
   }
-  document.addEventListener('DOMContentLoaded', initStreak);
+
+  var curSort = 'hot', curCat = 'all', curArtId = null;
+  var db = null;
+
+  // Local vote/rating cache (per browser)
+  var RK = 'dw_pn_ratings', UK = 'dw_pn_votes';
+  function loadLocal(key, def) { try { return JSON.parse(localStorage.getItem(key) || def); } catch(e) { return JSON.parse(def); } }
+  function saveLocal(key, val) { try { localStorage.setItem(key, JSON.stringify(val)); } catch(e) {} }
+
+  function fmtDate(d) {
+    try {
+      var ts = d && d.toDate ? d.toDate() : new Date(d);
+      var diff = Math.floor((Date.now() - ts) / 60000);
+      if (diff < 1) return 'just now';
+      if (diff < 60) return diff + 'm ago';
+      if (diff < 1440) return Math.floor(diff/60) + 'h ago';
+      if (diff < 10080) return Math.floor(diff/1440) + 'd ago';
+      return ts.toLocaleDateString('en', {month:'short', day:'numeric'});
+    } catch(e) { return ''; }
+  }
+
+  function getRatings() { return loadLocal(RK, '{}'); }
+  function getVotes() { return loadLocal(UK, '{}'); }
+
+  function ratingHtml(id, interactive) {
+    var r = getRatings();
+    var avg = r[id] ? r[id].t / r[id].c : 0;
+    var count = r[id] ? r[id].c : 0;
+    var s = '';
+    for (var i = 1; i <= 5; i++) {
+      var filled = i <= Math.round(avg);
+      var star = filled ? '⭐' : '☆';
+      s += '<span style="font-size:0.82rem">' + star + '</span>';
+    }
+    if (count > 0) s += '<span style="font-size:0.7rem;color:var(--muted);margin-left:4px;">' + avg.toFixed(1) + ' (' + count + ')</span>';
+    return s;
+  }
+
+  function showLoading() {
+    var feed = document.getElementById('pn-feed');
+    if (feed) feed.innerHTML = '<div style="text-align:center;padding:40px;color:var(--muted);"><div style="font-size:1.5rem;margin-bottom:8px;">⏳</div>Loading posts...</div>';
+  }
+
+  function renderPosts(posts) {
+    var feed = document.getElementById('pn-feed');
+    var empty = document.getElementById('pn-empty');
+    if (!feed) return;
+
+    var votes = getVotes();
+    var filtered = curCat === 'all' ? posts : posts.filter(function(p) { return p.cat === curCat; });
+
+    filtered = filtered.slice().sort(function(a, b) {
+      if (curSort === 'new') {
+        var ta = a.date && a.date.toDate ? a.date.toDate() : new Date(a.date);
+        var tb = b.date && b.date.toDate ? b.date.toDate() : new Date(b.date);
+        return tb - ta;
+      }
+      if (curSort === 'top') return (b.votes || 0) - (a.votes || 0);
+      var scoreA = (a.votes || 0) + Math.log1p(a.views || 0) * 2;
+      var scoreB = (b.votes || 0) + Math.log1p(b.views || 0) * 2;
+      var ta2 = a.date && a.date.toDate ? a.date.toDate() : new Date(a.date || Date.now());
+      var tb2 = b.date && b.date.toDate ? b.date.toDate() : new Date(b.date || Date.now());
+      var ageA = (Date.now() - ta2) / 3600000 + 2;
+      var ageB = (Date.now() - tb2) / 3600000 + 2;
+      return (scoreB / Math.pow(ageB, 1.5)) - (scoreA / Math.pow(ageA, 1.5));
+    });
+
+    if (filtered.length === 0) {
+      feed.innerHTML = '';
+      if (empty) empty.style.display = 'block';
+      return;
+    }
+    if (empty) empty.style.display = 'none';
+
+    var html2 = '';
+    filtered.forEach(function(p) {
+      var uv = votes[p.id] || 0;
+      var totalVotes = p.votes || 0;
+      var views = p.views || 0;
+      var upColor = uv > 0 ? '#ff7a1a' : 'var(--muted)';
+      var dnColor = uv < 0 ? '#ef4444' : 'var(--muted)';
+      var scoreColor = uv > 0 ? '#ff7a1a' : uv < 0 ? '#ef4444' : '#fff';
+      var upIcon = uv > 0 ? '&#x1F525;' : '&#9651;';
+      html2 += '<div class="pn-row" data-pid="' + p.id + '">';
+      html2 += '<div class="pn-vcol" style="background:transparent;">';
+      html2 += '<button class="pn-vbtn pn-up" data-pid="' + p.id + '" style="font-size:1.15rem;color:' + upColor + ';background:none;border:none;cursor:pointer;">' + upIcon + '</button>';
+      html2 += '<div class="pn-vscore" style="color:' + scoreColor + ';">' + totalVotes + '</div>';
+      html2 += '<button class="pn-vbtn pn-dn" data-pid="' + p.id + '" style="font-size:0.9rem;color:' + dnColor + ';background:none;border:none;cursor:pointer;">&#9661;</button>';
+      html2 += '</div>';
+      html2 += '<div class="pn-pbody pn-open" data-pid="' + p.id + '">';
+      html2 += '<div class="pn-pmeta">';
+      html2 += '<span class="pn-pcat">' + (p.emoji || '&#x1F995;') + ' ' + p.cat + '</span>';
+      html2 += '<span>' + fmtDate(p.date) + '</span>';
+      html2 += '<span>&#x23F1; ' + (p.mins || 3) + ' min</span>';
+      html2 += '<span style="display:flex;align-items:center;gap:3px;color:var(--muted);">&#x1F441; <strong style="color:#fff;">' + views + '</strong></span>';
+      html2 += '</div>';
+      html2 += '<div class="pn-ptitle">' + p.title + '</div>';
+      html2 += '<div class="pn-pdesc">' + p.desc + '</div>';
+      html2 += '<div class="pn-pactions">';
+      html2 += '<button class="pn-pact pn-open" data-pid="' + p.id + '">&#x1F4AC; Read Article</button>';
+      html2 += '<span class="pn-rate-wrap" data-pid="' + p.id + '" style="display:flex;align-items:center;gap:3px;">' + ratingHtmlStatic(p.id) + '</span>';
+      if (p.src) html2 += '<a href="' + p.src + '" target="_blank" style="color:var(--muted);font-size:0.7rem;font-weight:600;">&#x1F517; Source</a>';
+      html2 += '</div></div>';
+      html2 += '<div class="pn-pthumb">' + (p.emoji || '&#x1F995;') + '</div>';
+      html2 += '</div>';
+    });
+    feed.innerHTML = html2;
+
+    // Attach event listeners
+    feed.querySelectorAll('.pn-up').forEach(function(btn) {
+      btn.addEventListener('click', function(e) { e.stopPropagation(); pnVote(this.dataset.pid, 1); });
+    });
+    feed.querySelectorAll('.pn-dn').forEach(function(btn) {
+      btn.addEventListener('click', function(e) { e.stopPropagation(); pnVote(this.dataset.pid, -1); });
+    });
+    feed.querySelectorAll('.pn-open').forEach(function(el) {
+      el.addEventListener('click', function(e) { e.stopPropagation(); pnOpenArt(this.dataset.pid); });
+    });
+    feed.querySelectorAll('.pn-star').forEach(function(star) {
+      star.addEventListener('click', function(e) { e.stopPropagation(); pnRate(this.dataset.pid, parseInt(this.dataset.star)); });
+    });
+  }
+
+  function ratingHtmlStatic(id) {
+    var r = getRatings();
+    var avg = r[id] ? r[id].t / r[id].c : 0;
+    var count = r[id] ? r[id].c : 0;
+    var s = '';
+    for (var i = 1; i <= 5; i++) {
+      var filled = i <= Math.round(avg);
+      s += '<span class="pn-star" data-pid="' + id + '" data-star="' + i + '" style="cursor:pointer;font-size:0.88rem;">' + (filled ? '&#x2B50;' : '&#x2606;') + '</span>';
+    }
+    if (count > 0) s += '<span style="font-size:0.7rem;color:var(--muted);margin-left:4px;">' + avg.toFixed(1) + ' (' + count + ')</span>';
+    return s;
+  }
+  function loadPosts() {
+    if (!db) return;
+    showLoading();
+    db.collection('paleo_posts')
+      .orderBy('date', 'desc')
+      .limit(50)
+      .get()
+      .then(function(snap) {
+        var posts = [];
+        snap.forEach(function(doc) {
+          var d = doc.data();
+          d.id = doc.id;
+          posts.push(d);
+        });
+        renderPosts(posts);
+      })
+      .catch(function(e) {
+        var feed = document.getElementById('pn-feed');
+        if (feed) feed.innerHTML = '<div style="text-align:center;padding:40px;color:#ef4444;">⚠️ Could not load posts. Check connection.</div>';
+      });
+  }
+
+  window.pnSort = function(s, btn) {
+    curSort = s;
+    document.querySelectorAll('.pn-sort-btn').forEach(function(b) { b.classList.remove('active'); });
+    if (btn) btn.classList.add('active');
+    loadPosts();
+  };
+
+  window.pnCatFilter = function(cat) {
+    curCat = cat;
+    loadPosts();
+  };
+
+  window.pnVote = function(id, dir) {
+    if (!db) return;
+    var votes = getVotes();
+    var prev = votes[id] || 0;
+    var newDir = prev === dir ? 0 : dir;
+    votes[id] = newDir;
+    saveLocal(UK, votes);
+    var delta = newDir - prev;
+    db.collection('paleo_posts').doc(id).update({
+      votes: firebase.firestore.FieldValue.increment(delta)
+    }).then(function() { loadPosts(); });
+  };
+
+  window.pnRate = function(id, stars) {
+    var r = getRatings();
+    if (!r[id]) r[id] = { t: 0, c: 0 };
+    r[id].t += stars; r[id].c += 1;
+    saveLocal(RK, r);
+    if (curArtId === id) pnOpenArt(id);
+    loadPosts();
+    if (typeof addLBPoints === 'function') addLBPoints(5, '⭐ Article rated!');
+  };
+
+  window.pnOpenArt = function(id) {
+    if (!db) return;
+    curArtId = id;
+    // Increment view count in Firebase
+    db.collection('paleo_posts').doc(id).update({
+      views: firebase.firestore.FieldValue.increment(1)
+    });
+    db.collection('paleo_posts').doc(id).get().then(function(doc) {
+      if (!doc.exists) return;
+      var p = doc.data();
+      p.id = doc.id;
+      var ov = document.getElementById('pn-overlay');
+      document.getElementById('ov-tag').textContent = (p.emoji || '🦕') + ' ' + p.cat;
+      document.getElementById('ov-title').textContent = p.title;
+      var views = (p.views || 0) + 1;
+      var r = getRatings();
+      var avg = r[id] ? (r[id].t / r[id].c).toFixed(1) : null;
+      var cnt = r[id] ? r[id].c : 0;
+      document.getElementById('ov-meta').innerHTML =
+        '<span>📅 ' + fmtDate(p.date) + '</span>'
+        + '<span>⏱ ' + (p.mins || 3) + ' min</span>'
+        + '<span>👁 ' + views + ' views</span>';
+      document.getElementById('ov-stars').innerHTML = ratingHtml(id, true);
+      document.getElementById('ov-avg').textContent = avg ? '⭐ ' + avg + ' (' + cnt + ' ratings)' : 'Be the first to rate!';
+      var bodyHtml = (p.body || '').split('\n\n').map(function(para) {
+        if (para.startsWith('## ')) return '<h2>' + para.slice(3) + '</h2>';
+        return '<p>' + para + '</p>';
+      }).join('');
+      document.getElementById('ov-body').innerHTML = bodyHtml;
+      var srcEl = document.getElementById('ov-src');
+      if (p.src) { srcEl.href = p.src; srcEl.style.display = 'inline'; }
+      else srcEl.style.display = 'none';
+      ov.style.display = 'flex';
+      document.body.style.overflow = 'hidden';
+      if (typeof addLBPoints === 'function') addLBPoints(3, '🔬 Article read!');
+    });
+  };
+
+  window.pnCloseArt = function() {
+    curArtId = null;
+    var ov = document.getElementById('pn-overlay');
+    if (ov) ov.style.display = 'none';
+    document.body.style.overflow = '';
+    loadPosts();
+  };
+
+  var pnIsAdmin = false;
+  var PN_HASH = 'd3c29fb86a0868eea80b10c491f959e94b3f4b565395df71b1f9a03176835aa5'; // DinoWorld2024!
+
+  window.pnAdminLogin = function() {
+    if (pnIsAdmin) {
+      // Already logged in - toggle form
+      var f = document.getElementById('pn-form');
+      if (f) f.style.display = f.style.display === 'none' ? 'block' : 'none';
+      return;
+    }
+    var pwd = prompt('Enter admin password:');
+    if (!pwd) return;
+    // Simple hash check
+    sha256(pwd).then(function(hash) {
+      if (hash === PN_HASH) {
+        pnIsAdmin = true;
+        var btn = document.getElementById('pn-admin-btn');
+        if (btn) { btn.textContent = '✏️ New Post'; btn.style.background = 'var(--accent)'; }
+        var f = document.getElementById('pn-form');
+        if (f) f.style.display = 'block';
+      } else {
+        alert('Wrong password!');
+      }
+    });
+  };
+
+  async function sha256(message) {
+    var msgBuffer = new TextEncoder().encode(message);
+    var hashBuffer = await crypto.subtle.digest('SHA-256', msgBuffer);
+    var hashArray = Array.from(new Uint8Array(hashBuffer));
+    return hashArray.map(function(b) { return b.toString(16).padStart(2, '0'); }).join('');
+  }
+
+  window.pnToggleForm = function() {
+    if (!pnIsAdmin) { pnAdminLogin(); return; }
+    var f = document.getElementById('pn-form');
+    if (f) f.style.display = f.style.display === 'none' ? 'block' : 'none';
+  };
+
+  window.pnPublish = function() {
+    if (!db) { alert('Firebase not loaded yet, try again in a second.'); return; }
+    var title = document.getElementById('pn-title').value.trim();
+    var desc = document.getElementById('pn-desc').value.trim();
+    var body = document.getElementById('pn-body').value.trim();
+    var msg = document.getElementById('pn-msg');
+    if (!title || !desc || !body) {
+      msg.textContent = '❌ Fill in Title, Description and Article.';
+      msg.style.color = '#ef4444'; msg.style.display = 'inline'; return;
+    }
+    var btn = document.querySelector('.pn-fpublish');
+    if (btn) { btn.textContent = '⏳ Publishing...'; btn.disabled = true; }
+    db.collection('paleo_posts').add({
+      title: title,
+      cat: document.getElementById('pn-cat').value,
+      emoji: document.getElementById('pn-emoji').value.trim() || '🦕',
+      desc: desc,
+      body: body,
+      src: document.getElementById('pn-src').value.trim(),
+      date: firebase.firestore.FieldValue.serverTimestamp(),
+      mins: parseInt(document.getElementById('pn-time') ? document.getElementById('pn-time').value : 5) || 5,
+      votes: 0,
+      views: 0
+    }).then(function() {
+      ['pn-title','pn-desc','pn-body','pn-src','pn-emoji'].forEach(function(id) {
+        var el = document.getElementById(id); if (el) el.value = '';
+      });
+      msg.textContent = '✅ Published! Everyone can now see it.';
+      msg.style.color = '#6efb3e'; msg.style.display = 'inline';
+      if (btn) { btn.textContent = '🚀 Publish'; btn.disabled = false; }
+      setTimeout(function() { msg.style.display = 'none'; }, 3000);
+      pnToggleForm();
+      loadPosts();
+      if (typeof addLBPoints === 'function') addLBPoints(50, '📰 Post published!');
+    }).catch(function(e) {
+      msg.textContent = '❌ Error: ' + e.message;
+      msg.style.color = '#ef4444'; msg.style.display = 'inline';
+      if (btn) { btn.textContent = '🚀 Publish'; btn.disabled = false; }
+    });
+  };
+
+  // Close overlay on backdrop click
+  document.addEventListener('click', function(e) {
+    var ov = document.getElementById('pn-overlay');
+    if (ov && e.target === ov) pnCloseArt();
+  });
+
+  function initPN() {
+    loadFirebase(function() {
+      db = firebase.firestore();
+      loadPosts();
+    });
+  }
+
+  var _h = window.showPage;
+  window.showPage = function(id) {
+    _h(id);
+    if (id === 'paleo-news') setTimeout(initPN, 80);
+  };
+
+  document.addEventListener('DOMContentLoaded', function() {
+    if (document.getElementById('pn-feed')) initPN();
+  });
 })();
 
-// ══════════════════════════════════════════════════════════════
-// 🎂 BIRTHDAY DINO
-// ══════════════════════════════════════════════════════════════
+// ── LATEST PALEO NEWS WIDGET ────────────────────────────────
 (function() {
-  var BD = [
-    {month:1,d1:1,d2:10,id:'trex',name:'T-Rex',emoji:'🦖',sub:'Born Jan 1-10 - The Unstoppable Force',desc:'You are powerful, confident and command respect wherever you go. Like T-Rex, you lead from the front.',traits:['Leader','Intense','Focused','Dominant']},
-    {month:1,d1:11,d2:20,id:'velociraptor',name:'Velociraptor',emoji:'🦅',sub:'Born Jan 11-20 - The Sharp Mind',desc:'Quick-thinking and always ahead — you combine intelligence with speed to outmaneuver any obstacle.',traits:['Intelligent','Fast Thinker','Strategic','Team Player']},
-    {month:1,d1:21,d2:31,id:'triceratops-guide',name:'Triceratops',emoji:'🦏',sub:'Born Jan 21-31 - The Loyal Defender',desc:'Steadfast and protective — the person everyone turns to in tough times. Your loyalty is unmatched.',traits:['Protective','Loyal','Grounded','Reliable']},
-    {month:2,d1:1,d2:14,id:'parasaurolophus',name:'Parasaurolophus',emoji:'🎺',sub:'Born Feb 1-14 - The Creative Soul',desc:'Expressive and deeply communicative — you have a unique voice that resonates with everyone around you.',traits:['Creative','Expressive','Warm','Artistic']},
-    {month:2,d1:15,d2:28,id:'brachiosaurus-guide',name:'Brachiosaurus',emoji:'🦕',sub:'Born Feb 15-28 - The Gentle Giant',desc:'Peaceful, thoughtful and magnificent. You rise above the noise, always reaching for greater heights.',traits:['Peaceful','Gentle','Visionary','Wise']},
-    {month:3,d1:1,d2:15,id:'allosaurus',name:'Allosaurus',emoji:'🦖',sub:'Born Mar 1-15 - The Pioneering Hunter',desc:'Bold and pioneering — you forge your own path. You are always first to explore new territory.',traits:['Pioneering','Bold','Driven','Courageous']},
-    {month:3,d1:16,d2:31,id:'stegosaurus-guide',name:'Stegosaurus',emoji:'🦎',sub:'Born Mar 16-31 - The Quiet Strength',desc:'Your unique personality stands out without you even trying. Behind a calm exterior lies incredible power.',traits:['Calm','Unique','Strong','Peaceful']},
-    {month:4,d1:1,d2:15,id:'spinosaurus',name:'Spinosaurus',emoji:'🐊',sub:'Born Apr 1-15 - The Mysterious Explorer',desc:'Unconventional and fascinating — comfortable in any environment. You thrive where others cannot.',traits:['Adaptable','Mysterious','Adventurous','Innovative']},
-    {month:4,d1:16,d2:30,id:'ankylosaurus',name:'Ankylosaurus',emoji:'🐢',sub:'Born Apr 16-30 - The Unbreakable',desc:'Nothing can break your spirit. Patient, practical and completely unshakeable when it matters most.',traits:['Resilient','Patient','Unbreakable','Grounded']},
-    {month:5,d1:1,d2:20,id:'diplodocus',name:'Diplodocus',emoji:'🦕',sub:'Born May 1-20 - The Grand Thinker',desc:'You think big — truly massive thoughts that span horizons others cannot see.',traits:['Big Thinker','Philosophical','Peaceful','Intellectual']},
-    {month:5,d1:21,d2:31,id:'troodon',name:'Troodon',emoji:'🦉',sub:'Born May 21-31 - The Genius',desc:'The smartest person in the room — often without anyone realising. Intelligence is your greatest gift.',traits:['Genius IQ','Perceptive','Night Owl','Inventive']},
-    {month:6,d1:1,d2:15,id:'carnotaurus',name:'Carnotaurus',emoji:'🐂',sub:'Born Jun 1-15 - The Speed Demon',desc:'Fast, fierce and free-spirited — you live life at full speed and love the thrill of the chase.',traits:['Lightning Fast','Fierce','Spontaneous','Competitive']},
-    {month:6,d1:16,d2:30,id:'therizinosaurus',name:'Therizinosaurus',emoji:'🦥',sub:'Born Jun 16-30 - The Surprising One',desc:'You look gentle but have hidden depths that surprise everyone. Incredible precision behind a calm face.',traits:['Surprising','Gentle','Detail-Oriented','Mysterious']},
-    {month:7,d1:1,d2:15,id:'microraptor',name:'Microraptor',emoji:'🐦',sub:'Born Jul 1-15 - The Free Spirit',desc:'Small but spectacular — you live life on your own terms, move fast and leave everyone wondering how.',traits:['Iridescent','Free','Colourful','Quick']},
-    {month:7,d1:16,d2:31,id:'utahraptor',name:'Utahraptor',emoji:'🦅',sub:'Born Jul 16-31 - The True Power',desc:'Bigger and more powerful than anyone expected. You are what reality delivers versus the hype.',traits:['True Strength','Precise','Fierce','Champion']},
-    {month:8,d1:1,d2:15,id:'pachycephalosaurus',name:'Pachycephalosaurus',emoji:'💥',sub:'Born Aug 1-15 - The Headstrong',desc:'Once you set your mind to something, nothing can stop you. Head first, always.',traits:['Determined','Unstoppable','Single-Minded','Winner']},
-    {month:8,d1:16,d2:31,id:'styracosaurus',name:'Styracosaurus',emoji:'🦏',sub:'Born Aug 16-31 - The Show-Stopper',desc:'You make an entrance — always. Like Styracosaurus with its spectacular spikes, you are impossible to ignore.',traits:['Spectacular','Attention-Getter','Dramatic','Unforgettable']},
-    {month:9,d1:1,d2:15,id:'maiasaura',name:'Maiasaura',emoji:'🪺',sub:'Born Sep 1-15 - The Nurturer',desc:'Kind, caring and fiercely protective of those you love. You were built for devotion.',traits:['Caring','Nurturing','Family-First','Warm']},
-    {month:9,d1:16,d2:30,id:'gallimimus',name:'Gallimimus',emoji:'🐦',sub:'Born Sep 16-30 - The Social Butterfly',desc:'Social, speedy and always in motion — you thrive in groups and love the energy of being around people.',traits:['Social','Energetic','Always Moving','Fun-Loving']},
-    {month:10,d1:1,d2:15,id:'dilophosaurus',name:'Dilophosaurus',emoji:'🦎',sub:'Born Oct 1-15 - The Misunderstood',desc:'Far more than meets the eye. People make assumptions about you that could not be more wrong.',traits:['Misunderstood','Complex','Mysterious','Multi-Faceted']},
-    {month:10,d1:16,d2:31,id:'kentrosaurus',name:'Kentrosaurus',emoji:'⚔️',sub:'Born Oct 16-31 - The Hidden Warrior',desc:'More dangerous than your famous relatives. Underestimating you is always a mistake.',traits:['Hidden Power','Defensive','Surprising','Underrated']},
-    {month:11,d1:1,d2:15,id:'baryonyx',name:'Baryonyx',emoji:'🐟',sub:'Born Nov 1-15 - The Patient Hunter',desc:'You know exactly what you want and wait for the right moment. Patient, strategic and effective.',traits:['Patient','Fluid','Strategic','Precise']},
-    {month:11,d1:16,d2:30,id:'deinonychus',name:'Deinonychus',emoji:'🦅',sub:'Born Nov 16-30 - The Revolutionary',desc:'You change minds. Like Deinonychus changed all of science in 1969, you challenge assumptions.',traits:['Revolutionary','Mind-Changing','Passionate','Impactful']},
-    {month:12,d1:1,d2:15,id:'protoceratops',name:'Protoceratops',emoji:'🐏',sub:'Born Dec 1-15 - The Legend Maker',desc:'You create legends — stories that outlast you and inspire others for generations.',traits:['Story-Teller','Legendary','Inspiring','Mythical']},
-    {month:12,d1:16,d2:31,id:'oviraptor',name:'Oviraptor',emoji:'🦅',sub:'Born Dec 16-31 - The Devoted',desc:'Wrongly judged, ultimately vindicated. Your dedication to those you love is total and unconditional.',traits:['Devoted','Faithful','Vindicated','Genuine']}
-  ];
+  function fmtDateSimple(d) {
+    try {
+      var ts = d && d.toDate ? d.toDate() : new Date(d);
+      return ts.toLocaleDateString('en', {month:'short', day:'numeric', year:'numeric'});
+    } catch(e) { return ''; }
+  }
 
-  window.findBirthdayDino = function() {
-    var input = document.getElementById('birthday-input');
-    if (!input || !input.value) { alert('Please enter your birthday!'); return; }
-    var d = new Date(input.value);
-    var month = d.getMonth() + 1;
-    var day = d.getDate();
-    var dino = null;
-    for (var i = 0; i < BD.length; i++) {
-      if (BD[i].month === month && day >= BD[i].d1 && day <= BD[i].d2) { dino = BD[i]; break; }
-    }
-    if (!dino) dino = BD[0];
-    window._bdDinoId = dino.id;
-    window._bdDinoName = dino.name;
-    window._bdDinoEmoji = dino.emoji;
-    document.getElementById('bd-emoji').textContent = dino.emoji;
-    document.getElementById('bd-name').textContent = dino.name;
-    document.getElementById('bd-subtitle').textContent = dino.sub;
-    document.getElementById('bd-desc').textContent = dino.desc;
-    document.getElementById('bd-traits').innerHTML = dino.traits.map(function(t){
-      return '<span style="background:rgba(110,251,62,0.1);border:1px solid rgba(110,251,62,0.2);border-radius:99px;padding:5px 14px;font-size:0.8rem;color:var(--accent);">'+t+'</span>';
-    }).join('');
-    document.getElementById('birthday-result').style.display = 'block';
-    document.getElementById('birthday-result').scrollIntoView({behavior:'smooth',block:'nearest'});
-    if (typeof addLBPoints === 'function') addLBPoints(20, '🎂 Birthday Dino found!');
-  };
-
-  window.shareBirthdayDino = function() {
-    var name = window._bdDinoName || 'T-Rex';
-    var emoji = window._bdDinoEmoji || '🦖';
-    var url = typeof SITE_URL !== 'undefined' ? SITE_URL : 'https://jacobb-rgb.github.io/DinoWorld';
-    var text = 'My birthday dinosaur is ' + emoji + ' ' + name + '! Find yours at DinoWorld: ' + url;
-    if (navigator.share) {
-      navigator.share({title:'My Birthday Dino is '+name+'!', text:text});
-    } else if (typeof shareToTwitter === 'function') {
-      shareToTwitter(text);
+  function loadLatestPost() {
+    // Try Firebase first
+    if (typeof firebase !== 'undefined' && firebase.apps && firebase.apps.length) {
+      firebase.firestore().collection('paleo_posts')
+        .orderBy('date', 'desc').limit(1).get()
+        .then(function(snap) {
+          if (!snap.empty) {
+            var p = snap.docs[0].data();
+            updateWidget(p);
+          }
+        }).catch(function() {});
     } else {
-      navigator.clipboard.writeText(text).catch(function(){});
-      if (typeof showShareToast === 'function') showShareToast('Copied! Share it with friends!');
+      // Firebase not loaded yet - try again after delay
+      setTimeout(loadLatestPost, 2000);
+    }
+  }
+
+  function updateWidget(p) {
+    var thumb = document.getElementById('lpn-thumb');
+    var tag = document.getElementById('lpn-tag');
+    var title = document.getElementById('lpn-title');
+    var desc = document.getElementById('lpn-desc');
+    var date = document.getElementById('lpn-date');
+    var mins = document.getElementById('lpn-mins');
+    var views = document.getElementById('lpn-views');
+    if (!title) return;
+    if (thumb) thumb.textContent = p.emoji || '🦕';
+    if (tag) tag.textContent = (p.emoji || '🔬') + ' ' + (p.cat || 'Discovery');
+    if (title) title.textContent = p.title || '';
+    if (desc) desc.textContent = p.desc || '';
+    if (date) date.textContent = fmtDateSimple(p.date);
+    if (mins) mins.textContent = (p.mins || 3) + ' min read';
+    if (views) views.textContent = '&#x1F441; ' + (p.views || 0) + ' views';
+  }
+
+  document.addEventListener('DOMContentLoaded', function() {
+    // Load after short delay to let Firebase initialize
+    setTimeout(loadLatestPost, 1500);
+  });
+})();
+
+// ── PALEO NEWS IMAGE + HERO WIDGET ──────────────────────────
+window.pnPreviewImg = function(input) {
+  var file = input.files[0];
+  if (!file) return;
+  var name = document.getElementById('pn-img-name');
+  var preview = document.getElementById('pn-img-preview');
+  var thumb = document.getElementById('pn-img-thumb');
+  if (name) name.textContent = file.name;
+  var reader = new FileReader();
+  reader.onload = function(e) {
+    if (thumb) thumb.src = e.target.result;
+    if (preview) preview.style.display = 'block';
+  };
+  reader.readAsDataURL(file);
+};
+
+// Update pnPublish to include image as base64
+(function() {
+  var _origPublish = window.pnPublish;
+  window.pnPublish = function() {
+    var imgFile = document.getElementById('pn-img-file');
+    if (imgFile && imgFile.files[0]) {
+      var reader = new FileReader();
+      reader.onload = function(e) {
+        window._pnImgData = e.target.result;
+        _origPublish();
+        window._pnImgData = null;
+      };
+      reader.readAsDataURL(imgFile.files[0]);
+    } else {
+      window._pnImgData = null;
+      _origPublish();
     }
   };
+
+  // Patch the firebase add to include image
+  var _origFirestoreAdd = null;
+  var _patchedAdd = false;
+  function patchFirestore() {
+    if (_patchedAdd || typeof firebase === 'undefined' || !firebase.apps || !firebase.apps.length) {
+      setTimeout(patchFirestore, 1000);
+      return;
+    }
+    _patchedAdd = true;
+  }
+  setTimeout(patchFirestore, 2000);
+})();
+
+// Hero widget JS
+(function() {
+  function fmtShort(d) {
+    try {
+      var ts = d && d.toDate ? d.toDate() : new Date(d);
+      return ts.toLocaleDateString('en', {month:'short', day:'numeric'});
+    } catch(e) { return ''; }
+  }
+
+  function updateHeroWidget(p) {
+    var emoji = document.getElementById('hpn-emoji');
+    var cat = document.getElementById('hpn-cat');
+    var title = document.getElementById('hpn-title');
+    var desc = document.getElementById('hpn-desc');
+    var meta = document.getElementById('hpn-meta');
+    if (!title) return;
+    if (emoji) emoji.textContent = p.emoji || '🦕';
+    if (cat) cat.textContent = (p.emoji || '🔬') + ' ' + (p.cat || 'Discovery');
+    if (title) title.textContent = p.title || '';
+    if (desc) desc.textContent = p.desc || '';
+    if (meta) meta.textContent = fmtShort(p.date) + ' · ' + (p.mins || 3) + ' min · 👁 ' + (p.views || 0);
+  }
+
+  // Also update lpn widget on homepage
+  function updateLpnWidget(p) {
+    var thumb = document.getElementById('lpn-thumb');
+    var tag = document.getElementById('lpn-tag');
+    var title = document.getElementById('lpn-title');
+    var desc = document.getElementById('lpn-desc');
+    var date = document.getElementById('lpn-date');
+    var mins = document.getElementById('lpn-mins');
+    var views = document.getElementById('lpn-views');
+    if (thumb) thumb.textContent = p.emoji || '🦕';
+    if (tag) tag.textContent = (p.emoji || '🔬') + ' ' + (p.cat || 'Discovery');
+    if (title) title.textContent = p.title || '';
+    if (desc) desc.textContent = p.desc || '';
+    if (date) date.textContent = fmtShort(p.date);
+    if (mins) mins.textContent = (p.mins || 3) + ' min read';
+    if (views) views.innerHTML = '&#x1F441; ' + (p.views || 0) + ' views';
+  }
+
+  function loadLatest() {
+    if (typeof firebase === 'undefined' || !firebase.apps || !firebase.apps.length) {
+      setTimeout(loadLatest, 1500);
+      return;
+    }
+    firebase.firestore().collection('paleo_posts')
+      .orderBy('date', 'desc').limit(1).get()
+      .then(function(snap) {
+        if (!snap.empty) {
+          var p = snap.docs[0].data();
+          updateHeroWidget(p);
+          updateLpnWidget(p);
+        }
+      }).catch(function() {});
+  }
+
+  document.addEventListener('DOMContentLoaded', function() {
+    setTimeout(loadLatest, 2000);
+  });
 })();
 </script>
 </body>
